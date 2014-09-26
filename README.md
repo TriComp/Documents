@@ -1,4 +1,2 @@
-Documents
-=========
-
-Proposal, etc
+TriComp
+=======
