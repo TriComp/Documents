@@ -6,6 +6,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows,automata}
+\tikzset{>=stealth'}
+
 \title{Proposition de projet : TriComp}
 
 \author{}
@@ -98,6 +105,39 @@ la liste des instructions qui devront être suivies pour réaliser le tricot. Ce
 logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à 
 accomplir et l'observation du résultat à obtenir à chaque étape.
 \end{itemize}
+
+\subsubsection{Diagramme des interractions}
+
+    \begin{figure}[!h]
+    \centering
+
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+                    semithick]
+      \tikzstyle{every state}=[draw=black,text=black]
+
+      \node[state] 	   (user)  []              					 {User};
+      \node[state]         (gui)   [] 				 [right of=user] 	 {GUI};
+      \node[state]         (HN)    [shape=rectangle] [above right of=gui] 	 {Langage haut niveau};
+      \node[state]	   (compil)[]				 [right of=HN]		 {Compilateur};
+      \node[state]	   (BN)	   [shape=rectangle] [below right of=compil] {Langage bas niveau}; 
+      \node[state]	   (trad)  []				 [below left of=BN]	 {Traducteur};
+      \node[state]	   (manuel)[shape=rectangle]   [left of=trad] 	 {Instructions};
+
+
+      \path (user)       edge              node {Spécifications} (gui)
+	    (gui)        edge [bend left]  node {}               (HN.west) 
+	    (HN.south)   edge 	           node {Visualisation}  (gui)
+	    (HN)         edge		   node {}               (compil)
+	    (compil)     edge	           node {}               (BN)
+	    (BN)         edge		   node {}               (trad)
+	    (trad)       edge		   node {}               (manuel)
+	    (manuel)     edge	           node {Affichage}      (gui)
+	    ;
+    \end{tikzpicture}
+    
+    \caption{Interaction entre les différents composants}
+    \label{ex:run-mots-finis}
+    \end{figure}  
 
 \subsection{Motivations}
 
