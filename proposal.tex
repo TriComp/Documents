@@ -1,6 +1,7 @@
 
 \documentclass{article}
 
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
 
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
@@ -12,10 +13,25 @@
 
 \date{29 Septembre 2014}
 
-
 \begin{document}
 
-\maketitle
+\makeatletter % Pour utiliser le "at" comme une commande interne.
+  \begin{titlepage}
+    \begin{center}
+       {\LARGE \@title} \\
+       \vspace{1cm}
+       {\large \@date}
+       \vspace{2cm}       
+    \end{center}
+       {\large
+       William AUFORT \hfill Julien BENSMAIL, coordinateur\\
+       Agathe HERROU  \hfill Romain LABOLLE \\
+       Frédéric LANG \hfill Maxime LESOURD \\
+       Laureline PINAULT \hfill Léo STEFANESCO \\}
+  \tableofcontents          
+  \end{titlepage}
+\makeatother
+
 \pagebreak
 
 % Esquisse de plan ( proposee ) :
@@ -85,7 +101,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \section{Organisation du projet}
 
-\subsection{L'équipe}
+\subsection{L'équipe} 
 
 \subsection{Les différentes phases et le mode d'organisation}
 
