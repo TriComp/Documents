@@ -106,7 +106,7 @@ Le projet KnitML a également pour but de fournir un langage bas niveau au servi
 tricot. Par exemple, le logiciel Knitter se base sur KnitML pour fournir une visualisation 3D du modèle passé en entrée. Il est davantage
 actualisé (la dernière version date de 2012) et peut également nous apporter une précieuse aide.
 
-\subsection{Les solutions industrielles ?} Peut etre se renseigner ?
+\subsection{Les solutions industrielles ?} Peut être se renseigner ?
 
 \section{Objectifs et motivations} % Je préfère le titre Cahier des charges et applications
 
@@ -137,12 +137,12 @@ Une fois ce langage défini, nous pourrons nous concentrer sur la phase de conce
 
 Notre réalisation logicielle a pour but de mettre le compilateur précédent au service des utilisateurs.
 
-L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs essentiellement deux fonctionalités :
+L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs essentiellement deux fonctionnalités :
 \begin{itemize}
   \item \textbf{La conception d'un tricot via une interface graphique} Notre objectif ici est de mettre en place pour l'utilisateur des
   outils afin qu'il puisse entrer son projet de tricot : choix d'un modèle (pull, écharpe...), choix des points utilisés
   (jersey, ...), de la couleur.
-  \item \textbf{Le suivi personalisé} Une fois que l'utilisateur aura saisi son tricot, le logiciel appelera le compilateur afin de générer
+  \item \textbf{Le suivi personnalisé} Une fois que l'utilisateur aura saisi son tricot, le logiciel appellera le compilateur afin de générer
 la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le
 logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à
 accomplir et l'observation du résultat à obtenir à chaque étape.
@@ -199,7 +199,7 @@ réalisation de leurs oeuvres.
 L'équipe de notre projet TriComp comporte sept étudiants de M1 ainsi qu'un coordinateur
 % Redonner les noms ici ?
 
-Nous avons prévu de développer 3 versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles fonctionnalités notamment au niveau de la variété des points proposés.
+Nous avons prévu de développer 3 versions de notre logiciel. Chaque version sera basée sur la précédente et inclura de nouvelles fonctionnalités notamment au niveau de la variété des points proposés.
 Les phases du projet correspondent aux différentes versions que nous avons prévu de réaliser.
 
 % Ici descriptifs de ce qu'il y aura ds les différentes version, agathe ?
@@ -210,7 +210,7 @@ Les phases du projet correspondent aux différentes versions que nous avons pré
 Les différentes phases de notre projet seront essentiellement caractérisées par la difficulté des points de tricot que notre logiciel
 prendra en compte.
 Une fois qu'une première version (vide) de l'interface a été réalisée et que les langages ont bien été définis, la progression des
-différents workpackages pourra s'effectuer en simultané. Chacune des phases sera conclue par une intégration des nouveautées mises en
+différents workpackages pourra s'effectuer en simultané. Chacune des phases sera conclue par une intégration des nouveautés mises en
 place dans chacun des workpackages.
 
 
@@ -230,7 +230,7 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
       \textbf{Laureline}
 
-    \item[Module de traduction] Consiste à implémenter un traductucteur qui traduira les instructions du langage bas-niveau en des instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
+    \item[Module de traduction] Consiste à implémenter un traducteur qui traduira les instructions du langage bas-niveau en des instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
 
       \textit{Production : Un module traduisant le langage bas niveau en instructions de tricot compréhensibles pour l'utilisateur.}
 
@@ -246,13 +246,13 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
       \textit{Production : Une liste de contraintes décrivant les conflits possibles.}
 
-      \textbf{?}, Laureline
+      \textbf{?}, Léo, Laureline
 
     \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour rattraper les erreurs survenant lors de la compilation.
 
       \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
 
-      \textbf{?}, Laureline
+      \textbf{?}, Léo, Laureline
     \end{description}
 
 \medskip
@@ -260,16 +260,16 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 \item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage haut niveau décrivant le tricot en instruction bas niveau, permettant de réaliser le tricot maille par maille. Ce workpackage est subdivisé en trois tâches semblables, une pour chaque version :
 
     \begin{description}
-    \item[Compilation v.i] A chaque version, le langage au niveau sera étendu, d'où la nécessité d'updater le compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant le langage haut niveau v.i en instructions bas niveau.
+    \item[Compilation v.i] A chaque version, le langage au niveau sera étendu, d'où la nécessité de mettre à jour le compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant le langage haut niveau v.i en instructions bas niveau.
 
       \textit{Production : Un module compilant le langage haut niveau v.i vers des instructions bas niveau.}
 
-      \textbf{?}, Laureline %respo et équipe à définir selon i ?
+      \textbf{?}, Léo, Laureline %respo et équipe à définir selon i ?
     \end{description}
 
 \medskip
 
-\item[WP 4 : Interface graphique] L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à l'utilsateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce workpackages sont les suivantes :
+\item[WP 4 : Interface graphique] L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à l'utilisateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce workpackages sont les suivantes :
 
   \begin{description}
   \item[Mise en place de l'interface] Créer l'interface vide, la coquille. Commencer à travailler sur la visualisation.
@@ -305,7 +305,7 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
 \medskip
 
-\item[WP 6 : Communication] Ce workpackage inclue tout ce qui concerne la communication autour du projet, que ce soit au niveau large public (website), au niveau utilisateur (readmeet manuel) ou au niveau compte-rendu de projet (proposal, mid term rapport et final rapport).
+\item[WP 6 : Communication] Ce workpackage inclue tout ce qui concerne la communication autour du projet, que ce soit au niveau large public (website), au niveau utilisateur (readme et manuel) ou au niveau compte-rendu de projet (proposal, mid term rapport et final rapport).
 
   \begin{description}
   \item[Proposal] Rédiger la proposal.
@@ -314,7 +314,7 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
     \textbf{Laureline}, William, Léo
 
-  \item[Mid-term Rapport] Rédiger le rapport de mi-projet. Celui-ci contiendra tout le travail réalisé jusque là, et notament le descriptif de la version 1 qui devrait être fonctionelle d'ici là.
+  \item[Mid-term Rapport] Rédiger le rapport de mi-projet. Celui-ci contiendra tout le travail réalisé jusque là, et notament le descriptif de la version 1 qui devrait être fonctionnelle d'ici là.
 
     \textit{Production : Mid-term rapport}
 
