@@ -108,7 +108,7 @@ actualisé (la dernière version date de 2012) et peut également nous apporter 
 
 \subsection{Les solutions industrielles ?} Peut être se renseigner ?
 
-\section{Objectifs et motivations} % Je préfère le titre Cahier des charges et applications
+\section{Cahier des charges et applications}
 
 \subsection{Fonctionnalités}
 
@@ -150,6 +150,8 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \subsubsection{Diagramme des interactions}
 
+    Voir Figure \ref{diag-composants}.
+
     \begin{figure}[!h]
     \centering
 
@@ -157,28 +159,31 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
                     semithick]
       \tikzstyle{every state}=[draw=black,text=black]
 
-      \node[state]     (user)  []                                {Utilisateur};
-      \node[state]         (gui)   []                [right of=user]     {GUI};
-      \node[state]         (HN)    [shape=rectangle] [above right of=gui]    {Langage haut niveau};
-      \node[state]     (compil)[]                [right of=HN]       {Compilateur};
-      \node[state]     (BN)    [shape=rectangle] [below right of=compil] {Langage bas niveau};
-      \node[state]     (trad)  []                [below left of=BN]  {Traducteur};
-      \node[state]     (manuel)[shape=rectangle]   [left of=trad]    {Instructions};
+      \node[state]     (user)   []                                  	  {Utilisateur};
+      \node[state]     (gui)	[]                [right of=user]     	  {GUI};
+      \node[state]     (HN) 	[shape=rectangle] [above right of=gui]    {Langage haut niveau};
+      \node[state]     (compil) []                [right of=HN]       	  {Compilateur};
+      \node[state]     (BN)     [shape=rectangle] [below right of=compil] {Langage bas niveau};
+      \node[state]     (trad)   []                [below left of=BN]  	  {Traducteur};
+      \node[state]     (manuel) [shape=rectangle] [left of=trad]    	  {Instructions};
+      \node[state]     (machine)[dashed] [below of=BN] {\textit{Machine}};
 
 
-      \path (user)       edge              node {Spécifications} (gui)
-        (gui)        edge [bend left]  node {}               (HN.west)
-        (HN.south)   edge              node {Visualisation}  (gui)
-        (HN)         edge          node {}               (compil)
-        (compil)     edge              node {}               (BN)
-        (BN)         edge          node {}               (trad)
-        (trad)       edge          node {}               (manuel)
-        (manuel)     edge              node {Affichage}      (gui)
+      \path (user)   edge               node {Spécifications} (gui)
+		     edge [bend left=15]node{}		(HN.west)
+        (gui)        edge [bend left]   node {}               (HN.west)
+        (HN.south)   edge               node {Visualisation}  (gui)
+        (HN)         edge               node {}               (compil)
+        (compil)     edge               node {}               (BN)
+        (BN)         edge          	node {}               (trad)
+		     edge [dashed] 	node {}		 (machine)
+        (trad)       edge          	node {}               (manuel)
+        (manuel)     edge               node {Affichage}      (gui)
         ;
     \end{tikzpicture}
 
     \caption{Interaction entre les différents composants}
-    \label{ex:run-mots-finis}
+    \label{diag-composants}
     \end{figure}
 
 \subsection{Motivations}
@@ -191,7 +196,6 @@ réalisation de leurs oeuvres.
 
 \subsection{Améliorations possibles}
 
-
 \section{Organisation et planification}
 
 \subsection{L'équipe}
@@ -199,20 +203,12 @@ réalisation de leurs oeuvres.
 L'équipe de notre projet TriComp comporte sept étudiants de M1 ainsi qu'un coordinateur
 % Redonner les noms ici ?
 
-Nous avons prévu de développer 3 versions de notre logiciel. Chaque version sera basée sur la précédente et inclura de nouvelles fonctionnalités notamment au niveau de la variété des points proposés.
+\subsection{Les différentes phases}
+
+Nous avons prévu de développer 3 versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles fonctionnalités notamment au niveau de la variété des points proposés.
 Les phases du projet correspondent aux différentes versions que nous avons prévu de réaliser.
 
 % Ici descriptifs de ce qu'il y aura ds les différentes version, agathe ?
-
-
-\subsection{Les différentes phases}
-
-Les différentes phases de notre projet seront essentiellement caractérisées par la difficulté des points de tricot que notre logiciel
-prendra en compte.
-Une fois qu'une première version (vide) de l'interface a été réalisée et que les langages ont bien été définis, la progression des
-différents workpackages pourra s'effectuer en simultané. Chacune des phases sera conclue par une intégration des nouveautés mises en
-place dans chacun des workpackages.
-
 
 \subsection{Workpackages}
 
@@ -243,16 +239,17 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
     \begin{description}
     \item[Définition des contraintes] Consiste à définir les conflits qui peuvent apparaître.
-
+      
       \textit{Production : Une liste de contraintes décrivant les conflits possibles.}
 
       \textbf{?}, Léo, Laureline
 
     \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour rattraper les erreurs survenant lors de la compilation.
-
+      
       \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
 
       \textbf{?}, Léo, Laureline
+
     \end{description}
 
 \medskip
@@ -349,8 +346,6 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 Nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longues à mettre en route).
 
 Dans cette section est décrite la répartition temporelle des tâches décrites plus haut.
-
-
 
 % Calendrier à mettre en image
 % Calendrier à remplir
