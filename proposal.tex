@@ -3,6 +3,7 @@
 
 
 \usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
 \title{Proposition de projet : TriComp}
@@ -21,10 +22,10 @@
 %
 % I] Introduction générale du projet
 % II] Motivations et objectifs 
-%     a) Motivations :
+%     a) objectifs : formalisation, compilation (modele -> instructions/manuel), realisation logicielle,...
+%     b) Motivations :
 %        - un sujet surprenant et interessant, en soi et dans son interaction avec l'informatique.
 %        - produits ou services concurrents/existants (services/+/-) --> Necessite de certaines fonctionnalites nouvelles.
-%     b) objectifs : formalisation, compilation (modele -> instructions/manuel), realisation logicielle,...
 %     c) public vise et retombees attendues 
 % III] Organisation du projet 
 %     a) Description de l'equipe (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) 
@@ -40,17 +41,45 @@ Ce document présente la proposition de notre projet intitulé TriComp.
 % Résumé du projet.
 % Présentation rapide de l'équipe et du chef d'équipe ?
 
-\section{Motivations et objectifs}
-
-\subsection{Motivations}
+\section{Objectifs et motivations}
 
 \subsection{Objectifs}
 
+Les objectifs de ce projet sont assez diversifiés. 
+Bien qu'il s'agisse d'un projet logiciel, les objectifs ne sont pas tous orientés directement vers le logiciel.
+
 \subsubsection{Formalisation d'un langage}
+
+La description d'un langage pour décrire les tricots ainsi que sa formalisation est un objectif primordiale.
+Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points ( i.e de nouvelles
+possibilités pour le tricot ) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
+langage. La formalisation du langage résultant sera également un objectif clé de ce projet.
 
 \subsubsection{Compilation}
 
+C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que 
+l'utilisateur souhaite créer en une succession d'instructions que celui-ci pourra réaliser. Le compilateur devra également être capable de 
+détecter des impossibilités au niveau de la conception du modèle.
+
+La conception du compilateur présuppose également d'avoir défini ( tout comme nous aurons défini le langage de la section précédente ) un 
+langage pour les instructions qui seront générées ( un peu comme dans un manuel de tricot ). 
+Une fois ce langage défini, nous pourrons nous concentrer sur la phase de conception du compilateur. 
+
 \subsubsection{Réalisation logicielle : interface pour tricoteur}
+
+Notre réalisation logicielle a pour but de mettre le compilateur précédent au service des utilisateurs. 
+L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs essentiellement deux fonctionalités :
+\begin{itemize} 
+  \item \textbf{La conception d'un tricot via une interface graphique} Notre objectif ici est de mettre en place pour l'utilisateur des
+  outils élémentaires pour qu'il puisse entrer son projet de tricot : choix d'un modèle ( pull, écharpe...), choix des points utilisés 
+  ( jersey, ...), de la couleur.
+  \item \textbf{Le suivi personalisé} Une fois que l'utilisateur aura saisi son tricot, le logiciel appelera le compilateur afin de générer 
+la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le 
+logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à 
+accomplir et l'observation du résultat à obtenir à chaque étape.
+\end{itemize}
+
+\subsection{Motivations}
 
 \subsection{Public visé et retombées attendues}
 
