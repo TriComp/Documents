@@ -7,6 +7,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\usepackage{pdfpages}
+
 \usepackage{graphicx}
 \usepackage{caption}
 
@@ -347,7 +349,19 @@ Nous comptons un délai de trois semaines pour chaque version (sauf la première
 
 Dans cette section est décrite la répartition temporelle des tâches décrites plus haut.
 
-% Calendrier à mettre en image
+%\begin{figure}[!h]
+%  \vspace{-3cm}
+%  \centering
+%   \includegraphics[scale=0.8,angle=270]{calendrier-previsionnel.png}
+%  \includegraphics[scale=0.8]{calendrier-previsionnel-part1.png}
+%  \includegraphics[scale=0.8]{calendrier-previsionnel-part2.png}
+%  \caption{Calendrier prévisionnel des tâches}
+%  \label{calendrier}
+%\end{figure}
+
+\newpage
+\includepdf{calendrier-previsionnel.pdf} %si on pouvait mettre la page en format paysage ce serait cool
+
 % Calendrier à remplir
 
 \end{document}
