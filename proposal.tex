@@ -48,9 +48,9 @@
 % III] Cahier des charges et applications
 %     a) Fonctionnalités :
 %     b) Aspects techniques : les différents modules (gui, compilation, lg haut niveau,...) + diagrammes
-%     c) public vise et retombees attendues 
+%     c) public vise et retombees attendues
 %     d) Améliorations possible
-% IV] Organisation du projet 
+% IV] Organisation du projet
 %     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au sein de l'équipe (git, pad, réunions, ...)
 %     b) Workpackages
 %     c) Les différentes phases : Modèle par couches (versions successives)
@@ -61,17 +61,17 @@
 \section{Introduction et objectifs}
 
 Le tricot est une technique utilisée pour créer une étoffe à partir de fils. Ses origines remontent au $X^{eme}$ siècle.
-Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet 
+Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet
 quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt expert, que ce soit en tricot ou en informatique (comment
-décrire un tricot à l'ordinateur ?). 
+décrire un tricot à l'ordinateur ?).
 
 Le projet TriComp visait au départ à concevoir un Compilateur pour Tricot (d'où son nom) afin de faciliter davantage l'interaction entre
-tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage ciblé nos objectifs. Notre objectif principal est de 
-fournir un logiciel disposant de fonctionnalités à la fois de création (de modèles), de visualisation et de conception (tricot), 
+tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage ciblé nos objectifs. Notre objectif principal est de
+fournir un logiciel disposant de fonctionnalités à la fois de création (de modèles), de visualisation et de conception (tricot),
 destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en informatique et en tricot).
 
 Ce document présente notre proposition de projet. Après avoir détaillé l'état de l'art des logiciels de tricot existants, nous exposerons
-notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents 
+notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents
 workpackages identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
 
 
@@ -90,21 +90,21 @@ caractère innovant de ce projet).
 \subsection{DesignaKnit}
 
 DesignaKnit est un logiciel permettant de créer des modèles de tricot destinés à être réalisés à la main ou avec une machine à tricoter.
-Destiné plutôt à un public confirmé, celui-ci est assez complet propose quelques outils innovants, comme un convertisseur d'images vers un 
+Destiné plutôt à un public confirmé, celui-ci est assez complet propose quelques outils innovants, comme un convertisseur d'images vers un
 motif réalisable en tricot.
 
 \subsection{KP}
 
-KP est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire des modèles de tricot. Il offre la possibilité de 
+KP est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire des modèles de tricot. Il offre la possibilité de
 combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné d'un interpréteur qui génère des instructions elles
-aussi bas niveau. Quoique tombé un peu dans l'oubli, ce projet peut représenter un départ intéressant dans notre phase de conception de
-langages.
+aussi bas niveau. Bien qu'il fut abandonné avant d'être aboutit, ce projet peut représenter un départ intéressant dans notre phase de conception de
+nos langages.
 
 \subsection{KnitML}
 
-Le projet KnitML a également pour but de fournir un langage bas niveau au service des tricoteurs et développeurs de logiciels lié au 
+Le projet KnitML a également pour but de fournir un langage bas niveau au service des tricoteurs et développeurs de logiciels lié au
 tricot. Par exemple, le logiciel Knitter se base sur KnitML pour fournir une visualisation 3D du modèle passé en entrée. Il est davantage
-actualisé (la ddernière version date de 2012) et peut également nous apporter une précieuse aide.
+actualisé (la dernière version date de 2012) et peut également nous apporter une précieuse aide.
 
 \subsection{Les solutions industrielles ?} Peut etre se renseigner ?
 
@@ -125,8 +125,8 @@ langage. La formalisation du langage résultant sera également un objectif clé
 \subsubsection{Compilation}
 
 C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que
-l'utilisateur souhaite créer en une interprétation dans un langage bas niveau (type KP), qui pourra ensuite être traduit en une succession 
-d'instructions que celui-ci pourra réaliser. 
+l'utilisateur souhaite créer en une interprétation dans un langage bas niveau (type KP), qui pourra ensuite être traduit en une succession
+d'instructions que celui-ci pourra réaliser.
 Le compilateur devra également être capable de détecter des impossibilités au niveau de la conception du modèle.
 
 La conception du compilateur présuppose également d'avoir défini (tout comme nous aurons défini le langage de la section précédente) un
@@ -186,7 +186,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 \subsection{Public visé et retombées attendues}
 
 
-Comme dit précédemment, notre projet vise tous les tricoteurs, experts ou non, recherchant un assistant dans la conception et la 
+Comme dit précédemment, notre projet vise tous les tricoteurs, experts ou non, recherchant un assistant dans la conception et la
 réalisation de leurs oeuvres.
 
 \subsection{Améliorations possibles}
@@ -210,10 +210,10 @@ Les phases du projet correspondent aux différentes versions que nous avons pré
 
 \subsection{Les différentes phases}
 
-Les différentes phases de notre projet seront essentiellement caractérisées par la difficulté des points de tricot que notre logiciel 
-prendra en compte. 
+Les différentes phases de notre projet seront essentiellement caractérisées par la difficulté des points de tricot que notre logiciel
+prendra en compte.
 Une fois qu'une première version (vide) de l'interface a été réalisée et que les langages ont bien été définis, la progression des
-différents workpackages pourra s'effectuer en simultané. Chacune des phases sera conclue par une intégration des nouveautées mises en 
+différents workpackages pourra s'effectuer en simultané. Chacune des phases sera conclue par une intégration des nouveautées mises en
 place dans chacun des workpackages.
 
 \subsection{Calendrier des tâches}
@@ -227,33 +227,33 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
     \begin{description}
     \item[Définition du langage] Consiste à définir les instructions du langages.
-      
+
       \textit{Production : Une liste d'instruction décrivant le langage bas niveau.}
-      
+
       \textbf{Laureline}
-      
+
     \item[Module de traduction] Consiste à implémenter un traductucteur qui traduira les instructions du langage bas-niveau en des instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
-      
+
       \textit{Production : Un module traduisant le langage bas niveau en instructions de tricot compréhensibles pour l'utilisateur.}
-      
+
       \textbf{Laureline}
     \end{description}
-        
+
 \medskip
 
 \item[WP 2 : Vérification] A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce workpackages sont les suivantes :
 
     \begin{description}
     \item[Définition des contraintes] Consiste à définir les conflits qui peuvent apparaître.
-      
+
       \textit{Production : Une liste de contraintes décrivant les conflits possibles.}
-      
+
       \textbf{?}, Laureline
-      
+
     \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour rattraper les erreurs survenant lors de la compilation.
-      
+
       \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
-      
+
       \textbf{?}, Laureline
     \end{description}
 
@@ -262,10 +262,10 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 \item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage haut niveau décrivant le tricot en instruction bas niveau, permettant de réaliser le tricot maille par maille. Ce workpackage est subdivisé en trois tâches semblables, une pour chaque version :
 
     \begin{description}
-    \item[Compilation v.i] A chaque version, le langage au niveau sera étendu, d'où la nécessité d'updater le compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant le langage haut niveau v.i en instructions bas niveau. 
-      
+    \item[Compilation v.i] A chaque version, le langage au niveau sera étendu, d'où la nécessité d'updater le compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant le langage haut niveau v.i en instructions bas niveau.
+
       \textit{Production : Un module compilant le langage haut niveau v.i vers des instructions bas niveau.}
-      
+
       \textbf{?}, Laureline %respo et équipe à définir selon i ?
     \end{description}
 
@@ -275,21 +275,21 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
   \begin{description}
   \item[Mise en place de l'interface] Créer l'interface vide, la coquille. Commencer à travailler sur la visualisation.
-    
+
     \textit{Production : Une interface graphique, pas encore reliée au logiciel}
-    
+
     \textbf{William}
 
   \item[Visualisation v.i] Implémenter un module permettant, à partir d'une description en langage haut niveau (version v.i), visualiser l'objet décrit.
-    
+
     \textit{Production : Un module de visualisation pour le langage haut niveau v.i}
-    
+
     \textbf{William}, Léo %respo et équipe à définir selon i ?
-    
+
   \item[Traduction des spécifications v.i] Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses spécifications, lesquelles seront traduites en langage haut niveau (version v.i).
-  
+
     \textit{Production : Une interface graphique cohérente avec la description i du langage haut niveau, permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
-    
+
     \textbf{?}
   \end{description}
 
@@ -299,9 +299,9 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
   \begin{description}
   \item[Définition du langage v.i] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la variation de points disponibles définies dans les spécifications de la version v.i.
-    
+
     \textit{Production : Un langage descriptif, étendu à chaque version.}
-    
+
     \textbf{?}, Léo
   \end{description}
 
@@ -311,33 +311,33 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
   \begin{description}
   \item[Proposal] Rédiger la proposal.
-    
+
     \textit{Production : Proposal}
-    
+
     \textbf{Laureline}, William, Léo
-    
+
   \item[Mid-term Rapport] Rédiger le rapport de mi-projet. Celui-ci contiendra tout le travail réalisé jusque là, et notament le descriptif de la version 1 qui devrait être fonctionelle d'ici là.
-    
+
     \textit{Production : Mid-term rapport}
-    
+
     \textbf{William}, Laureline, Léo
-    
+
   \item[Final Rapport et présentation] Rédiger le rapport de fin de projet et préparer la présentation du projet.
-    
+
     \textit{Production : Final rapport et slides de la présentation.}
-    
+
     \textbf{?}, William, Léo, Laureline, Romain, Maxime, Agathe, Frédéric
-    
+
   \item[Website] Créer un website pour le projet. %décrire un peu plus
-    
+
     \textit{Production : Website}
-    
+
     \textbf{Laureline}
-    
+
   \item[Readme, Manuel et Website v.i] Mettre à jour le readme, le manuel et le website pour qu'ils soient cohérent avec la version v.i du logiciel.
-    
+
     \textit{Production : Readme, manuel et website}
-    
+
     \textbf{?}, Laureline
   \end{description}
 
