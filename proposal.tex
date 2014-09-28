@@ -34,7 +34,7 @@
        William AUFORT \hfill Julien BENSMAIL, coordinateur\\
        Agathe HERROU  \hfill Romain LABOLLE \\
        Frédéric LANG \hfill Maxime LESOURD \\
-       Laureline PINAULT \hfill Léo STEFANESCO \\}
+       Laureline PINAULT \hfill Léo STEFANESCO }
   \tableofcontents
   \end{titlepage}
 \makeatother
@@ -44,42 +44,66 @@
 % Esquisse de plan ( proposee ) bis :
 %
 % I] Introduction et objectifs
-% II) Produits concurrents
-% II] Cahier des charges et applications
+% II] Produits concurrents
+% III] Cahier des charges et applications
 %     a) Fonctionnalités :
 %     b) Aspects techniques : les différents modules (gui, compilation, lg haut niveau,...) + diagrammes
 %     c) public vise et retombees attendues
-% III] Organisation du projet
+% IV] Organisation du projet
 %     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au sein de l'équipe (git, pad, réunions, ...)
-%     b) Les différentes phases : Modèle par couches (versions successives)
-%     c) Workpackages
+%     b) Workpackages
+%     c) Les différentes phases : Modèle par couches (versions successives)
 %     d) Calendrier des taches
 
 
 
 \section{Introduction et objectifs}
 
-Ce document présente la proposition de notre projet intitulé TriComp.
-% Résumé du projet.
-% Présentation rapide de l'équipe et du chef d'équipe ?
+Le tricot est une technique utilisée pour créer une étoffe à partir de fils. Ses origines remontent au $X^{eme}$ siècle.
+Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet 
+quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt expert, que ce soit en tricot ou en informatique (comment
+décrire un tricot à l'ordinateur ?). 
+
+Le projet TriComp visait au départ à concevoir un Compilateur pour Tricot (d'où son nom) afin de faciliter davantage l'interaction entre
+tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage ciblé nos objectifs. Notre objectif principal est de 
+fournir un logiciel disposant de fonctionnalités à la fois de création (de modèles), de visualisation et de conception (tricot), 
+destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en informatique et en tricot).
+
+Ce document présente notre proposition de projet. Après avoir détaillé l'état de l'art des logiciels de tricot existants, nous exposerons
+notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents 
+workpackages identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
 
 
 \section{Produits concurrents}
 
-Nous rassemblons dans cette section deux produits concurrents qui nous ont permis de faire l'état de l'art de l' "informatique du tricot".
+
 
 \subsection{OpenKnit}
 
 OpenKnit est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs instructions dans un contrôleur Arduino
-( un circuit intégré ). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet comporte une grande part de hardware, et est
-plutôt orienté vers la fabrication du produit que sa conception ( les instructions sont directement transmises à la machine OpenKnit ). Il
-est donc plutôt destiné à un public peu connaisseur du tricot qui souhaite fabriquer de simples créations ( ce qui n'enlève rien au
-caractère novateur de ce projet ).
+(un circuit intégré). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet comporte une grande part de hardware, et est
+plutôt orienté vers la fabrication du produit que sa conception (les instructions sont directement transmises à la machine OpenKnit). Il
+est donc plutôt destiné à un public qui souhaite faire fabriquer de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au
+caractère innovant de ce projet).
 
-\subsection{DesignaKnit8}
+\subsection{DesignaKnit}
 
-\subsection{KnitML et KP}
-(Plus bas niveaux, plus (KP) ou moins (KnitML) abandonnée).
+DesignaKnit est un logiciel permettant de créer des modèles de tricot destinés à être réalisés à la main ou avec une machine à tricoter.
+Destiné plutôt à un public confirmé, celui-ci est assez complet propose quelques outils innovants, comme un convertisseur d'images vers un 
+motif réalisable en tricot.
+
+\subsection{KP}
+
+KP est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire des modèles de tricot. Il offre la possibilité de 
+combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné d'un interpréteur qui génère des instructions elles
+aussi bas niveau. Quoique tombé un peu dans l'oubli, ce projet peut représenter un départ intéressant dans notre phase de conception de
+langages.
+
+\subsection{KnitML}
+
+Le projet KnitML a également pour but de fournir un langage bas niveau au service des tricoteurs et développeurs de logiciels lié au 
+tricot. Par exemple, le logiciel Knitter se base sur KnitML pour fournir une visualisation 3D du modèle passé en entrée. Il est davantage
+actualisé (la ddernière version date de 2012) et peut également nous apporter une précieuse aide.
 
 \subsection{Les solutions industrielles ?} Peut etre se renseigner ?
 
@@ -89,41 +113,41 @@ caractère novateur de ce projet ).
 
 \subsection{Aspects techniques}
 
-Les objectifs de ce projet sont assez diversifiés.
-Bien qu'il s'agisse d'un projet logiciel, les objectifs ne sont pas tous orientés directement vers le logiciel.
 
 \subsubsection{Formalisation d'un langage}
 
 La description d'un langage pour décrire les tricots ainsi que sa formalisation est un objectif primordiale.
-Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points ( i.e de nouvelles
-possibilités pour le tricot ) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
+Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points (i.e de nouvelles
+possibilités pour le tricot) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
 langage. La formalisation du langage résultant sera également un objectif clé de ce projet.
 
 \subsubsection{Compilation}
 
 C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que
-l'utilisateur souhaite créer en une succession d'instructions que celui-ci pourra réaliser. Le compilateur devra également être capable de
-détecter des impossibilités au niveau de la conception du modèle.
+l'utilisateur souhaite créer en une interprétation dans un langage bas niveau (type KP), qui pourra ensuite être traduit en une succession 
+d'instructions que celui-ci pourra réaliser. 
+Le compilateur devra également être capable de détecter des impossibilités au niveau de la conception du modèle.
 
-La conception du compilateur présuppose également d'avoir défini ( tout comme nous aurons défini le langage de la section précédente ) un
-langage pour les instructions qui seront générées ( un peu comme dans un manuel de tricot ).
+La conception du compilateur présuppose également d'avoir défini (tout comme nous aurons défini le langage de la section précédente) un
+langage pour les instructions qui seront générées (un peu comme dans un manuel de tricot).
 Une fois ce langage défini, nous pourrons nous concentrer sur la phase de conception du compilateur.
 
 \subsubsection{Réalisation logicielle : interface pour tricoteur}
 
 Notre réalisation logicielle a pour but de mettre le compilateur précédent au service des utilisateurs.
+
 L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs essentiellement deux fonctionalités :
 \begin{itemize}
   \item \textbf{La conception d'un tricot via une interface graphique} Notre objectif ici est de mettre en place pour l'utilisateur des
-  outils élémentaires pour qu'il puisse entrer son projet de tricot : choix d'un modèle ( pull, écharpe...), choix des points utilisés
-  ( jersey, ...), de la couleur.
+  outils afin qu'il puisse entrer son projet de tricot : choix d'un modèle (pull, écharpe...), choix des points utilisés
+  (jersey, ...), de la couleur.
   \item \textbf{Le suivi personalisé} Une fois que l'utilisateur aura saisi son tricot, le logiciel appelera le compilateur afin de générer
 la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le
 logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à
 accomplir et l'observation du résultat à obtenir à chaque étape.
 \end{itemize}
 
-\subsubsection{Diagramme des interractions}
+\subsubsection{Diagramme des interactions}
 
     \begin{figure}[!h]
     \centering
@@ -132,7 +156,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
                     semithick]
       \tikzstyle{every state}=[draw=black,text=black]
 
-      \node[state]     (user)  []                                {User};
+      \node[state]     (user)  []                                {Utilisateur};
       \node[state]         (gui)   []                [right of=user]     {GUI};
       \node[state]         (HN)    [shape=rectangle] [above right of=gui]    {Langage haut niveau};
       \node[state]     (compil)[]                [right of=HN]       {Compilateur};
@@ -160,13 +184,26 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \subsection{Public visé et retombées attendues}
 
+Comme dit précédemment, notre projet vise tous les tricoteurs, experts ou non, recherchant un assistant dans la conception et la 
+réalisation de leurs oeuvres.
+
 \section{Organisation et planification}
 
 \subsection{L'équipe}
 
-\subsection{Les différentes phases}
+L'équipe de notre projet TriComp comporte sept étudiants de M1 ainsi qu'un coordinateur
+% Redonner les noms ici ?
 
 \subsection{Workpackages}
+
+
+\subsection{Les différentes phases}
+
+Les différentes phases de notre projet seront essentiellement caractérisées par la difficulté des points de tricot que notre logiciel 
+prendra en compte. 
+Une fois qu'une première version (vide) de l'interface a été réalisée et que les langages ont bien été définis, la progression des
+différents workpackages pourra s'effectuer en simultané. Chacune des phases sera conclue par une intégration des nouveautées mises en 
+place dans chacun des workpackages.
 
 \subsection{Calendrier des tâches}
 
