@@ -48,8 +48,9 @@
 % III] Cahier des charges et applications
 %     a) Fonctionnalités :
 %     b) Aspects techniques : les différents modules (gui, compilation, lg haut niveau,...) + diagrammes
-%     c) public vise et retombees attendues
-% IV] Organisation du projet
+%     c) public vise et retombees attendues 
+%     d) Améliorations possible
+% IV] Organisation du projet 
 %     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au sein de l'équipe (git, pad, réunions, ...)
 %     b) Workpackages
 %     c) Les différentes phases : Modèle par couches (versions successives)
@@ -107,7 +108,7 @@ actualisé (la ddernière version date de 2012) et peut également nous apporter
 
 \subsection{Les solutions industrielles ?} Peut etre se renseigner ?
 
-\section{Objectifs et motivations}
+\section{Objectifs et motivations} % Je préfère le titre Cahier des charges et applications
 
 \subsection{Fonctionnalités}
 
@@ -184,8 +185,12 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \subsection{Public visé et retombées attendues}
 
+
 Comme dit précédemment, notre projet vise tous les tricoteurs, experts ou non, recherchant un assistant dans la conception et la 
 réalisation de leurs oeuvres.
+
+\subsection{Améliorations possibles}
+
 
 \section{Organisation et planification}
 
@@ -194,7 +199,13 @@ réalisation de leurs oeuvres.
 L'équipe de notre projet TriComp comporte sept étudiants de M1 ainsi qu'un coordinateur
 % Redonner les noms ici ?
 
+Nous avons prévu de développer 3 versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles fonctionnalités notamment au niveau de la variété des points proposés.
+Les phases du projet correspondent aux différentes versions que nous avons prévu de réaliser.
+
+% Ici descriptifs de ce qu'il y aura ds les différentes version, agathe ?
+
 \subsection{Workpackages}
+
 
 
 \subsection{Les différentes phases}
@@ -207,5 +218,143 @@ place dans chacun des workpackages.
 
 \subsection{Calendrier des tâches}
 
+Nous avons divisé le travail à effectuer en worpackages, correspondant globalement aux différents composants du logiciel. Ces workpackages eux-même sont subdivisés en tâches.
+
+Ci-dessous le détail et la répartition humaine des tâches (la personne en gras est responsable du bon déroulement de la tâche) :
+
+\begin{description}
+\item[WP 1 : Langage bas niveau] Ce workpackage est destiné à concevoir les instructions du langage bas niveau et ce qui tourne autour. Les tâches de ce workpackages sont les suivantes :
+
+    \begin{description}
+    \item[Définition du langage] Consiste à définir les instructions du langages.
+      
+      \textit{Production : Une liste d'instruction décrivant le langage bas niveau.}
+      
+      \textbf{Laureline}
+      
+    \item[Module de traduction] Consiste à implémenter un traductucteur qui traduira les instructions du langage bas-niveau en des instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
+      
+      \textit{Production : Un module traduisant le langage bas niveau en instructions de tricot compréhensibles pour l'utilisateur.}
+      
+      \textbf{Laureline}
+    \end{description}
+        
+\medskip
+
+\item[WP 2 : Vérification] A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce workpackages sont les suivantes :
+
+    \begin{description}
+    \item[Définition des contraintes] Consiste à définir les conflits qui peuvent apparaître.
+      
+      \textit{Production : Une liste de contraintes décrivant les conflits possibles.}
+      
+      \textbf{?}, Laureline
+      
+    \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour rattraper les erreurs survenant lors de la compilation.
+      
+      \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
+      
+      \textbf{?}, Laureline
+    \end{description}
+
+\medskip
+
+\item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage haut niveau décrivant le tricot en instruction bas niveau, permettant de réaliser le tricot maille par maille. Ce workpackage est subdivisé en trois tâches semblables, une pour chaque version :
+
+    \begin{description}
+    \item[Compilation v.i] A chaque version, le langage au niveau sera étendu, d'où la nécessité d'updater le compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant le langage haut niveau v.i en instructions bas niveau. 
+      
+      \textit{Production : Un module compilant le langage haut niveau v.i vers des instructions bas niveau.}
+      
+      \textbf{?}, Laureline %respo et équipe à définir selon i ?
+    \end{description}
+
+\medskip
+
+\item[WP 4 : Interface graphique] L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à l'utilsateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce workpackages sont les suivantes :
+
+  \begin{description}
+  \item[Mise en place de l'interface] Créer l'interface vide, la coquille. Commencer à travailler sur la visualisation.
+    
+    \textit{Production : Une interface graphique, pas encore reliée au logiciel}
+    
+    \textbf{William}
+
+  \item[Visualisation v.i] Implémenter un module permettant, à partir d'une description en langage haut niveau (version v.i), visualiser l'objet décrit.
+    
+    \textit{Production : Un module de visualisation pour le langage haut niveau v.i}
+    
+    \textbf{William}, Léo %respo et équipe à définir selon i ?
+    
+  \item[Traduction des spécifications v.i] Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses spécifications, lesquelles seront traduites en langage haut niveau (version v.i).
+  
+    \textit{Production : Une interface graphique cohérente avec la description i du langage haut niveau, permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
+    
+    \textbf{?}
+  \end{description}
+
+\medskip
+
+\item[WP 5 : Langage haut niveau] Ce workpackage est destiné à définir le langage haut niveau permettant de décrire les objets à tricoter.
+
+  \begin{description}
+  \item[Définition du langage v.i] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la variation de points disponibles définies dans les spécifications de la version v.i.
+    
+    \textit{Production : Un langage descriptif, étendu à chaque version.}
+    
+    \textbf{?}, Léo
+  \end{description}
+
+\medskip
+
+\item[WP 6 : Communication] Ce workpackage inclue tout ce qui concerne la communication autour du projet, que ce soit au niveau large public (website), au niveau utilisateur (readmeet manuel) ou au niveau compte-rendu de projet (proposal, mid term rapport et final rapport).
+
+  \begin{description}
+  \item[Proposal] Rédiger la proposal.
+    
+    \textit{Production : Proposal}
+    
+    \textbf{Laureline}, William, Léo
+    
+  \item[Mid-term Rapport] Rédiger le rapport de mi-projet. Celui-ci contiendra tout le travail réalisé jusque là, et notament le descriptif de la version 1 qui devrait être fonctionelle d'ici là.
+    
+    \textit{Production : Mid-term rapport}
+    
+    \textbf{William}, Laureline, Léo
+    
+  \item[Final Rapport et présentation] Rédiger le rapport de fin de projet et préparer la présentation du projet.
+    
+    \textit{Production : Final rapport et slides de la présentation.}
+    
+    \textbf{?}, William, Léo, Laureline, Romain, Maxime, Agathe, Frédéric
+    
+  \item[Website] Créer un website pour le projet. %décrire un peu plus
+    
+    \textit{Production : Website}
+    
+    \textbf{Laureline}
+    
+  \item[Readme, Manuel et Website v.i] Mettre à jour le readme, le manuel et le website pour qu'ils soient cohérent avec la version v.i du logiciel.
+    
+    \textit{Production : Readme, manuel et website}
+    
+    \textbf{?}, Laureline
+  \end{description}
+
+\medskip
+
+\end{description}
+
+
+\subsection{Calendrier prévisionnel}
+
+Nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longues à mettre en route).
+
+Dans cette section est décrite la répartition temporelle des tâches décrites plus haut.
+
+
+
+% Calendrier à mettre en image
+% Calendrier à remplir
 
 \end{document}
