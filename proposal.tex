@@ -28,14 +28,14 @@
        {\LARGE \@title} \\
        \vspace{1cm}
        {\large \@date}
-       \vspace{2cm}       
+       \vspace{2cm}
     \end{center}
        {\large
        William AUFORT \hfill Julien BENSMAIL, coordinateur\\
        Agathe HERROU  \hfill Romain LABOLLE \\
        Frédéric LANG \hfill Maxime LESOURD \\
        Laureline PINAULT \hfill Léo STEFANESCO \\}
-  \tableofcontents          
+  \tableofcontents
   \end{titlepage}
 \makeatother
 
@@ -45,11 +45,11 @@
 %
 % I] Introduction et objectifs
 % II) Produits concurrents
-% II] Cahier des charges et applications 
+% II] Cahier des charges et applications
 %     a) Fonctionnalités :
 %     b) Aspects techniques : les différents modules (gui, compilation, lg haut niveau,...) + diagrammes
-%     c) public vise et retombees attendues 
-% III] Organisation du projet 
+%     c) public vise et retombees attendues
+% III] Organisation du projet
 %     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au sein de l'équipe (git, pad, réunions, ...)
 %     b) Les différentes phases : Modèle par couches (versions successives)
 %     c) Workpackages
@@ -70,13 +70,18 @@ Nous rassemblons dans cette section deux produits concurrents qui nous ont permi
 
 \subsection{OpenKnit}
 
-OpenKnit est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs instructions dans un contrôleur Arduino 
+OpenKnit est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs instructions dans un contrôleur Arduino
 ( un circuit intégré ). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet comporte une grande part de hardware, et est
-plutôt orienté vers la fabrication du produit que sa conception ( les instructions sont directement transmises à la machine OpenKnit ). Il 
-est donc plutôt destiné à un public peu connaisseur du tricot qui souhaite fabriquer de simples créations ( ce qui n'enlève rien au 
-caractère novateur de ce projet ). 
+plutôt orienté vers la fabrication du produit que sa conception ( les instructions sont directement transmises à la machine OpenKnit ). Il
+est donc plutôt destiné à un public peu connaisseur du tricot qui souhaite fabriquer de simples créations ( ce qui n'enlève rien au
+caractère novateur de ce projet ).
 
 \subsection{DesignaKnit8}
+
+\subsection{KnitML et KP}
+(Plus bas niveaux, plus (KP) ou moins (KnitML) abandonnée).
+
+\subsection{Les solutions industrielles ?} Peut etre se renseigner ?
 
 \section{Objectifs et motivations}
 
@@ -84,7 +89,7 @@ caractère novateur de ce projet ).
 
 \subsection{Aspects techniques}
 
-Les objectifs de ce projet sont assez diversifiés. 
+Les objectifs de ce projet sont assez diversifiés.
 Bien qu'il s'agisse d'un projet logiciel, les objectifs ne sont pas tous orientés directement vers le logiciel.
 
 \subsubsection{Formalisation d'un langage}
@@ -96,25 +101,25 @@ langage. La formalisation du langage résultant sera également un objectif clé
 
 \subsubsection{Compilation}
 
-C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que 
-l'utilisateur souhaite créer en une succession d'instructions que celui-ci pourra réaliser. Le compilateur devra également être capable de 
+C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que
+l'utilisateur souhaite créer en une succession d'instructions que celui-ci pourra réaliser. Le compilateur devra également être capable de
 détecter des impossibilités au niveau de la conception du modèle.
 
-La conception du compilateur présuppose également d'avoir défini ( tout comme nous aurons défini le langage de la section précédente ) un 
-langage pour les instructions qui seront générées ( un peu comme dans un manuel de tricot ). 
-Une fois ce langage défini, nous pourrons nous concentrer sur la phase de conception du compilateur. 
+La conception du compilateur présuppose également d'avoir défini ( tout comme nous aurons défini le langage de la section précédente ) un
+langage pour les instructions qui seront générées ( un peu comme dans un manuel de tricot ).
+Une fois ce langage défini, nous pourrons nous concentrer sur la phase de conception du compilateur.
 
 \subsubsection{Réalisation logicielle : interface pour tricoteur}
 
-Notre réalisation logicielle a pour but de mettre le compilateur précédent au service des utilisateurs. 
+Notre réalisation logicielle a pour but de mettre le compilateur précédent au service des utilisateurs.
 L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs essentiellement deux fonctionalités :
-\begin{itemize} 
+\begin{itemize}
   \item \textbf{La conception d'un tricot via une interface graphique} Notre objectif ici est de mettre en place pour l'utilisateur des
-  outils élémentaires pour qu'il puisse entrer son projet de tricot : choix d'un modèle ( pull, écharpe...), choix des points utilisés 
+  outils élémentaires pour qu'il puisse entrer son projet de tricot : choix d'un modèle ( pull, écharpe...), choix des points utilisés
   ( jersey, ...), de la couleur.
-  \item \textbf{Le suivi personalisé} Une fois que l'utilisateur aura saisi son tricot, le logiciel appelera le compilateur afin de générer 
-la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le 
-logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à 
+  \item \textbf{Le suivi personalisé} Une fois que l'utilisateur aura saisi son tricot, le logiciel appelera le compilateur afin de générer
+la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le
+logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à
 accomplir et l'observation du résultat à obtenir à chaque étape.
 \end{itemize}
 
@@ -127,29 +132,29 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
                     semithick]
       \tikzstyle{every state}=[draw=black,text=black]
 
-      \node[state] 	   (user)  []              					 {User};
-      \node[state]         (gui)   [] 				 [right of=user] 	 {GUI};
-      \node[state]         (HN)    [shape=rectangle] [above right of=gui] 	 {Langage haut niveau};
-      \node[state]	   (compil)[]				 [right of=HN]		 {Compilateur};
-      \node[state]	   (BN)	   [shape=rectangle] [below right of=compil] {Langage bas niveau}; 
-      \node[state]	   (trad)  []				 [below left of=BN]	 {Traducteur};
-      \node[state]	   (manuel)[shape=rectangle]   [left of=trad] 	 {Instructions};
+      \node[state]     (user)  []                                {User};
+      \node[state]         (gui)   []                [right of=user]     {GUI};
+      \node[state]         (HN)    [shape=rectangle] [above right of=gui]    {Langage haut niveau};
+      \node[state]     (compil)[]                [right of=HN]       {Compilateur};
+      \node[state]     (BN)    [shape=rectangle] [below right of=compil] {Langage bas niveau};
+      \node[state]     (trad)  []                [below left of=BN]  {Traducteur};
+      \node[state]     (manuel)[shape=rectangle]   [left of=trad]    {Instructions};
 
 
       \path (user)       edge              node {Spécifications} (gui)
-	    (gui)        edge [bend left]  node {}               (HN.west) 
-	    (HN.south)   edge 	           node {Visualisation}  (gui)
-	    (HN)         edge		   node {}               (compil)
-	    (compil)     edge	           node {}               (BN)
-	    (BN)         edge		   node {}               (trad)
-	    (trad)       edge		   node {}               (manuel)
-	    (manuel)     edge	           node {Affichage}      (gui)
-	    ;
+        (gui)        edge [bend left]  node {}               (HN.west)
+        (HN.south)   edge              node {Visualisation}  (gui)
+        (HN)         edge          node {}               (compil)
+        (compil)     edge              node {}               (BN)
+        (BN)         edge          node {}               (trad)
+        (trad)       edge          node {}               (manuel)
+        (manuel)     edge              node {Affichage}      (gui)
+        ;
     \end{tikzpicture}
-    
+
     \caption{Interaction entre les différents composants}
     \label{ex:run-mots-finis}
-    \end{figure}  
+    \end{figure}
 
 \subsection{Motivations}
 
@@ -157,7 +162,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \section{Organisation et planification}
 
-\subsection{L'équipe} 
+\subsection{L'équipe}
 
 \subsection{Les différentes phases}
 
