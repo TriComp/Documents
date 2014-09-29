@@ -63,16 +63,25 @@
 
 \section{Introduction et objectifs}
 
+%Introduction général (à dvpper)
 Le tricot est une technique utilisée pour créer une étoffe à partir de fils. Ses origines remontent au $X^{eme}$ siècle.
 Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet
 quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt expert, que ce soit en tricot ou en informatique (comment
 décrire un tricot à l'ordinateur ?).
 
+%Projet en lui même
 Le projet TriComp visait au départ à concevoir un Compilateur pour Tricot (d'où son nom) afin de faciliter davantage l'interaction entre
 tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage ciblé nos objectifs. Notre objectif principal est de
 fournir un logiciel disposant de fonctionnalités à la fois de création (de modèles), de visualisation et de conception (tricot),
 destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en informatique et en tricot).
 
+%Motivation
+La première des motivations est venue lors de la présentation du sujet. Ce sujet, à la fois troublant et surprenant, nous a interpelé et 
+intéréssé dès le début. Il s'agit d'un projet original, qui répond à une demande de logiciel simple d'utilisation pour tricoteurs de tous
+niveaux. De plus, la diversité des tâches à accomplir dans ce projet (aussi bien définitions "théoriques" (langage) que pratiques 
+(compilateur, interface)) a permis à chaque membre de l'équipe de trouver sa place.
+
+%Annonce de plan
 Ce document présente notre proposition de projet. Après avoir détaillé l'état de l'art des logiciels de tricot existants, nous exposerons
 notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents
 workpackages identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
@@ -118,12 +127,10 @@ davantage actualisé (la dernière version date de 2012) que KP et peut égaleme
 L'aboutissement de notre projet sera un logiciel destiné aux tricoteurs de tous niveaux, sans connaissances préalables en informatique. 
 Ces utilisateurs pourront charger des modèles prédéfinis et les agrémenter ( choix des points, de la couleur, ajouter des points plus 
 exotiques...), et ensuite ils pourront générer les instructions correspondant à leur réalisation spécifique, à l'image de ce que l'on 
-pourrait trouver dans un manuel de tricot.
+pourrait trouver dans un manuel de tricot. 
+%Description détaillée des fonctionnalités.
 
-Le choix des fonctionnalités et leurs quantités dépendra du déroulement du projet.
-
-\subsection{Aspects techniques}
-
+Ces fonctionalité peuvent être regroupées en différents composants qui vont interagir entre eux. C'est ce que cette section présente.
 
 \subsubsection{Formalisation d'un langage}
 
@@ -196,12 +203,10 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
     \label{diag-composants}
     \end{figure}
 
-\subsection{Motivations}
 
-La première des motivations est venue lors de la présentation du sujet. Ce sujet, à la fois troublant et surprenant, nous a interpelé et 
-intéréssé dès le début. Il s'agit d'un projet original, qui répond à une demande de logiciel simple d'utilisation pour tricoteurs de tous
-niveaux. De plus, la diversité des tâches à accomplir dans ce projet (aussi bien définitions "théoriques" (langage) que pratiques 
-(compilateur, interface)) a permis à chaque membre de l'équipe de trouver sa place.
+\subsection{Aspects techniques}
+
+%Ici : Tricomp = logiciel installable sur son ordinateur (<> interface web), portabilité, langages, discussions sur la license.
 
 \subsection{Public visé et retombées attendues}
 
