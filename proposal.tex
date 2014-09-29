@@ -90,7 +90,6 @@ workpackages identifiés ainsi qu'un calendrier rassemblant les différentes tâ
 \section{Produits concurrents}
 
 
-
 \subsection{OpenKnit}
 
 OpenKnit est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs instructions dans un contrôleur Arduino
@@ -206,7 +205,11 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \subsection{Aspects techniques}
 
-%Ici : Tricomp = logiciel installable sur son ordinateur (<> interface web), portabilité, langages, discussions sur la license.
+TriComp est conçu comme un logiciel installable sur son ordinateur. Cela permet en effet une meilleure maitrise de l'environnement et donc une meilleure stabilité. Cependant la portabilité est mise en avant et nous souhaitons développer un logiciel qui pourra s'installer à la fois sur Linux, Windows et MacOS. Pour cela nous utilserons des outils multi-platformes. \newline
+
+Les langages utilisés seront définis en réunion, mais a priori l'interface utilisaeur sera développé grâce à un langage objet, probablement en C++ avec l'aide de la bibliothèque Qt (et éventuellement OpenGL si on développe une visualisation 3D), tandis que pour les module ayant trait à la compilation et à la manipulation des langages en général, un langage fonctionnel type Haskell ou OCaml sera favorisé.\newline
+
+En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, les choix possibles vers lesquels on s'oriente sont GPL, BSD, MIT. Le choix précis sera discuté et décidé en réunion.
 
 \subsection{Public visé et retombées attendues}
 
