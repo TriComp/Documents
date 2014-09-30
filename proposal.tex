@@ -21,28 +21,29 @@
 
 \author{}
 
-\date{29 Septembre 2014}
+\date{3 Octobre 2014}
 
 \begin{document}
 
 \makeatletter % Pour utiliser le "at" comme une commande interne.
   \begin{titlepage}
     \begin{center}
+       \vfill
        {\Huge \@title} \\
        \vspace{2cm}
        {\large \@date}
-       \vspace{4cm}
+       \vspace{6cm}
     \end{center}
        {\Large
-       William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\
-       \vspace{0.5cm} 
-       \hfill coordinateur \\
-       Agathe \textsc{Herrou}  \hfill Romain \textsc{Labolle} \\
+       {William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\}
+	\vspace{1cm}
+       {\hfill coordinateur \\}
+       {Agathe \textsc{Herrou}  \hfill Romain \textsc{Labolle} \\}
        \vspace{1cm}
-       	chef de projet \\
-       Frédéric \textsc{Lang} \hfill Maxime \textsc{Lesourd} \\
-       \vspace{2cm}
-       Laureline \textsc{Pinault} \hfill Léo \textsc{Stéfanesco}}
+       {chef de projet \\}
+       \vspace{1.5cm}
+       {Frédéric \textsc{Lang} \hfill Maxime \textsc{Lesourd} \\}
+       {Laureline \textsc{Pinault} \hfill Léo \textsc{Stéfanesco}}}
   \end{titlepage}
 \makeatother
 
@@ -81,51 +82,70 @@ destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en inf
 
 %Motivation
 La première des motivations est venue lors de la présentation du sujet. Ce sujet, à la fois troublant et surprenant, nous a interpelé et 
-intéréssé dès le début. Il s'agit d'un projet original, qui répond à un manque de logiciel simple d'utilisation pour tricoteurs de tous
+intéressé dès le début. Il s'agit d'un projet original, qui répond à un manque de logiciel simple d'utilisation pour tricoteurs de tous
 niveaux. De plus, la diversité des tâches à accomplir dans ce projet (aussi bien définitions "théoriques" (langage) que pratiques 
 (compilateur, interface)) a permis à chaque membre de l'équipe de trouver sa place.
 
 %Annonce de plan
 Ce document présente notre proposition de projet. Après avoir détaillé l'état de l'art des logiciels de tricot existants, nous exposerons
 notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents
-workpackages identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
+groupes de travail identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
 
 \tableofcontents
-
 \section{Produits concurrents}
+
+Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun ses avantages et ses 
+inconvégniants. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le travail déjà fourni pouvant
+nous être utile.
 
 
 \subsection{OpenKnit}
 
-OpenKnit\footnote{http://openknit.org/} est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs instructions dans un contrôleur Arduino
-(un circuit intégré). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet nécessite des connaissances en électroniques 
-assez importantes, et est plutôt orienté vers la fabrication du produit que sa conception (les instructions sont directement transmises à 
-la machine OpenKnit). Il est donc plutôt destiné à un public qui souhaite faire fabriquer de simples créations et non pas aux tricoteurs 
-(ce qui n'enlève rien au caractère innovant de ce projet).
+OpenKnit\footnote{\url{http://openknit.org/}} est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs 
+instructions dans un contrôleur Arduino (un circuit intégré). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet 
+nécessite des connaissances en électroniques assez importantes, et est plutôt orienté vers la fabrication du produit que sa conception 
+(les instructions sont directement transmises à la machine OpenKnit). Il est donc plutôt destiné à un public qui souhaite faire fabriquer 
+de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au caractère innovant de ce projet).
+
+\textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur
+\textbf{Inconvégniants : } 
+
+
 
 \subsection{DesignaKnit}
 
-DesignaKnit\footnote{https://www.softbyte.co.uk/designaknit.htm} est un logiciel permettant de créer des modèles de tricot destinés à être 
-réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose quelques 
-outils innovants, comme un convertisseur d'images vers un motif réalisable en tricot.
+DesignaKnit\footnote{\url{https://www.softbyte.co.uk/designaknit.htm}} est un logiciel permettant de créer des modèles de tricot destinés 
+à être réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose 
+quelques outils innovants, comme un convertisseur d'images vers un motif réalisable en tricot.
+
+\textbf{Avantages : }
+\textbf{Inconvégniants : } 
 
 \subsection{KP}
 
-KP\footnote{http://www.cs.cmu.edu/~taey/pub/knit.pdf} est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire des 
-modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné d'un 
-interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut représenter 
-une base pour l'élaboration de la phase plus théorique du projet.
+KP\footnote{\url{http://www.cs.cmu.edu/~taey/pub/knit.pdf}} est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire 
+des modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné 
+d'un interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut 
+représenter une base pour l'élaboration de la phase plus théorique du projet.
+
+\textbf{Avantages : } Une bonne base théorique pour formaliser le tricot.
+\textbf{Inconvégniants : } Inutilisable directement par le public.
 
 \subsection{KnitML}
 
-Le projet KnitML\footnote{http://www.knitml.com/blog/static.php?page=about-knitml} a également pour but de fournir un langage bas niveau 
-au service des tricoteurs et développeurs de logiciels liés au tricot. Par exemple, le logiciel Knitter se base sur KnitML pour fournir 
-une visualisation 3D du modèle passé en entrée. KnitML est davantage actualisé (la dernière version date de 2012) que KP et peut également 
-nous apporter une précieuse aide.
+Le projet KnitML\footnote{\url{http://www.knitml.com/blog/static.php?page=about-knitml}} a également pour but de fournir un langage bas 
+niveau au service des tricoteurs et développeurs de logiciels liés au tricot. Par exemple, le logiciel Knitter se base sur KnitML pour 
+fournir une visualisation 3D du modèle passé en entrée. KnitML est davantage actualisé (la dernière version date de 2012) que KP et peut 
+également nous apporter une précieuse aide.
+
+\textbf{Avantages : } Base théorique intéressante, déjà utilisée par certains logiciels.
+\textbf{Inconvégniants : } ? % TODO
 
 \subsection{Premières conclusions}
 
-
+Des logiciels et des langages relatifs au tricot existent, chacun offrant des possibilités ciblées (fabrication, création, formalisation 
+d'un langage). Cependant, aucun d'entre eux n'offre la possibilité de suivre un tricot en cours d'élaboration par l'utilisateur. De plus, 
+les différents logiciels ont un public visé extrèmement restreint (trop complexes, investissement dans une machine, ...).
 
 \section{Cahier des charges et applications}
 
@@ -174,7 +194,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
 \subsubsection{Diagramme des interactions}
 
-    Voir Figure \ref{diag-composants}.
+    La figure \ref{diag-composants} résumé les interactions entre les différentes fonctionnalités.
 
     \begin{figure}[!h]
     \centering
@@ -193,7 +213,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
       \node[state]     (machine)[dashed] [below of=BN] {\textit{Machine}};
 
 
-      \path (user)   edge               node {Spécifications} (gui)
+      \path (user)   edge[<->,very thick]               node {Spécifications} (gui)
 		     edge [bend left=15]node{}		(HN.west)
         (gui)        edge [bend left]   node {}               (HN.west)
         (HN.south)   edge               node {Visualisation}  (gui)
@@ -228,18 +248,20 @@ orientons sont GPL, BSD, MIT. Le choix précis sera discuté et décidé en réu
 \subsection{Public visé et retombées attendues}
 
 Comme dit précédemment, notre projet vise tous les tricoteurs, experts ou non, recherchant un assistant dans la conception et la
-réalisation de leurs oeuvres.
+réalisation de leurs \oe{}uvres.
 
 \subsection{Améliorations possibles}
 
-Les améliorations possibles peuuvent être distinguées en deux catégories :
+Les améliorations possibles peuvent être séparées en deux catégories :
 \begin{itemize}
-   \item La portée de chaque version : si le projet avance bien, on peut espérer apporter plus de fonctionnalités (points de tricot, ...) 
-aux versions successives. 
+   \item La portée de chaque version : si le projet avance bien, nous pouvons espérer apporter plus de fonctionnalités (points de 
+tricot, ...) aux versions successives. 
    \item Des services inédits : on peut imaginer certains autres services, comme une visualisation des créations 
-en 3D (typiquement sur un mannequin), une application Android ou un traducteur vers une machine à tricoter.
+en 3D (typiquement sur un mannequin), une version multilangue du logiciel\footnote{en français et en anglais notamment...}, une 
+application Android ou un traducteur vers une machine à tricoter.
 \end{itemize}
-Ces propositions sont cependant peu probables, étant donné que l'objectif premier est de fournir un logiciel disposant d'un maximum de fonctionnalités de bases.
+Cependant, étant donné que l'objectif premier est de fournir un logiciel disposant d'un maximum de fonctionnalités de bases, il est fort 
+possible qu'une grande partie des améliorations proposées n'aillent pas plus loin.
 
 
 \section{Organisation et planification}
@@ -250,13 +272,13 @@ L'équipe de notre projet TriComp comporte sept étudiants de M1 d'informatique 
 Julien \textsc{Bensmail} (coordinateur), Agathe \textsc{Herrou} (chef de projet), Romain \textsc{Labolle}, Frédéric \textsc{Lang}, Maxime 
 \textsc{Lesourd}, Laureline \textsc{Pinault} et Léo \textsc{Stéfanesco}. \newline
 
-Les tâches ont été réparties entre les différents membres de l'équipe (voir section 4.3 et 4.4 pour plus de détails), qui peuvent travailler de manière (relativement) indépendante grâce à un dépot git (\url{https://github.com/TriComp}). Des réunions sont prévues tous les mardis matin afin de faire le point sur les avancées de chacun et de discuter de la direction générale du projet.
+Les tâches ont été réparties entre les différents membres de l'équipe (voir sections \ref{workpackages} et \ref{calendrier} pour plus de détails), qui peuvent travailler de manière (relativement) indépendante grâce à un dépot git (\url{https://github.com/TriComp}). Des réunions sont prévues tous les mardis matin afin de faire le point sur les avancées de chacun et de discuter de la direction générale du projet.
 
 Par ailleurs, l'équipe dispose d'une liste de diffusion (tricomp@listes.ens-lyon.fr) et d'un pad collaboratif (\url{http://pad.aliens-lyon.fr/p/tricomp}) afin de pouvoir communiquer.
 
 \subsection{Les différentes phases}
 
-Nous avons prévu de développer 3 versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles fonctionnalités notamment au niveau de la variété et de la difficulté des points que notre logiciel prendra en compte. \newline
+Nous avons prévu de développer trois versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles fonctionnalités notamment au niveau de la variété et de la difficulté des points (de tricot) que notre logiciel prendra en compte. \newline
 % Ici descriptifs de ce qu'il y aura ds les différentes version, agathe ?
 
 Après une première phase de mise en route, les phases du projet correspondront aux différentes versions que nous avons prévu de réaliser :
@@ -265,20 +287,28 @@ Après une première phase de mise en route, les phases du projet correspondront
     \begin{itemize}
      \item Création d'une interface utilisateur (vide).
      \item Création et lancement du site web.
-     \item Définition des langages. Le langage haut niveau sera par la suite étendu, mais cette première phase permettra de définir la structure et les premières commandes de ce langage.
+     \item Définition des langages. Le langage haut niveau sera par la suite étendu, mais cette première phase permettra de définir la 
+structure et les premières commandes de ce langage.
     \end{itemize}
-  \item Une fois la première phase réalisée, les phases suivantes concerneront le développement d'une version et seront semblables les unes aux autres. Pour chaque nouvelle version, différents workpackages (concernant respectivement le langage, le compilateur, le module de vérification ou l'interface graphique) travailleront en simultané. Chacune des phases sera conclue par une intégration des nouveautés mises en place dans chacun des workpackages.
+  \item Une fois la première phase réalisée, les phases suivantes concerneront le développement d'une version et seront semblables les 
+unes aux autres. Pour chaque nouvelle version, différents groupes de travail (concernant respectivement le langage, le compilateur, le module de 
+vérification ou l'interface graphique) travailleront en simultané. Chacune des phases sera conclue par une intégration des nouveautés 
+mises en place dans chacun des groupes de travail.
 \end{itemize}
 
+\subsection{Les différentes versions}
 
-\subsection{Workpackages}
+% TODO : Contenu (approximatif) des différentes phases.
 
-Nous avons divisé le travail à effectuer en workpackages, correspondant globalement aux différents composants du logiciel. Ces workpackages eux-même sont subdivisés en tâches.
+\subsection{Groupes de travail\label{workpackages}}
+
+Nous avons divisé le travail à effectuer en différents groupes de travail, correspondant globalement aux différents composants du 
+logiciel. Ces groupes de travail sont eux-même subdivisés en tâches.
 
 Ci-dessous le détail et la répartition humaine des tâches (la personne en gras est responsable du bon déroulement de la tâche) :
 
 \begin{description}
-\item[WP 1 : Langage bas niveau] Ce workpackage est destiné à concevoir les instructions du langage bas niveau et ce qui tourne autour. Les tâches de ce workpackage sont les suivantes :
+\item[WP 1 : Langage bas niveau] Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne autour. Les tâches de ce groupe de travail sont les suivantes :
 
     \begin{description}
     \item[Définition du langage] Consiste à définir les instructions du langage.
@@ -296,7 +326,10 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
 \medskip
 
-\item[WP 2 : Vérification] A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce workpackage sont les suivantes :
+\item[WP 2 : Vérification] A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de 
+points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces 
+conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce groupe de travail sont 
+les suivantes :
 
     \begin{description}
     \item[Définition des contraintes] Consiste à définir les conflits qui peuvent apparaître.
@@ -305,7 +338,8 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
       \textbf{?}, Léo, Laureline
 
-    \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour rattraper les erreurs survenant lors de la compilation.
+    \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour 
+rattraper les erreurs survenant lors de la compilation.
       
       \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
 
@@ -315,19 +349,26 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
 \medskip
 
-\item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage haut niveau décrivant le tricot en instructions bas niveau, permettant de réaliser le tricot maille par maille. Ce workpackage est subdivisé en trois tâches semblables, une pour chaque version :
+\item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage haut niveau décrivant le tricot en instructions 
+bas niveau, permettant de réaliser le tricot maille par maille. Ce groupe de travail est subdivisé en trois tâches semblables, une pour 
+chaque version :
 
     \begin{description}
-    \item[Compilation v.i] A chaque version, le langage haut niveau sera étendu, d'où la nécessité de mettre à jour le compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant le langage haut niveau v.i en instructions bas niveau.
+    \item[Compilation (ième version)] A chaque version, le langage haut niveau sera étendu, d'où la nécessité de mettre à jour le 
+compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant 
+la ième version du langage haut niveau en instructions bas niveau.
 
-      \textit{Production : Un module compilant le langage haut niveau v.i vers des instructions bas niveau.}
+      \textit{Production : Un module compilant le langage haut niveau ième version vers des instructions bas niveau.}
 
       \textbf{?}, Léo, Laureline %respo et équipe à définir selon i ?
     \end{description}
 
 \medskip
 
-\item[WP 4 : Interface graphique] L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à l'utilisateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce workpackage sont les suivantes :
+\item[WP 4 : Interface graphique] L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à 
+l'utilisateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce 
+qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce groupe de travail sont les 
+suivantes :
 
   \begin{description}
   \item[Mise en place de l'interface] Créer l'interface vide, la coquille. Commencer à travailler sur la visualisation.
@@ -336,25 +377,30 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
     \textbf{William}
 	
-  \item[Visualisation v.i] Implémenter un module permettant, à partir d'une description en langage haut niveau (version v.i), visualiser l'objet décrit.
+  \item[Visualisation (ième version)] Implémenter un module permettant, à partir d'une description en langage haut niveau (ième version), 
+visualiser l'objet décrit.
 
-    \textit{Production : Un module de visualisation pour le langage haut niveau v.i}
+    \textit{Production : Un module de visualisation pour la ième version du langage haut niveau }
 
     \textbf{William}, Léo %respo et équipe à définir selon i ?
 
-  \item[Traduction des spécifications v.i] Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses spécifications, lesquelles seront traduites en langage haut niveau (version v.i).
+  \item[Traduction des spécifications] Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses 
+spécifications, lesquelles seront traduites en langage haut niveau (ième version).
 
-    \textit{Production : Une interface graphique cohérente avec la description i du langage haut niveau, permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
+    \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la description i du langage haut niveau, 
+permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
 
     \textbf{?}
   \end{description}
 
 \medskip
 
-\item[WP 5 : Langage haut niveau] Ce workpackage est destiné à définir le langage haut niveau permettant de décrire les objets à tricoter.
+\item[WP 5 : Langage haut niveau] Ce groupe de travail est destiné à définir le langage haut niveau permettant de décrire les objets à 
+tricoter.
 
   \begin{description}
-  \item[Définition du langage v.i] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la variation de points disponibles définies dans les spécifications de la version v.i.
+  \item[Définition de la version i du langage] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la 
+variation de points disponibles définis dans les spécifications de la ième version.
 
     \textit{Production : Un langage descriptif, étendu à chaque version.}
 
@@ -363,19 +409,22 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
 \medskip
 
-\item[WP 6 : Communication] Ce workpackage inclue tout ce qui concerne la communication autour du projet, que ce soit au niveau large public (website), au niveau utilisateur (readme et manuel) ou au niveau compte-rendu de projet (proposition, rapport d'activité mi-parcours et rapport final).
+\item[WP 6 : Communication] Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau 
+large public (website), au niveau utilisateur (readme et manuel) ou au niveau compte-rendu de projet (proposition, rapport d'activité mi-
+parcours et rapport final).
 
 % Rajouter les formations au "tricot" ?
 % Mises au point chaque semaine (par exemple via des slides) ?
 
   \begin{description}
-  \item[Proposal] Rédiger la proposition.
+  \item[Proposition de projet] Rédiger la proposition.
 
     \textit{Production : Proposition}
 
     \textbf{Laureline}, William, Léo
 
-  \item[Mid-term Rapport] Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici là.
+  \item[Rapport d'activite mi-parcours] Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, 
+et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici là.
 
     \textit{Production : Rapport d'activité mi-parcours}
 
@@ -393,7 +442,8 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
     \textbf{Laureline}
 
-  \item[Readme, Manuel et Site web v.i] Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la version v.i du logiciel.
+  \item[Readme, Manuel et Site web (ième version)] Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la 
+version en cours du logiciel.
 
     \textit{Production : Readme, manuel et site web}
 
@@ -405,7 +455,7 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 \end{description}
 
 
-\subsection{Calendrier prévisionnel}
+\subsection{\label{calendrier}Calendrier prévisionnel}
 
 Nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longue à mettre en route).
 
