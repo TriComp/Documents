@@ -59,34 +59,41 @@
 %     c) public vise et retombees attendues
 %     d) Améliorations possible
 % IV] Organisation du projet
-%     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au sein de l'équipe (git, pad, réunions, ...)
+%     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au 
+%        sein de l'équipe (git, pad, réunions, ...)
 %     b) Workpackages
 %     c) Les différentes phases : Modèle par couches (versions successives)
 %     d) Calendrier des taches
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO : D'une manière générale :                                                                                       %
+% Remplacer la notion de langage haut niveau par celle de langage descriptif. Introduire ces notions dans le proposal.  %
+% Ne pas parler des améliorations dans le calendrier.                                                                   %
+% Il faut compléter la répartition des tâches, à la fois dans le calendrier et le proposal.                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 \section{Introduction et objectifs}
 
-%Introduction général (à dvpper)
 Le tricot est une technique utilisée pour créer une étoffe à partir de fils. Ses origines remontent au $X^{eme}$ siècle.
 Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet
 quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt expert, que ce soit en tricot ou en informatique (comment
 décrire un tricot à l'ordinateur ?).
 
-%Projet en lui même
 Le projet TriComp visait au départ à concevoir un Compilateur pour Tricot (d'où son nom) afin de faciliter davantage l'interaction entre
 tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage ciblé nos objectifs. Notre objectif principal est de
 fournir un logiciel disposant de fonctionnalités à la fois de création (de modèles), de visualisation et de conception (tricot),
-destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en informatique, et pour les tricoteurs de tous niveaux).
+destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en informatique, et pour des tricoteurs de tous niveaux).
 
-%Motivation
 La première des motivations est venue lors de la présentation du sujet. Ce sujet, à la fois troublant et surprenant, nous a interpelé et 
 intéressé dès le début. Il s'agit d'un projet original, qui répond à un manque de logiciel simple d'utilisation pour tricoteurs de tous
 niveaux. De plus, la diversité des tâches à accomplir dans ce projet (aussi bien définitions "théoriques" (langage) que pratiques 
 (compilateur, interface)) a permis à chaque membre de l'équipe de trouver sa place.
 
-%Annonce de plan
 Ce document présente notre proposition de projet. Après avoir détaillé l'état de l'art des logiciels de tricot existants, nous exposerons
 notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents
 groupes de travail identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
@@ -98,7 +105,6 @@ Nous présentons dans cette section les différents produits concurrents que l'o
 inconvégniants. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le travail déjà fourni pouvant
 nous être utile.
 
-
 \subsection{OpenKnit}
 
 OpenKnit\footnote{\url{http://openknit.org/}} est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs 
@@ -108,9 +114,8 @@ nécessite des connaissances en électroniques assez importantes, et est plutôt
 de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au caractère innovant de ce projet).
 
 \textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur
-\textbf{Inconvégniants : } 
 
-
+\textbf{Inconvénients : } % TODO 
 
 \subsection{DesignaKnit}
 
@@ -118,8 +123,9 @@ DesignaKnit\footnote{\url{https://www.softbyte.co.uk/designaknit.htm}} est un lo
 à être réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose 
 quelques outils innovants, comme un convertisseur d'images vers un motif réalisable en tricot.
 
-\textbf{Avantages : }
-\textbf{Inconvégniants : } 
+\textbf{Avantages : } % TODO
+
+\textbf{Inconvénients : } % TODO
 
 \subsection{KP}
 
@@ -127,9 +133,13 @@ KP\footnote{\url{http://www.cs.cmu.edu/~taey/pub/knit.pdf}} est un langage bas n
 des modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné 
 d'un interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut 
 représenter une base pour l'élaboration de la phase plus théorique du projet.
+% TODO : En fait KP propose une interprétation d'un tricot avec un graphe, mais j'ai l'impression qu'il ne prend pas en compte de
+% points très compliqués... En parler dès maintenant ? 
+
 
 \textbf{Avantages : } Une bonne base théorique pour formaliser le tricot.
-\textbf{Inconvégniants : } Inutilisable directement par le public.
+
+\textbf{Inconvénients : } Inutilisable directement par le public.
 
 \subsection{KnitML}
 
@@ -139,7 +149,8 @@ fournir une visualisation 3D du modèle passé en entrée. KnitML est davantage 
 également nous apporter une précieuse aide.
 
 \textbf{Avantages : } Base théorique intéressante, déjà utilisée par certains logiciels.
-\textbf{Inconvégniants : } ? % TODO
+
+\textbf{Inconvénients : } ? % TODO
 
 \subsection{Premières conclusions}
 
@@ -155,14 +166,14 @@ L'aboutissement de notre projet sera un logiciel destiné aux tricoteurs de tous
 Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls, chaussette, écharpe...) et les agrémenter (choix des points, 
 de la couleur, ajouter des points plus exotiques...). Ensuite ils pourront générer les instructions correspondant à leur réalisation 
 spécifique (à l'image de ce que l'on pourrait trouver dans un manuel de tricot) sous forme d'un tutoriel.
-%Description détaillée des fonctionnalités.
 
 Ces fonctionalité peuvent être regroupées en différents composants qui vont interagir entre eux. C'est ce que cette section présente.
 
 \subsubsection{Formalisation d'un langage}
 
-La description d'un langage pour décrire les tricots ainsi que sa formalisation est un objectif primordial.
-Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points (i.e de nouvelles
+
+Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots.
+Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points (i.e. de nouvelles
 possibilités pour le tricot) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
 langage. La formalisation du langage résultant sera également un objectif clé de ce projet.
 
@@ -278,27 +289,30 @@ Par ailleurs, l'équipe dispose d'une liste de diffusion (tricomp@listes.ens-lyo
 
 \subsection{Les différentes phases}
 
-Nous avons prévu de développer trois versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles fonctionnalités notamment au niveau de la variété et de la difficulté des points (de tricot) que notre logiciel prendra en compte. \newline
-% Ici descriptifs de ce qu'il y aura ds les différentes version, agathe ?
+Nous avons prévu de développer trois versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles 
+fonctionnalités notamment au niveau de la variété et de la difficulté des points (de tricot) que notre logiciel prendra en compte. \newline
 
 Après une première phase de mise en route, les phases du projet correspondront aux différentes versions que nous avons prévu de réaliser :
-\begin{itemize}
- \item La première phase concerne la mise en place des brique de base de notre projet :
+
+La deuxième phase concerne la mise en place des briques de base de notre projet :
     \begin{itemize}
      \item Création d'une interface utilisateur (vide).
      \item Création et lancement du site web.
      \item Définition des langages. Le langage haut niveau sera par la suite étendu, mais cette première phase permettra de définir la 
 structure et les premières commandes de ce langage.
     \end{itemize}
-  \item Une fois la première phase réalisée, les phases suivantes concerneront le développement d'une version et seront semblables les 
-unes aux autres. Pour chaque nouvelle version, différents groupes de travail (concernant respectivement le langage, le compilateur, le module de 
-vérification ou l'interface graphique) travailleront en simultané. Chacune des phases sera conclue par une intégration des nouveautés 
-mises en place dans chacun des groupes de travail.
-\end{itemize}
+
+Une fois cette phase réalisée, les phases suivantes seront similaires et consisteront à fournir une version améliorée des 
+différentes fonctionnalités. Pour chaque nouvelle version, différents groupes de travail (concernant respectivement le langage, le 
+compilateur, le module de vérification ou l'interface graphique) seront développés en parallèle. Chacune de ces phases sera conclue 
+par une intégration des nouveautés mises en place dans chacun des groupes de travail, ainsi que d'une série de tests afin de vérifier que 
+l'intégration est réussie et que le logiciel répond aux attentes que nous nous sommes fixées (par exemple, nous pourrions le soumettre
+à des tricoteurs, et pas seulement vérifier que toutes les fonctionalités sont opérationelles).
+
 
 \subsection{Les différentes versions}
 
-% TODO : Contenu (approximatif) des différentes phases.
+% TODO : Contenu (approximatif) des différentes versions (Agathe ?).
 
 \subsection{Groupes de travail\label{workpackages}}
 
@@ -308,7 +322,8 @@ logiciel. Ces groupes de travail sont eux-même subdivisés en tâches.
 Ci-dessous le détail et la répartition humaine des tâches (la personne en gras est responsable du bon déroulement de la tâche) :
 
 \begin{description}
-\item[WP 1 : Langage bas niveau] Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne autour. Les tâches de ce groupe de travail sont les suivantes :
+\item[WP 1 : Langage bas niveau] Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne 
+autour. Les tâches de ce groupe de travail sont les suivantes :
 
     \begin{description}
     \item[Définition du langage] Consiste à définir les instructions du langage.
@@ -317,7 +332,8 @@ Ci-dessous le détail et la répartition humaine des tâches (la personne en gra
 
       \textbf{Laureline}
 
-    \item[Module de traduction] Consiste à implémenter un traducteur qui traduira les instructions du langage bas niveau en des instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
+    \item[Module de traduction] Consiste à implémenter un traducteur qui traduira les instructions du langage bas niveau en des 
+instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
 
       \textit{Production : Un module traduisant le langage bas niveau en instructions de tricot compréhensibles pour l'utilisateur.}
 
@@ -458,6 +474,11 @@ version en cours du logiciel.
 \subsection{\label{calendrier}Calendrier prévisionnel}
 
 Nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longue à mettre en route).
+
+Dans le cas où il y aurait du retard à un moment quelconque du projet, à la vue des fortes dépendances entre les différents groupes de 
+travail, nous réviserons l'attribution des tâches au sein des différentes équipes (par exemple en scindant des équipes nombreuses, ou en 
+redirigeant certaines personnes vers d'autres tâches) afin d'avoir plus de flexibilité pour combler un tel retard. C'est une possibilité 
+qu'il ne faut pas négliger dans ce projet.
 
 Dans cette section est décrite la répartition temporelle des tâches décrites plus haut.
 
