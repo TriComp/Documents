@@ -205,6 +205,30 @@ logiciel : le tricoteur pourra à travers le logiciel suivre les différentes é
 accomplir et l'observation du résultat à obtenir à chaque étape.
 \end{itemize}
 
+Un premier prototype d'interface a été conçu durant la première réunion. Cette interface comporterait trois zones principales :
+\begin{itemize}
+  \item Une première zone contiendra la liste des éléments à choisir (points de tricot notamment) essentiellement sous la forme de 
+boutons ;
+  \item Une deuxième zone sera consacré à la visualisation du modèle et du tutoriel généré ;
+  \item Enfin, dans la dernière zone, l'utilisateur pourra faire défiler la suite d'instructions générée par le compilateur et ainsi 
+suivre le bon déroulement de son tricot.
+\end{itemize}
+
+La figure suivante représente la disposition de ces différentes zones.
+
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}[scale=1]
+    \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ; 
+    \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; 
+    \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;
+    \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;
+      
+  \end{tikzpicture}
+  \caption{Interaction entre les différents composants}
+  \label{diag-composants}
+\end{figure}
+
 \subsubsection{Diagramme des interactions}
 
     La figure \ref{diag-composants} résumé les interactions entre les différentes fonctionnalités.
