@@ -55,7 +55,7 @@
 % II] Produits concurrents
 % III] Cahier des charges et applications
 %     a) Fonctionnalités :
-%     b) Aspects techniques : les différents modules (gui, compilation, lg haut niveau,...) + diagrammes
+%     b) Aspects techniques : les différents modules (gui, compilation, lg "haut niveau",...) + diagrammes
 %     c) public vise et retombees attendues
 %     d) Améliorations possible
 % IV] Organisation du projet
@@ -69,7 +69,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO : D'une manière générale :                                                                                       %
-% Remplacer la notion de langage haut niveau par celle de langage descriptif. Introduire ces notions dans le proposal.  %
+% Remplacer la notion de "langage haut niveau" par celle de langage descriptif.                                           %
+% Introduire ces notions dans le proposal. ---> Leur donner des noms (Julien pense que ca pourrait être sympa)          %
 % Ne pas parler des améliorations dans le calendrier.                                                                   %
 % Il faut compléter la répartition des tâches, à la fois dans le calendrier et le proposal.                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,15 +168,21 @@ Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls
 de la couleur, ajouter des points plus exotiques...). Ensuite ils pourront générer les instructions correspondant à leur réalisation 
 spécifique (à l'image de ce que l'on pourrait trouver dans un manuel de tricot) sous forme d'un tutoriel.
 
-Ces fonctionalité peuvent être regroupées en différents composants qui vont interagir entre eux. C'est ce que cette section présente.
+Ces fonctionnalités peuvent être regroupées en différents composants qui vont interagir entre eux. Nous présentons ici ces différents 
+composants.
 
-\subsubsection{Formalisation d'un langage}
+\subsubsection{Formalisation d'un langage et modelisation des points}
 
 
 Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots.
-Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points (i.e. de nouvelles
-possibilités pour le tricot) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
+Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points (i.e. de nouvelles possibilités pour le tricot) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
 langage. La formalisation du langage résultant sera également un objectif clé de ce projet.
+
+En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant..), des differents points et maille, et aussi la possibilité de donner des indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
+
+De plus, les differents points seront modelisés afin que le compilateur puisse s'appuyer dessus pour concevoir la liste d'instructions bas-niveau finales, qui seront utiles au tricoteur 
+
+En pratique, ce langage succints
 
 \subsubsection{Compilation}
 
@@ -203,6 +210,30 @@ logiciel : le tricoteur pourra à travers le logiciel suivre les différentes é
 accomplir et l'observation du résultat à obtenir à chaque étape.
 \end{itemize}
 
+Un premier prototype d'interface a été conçu durant la première réunion. Cette interface comporterait trois zones principales :
+\begin{itemize}
+  \item Une première zone contiendra la liste des éléments à choisir (points de tricot notamment) essentiellement sous la forme de 
+boutons ;
+  \item Une deuxième zone sera consacré à la visualisation du modèle et du tutoriel généré ;
+  \item Enfin, dans la dernière zone, l'utilisateur pourra faire défiler la suite d'instructions générée par le compilateur et ainsi 
+suivre le bon déroulement de son tricot.
+\end{itemize}
+
+La figure suivante représente la disposition de ces différentes zones.
+
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}[scale=1]
+    \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ; 
+    \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; 
+    \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;
+    \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;
+      
+  \end{tikzpicture}
+  \caption{Interaction entre les différents composants}
+  \label{diag-composants}
+\end{figure}
+
 \subsubsection{Diagramme des interactions}
 
     La figure \ref{diag-composants} résumé les interactions entre les différentes fonctionnalités.
@@ -216,7 +247,7 @@ accomplir et l'observation du résultat à obtenir à chaque étape.
 
       \node[state]     (user)   []                                  	  {Utilisateur};
       \node[state]     (gui)	[]                [right of=user]     	  {GUI};
-      \node[state]     (HN) 	[shape=rectangle] [above right of=gui]    {Langage haut niveau};
+      \node[state]     (HN) 	[shape=rectangle] [above right of=gui]    {Langage descriptif};
       \node[state]     (compil) []                [right of=HN]       	  {Compilateur};
       \node[state]     (BN)     [shape=rectangle] [below right of=compil] {Langage bas niveau};
       \node[state]     (trad)   []                [below left of=BN]  	  {Traducteur};
@@ -298,7 +329,7 @@ La deuxième phase concerne la mise en place des briques de base de notre projet
     \begin{itemize}
      \item Création d'une interface utilisateur (vide).
      \item Création et lancement du site web.
-     \item Définition des langages. Le langage haut niveau sera par la suite étendu, mais cette première phase permettra de définir la 
+     \item Définition des langages. Le langage descriptif sera par la suite étendu, mais cette première phase permettra de définir la 
 structure et les premières commandes de ce langage.
     \end{itemize}
 
@@ -307,7 +338,7 @@ différentes fonctionnalités. Pour chaque nouvelle version, différents groupes
 compilateur, le module de vérification ou l'interface graphique) seront développés en parallèle. Chacune de ces phases sera conclue 
 par une intégration des nouveautés mises en place dans chacun des groupes de travail, ainsi que d'une série de tests afin de vérifier que 
 l'intégration est réussie et que le logiciel répond aux attentes que nous nous sommes fixées (par exemple, nous pourrions le soumettre
-à des tricoteurs, et pas seulement vérifier que toutes les fonctionalités sont opérationelles).
+à des tricoteurs, et pas seulement vérifier que toutes les fonctionnalités sont opérationelles).
 
 
 \subsection{Les différentes versions}
@@ -365,16 +396,16 @@ rattraper les erreurs survenant lors de la compilation.
 
 \medskip
 
-\item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage haut niveau décrivant le tricot en instructions 
+\item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage décrivant le tricot en instructions 
 bas niveau, permettant de réaliser le tricot maille par maille. Ce groupe de travail est subdivisé en trois tâches semblables, une pour 
 chaque version :
 
     \begin{description}
-    \item[Compilation (ième version)] A chaque version, le langage haut niveau sera étendu, d'où la nécessité de mettre à jour le 
+    \item[Compilation (ième version)] A chaque version, le langage descriptif sera étendu, d'où la nécessité de mettre à jour le 
 compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant 
-la ième version du langage haut niveau en instructions bas niveau.
+la ième version du langage descriptif en instructions bas niveau.
 
-      \textit{Production : Un module compilant le langage haut niveau ième version vers des instructions bas niveau.}
+      \textit{Production : Un module compilant le langage descriptif ième version vers des instructions bas niveau.}
 
       \textbf{?}, Léo, Laureline %respo et équipe à définir selon i ?
     \end{description}
@@ -393,17 +424,17 @@ suivantes :
 
     \textbf{William}
 	
-  \item[Visualisation (ième version)] Implémenter un module permettant, à partir d'une description en langage haut niveau (ième version), 
-visualiser l'objet décrit.
+  \item[Visualisation (ième version)] Implémenter un module permettant, à partir d'une description en langage descriptif (ième version), 
+visualiser l'objet décrit. % TODO : Description en langage descriptif... Reformuler ca...
 
-    \textit{Production : Un module de visualisation pour la ième version du langage haut niveau }
+    \textit{Production : Un module de visualisation pour la ième version du langage descriptif}
 
     \textbf{William}, Léo %respo et équipe à définir selon i ?
 
   \item[Traduction des spécifications] Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses 
-spécifications, lesquelles seront traduites en langage haut niveau (ième version).
+spécifications, lesquelles seront traduites en langage descriptif (ième version).
 
-    \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la description i du langage haut niveau, 
+    \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la version i du langage descriptif, 
 permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
 
     \textbf{?}
@@ -411,8 +442,15 @@ permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il
 
 \medskip
 
-\item[WP 5 : Langage haut niveau] Ce groupe de travail est destiné à définir le langage haut niveau permettant de décrire les objets à 
-tricoter.
+<<<<<<< HEAD
+<<<<<<< HEAD
+\item[WP 5 : Langage haut niveau] Ce groupe de travail est destiné à définir le langage haut niveau permettant de décrire les objets à tricoter et à modéliser les différents points.
+=======
+\item[WP 5 : Langage descriptif] Ce groupe de travail est destiné à définir le langage permettant de décrire les objets à tricoter.
+>>>>>>> FETCH_HEAD
+=======
+\item[WP 5 : Langage descriptif] Ce groupe de travail est destiné à définir le langage permettant de décrire les objets à tricoter.
+>>>>>>> FETCH_HEAD
 
   \begin{description}
   \item[Définition de la version i du langage] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la 
@@ -420,17 +458,19 @@ variation de points disponibles définis dans les spécifications de la ième ve
 
     \textit{Production : Un langage descriptif, étendu à chaque version.}
 
-    \textbf{?}, Léo
-  \end{description}
+    \textbf{?}
+\item[Modelisation des points] Modéliser les différents points et mailles énumérés dans le langage 
 
+    \textit{Production : Un langage descriptif, étendu à chaque version.}
+
+    \textbf{?}
+  \end{description}
 \medskip
 
 \item[WP 6 : Communication] Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau 
-large public (website), au niveau utilisateur (readme et manuel) ou au niveau compte-rendu de projet (proposition, rapport d'activité mi-
-parcours et rapport final).
+large public (website), au niveau utilisateur (readme et manuel) ou au niveau de l'équipe (compte-rendus de projet (proposition, rapport 
+d'activité mi-parcours et rapport final), initiation au tricot, mise au point chaque semaine).
 
-% Rajouter les formations au "tricot" ?
-% Mises au point chaque semaine (par exemple via des slides) ?
 
   \begin{description}
   \item[Proposition de projet] Rédiger la proposition.
@@ -493,8 +533,9 @@ Dans cette section est décrite la répartition temporelle des tâches décrites
 %\end{figure}
 
 \newpage
-\includepdf{calendrier-previsionnel.pdf} %si on pouvait mettre la page en format paysage ce serait cool
+\includepdf{calendrier-previsionnel.pdf} % si on pouvait mettre la page en format paysage ce serait cool
+                                         % Concaténer deux PDF ? 
 
-% Calendrier à remplir
+% TODO : Calendrier à remplir
 
 \end{document}
