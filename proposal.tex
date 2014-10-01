@@ -102,9 +102,9 @@ groupes de travail identifiés ainsi qu'un calendrier rassemblant les différent
 \tableofcontents
 \section{Produits concurrents}
 
-Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun ses avantages et ses 
-inconvégniants. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le travail déjà fourni pouvant
-nous être utile.
+Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun une description du produit, 
+ses avantages et ses inconvégniants. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le 
+travail déjà fourni pouvant nous être utile.
 
 \subsection{OpenKnit}
 
@@ -114,9 +114,9 @@ nécessite des connaissances en électroniques assez importantes, et est plutôt
 (les instructions sont directement transmises à la machine OpenKnit). Il est donc plutôt destiné à un public qui souhaite faire fabriquer 
 de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au caractère innovant de ce projet).
 
-\textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur
+\textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur.
 
-\textbf{Inconvénients : } % TODO 
+\textbf{Inconvénients : } Peu axé sur l'aspect tricoteur, production de qualité moindre...
 
 \subsection{DesignaKnit}
 
@@ -124,9 +124,9 @@ DesignaKnit\footnote{\url{https://www.softbyte.co.uk/designaknit.htm}} est un lo
 à être réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose 
 quelques outils innovants, comme un convertisseur d'images vers un motif réalisable en tricot.
 
-\textbf{Avantages : } % TODO
+\textbf{Avantages : } Plutôt complet avec quelques outils intéressants.
 
-\textbf{Inconvénients : } % TODO
+\textbf{Inconvénients : } Uniquement de la conception.
 
 \subsection{KP}
 
@@ -225,8 +225,7 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
     \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;       % visualisation
     \draw (5,1) node {instructions};
     \draw (6.5,3.75) node {visualisation};
-    \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;
-      
+    \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;   
   \end{tikzpicture}
   \caption{Interaction entre les différents composants}
   \label{interface}
@@ -273,17 +272,28 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
 
 \subsection{Aspects techniques}
 
+\subsubsection{Portabilité}
+
 TriComp est conçu comme un logiciel installable sur son ordinateur. Cela permet en effet une meilleure maitrise de l'environnement et donc 
 une meilleure stabilité. Cependant la portabilité est mise en avant et nous souhaitons développer un logiciel qui pourra s'installer à la 
 fois sur Linux, Windows et MacOS. Pour cela nous utiliserons des outils multi-plateformes. 
 
-Les langages utilisés seront définis en réunion, mais a priori l'interface utilisateur sera développée grâce à un langage orienté objet, 
-probablement en C++ avec l'aide de la bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisation 3D), tandis que pour 
-les modules ayant trait à la compilation et à la manipulation des langages en général, un langage fonctionnel type Haskell ou OCaml sera 
-favorisé.
+\subsubsection{Langage de programmation}
 
-En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, les choix possibles vers lesquels nous nous 
-orientons sont GPL, BSD, MIT. Le choix précis sera discuté et décidé en réunion.
+L'interface utilisateur sera développée grâce à un langage orienté objet. Nous avons choisi de programmer en C++ avec l'aide de la 
+bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisation 3D), ceci pour plusieurs raisons. Tout d'abord, Qt fournit 
+beaucoup d'outils et une bonne documentation pour concevoir des interfaces graphiques. De plus, toutes les personnes qui seront engagées 
+dans cette partie ont déjà une certaine familiarité avec ce langage. 
+
+Tandis que pour les modules ayant trait à la compilation et à la manipulation des langages en général, nous avons choisi OCaml, car en 
+tant que langage fonctionnel, les tâches liées à la compilation (lexeur, parseur...) seront plus simples à réaliser. 
+
+% TODO : Parler de la "connexion" entre les différents modules (ou au moins montrer que l'on y a pensé).
+
+\subsubsection{Licence}
+
+En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, nous nous sommes orientés vers la licence 
+GPL V2. % TODO : Expliquer pourquoi.
 
 \subsection{Public visé et retombées attendues}
 
