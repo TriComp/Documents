@@ -214,19 +214,22 @@ boutons ;
 suivre le bon déroulement de son tricot.
 \end{itemize}
 
-La figure suivante représente la disposition de ces différentes zones.
+La figure \ref{interface} représente la disposition de ces différentes zones dans l'interface.
 
 \begin{figure}[!h]
   \centering
   \begin{tikzpicture}[scale=1]
     \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ; 
-    \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; 
-    \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;
-    \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;
+    \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; % instructions
+    \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;           % éléments à choisir
+    \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;       % visualisation
+    \draw (5,1) node {instructions};
+    \draw (6.5,3.75) node {visualisation};
+    \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;
       
   \end{tikzpicture}
   \caption{Interaction entre les différents composants}
-  \label{diag-composants}
+  \label{interface}
 \end{figure}
 
 \subsubsection{Diagramme des interactions}
@@ -291,14 +294,16 @@ réalisation de leurs \oe{}uvres.
 
 Les améliorations possibles peuvent être séparées en deux catégories :
 \begin{itemize}
-   \item La portée de chaque version : si le projet avance bien, nous pouvons espérer apporter plus de fonctionnalités (points de 
-tricot, ...) aux versions successives. 
+   \item La portée de chaque version : si le projet avance convenablement, nous pouvons espérer apporter plus de fonctionnalités (points 
+de tricot, ...) aux versions successives. 
    \item Des services inédits : on peut imaginer certains autres services, comme une visualisation des créations 
-en 3D (typiquement sur un mannequin), une version multilangue du logiciel\footnote{en français et en anglais notamment...}, une 
-application Android ou un traducteur vers une machine à tricoter.
+en 3D (typiquement sur un mannequin), une version multilangue du logiciel\footnote{en français et en anglais notamment...}, une option 
+d'impression des instructions, un guide pour débutant (sous forme de manuel d'aide pour réaliser les points donnés dans les instructions), 
+une application Android ou un traducteur vers une machine à tricoter.
 \end{itemize}
 Cependant, étant donné que l'objectif premier est de fournir un logiciel disposant d'un maximum de fonctionnalités de bases, il est fort 
-possible qu'une grande partie des améliorations proposées n'aillent pas plus loin.
+possible qu'une grande partie ces améliorations (celles qui nécessitent beaucoup de temps de travail) ne soient pas réalisées durant le 
+temps imparti pour la réalisation du projet.
 
 
 \section{Organisation et planification}
