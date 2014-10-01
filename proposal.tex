@@ -47,7 +47,17 @@
   \end{titlepage}
 \makeatother
 
-\pagebreak
+% Faudrait mettre l'abstract sur la première page
+\begin{abstract}
+  Le but de ce projet est de fournir un ``compilateur pour tricot'' : un logiciel qui transforme des sépcifications générales sur un tricot à réaliser (exemple : forme, couleurs, dimensions, types de points, ...) en des instructions à effectuer pour réaliser le tricot (exemple : faire 10 rangs en alternat mailles à l'endroit, mailles à l'envers, puis ...). L'idée serait même que le logiciel serve d'assistant au tricotage en détaillant pour un non-expert du tricot (mais sachant tout de même tricotter !) les étapes les plus difficiles.
+  
+  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de lyon. L'équipe est composée de 7 personnes en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
+  
+  Ce document vise à présenter notre proposition de projet. Il détaille la motivation derrière ce projet, la manière dont nous comptons atteindre cet objectif (les différents composants du logiciel) ainsi que l'organisation (les différentes tâches, leur répartition au sein de l'équipe, le calendrier prévisionnel).
+\end{abstract}
+
+
+\newpage
 
 % Esquisse de plan (proposee) bis :
 %
@@ -65,6 +75,7 @@
 %     c) Les différentes phases : Modèle par couches (versions successives)
 %     d) Calendrier des taches
 
+% Abstract ? -> permet d'avoir un endroit avec le cadre du projet (sinon à mettre dans l'intro)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,8 +86,9 @@
 % Il faut compléter la répartition des tâches, à la fois dans le calendrier et le proposal.                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\tableofcontents
 
-
+\newpage
 
 \section{Introduction et objectifs}
 
@@ -99,7 +111,6 @@ Ce document présente notre proposition de projet. Après avoir détaillé l'ét
 notre cahier des charges et nos objectifs dans le détail. Enfin, nous détaillerons le déroulement du projet, à savoir les différents
 groupes de travail identifiés ainsi qu'un calendrier rassemblant les différentes tâches.
 
-\tableofcontents
 \section{Produits concurrents}
 
 Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun une description du produit, 
@@ -542,7 +553,7 @@ Dans cette section est décrite la répartition temporelle des tâches décrites
 
 \newpage
 \includepdf{calendrier-previsionnel.pdf} % si on pouvait mettre la page en format paysage ce serait cool
-                                         % Concaténer deux PDF ? 
+                                         % Concaténer deux PDF ? -> pas vraiment : il faudrait que dans le pdf de sortie (proposal.pdf), la dernière page se voit en format paysage
 
 % TODO : Calendrier à remplir
 
