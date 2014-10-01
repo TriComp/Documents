@@ -1,0 +1,45 @@
+
+\documentclass{article}
+
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{caption}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes,arrows,automata}
+\tikzset{>=stealth'}
+
+\begin{document}
+ 
+     \begin{figure}[!h]
+    \centering
+
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 2cm,
+                    semithick]
+      \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+
+      \node[state]     (niv1)   []                     {Spécifications par l'utilisateur};
+      \node[state]     (niv2)	[] [below of=niv1]     {Langage descriptif};
+      \node[state]     (niv3) 	[] [below of=niv2]     {Représentation intermerdiaire (graph)};
+      \node[state]     (niv4)   [] [below of=niv3]     {Langage bas niveau};
+      \node[state]     (niv5)   [] [below of=niv4]     {Instructions pour l'utilisateur};
+
+
+      \path (niv1)   edge               node {GUI} 	   (niv2)
+	    (niv2)   edge 	 	node {Compilateur} (niv3)
+	    (niv3)   edge               node {Compilateur} (niv4)
+	    (niv4)   edge               node {GUI}	   (niv5)
+      ;
+
+    \end{tikzpicture}
+
+    \caption{Cinq niveau de langages}
+    \label{nvx-lg}
+    \end{figure}
+ 
+\end{document}
