@@ -102,9 +102,9 @@ groupes de travail identifiés ainsi qu'un calendrier rassemblant les différent
 \tableofcontents
 \section{Produits concurrents}
 
-Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun ses avantages et ses 
-inconvégniants. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le travail déjà fourni pouvant
-nous être utile.
+Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun une description du produit, 
+ses avantages et ses inconvégniants. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le 
+travail déjà fourni pouvant nous être utile.
 
 \subsection{OpenKnit}
 
@@ -114,9 +114,9 @@ nécessite des connaissances en électroniques assez importantes, et est plutôt
 (les instructions sont directement transmises à la machine OpenKnit). Il est donc plutôt destiné à un public qui souhaite faire fabriquer 
 de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au caractère innovant de ce projet).
 
-\textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur
+\textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur.
 
-\textbf{Inconvénients : } % TODO 
+\textbf{Inconvénients : } Peu axé sur l'aspect tricoteur, production de qualité moindre...
 
 \subsection{DesignaKnit}
 
@@ -124,9 +124,9 @@ DesignaKnit\footnote{\url{https://www.softbyte.co.uk/designaknit.htm}} est un lo
 à être réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose 
 quelques outils innovants, comme un convertisseur d'images vers un motif réalisable en tricot.
 
-\textbf{Avantages : } % TODO
+\textbf{Avantages : } Plutôt complet avec quelques outils intéressants.
 
-\textbf{Inconvénients : } % TODO
+\textbf{Inconvénients : } Uniquement de la conception.
 
 \subsection{KP}
 
@@ -219,20 +219,23 @@ boutons ;
 suivre le bon déroulement de son tricot.
 \end{itemize}
 
-La figure suivante représente la disposition de ces différentes zones.
+La figure \ref{interface} représente la disposition de ces différentes zones dans l'interface.
 
 \begin{figure}[!h]
   \centering
   \begin{tikzpicture}[scale=1]
     \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ; 
-    \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; 
-    \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;
-    \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;
-      
+
+    \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; % instructions
+    \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;           % éléments à choisir
+    \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;       % visualisation
+    \draw (5,1) node {instructions};
+    \draw (6.5,3.75) node {visualisation};
+    \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;   
   \end{tikzpicture}
   \caption{Interaction entre les différents composants}
-  \label{diag-composants}
-\end{figure}
+  \label{interface}
+  \end{figure}
 
 \subsubsection{Diagramme des interactions}
 
@@ -275,17 +278,28 @@ La figure suivante représente la disposition de ces différentes zones.
 
 \subsection{Aspects techniques}
 
+\subsubsection{Portabilité}
+
 TriComp est conçu comme un logiciel installable sur son ordinateur. Cela permet en effet une meilleure maitrise de l'environnement et donc 
 une meilleure stabilité. Cependant la portabilité est mise en avant et nous souhaitons développer un logiciel qui pourra s'installer à la 
 fois sur Linux, Windows et MacOS. Pour cela nous utiliserons des outils multi-plateformes. 
 
-Les langages utilisés seront définis en réunion, mais a priori l'interface utilisateur sera développée grâce à un langage orienté objet, 
-probablement en C++ avec l'aide de la bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisation 3D), tandis que pour 
-les modules ayant trait à la compilation et à la manipulation des langages en général, un langage fonctionnel type Haskell ou OCaml sera 
-favorisé.
+\subsubsection{Langage de programmation}
 
-En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, les choix possibles vers lesquels nous nous 
-orientons sont GPL, BSD, MIT. Le choix précis sera discuté et décidé en réunion.
+L'interface utilisateur sera développée grâce à un langage orienté objet. Nous avons choisi de programmer en C++ avec l'aide de la 
+bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisation 3D), ceci pour plusieurs raisons. Tout d'abord, Qt fournit 
+beaucoup d'outils et une bonne documentation pour concevoir des interfaces graphiques. De plus, toutes les personnes qui seront engagées 
+dans cette partie ont déjà une certaine familiarité avec ce langage. 
+
+Tandis que pour les modules ayant trait à la compilation et à la manipulation des langages en général, nous avons choisi OCaml, car en 
+tant que langage fonctionnel, les tâches liées à la compilation (lexeur, parseur...) seront plus simples à réaliser. 
+
+% TODO : Parler de la "connexion" entre les différents modules (ou au moins montrer que l'on y a pensé).
+
+\subsubsection{Licence}
+
+En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, nous nous sommes orientés vers la licence 
+GPL V2. % TODO : Expliquer pourquoi.
 
 \subsection{Public visé et retombées attendues}
 
@@ -296,14 +310,16 @@ réalisation de leurs \oe{}uvres.
 
 Les améliorations possibles peuvent être séparées en deux catégories :
 \begin{itemize}
-   \item La portée de chaque version : si le projet avance bien, nous pouvons espérer apporter plus de fonctionnalités (points de 
-tricot, ...) aux versions successives. 
+   \item La portée de chaque version : si le projet avance convenablement, nous pouvons espérer apporter plus de fonctionnalités (points 
+de tricot, ...) aux versions successives. 
    \item Des services inédits : on peut imaginer certains autres services, comme une visualisation des créations 
-en 3D (typiquement sur un mannequin), une version multilangue du logiciel\footnote{en français et en anglais notamment...}, une 
-application Android ou un traducteur vers une machine à tricoter.
+en 3D (typiquement sur un mannequin), une version multilangue du logiciel\footnote{en français et en anglais notamment...}, une option 
+d'impression des instructions, un guide pour débutant (sous forme de manuel d'aide pour réaliser les points donnés dans les instructions), 
+une application Android ou un traducteur vers une machine à tricoter.
 \end{itemize}
 Cependant, étant donné que l'objectif premier est de fournir un logiciel disposant d'un maximum de fonctionnalités de bases, il est fort 
-possible qu'une grande partie des améliorations proposées n'aillent pas plus loin.
+possible qu'une grande partie ces améliorations (celles qui nécessitent beaucoup de temps de travail) ne soient pas réalisées durant le 
+temps imparti pour la réalisation du projet.
 
 
 \section{Organisation et planification}
@@ -442,15 +458,9 @@ permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il
 
 \medskip
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 \item[WP 5 : Langage haut niveau] Ce groupe de travail est destiné à définir le langage haut niveau permettant de décrire les objets à tricoter et à modéliser les différents points.
-=======
-\item[WP 5 : Langage descriptif] Ce groupe de travail est destiné à définir le langage permettant de décrire les objets à tricoter.
->>>>>>> FETCH_HEAD
-=======
-\item[WP 5 : Langage descriptif] Ce groupe de travail est destiné à définir le langage permettant de décrire les objets à tricoter.
->>>>>>> FETCH_HEAD
+
 
   \begin{description}
   \item[Définition de la version i du langage] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la 
