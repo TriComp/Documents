@@ -51,8 +51,7 @@
   Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de lyon. L'équipe est composée de 7 étudiants en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
   
   Ce document vise à présenter notre proposition de projet. Il détaille la motivation derrière ce projet, l'objectif de ce projet, la manière dont nous comptons atteindre cet objectif (les différents composants du logiciel) ainsi que l'organisation (les différentes tâches, leur répartition au sein de l'équipe, le calendrier prévisionnel).
-\end{abstract}
-
+      \end{abstract}
   \end{titlepage}
 \makeatother
 
@@ -82,7 +81,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO : D'une manière générale :                                                                                       %
-% Remplacer la notion de "langage haut niveau" par celle de langage descriptif.                                           %
+% Remplacer la notion de "langage haut niveau" par celle de langage descriptif.                                         %
 % Introduire ces notions dans le proposal. ---> Leur donner des noms (Julien pense que ca pourrait être sympa)          %
 % Ne pas parler des améliorations dans le calendrier.                                                                   %
 % Il faut compléter la répartition des tâches, à la fois dans le calendrier et le proposal.                             %
@@ -148,7 +147,7 @@ des modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des mo
 d'un interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut 
 représenter une base pour l'élaboration de la phase plus théorique du projet.
 % TODO : En fait KP propose une interprétation d'un tricot avec un graphe, mais j'ai l'impression qu'il ne prend pas en compte de
-% points très compliqués... En parler dès maintenant ? 
+% points très compliqués... En parler dès maintenant ? -> je pense que ça peut être une bonne idée
 
 
 \textbf{Avantages : } Une bonne base théorique pour formaliser le tricot.
@@ -177,34 +176,60 @@ les différents logiciels ont un public visé extrèmement restreint (trop compl
 \subsection{Fonctionnalités}
 
 L'aboutissement de notre projet sera un logiciel destiné aux tricoteurs de tous niveaux, sans connaissances préalables en informatique. 
-Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls, chaussette, écharpe...) et les agrémenter (choix des points, 
-de la couleur, ajouter des points plus exotiques...). Ensuite ils pourront générer les instructions correspondant à leur réalisation 
+Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls, chaussette, écharpe...), les agrémenter (choix des points, 
+de la couleur, ajouter des points plus exotiques...) et visualiser le résultat. Ensuite ils pourront générer les instructions correspondant à leur réalisation 
 spécifique (à l'image de ce que l'on pourrait trouver dans un manuel de tricot) sous forme d'un tutoriel.
 
-Ces fonctionnalités peuvent être regroupées en différents composants qui vont interagir entre eux. Nous présentons ici ces différents 
-composants.
+Pour remplir cet objectif, nous allons avoir besoin de plusieurs niveau de langages afin de traiter les différents niveaux de représentation d'un tricot (du descriptif aux instructions). Nous présentons ici ces langages ainsi que les composants du logiciel qui vont les manipuler.
 
-\subsubsection{Formalisation d'un langage et modelisation des points}
+\subsubsection{Cinq différents niveaux de langages}
+
+Afin de remplir ses objectifs, notre logiciel va mabipuler en tout cinq langages, ou aparentés, de description des tricots. Nous décrivons ici ces cinq niveaux :
+
+\begin{itemize}
+ \item \textbf{Les spécifications utilisateur.} Au niveau de l'interface graphique, l'utilsateur pourra entrer les spécifications du tricot qu'il souhaite réaliser (forme, taille,...). En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant...), des differents motifs disponibles avec leur position sur le tricot, et aussi la possibilité de donner des indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
+ \item \textbf{Un langage descriptif.} Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots de manière générale. L'idée est que l'utilsateur qui veut tricoter un objet avec une forme très particulière puisse décrire son objet dans ce langage. A priori ce langage proposera à l'utilisateur d'assembler des formes de base (rectangles, trapèzes, cylindres,...) afin de décrire la forme de l'objet qu'il souhaite réaliser. Le passage des spécifications au langage descriptif sera effectué par l'interface graphique.
+ \item \textbf{Une représentation intermédiaire.} Lors de la compilation du langage descritif vers les instructions maille par maille, le compilateur utilisera une représentation intermédiaire. Celle-ci se fera sous forme de graphe. Les noeuds représenteront les mailles, tandis que les arêtes représenteront la manière dont elles sont reliées entre elles.
+ \item \textbf{Langage bas niveau} Ce langage décrira les instructions à effectuer maille par maille afin de réaliser le tricot. Il sera très proche des instructions qui peuvent être données dans un manuel de tricot.
+ \item \textbf{Instructions pour l'utilisateur.} Ce langage sera très proche du précédent. Il s'agit juste de rendre plus lisible par un humain la liste d'instructions définie par le langage bas niveau. Le traducteur s'occupera de passer de l'un à l'autre.
+\end{itemize}
+
+La figure \ref{nvx-lg} représente ces niveaux de langages et leurs liens respectifs. %A REFORMULER
+
+    \begin{figure}[!h]
+    \centering
+
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 2cm,
+                    semithick]
+      \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+
+      \node[state]     (niv1)   []                     {Spécifications par l'utilisateur};
+      \node[state]     (niv2)	[] [below of=niv1]     {Langage descriptif};
+      \node[state]     (niv3) 	[] [below of=niv2]     {Représentation intermerdiaire (graphe)};
+      \node[state]     (niv4)   [] [below of=niv3]     {Langage bas niveau};
+      \node[state]     (niv5)   [] [below of=niv4]     {Instructions pour l'utilisateur};
 
 
-Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots.
-Une telle description se fera par une formation continue en tricot, qui permettra d'ajouter de nouveaux points (i.e. de nouvelles possibilités pour le tricot) tout au long du projet, mais également d'avoir une vue plus générale sur la manière de concevoir un tel
-langage. La formalisation du langage résultant sera également un objectif clé de ce projet.
+      \path (niv1)   edge               node {GUI} 	   (niv2)
+	    (niv2)   edge 	 	node {Compilateur} (niv3)
+	    (niv3)   edge               node {Compilateur} (niv4)
+	    (niv4)   edge               node {Traducteur}  (niv5)
+      ;
 
-En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant..), des differents points et maille, et aussi la possibilité de donner des indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
+    \end{tikzpicture}
 
-De plus, les differents points seront modelisés afin que le compilateur puisse s'appuyer dessus pour concevoir la liste d'instructions bas-niveau finales, qui seront utiles au tricoteur 
+    \caption{Cinq niveaux de langages}
+    \label{nvx-lg}
+    \end{figure}
 
+    
 \subsubsection{Compilation}
 
 C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que
 l'utilisateur souhaite créer en une interprétation dans un langage bas niveau (type KP), qui pourra ensuite être traduit en une succession
 d'instructions que celui-ci pourra réaliser.
-Le compilateur devra également être capable de détecter des impossibilités au niveau de la conception du modèle.
+Le compilateur devra également être capable de détecter des impossibilités au niveau de la conception du modèle (deux point incompatibles qui se superposent au même endroit par exemple).
 
-La conception du compilateur présuppose également d'avoir défini (tout comme nous aurons défini le langage de la section précédente) un
-langage pour les instructions qui seront générées (un peu comme dans un manuel de tricot).
-Une fois ce langage défini, nous pourrons nous concentrer sur la phase de conception du compilateur.
 
 \subsubsection{Réalisation logicielle : interface pour tricoteur}
 
@@ -218,8 +243,8 @@ L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs esse
   \item \textbf{Le suivi personnalisé.} Une fois que l'utilisateur aura saisi son tricot, le logiciel appellera le compilateur afin de générer
 la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le
 logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à
-accomplir et l'observation du résultat à obtenir à chaque étape.
-\end{itemize}
+accomplir et l'observation du résultat à obtenir à chaque étape. \newline
+\end{itemize} 
 
 Un premier prototype d'interface a été conçu durant la première réunion. Cette interface comporterait trois zones principales :
 \begin{itemize}
@@ -232,7 +257,7 @@ suivre le bon déroulement de son tricot.
 
 La figure \ref{interface} représente la disposition de ces différentes zones dans l'interface.
 
-\begin{figure}[!h]
+\begin{figure}[!h] %Très jolie :)
   \centering
   \begin{tikzpicture}[scale=1]
     \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ; 
@@ -244,7 +269,7 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
     \draw (6.5,3.75) node {visualisation};
     \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;   
   \end{tikzpicture}
-  \caption{Interaction entre les différents composants}
+  \caption{Prototypage de l'interface graphique}
   \label{interface}
   \end{figure}
 
@@ -555,7 +580,7 @@ Dans cette section est décrite la répartition temporelle des tâches décrites
 
 \newpage
 \includepdf{calendrier-previsionnel.pdf} % si on pouvait mettre la page en format paysage ce serait cool
-                                         % Concaténer deux PDF ? -> pas vraiment : il faudrait que dans le pdf de sortie (proposal.pdf), la dernière page se voit en format paysage
+                                         % Concaténer deux PDF ? -> pas vraiment : il faudrait que dans le pdf de sortie (proposal.pdf), la dernière page se voie en format paysage
 
 % TODO : Calendrier à remplir
 
