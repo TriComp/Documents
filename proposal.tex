@@ -29,12 +29,12 @@
   \begin{titlepage}
     \begin{center}
 %       \vfill
-       {\Huge \@title} \\
+       {\LARGE \@title} \\
        \vspace{2cm}
        {\large \@date}
        \vspace{3cm}
     \end{center}
-       {\Large
+       {\large
        {William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\}
 	\vspace{1cm}
        {\hfill coordinateur \\}
@@ -180,21 +180,23 @@ Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls
 de la couleur, ajouter des points plus exotiques...) et visualiser le résultat. Ensuite ils pourront générer les instructions correspondant à leur réalisation 
 spécifique (à l'image de ce que l'on pourrait trouver dans un manuel de tricot) sous forme d'un tutoriel.
 
-Pour remplir cet objectif, nous allons avoir besoin de plusieurs niveau de langages afin de traiter les différents niveaux de représentation d'un tricot (du descriptif aux instructions). Nous présentons ici ces langages ainsi que les composants du logiciel qui vont les manipuler.
+Pour remplir cet objectif, nous allons avoir besoin de plusieurs niveaux de langage afin de traiter les différents niveaux de 
+représentation d'un tricot (d'une description "visuel" aux instructions). Nous présentons ici ces langages ainsi que les composants du 
+logiciel qu'ils vont les manipuler.
 
 \subsubsection{Cinq différents niveaux de langages}
 
-Afin de remplir ses objectifs, notre logiciel va mabipuler en tout cinq langages, ou aparentés, de description des tricots. Nous décrivons ici ces cinq niveaux :
+Notre logiciel va donc manipuler en tout cinq "langages", ou apparentés, de description des tricots. Ces cinq niveaux sont :
 
 \begin{itemize}
- \item \textbf{Les spécifications utilisateur.} Au niveau de l'interface graphique, l'utilsateur pourra entrer les spécifications du tricot qu'il souhaite réaliser (forme, taille,...). En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant...), des differents motifs disponibles avec leur position sur le tricot, et aussi la possibilité de donner des indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
+ \item \textbf{Les spécifications utilisateur.} Au niveau de l'interface graphique, l'utilisateur pourra entrer les spécifications du tricot qu'il souhaite réaliser (forme, taille,...). En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant...), des differents motifs choisis par l'utilisateur avec leur position sur le tricot, ainsi que certaines indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
  \item \textbf{Un langage descriptif.} Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots de manière générale. L'idée est que l'utilsateur qui veut tricoter un objet avec une forme très particulière puisse décrire son objet dans ce langage. A priori ce langage proposera à l'utilisateur d'assembler des formes de base (rectangles, trapèzes, cylindres,...) afin de décrire la forme de l'objet qu'il souhaite réaliser. Le passage des spécifications au langage descriptif sera effectué par l'interface graphique.
- \item \textbf{Une représentation intermédiaire.} Lors de la compilation du langage descritif vers les instructions maille par maille, le compilateur utilisera une représentation intermédiaire. Celle-ci se fera sous forme de graphe. Les noeuds représenteront les mailles, tandis que les arêtes représenteront la manière dont elles sont reliées entre elles.
+ \item \textbf{Une représentation intermédiaire.} Lors de la compilation du langage descriptif vers les instructions maille par maille, le compilateur utilisera une représentation intermédiaire, sous forme de graphe. Dans un tel graphe, les noeuds représenteront les mailles, tandis que les arêtes représenteront la manière dont elles sont reliées entre elles.
  \item \textbf{Langage bas niveau} Ce langage décrira les instructions à effectuer maille par maille afin de réaliser le tricot. Il sera très proche des instructions qui peuvent être données dans un manuel de tricot.
  \item \textbf{Instructions pour l'utilisateur.} Ce langage sera très proche du précédent. Il s'agit juste de rendre plus lisible par un humain la liste d'instructions définie par le langage bas niveau. Le traducteur s'occupera de passer de l'un à l'autre.
 \end{itemize}
 
-La figure \ref{nvx-lg} représente ces niveaux de langages et leurs liens respectifs. %A REFORMULER
+La figure \ref{nvx-lg} représente cette hiérarchie de langages.
 
     \begin{figure}[!h]
     \centering
@@ -559,14 +561,9 @@ version en cours du logiciel.
 
 \subsection{\label{calendrier}Calendrier prévisionnel}
 
-Nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longue à mettre en route).
+Nous décrivons dans cette section la répartition temporelle des tâches précédentes à travers un diagramme.
 
-Dans le cas où il y aurait du retard à un moment quelconque du projet, à la vue des fortes dépendances entre les différents groupes de 
-travail, nous réviserons l'attribution des tâches au sein des différentes équipes (par exemple en scindant des équipes nombreuses, ou en 
-redirigeant certaines personnes vers d'autres tâches) afin d'avoir plus de flexibilité pour combler un tel retard. C'est une possibilité 
-qu'il ne faut pas négliger dans ce projet.
-
-Dans cette section est décrite la répartition temporelle des tâches décrites plus haut.
+Globalement, nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longue à mettre en route).
 
 %\begin{figure}[!h]
 %  \vspace{-3cm}
