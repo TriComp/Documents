@@ -254,7 +254,8 @@ Un premier prototype d'interface a été conçu durant la première réunion. Ce
 boutons ;
   \item Une deuxième zone sera consacrée à la visualisation du modèle et du tutoriel généré ;
   \item Enfin, dans la dernière zone, l'utilisateur pourra faire défiler la suite d'instructions générée par le compilateur et ainsi 
-suivre le bon déroulement de son tricot.
+suivre le bon déroulement de son tricot ; cette suite d'instruction pourra par ailleurs être exportée à l'extérieur du logiciel (pour par exemple 
+être imprimée).
 \end{itemize}
 
 La figure \ref{interface} représente la disposition de ces différentes zones dans l'interface.
@@ -398,6 +399,14 @@ l'intégration est réussie et que le logiciel répond aux attentes que nous nou
 
 \subsection{Les différentes versions}
 
+La première version du langage de description décrirait une forme très simplifiée du tricot, ne faisant appel qu'aux points à l'endroit 
+et à l'envers, c'est à dire à la base du tricot. Cette version ne devrait donc pas donner lieu à des motifs impossibles.
+
+La deuxième version introduirait des points un peu plus difficile à manipuler ; nous prévoyons donc qu'elle puisse manier des duplications et 
+fusions de mailles (qui sont notamment utilisées pour créer des trous dans un ouvrage).
+
+Enfin, la troisième version s'attaquerait à l'opération la plus complexe que nous avons prévu de manipuler : les tresses, où plusieurs portions 
+de l'ouvrage peuvent se croiser, introduisant de la sorte des difficultés supplémentaires dans le suivi du parcours du fil.
 % TODO : Contenu (approximatif) des différentes versions (Agathe ?).
 
 \subsection{Groupes de travail\label{workpackages}}
