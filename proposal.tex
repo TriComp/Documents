@@ -181,7 +181,7 @@ de la couleur, ajouter des points plus exotiques...) et visualiser le résultat.
 spécifique (à l'image de ce que l'on pourrait trouver dans un manuel de tricot) sous forme d'un tutoriel.
 
 Pour remplir cet objectif, nous allons avoir besoin de plusieurs niveaux de langage afin de traiter les différents niveaux de 
-représentation d'un tricot (d'une description "visuel" aux instructions). Nous présentons ici ces langages ainsi que les composants du 
+représentation d'un tricot (d'une description "visuelle" aux instructions). Nous présentons ici ces langages ainsi que les composants du 
 logiciel qu'ils vont les manipuler.
 
 \subsubsection{Cinq différents niveaux de langages}
@@ -189,8 +189,8 @@ logiciel qu'ils vont les manipuler.
 Notre logiciel va donc manipuler en tout cinq "langages", ou apparentés, de description des tricots. Ces cinq niveaux sont :
 
 \begin{itemize}
- \item \textbf{Les spécifications utilisateur.} Au niveau de l'interface graphique, l'utilisateur pourra entrer les spécifications du tricot qu'il souhaite réaliser (forme, taille,...). En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant...), des differents motifs choisis par l'utilisateur avec leur position sur le tricot, ainsi que certaines indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
- \item \textbf{Un langage descriptif.} Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots de manière générale. L'idée est que l'utilsateur qui veut tricoter un objet avec une forme très particulière puisse décrire son objet dans ce langage. A priori ce langage proposera à l'utilisateur d'assembler des formes de base (rectangles, trapèzes, cylindres,...) afin de décrire la forme de l'objet qu'il souhaite réaliser. Le passage des spécifications au langage descriptif sera effectué par l'interface graphique.
+ \item \textbf{Les spécifications utilisateur.} Au niveau de l'interface graphique, l'utilisateur pourra entrer les spécifications du tricot qu'il souhaite réaliser (forme, taille,...). En pratique, ce langage comprendra en particulier une énumération des objets à tricoter (pull, bonnet, gant...), des différents motifs choisis par l'utilisateur avec leur position sur le tricot, ainsi que certaines indications spatiales, comme la taille du tricot. Ainsi, une phrase dans ce langage consiste en une liste des propriétés du tricot souhaité.
+ \item \textbf{Un langage descriptif.} Un des objectifs primordiaux de ce projet est de concevoir puis de formaliser un langage capable de décrire les tricots de manière générale. L'idée est que l'utilisateur qui veut tricoter un objet avec une forme très particulière puisse décrire son objet dans ce langage. A priori ce langage proposera à l'utilisateur d'assembler des formes de base (rectangles, trapèzes, cylindres,...) afin de décrire la forme de l'objet qu'il souhaite réaliser. Le passage des spécifications au langage descriptif sera effectué par l'interface graphique.
  \item \textbf{Une représentation intermédiaire.} Lors de la compilation du langage descriptif vers les instructions maille par maille, le compilateur utilisera une représentation intermédiaire, sous forme de graphe. Dans un tel graphe, les noeuds représenteront les mailles, tandis que les arêtes représenteront la manière dont elles sont reliées entre elles.
  \item \textbf{Langage bas niveau} Ce langage décrira les instructions à effectuer maille par maille afin de réaliser le tricot. Il sera très proche des instructions qui peuvent être données dans un manuel de tricot.
  \item \textbf{Instructions pour l'utilisateur.} Ce langage sera très proche du précédent. Il s'agit juste de rendre plus lisible par un humain la liste d'instructions définie par le langage bas niveau. Le traducteur s'occupera de passer de l'un à l'autre.
@@ -207,7 +207,7 @@ La figure \ref{nvx-lg} représente cette hiérarchie de langages.
 
       \node[state]     (niv1)   []                     {Spécifications par l'utilisateur};
       \node[state]     (niv2)	[] [below of=niv1]     {Langage descriptif};
-      \node[state]     (niv3) 	[] [below of=niv2]     {Représentation intermerdiaire (graphe)};
+      \node[state]     (niv3) 	[] [below of=niv2]     {Représentation intermédiaire (graphe)};
       \node[state]     (niv4)   [] [below of=niv3]     {Langage bas niveau};
       \node[state]     (niv5)   [] [below of=niv4]     {Instructions pour l'utilisateur};
 
@@ -240,7 +240,7 @@ Notre réalisation logicielle a pour but de mettre le compilateur précédent au
 L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs essentiellement deux fonctionnalités :
 \begin{itemize}
   \item \textbf{La conception d'un tricot via une interface graphique.} Notre objectif ici est de mettre en place pour l'utilisateur des
-  outils afin qu'il puisse entrer son projet de tricot : choix d'un modèle (pull, écharpe...), choix des points utilisés
+  outils afin qu'il puisse définir son projet de tricot : choix d'un modèle (pull, écharpe...), des points utilisés
   (jersey, ...), de la couleur.
   \item \textbf{Le suivi personnalisé.} Une fois que l'utilisateur aura saisi son tricot, le logiciel appellera le compilateur afin de générer
 la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le
@@ -252,7 +252,7 @@ Un premier prototype d'interface a été conçu durant la première réunion. Ce
 \begin{itemize}
   \item Une première zone contiendra la liste des éléments à choisir (points de tricot notamment) essentiellement sous la forme de 
 boutons ;
-  \item Une deuxième zone sera consacré à la visualisation du modèle et du tutoriel généré ;
+  \item Une deuxième zone sera consacrée à la visualisation du modèle et du tutoriel généré ;
   \item Enfin, dans la dernière zone, l'utilisateur pourra faire défiler la suite d'instructions générée par le compilateur et ainsi 
 suivre le bon déroulement de son tricot.
 \end{itemize}
@@ -271,13 +271,13 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
     \draw (6.5,3.75) node {visualisation};
     \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;   
   \end{tikzpicture}
-  \caption{Prototypage de l'interface graphique}
+  \caption{Prototype de l'interface graphique}
   \label{interface}
   \end{figure}
 
 \subsubsection{Diagramme des interactions}
 
-    La figure \ref{diag-composants} résumé les interactions entre les différentes fonctionnalités.
+    La figure \ref{diag-composants} résume les interactions entre les différentes fonctionnalités.
 
     \begin{figure}[!h]
     \centering
@@ -329,7 +329,7 @@ bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisati
 beaucoup d'outils et une bonne documentation pour concevoir des interfaces graphiques. De plus, toutes les personnes qui seront engagées 
 dans cette partie ont déjà une certaine familiarité avec ce langage. 
 
-Tandis que pour les modules ayant trait à la compilation et à la manipulation des langages en général, nous avons choisi OCaml, car en 
+Pour les modules ayant trait à la compilation et à la manipulation des langages en général, nous avons choisi OCaml, car en 
 tant que langage fonctionnel, les tâches liées à la compilation (lexeur, parseur...) seront plus simples à réaliser. 
 
 % TODO : Parler de la "connexion" entre les différents modules (ou au moins montrer que l'on y a pensé).
@@ -348,10 +348,10 @@ réalisation de leurs \oe{}uvres.
 
 Les améliorations possibles peuvent être séparées en deux catégories :
 \begin{itemize}
-   \item La portée de chaque version : si le projet avance convenablement, nous pouvons espérer apporter plus de fonctionnalités (points 
+   \item La portée de chaque version : si le projet avance rapidement, nous pouvons espérer apporter plus de fonctionnalités (points 
 de tricot, ...) aux versions successives. 
    \item Des services inédits : on peut imaginer certains autres services, comme une visualisation des créations 
-en 3D (typiquement sur un mannequin), une version multilangue du logiciel\footnote{en français et en anglais notamment...}, une option 
+en 3D (typiquement sur un mannequin), une version multilingue du logiciel\footnote{en français et en anglais notamment...}, une option 
 d'impression des instructions, un guide pour débutant (sous forme de manuel d'aide pour réaliser les points donnés dans les instructions), 
 une application Android ou un traducteur vers une machine à tricoter.
 \end{itemize}
@@ -370,6 +370,7 @@ Julien \textsc{Bensmail} (coordinateur), Agathe \textsc{Herrou} (chef de projet)
 
 Les tâches ont été réparties entre les différents membres de l'équipe (voir sections \ref{workpackages} et \ref{calendrier} pour plus de détails), qui peuvent travailler de manière (relativement) indépendante grâce à un dépot git (\url{https://github.com/TriComp}). Des réunions sont prévues tous les mardis matin afin de faire le point sur les avancées de chacun et de discuter de la direction générale du projet.
 
+% Est-ce utile de mettre l'adresse du pad?
 Par ailleurs, l'équipe dispose d'une liste de diffusion (tricomp@listes.ens-lyon.fr) et d'un pad collaboratif (\url{http://pad.aliens-lyon.fr/p/tricomp}) afin de pouvoir communiquer.
 
 \subsection{Les différentes phases}
@@ -461,7 +462,7 @@ la ième version du langage descriptif en instructions bas niveau.
 
       \textit{Production : Un module compilant le langage descriptif ième version vers des instructions bas niveau.}
 
-      \textbf{?}, Léo, Laureline %respo et équipe à définir selon i ?
+      \textbf{?}, Léo, Laureline %respo et équipe à définir selon i ? %% On ne peut pas juste enlever les occurences de ``i'', la description colle à toutes les versions, non?
     \end{description}
 
 \medskip
@@ -516,7 +517,7 @@ variation de points disponibles définis dans les spécifications de la ième ve
 \medskip
 
 \item[WP 6 : Communication] Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau 
-large public (website), au niveau utilisateur (readme et manuel) ou au niveau de l'équipe (compte-rendus de projet (proposition, rapport 
+large public (site web), au niveau utilisateur (readme et manuel) ou au niveau de l'équipe (compte-rendus de projet (proposition, rapport 
 d'activité mi-parcours et rapport final), initiation au tricot, mise au point chaque semaine).
 
 
@@ -527,14 +528,14 @@ d'activité mi-parcours et rapport final), initiation au tricot, mise au point c
 
     \textbf{Laureline}, William, Léo
 
-  \item[Rapport d'activite mi-parcours] Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, 
+  \item[Rapport d'activité mi-parcours] Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, 
 et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici là.
 
     \textit{Production : Rapport d'activité mi-parcours}
 
     \textbf{William}, Laureline, Léo
 
-  \item[Final Rapport et présentation] Rédiger le rapport de fin de projet et préparer la présentation du projet.
+  \item[Rapport final et présentation] Rédiger le rapport de fin de projet et préparer la présentation du projet.
 
     \textit{Production : Rapport final et slides de la présentation.}
 
