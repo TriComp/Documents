@@ -28,11 +28,11 @@
 \makeatletter % Pour utiliser le "at" comme une commande interne.
   \begin{titlepage}
     \begin{center}
-       \vfill
+%       \vfill
        {\Huge \@title} \\
        \vspace{2cm}
        {\large \@date}
-       \vspace{6cm}
+       \vspace{3cm}
     \end{center}
        {\Large
        {William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\}
@@ -43,18 +43,20 @@
        {chef de projet \\}
        \vspace{1.5cm}
        {Frédéric \textsc{Lang} \hfill Maxime \textsc{Lesourd} \\}
-       {Laureline \textsc{Pinault} \hfill Léo \textsc{Stéfanesco}}}
+       {Laureline \textsc{Pinault} \hfill Léo \textsc{Stéfanesco} \\}}
+       \vspace{2.5cm}
+       \begin{abstract}
+  Le but de ce projet est de fournir un ``compilateur pour tricot'' : un logiciel qui transforme des sépcifications générales sur un tricot à réaliser (exemple : forme, couleurs, dimensions, types de points, ...) en des instructions à effectuer pour réaliser le tricot (exemple : faire 10 rangs en alternat mailles à l'endroit, mailles à l'envers, puis ...). L'idée serait même que le logiciel serve d'assistant au tricotage en détaillant pour un non-expert du tricot (mais sachant tout de même tricotter !) les étapes les plus difficiles.
+  
+  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de lyon. L'équipe est composée de 7 étudiants en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
+  
+  Ce document vise à présenter notre proposition de projet. Il détaille la motivation derrière ce projet, l'objectif de ce projet, la manière dont nous comptons atteindre cet objectif (les différents composants du logiciel) ainsi que l'organisation (les différentes tâches, leur répartition au sein de l'équipe, le calendrier prévisionnel).
+\end{abstract}
+
   \end{titlepage}
 \makeatother
 
 % Faudrait mettre l'abstract sur la première page
-\begin{abstract}
-  Le but de ce projet est de fournir un ``compilateur pour tricot'' : un logiciel qui transforme des sépcifications générales sur un tricot à réaliser (exemple : forme, couleurs, dimensions, types de points, ...) en des instructions à effectuer pour réaliser le tricot (exemple : faire 10 rangs en alternat mailles à l'endroit, mailles à l'envers, puis ...). L'idée serait même que le logiciel serve d'assistant au tricotage en détaillant pour un non-expert du tricot (mais sachant tout de même tricotter !) les étapes les plus difficiles.
-  
-  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de lyon. L'équipe est composée de 7 personnes en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
-  
-  Ce document vise à présenter notre proposition de projet. Il détaille la motivation derrière ce projet, la manière dont nous comptons atteindre cet objectif (les différents composants du logiciel) ainsi que l'organisation (les différentes tâches, leur répartition au sein de l'équipe, le calendrier prévisionnel).
-\end{abstract}
 
 
 \newpage
