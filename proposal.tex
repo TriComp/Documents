@@ -48,61 +48,31 @@
        \begin{abstract}
   Le but de ce projet est de fournir un ``compilateur pour tricot'' : un logiciel qui transforme des spécifications générales sur un tricot à réaliser (exemple : forme, couleurs, dimensions, types de points, ...) en des instructions à effectuer pour réaliser le tricot (exemple : faire 10 rangs en alternant mailles à l'endroit, mailles à l'envers, puis ...). L'idée serait même que le logiciel serve d'assistant au tricot en détaillant pour un non-expert du tricot (mais sachant tout de même tricoter !) les étapes les plus difficiles.
 
-  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de Lyon. L'équipe est composée de 7 étudiants en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
+  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de Lyon. L'équipe est composée de 7 étudiants en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre Octobre et mi-Décembre.
 
   Ce document vise à présenter notre proposition de projet. Il détaille la motivation derrière ce projet, l'objectif de ce projet, la manière dont nous comptons atteindre cet objectif (les différents composants du logiciel) ainsi que l'organisation (les différentes tâches, leur répartition au sein de l'équipe, le calendrier prévisionnel).
       \end{abstract}
   \end{titlepage}
 \makeatother
 
-% Faudrait mettre l'abstract sur la première page
-
 
 \newpage
-
-% Esquisse de plan (proposee) bis :
-%
-% I] Introduction et objectifs
-% II] Produits concurrents
-% III] Cahier des charges et applications
-%     a) Fonctionnalités :
-%     b) Aspects techniques : les différents modules (gui, compilation, lg "haut niveau",...) + diagrammes
-%     c) public vise et retombees attendues
-%     d) Améliorations possible
-% IV] Organisation du projet
-%     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au
-%        sein de l'équipe (git, pad, réunions, ...)
-%     b) Workpackages
-%     c) Les différentes phases : Modèle par couches (versions successives)
-%     d) Calendrier des taches
-
-% Abstract ? -> permet d'avoir un endroit avec le cadre du projet (sinon à mettre dans l'intro)
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO : D'une manière générale :                                                                                       %
-% Remplacer la notion de "langage haut niveau" par celle de langage descriptif.                                         %
-% Introduire ces notions dans le proposal. ---> Leur donner des noms (Julien pense que ca pourrait être sympa)          %
-% Ne pas parler des améliorations dans le calendrier.                                                                   %
-% Il faut compléter la répartition des tâches, à la fois dans le calendrier et le proposal.                             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \tableofcontents
 
 \newpage
 
-\section{Introduction et objectifs} %Ca serait bien de décrire ce que c'est qu'un tricot (des points, des mailles,... ) -> dans l'introduction ?
+\section{Introduction et objectifs}
 
 Le tricot est une technique utilisée pour créer une étoffe à partir de fils. Ses origines remontent au $X^{eme}$ siècle.
 Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet
 quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt expert, que ce soit en tricot ou en informatique (comment
 décrire un tricot à l'ordinateur ?).
 
-% je sais pas si c'est pertinent de le mettre là... ?
 Le principe du tricot est de former des boucles de fil (appelées \emph{mailles}), et de créer, à l'aide d'aiguilles, de nouvelles boucles
 imbriquées dans les précédentes, formant ainsi un nouveau \emph{rang}. Chaque maille est reliées aux mailles qui lui sont adjacentes,
-permettant ainsi de créer une étoffe consistante. La combinaison des différentes manières de former les mailles et de les relier entre elles
-permet de définir une grande variété de \emph{points}, et leur combinaison permet de créer une grande diversité de pièces.
+permettant ainsi de créer une étoffe consistante. La combinaison des différentes manières de former les mailles et de les relier entre 
+elles permet de définir une grande variété de \emph{points}, et leur combinaison permet de créer une grande diversité de pièces.
 
 Le projet TriComp visait au départ à concevoir un Compilateur pour Tricot (d'où son nom) afin de faciliter davantage l'interaction entre
 tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage ciblé nos objectifs. Notre objectif principal est de
@@ -154,8 +124,6 @@ KP\footnote{\url{http://www.cs.cmu.edu/~taey/pub/knit.pdf}} est un langage bas n
 des modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné
 d'un interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut
 représenter une base pour l'élaboration de la phase plus théorique du projet.
-% TODO : En fait KP propose une interprétation d'un tricot avec un graphe, mais j'ai l'impression qu'il ne prend pas en compte de
-% points très compliqués... En parler dès maintenant ? -> je pense que ça peut être une bonne idée
 
 
 \textbf{Avantages : } Une bonne base théorique pour formaliser le tricot.
@@ -171,7 +139,7 @@ fournir une visualisation 3D du modèle passé en entrée. KnitML est davantage 
 
 \textbf{Avantages : } Base théorique intéressante, déjà utilisée par certains logiciels.
 
-\textbf{Inconvénients : } ? % TODO
+\textbf{Inconvénients : } ? Pas encore d'application pour une interface interactive.
 
 \subsection{Premières conclusions}
 
