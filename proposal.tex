@@ -36,7 +36,7 @@
     \end{center}
        {\large
        {William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\}
-	\vspace{1cm}
+    \vspace{1cm}
        {\hfill coordinateur \\}
        {Agathe \textsc{Herrou}  \hfill Romain \textsc{Labolle} \\}
        \vspace{1cm}
@@ -47,9 +47,9 @@
        \vspace{2.5cm}
        \begin{abstract}
   Le but de ce projet est de fournir un ``compilateur pour tricot'' : un logiciel qui transforme des spécifications générales sur un tricot à réaliser (exemple : forme, couleurs, dimensions, types de points, ...) en des instructions à effectuer pour réaliser le tricot (exemple : faire 10 rangs en alternant mailles à l'endroit, mailles à l'envers, puis ...). L'idée serait même que le logiciel serve d'assistant au tricot en détaillant pour un non-expert du tricot (mais sachant tout de même tricoter !) les étapes les plus difficiles.
-  
-  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de lyon. L'équipe est composée de 7 étudiants en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
-  
+
+  Ce projet sera réalisé dans le cadre d'une UE ``projet intégré'' de l'ENS de Lyon. L'équipe est composée de 7 étudiants en M1 d'informatique à l'ENS de lyon. Le projet se déroulera entre octobre et mi-décembre.
+
   Ce document vise à présenter notre proposition de projet. Il détaille la motivation derrière ce projet, l'objectif de ce projet, la manière dont nous comptons atteindre cet objectif (les différents composants du logiciel) ainsi que l'organisation (les différentes tâches, leur répartition au sein de l'équipe, le calendrier prévisionnel).
       \end{abstract}
   \end{titlepage}
@@ -70,7 +70,7 @@
 %     c) public vise et retombees attendues
 %     d) Améliorations possible
 % IV] Organisation du projet
-%     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au 
+%     a) Description de l'equipe : (nombre/nom/prenom des collaborateurs, affinités/compétences variées...) + moyen de communication,.. au
 %        sein de l'équipe (git, pad, réunions, ...)
 %     b) Workpackages
 %     c) Les différentes phases : Modèle par couches (versions successives)
@@ -99,9 +99,9 @@ quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt exp
 décrire un tricot à l'ordinateur ?).
 
 % je sais pas si c'est pertinent de le mettre là... ?
-Le principe du tricot est de former des boucles de fil (appelées \emph{mailles}), et de, à l'aide d'aiguilles, créer de nouvelles boucles 
-imbriquées dans les précédentes, formant ainsi un nouveau \emph{rang}. Chaque maille est reliées aux mailles qui lui sont adjacentes, 
-permettant ainsi de créer une étoffe consistante. La combinaison des différentes manières de former les mailles et de les relier entre elles 
+Le principe du tricot est de former des boucles de fil (appelées \emph{mailles}), et de, à l'aide d'aiguilles, créer de nouvelles boucles
+imbriquées dans les précédentes, formant ainsi un nouveau \emph{rang}. Chaque maille est reliées aux mailles qui lui sont adjacentes,
+permettant ainsi de créer une étoffe consistante. La combinaison des différentes manières de former les mailles et de les relier entre elles
 permet de définir une grande variété de \emph{points}, et leur combinaison permet de créer une grande diversité de pièces.
 
 Le projet TriComp visait au départ à concevoir un Compilateur pour Tricot (d'où son nom) afin de faciliter davantage l'interaction entre
@@ -109,9 +109,9 @@ tricoteur et machine. Après un examen de l'état de l'art, nous avons davantage
 fournir un logiciel disposant de fonctionnalités à la fois de création (de modèles), de visualisation et de conception (tricot),
 destiné au plus grand nombre (c'est-à-dire sans connaissances poussées en informatique, et pour des tricoteurs de tous niveaux).
 
-La première des motivations est venue lors de la présentation du sujet. Ce sujet, à la fois troublant et surprenant, nous a interpelé et 
+La première des motivations est venue lors de la présentation du sujet. Ce sujet, à la fois troublant et surprenant, nous a interpellé et
 intéressé dès le début. Il s'agit d'un projet original, qui répond à un manque de logiciels simples d'utilisation pour tricoteurs de tous
-niveaux. De plus, la diversité des tâches à accomplir dans ce projet (aussi bien définitions "théoriques" (langage) que pratiques 
+niveaux. De plus, la diversité des tâches à accomplir dans ce projet (aussi bien définitions "théoriques" (langage) que pratiques
 (compilateur, interface)) a permis à chaque membre de l'équipe de trouver sa place.
 
 Ce document présente notre proposition de projet. Après avoir détaillé l'état de l'art des logiciels de tricot existants, nous exposerons
@@ -122,16 +122,16 @@ groupes de travail identifiés ainsi qu'un calendrier rassemblant les différent
 
 \section{Produits concurrents}
 
-Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun une description du produit, 
-ses avantages et ses inconvénients. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le 
+Nous présentons dans cette section les différents produits concurrents que l'on peut trouver, avec pour chacun une description du produit,
+ses avantages et ses inconvénients. Ainsi nous pourrons cibler davantage les fonctionnalités intéressantes à mettre en place et le
 travail déjà fourni pouvant nous être utile.
 
 \subsection{OpenKnit}
 
-OpenKnit\footnote{\url{http://openknit.org/}} est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs 
-instructions dans un contrôleur Arduino (une carte programmable). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet 
-nécessite des connaissances en électroniques assez importantes, et est plutôt orienté vers la fabrication du produit que sa conception 
-(les instructions sont directement transmises à la machine OpenKnit). Il est donc plutôt destiné à un public qui souhaite faire fabriquer 
+OpenKnit\footnote{\url{http://openknit.org/}} est une machine qui permet à ses utilisateurs de concevoir des vêtements en entrant leurs
+instructions dans un contrôleur Arduino (une carte programmable). Même si l'utilisateur peut créer ou télécharger des modèles, ce projet
+nécessite des connaissances en électroniques assez importantes, et est plutôt orienté vers la fabrication du produit que sa conception
+(les instructions sont directement transmises à la machine OpenKnit). Il est donc plutôt destiné à un public qui souhaite faire fabriquer
 de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au caractère innovant de ce projet).
 
 \textbf{Avantages : } Fabrication possible directement à partir de l'ordinateur.
@@ -140,8 +140,8 @@ de simples créations et non pas aux tricoteurs (ce qui n'enlève rien au caract
 
 \subsection{DesignaKnit}
 
-DesignaKnit\footnote{\url{https://www.softbyte.co.uk/designaknit.htm}} est un logiciel permettant de créer des modèles de tricot destinés 
-à être réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose 
+DesignaKnit\footnote{\url{https://www.softbyte.co.uk/designaknit.htm}} est un logiciel permettant de créer des modèles de tricot destinés
+à être réalisés à la main ou avec une machine à tricoter. Destiné plutôt à un public confirmé, celui-ci est assez complet et propose
 quelques outils innovants, comme un convertisseur d'images vers un motif réalisable en tricot.
 
 \textbf{Avantages : } Plutôt complet avec quelques outils intéressants.
@@ -150,9 +150,9 @@ quelques outils innovants, comme un convertisseur d'images vers un motif réalis
 
 \subsection{KP}
 
-KP\footnote{\url{http://www.cs.cmu.edu/~taey/pub/knit.pdf}} est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire 
-des modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné 
-d'un interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut 
+KP\footnote{\url{http://www.cs.cmu.edu/~taey/pub/knit.pdf}} est un langage bas niveau développé en 2004 pour aider les tricoteurs à écrire
+des modèles de tricot. Il offre la possibilité de combiner ou d'ajuster des modèles pour en créer de nouveaux. Ce langage est accompagné
+d'un interpréteur qui génère des instructions elles aussi bas niveau. Bien qu'il fut abandonné avant d'être abouti, ce projet peut
 représenter une base pour l'élaboration de la phase plus théorique du projet.
 % TODO : En fait KP propose une interprétation d'un tricot avec un graphe, mais j'ai l'impression qu'il ne prend pas en compte de
 % points très compliqués... En parler dès maintenant ? -> je pense que ça peut être une bonne idée
@@ -164,9 +164,9 @@ représenter une base pour l'élaboration de la phase plus théorique du projet.
 
 \subsection{KnitML}
 
-Le projet KnitML\footnote{\url{http://www.knitml.com/blog/static.php?page=about-knitml}} a également pour but de fournir un langage bas 
-niveau au service des tricoteurs et développeurs de logiciels liés au tricot. Par exemple, le logiciel Knitter se base sur KnitML pour 
-fournir une visualisation 3D du modèle passé en entrée. KnitML est davantage actualisé (la dernière version date de 2012) que KP et peut 
+Le projet KnitML\footnote{\url{http://www.knitml.com/blog/static.php?page=about-knitml}} a également pour but de fournir un langage bas
+niveau au service des tricoteurs et développeurs de logiciels liés au tricot. Par exemple, le logiciel Knitter se base sur KnitML pour
+fournir une visualisation 3D du modèle passé en entrée. KnitML est davantage actualisé (la dernière version date de 2012) que KP et peut
 également nous apporter une précieuse aide.
 
 \textbf{Avantages : } Base théorique intéressante, déjà utilisée par certains logiciels.
@@ -175,21 +175,21 @@ fournir une visualisation 3D du modèle passé en entrée. KnitML est davantage 
 
 \subsection{Premières conclusions}
 
-Des logiciels et des langages relatifs au tricot existent, chacun offrant des possibilités ciblées (fabrication, création, formalisation 
-d'un langage). Cependant, aucun d'entre eux n'offre la possibilité de suivre un tricot en cours d'élaboration par l'utilisateur. De plus, 
-les différents logiciels ont un public visé extrèmement restreint (trop complexes, investissement dans une machine, ...).
+Des logiciels et des langages relatifs au tricot existent, chacun offrant des possibilités ciblées (fabrication, création, formalisation
+d'un langage). Cependant, aucun d'entre eux n'offre la possibilité de suivre un tricot en cours d'élaboration par l'utilisateur. De plus,
+les différents logiciels ont un public visé extrêmement restreint (trop complexes, investissement dans une machine, ...).
 
 \section{Cahier des charges et applications}
 
 \subsection{Fonctionnalités}
 
-L'aboutissement de notre projet sera un logiciel destiné aux tricoteurs de tous niveaux, sans connaissances préalables en informatique. 
-Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls, chaussette, écharpe...), les agrémenter (choix des points, 
-de la couleur, ajouter des points plus exotiques...) et visualiser le résultat. Ensuite ils pourront générer les instructions correspondant à leur réalisation 
+L'aboutissement de notre projet sera un logiciel destiné aux tricoteurs de tous niveaux, sans connaissances préalables en informatique.
+Ces utilisateurs pourront charger des modèles de vêtements prédéfinis (pulls, chaussette, écharpe...), les agrémenter (choix des points,
+de la couleur, ajouter des points plus exotiques...) et visualiser le résultat. Ensuite ils pourront générer les instructions correspondant à leur réalisation
 spécifique (à l'image de ce que l'on pourrait trouver dans un manuel de tricot) sous forme d'un tutoriel.
 
-Pour remplir cet objectif, nous allons avoir besoin de plusieurs niveaux de langage afin de traiter les différents niveaux de 
-représentation d'un tricot (d'une description "visuelle" aux instructions). Nous présentons ici ces langages ainsi que les composants du 
+Pour remplir cet objectif, nous allons avoir besoin de plusieurs niveaux de langage afin de traiter les différents niveaux de
+représentation d'un tricot (d'une description "visuelle" aux instructions). Nous présentons ici ces langages ainsi que les composants du
 logiciel qu'ils vont les manipuler.
 
 \subsubsection{Cinq différents niveaux de langages}
@@ -214,16 +214,16 @@ La figure \ref{nvx-lg} représente cette hiérarchie de langages.
       \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
 
       \node[state]     (niv1)   []                     {Spécifications par l'utilisateur};
-      \node[state]     (niv2)	[] [below of=niv1]     {Langage descriptif};
-      \node[state]     (niv3) 	[] [below of=niv2]     {Représentation intermédiaire (graphe)};
+      \node[state]     (niv2)   [] [below of=niv1]     {Langage descriptif};
+      \node[state]     (niv3)   [] [below of=niv2]     {Représentation intermédiaire (graphe)};
       \node[state]     (niv4)   [] [below of=niv3]     {Langage bas niveau};
       \node[state]     (niv5)   [] [below of=niv4]     {Instructions pour l'utilisateur};
 
 
-      \path (niv1)   edge               node {GUI} 	   (niv2)
-	    (niv2)   edge 	 	node {Compilateur} (niv3)
-	    (niv3)   edge               node {Compilateur} (niv4)
-	    (niv4)   edge               node {Traducteur}  (niv5)
+      \path (niv1)   edge               node {GUI}     (niv2)
+        (niv2)   edge       node {Compilateur} (niv3)
+        (niv3)   edge               node {Compilateur} (niv4)
+        (niv4)   edge               node {Traducteur}  (niv5)
       ;
 
     \end{tikzpicture}
@@ -232,7 +232,7 @@ La figure \ref{nvx-lg} représente cette hiérarchie de langages.
     \label{nvx-lg}
     \end{figure}
 
-    
+
 \subsubsection{Compilation}
 
 C'est l'intitulé du projet : construire un compilateur pour tricot. Le compilateur aura pour rôle de transformer le tricot que
@@ -254,15 +254,15 @@ L'objectif ici est de concevoir un logiciel fournissant à ses utilisateurs esse
 la liste des instructions qui devront être suivies pour réaliser le tricot. Ces instructions permettront un suivi du tricoteur par le
 logiciel : le tricoteur pourra à travers le logiciel suivre les différentes étapes, avec notamment des illustrations de la tâche à
 accomplir et l'observation du résultat à obtenir à chaque étape. \newline
-\end{itemize} 
+\end{itemize}
 
 Un premier prototype d'interface a été conçu durant la première réunion. Cette interface comporterait trois zones principales :
 \begin{itemize}
-  \item Une première zone contiendra la liste des éléments à choisir (points de tricot notamment) essentiellement sous la forme de 
+  \item Une première zone contiendra la liste des éléments à choisir (points de tricot notamment) essentiellement sous la forme de
 boutons ;
   \item Une deuxième zone sera consacrée à la visualisation du modèle et du tutoriel généré ;
-  \item Enfin, dans la dernière zone, l'utilisateur pourra faire défiler la suite d'instructions générée par le compilateur et ainsi 
-suivre le bon déroulement de son tricot ; cette suite d'instruction pourra par ailleurs être exportée à l'extérieur du logiciel (pour par exemple 
+  \item Enfin, dans la dernière zone, l'utilisateur pourra faire défiler la suite d'instructions générée par le compilateur et ainsi
+suivre le bon déroulement de son tricot ; cette suite d'instruction pourra par ailleurs être exportée à l'extérieur du logiciel (pour par exemple
 être imprimée).
 \end{itemize}
 
@@ -271,14 +271,14 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
 \begin{figure}[!h] %Très jolie :)
   \centering
   \begin{tikzpicture}[scale=1]
-    \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ; 
+    \draw (0,0) -- (0,6) -- (10,6) -- (10,0) -- (0,0) ;
 
     \draw (0.5,0.5) -- (0.5,1.5) -- (9.5,1.5) -- (9.5,0.5) -- (0.5,0.5) ; % instructions
     \draw (0.5,2) -- (0.5,5.5) -- (3,5.5) -- (3,2) -- (0.5,2) ;           % éléments à choisir
     \draw (3.5,2) -- (3.5,5.5) -- (9.5,5.5) -- (9.5,2) -- (3.5,2) ;       % visualisation
     \draw (5,1) node {instructions};
     \draw (6.5,3.75) node {visualisation};
-    \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;   
+    \node[text width = 1cm,text centered] at (1.6,3.8){éléments à choisir} ;
   \end{tikzpicture}
   \caption{Prototype de l'interface graphique}
   \label{interface}
@@ -295,25 +295,25 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
                     semithick]
       \tikzstyle{every state}=[draw=black,text=black]
 
-      \node[state]     (user)   []                                  	  {Utilisateur};
-      \node[state]     (gui)	[]                [right of=user]     	  {GUI};
-      \node[state]     (HN) 	[shape=rectangle] [above right of=gui]    {Langage descriptif};
-      \node[state]     (compil) []                [right of=HN]       	  {Compilateur};
+      \node[state]     (user)   []                                        {Utilisateur};
+      \node[state]     (gui)    []                [right of=user]         {GUI};
+      \node[state]     (HN)     [shape=rectangle] [above right of=gui]    {Langage descriptif};
+      \node[state]     (compil) []                [right of=HN]           {Compilateur};
       \node[state]     (BN)     [shape=rectangle] [below right of=compil] {Langage bas niveau};
-      \node[state]     (trad)   []                [below left of=BN]  	  {Traducteur};
-      \node[state]     (manuel) [shape=rectangle] [left of=trad]    	  {Instructions};
+      \node[state]     (trad)   []                [below left of=BN]      {Traducteur};
+      \node[state]     (manuel) [shape=rectangle] [left of=trad]          {Instructions};
       \node[state]     (machine)[dashed] [below of=BN] {\textit{Machine}};
 
 
       \path (user)   edge[<->,very thick]               node {Interactions} (gui)
-		     edge [bend left=15]node{}		(HN.west)
+             edge [bend left=15]node{}      (HN.west)
         (gui)        edge [bend left]   node {}               (HN.west)
         (HN.south)   edge               node {Visualisation}  (gui)
         (HN)         edge               node {}               (compil)
         (compil)     edge               node {}               (BN)
-        (BN)         edge          	node {}               (trad)
-		     edge [dashed] 	node {}		 (machine)
-        (trad)       edge          	node {}               (manuel)
+        (BN)         edge           node {}               (trad)
+             edge [dashed]  node {}      (machine)
+        (trad)       edge           node {}               (manuel)
         (manuel)     edge               node {Affichage}      (gui)
         ;
     \end{tikzpicture}
@@ -327,25 +327,26 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
 
 \subsubsection{Portabilité}
 
-TriComp est conçu comme un logiciel installable sur son ordinateur. Cela permet en effet une meilleure maitrise de l'environnement et donc 
-une meilleure stabilité. Cependant la portabilité est mise en avant et nous souhaitons développer un logiciel qui pourra s'installer à la 
-fois sur Linux, Windows et MacOS. Pour cela nous utiliserons des outils multi-plateformes. 
+TriComp est conçu comme un logiciel installable sur son ordinateur. Cela permet en effet une meilleure maîtrise de l'environnement et donc
+une meilleure stabilité. Cependant la portabilité est mise en avant et nous souhaitons développer un logiciel qui pourra s'installer à la
+fois sur Linux, Windows et MacOS. Pour cela nous utiliserons des outils multi-plateformes.
 
 \subsubsection{Langage de programmation}
 
-L'interface utilisateur sera développée grâce à un langage orienté objet. Nous avons choisi de programmer en C++ avec l'aide de la 
-bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisation 3D), ceci pour plusieurs raisons. Tout d'abord, Qt fournit 
-beaucoup d'outils et une bonne documentation pour concevoir des interfaces graphiques. De plus, toutes les personnes qui seront engagées 
-dans cette partie ont déjà une certaine familiarité avec ce langage. 
+L'interface utilisateur sera développée grâce à un langage orienté objet. Nous avons choisi de programmer en C++ avec l'aide de la
+bibliothèque Qt (et éventuellement OpenGL si nous développons une visualisation 3D), ceci pour plusieurs raisons. Tout d'abord, Qt fournit
+beaucoup d'outils et une bonne documentation pour concevoir des interfaces graphiques. De plus, toutes les personnes qui seront engagées
+dans cette partie ont déjà une certaine familiarité avec ce langage.
 
-Pour les modules ayant trait à la compilation et à la manipulation des langages en général, nous avons choisi OCaml, car en 
-tant que langage fonctionnel, les tâches liées à la compilation (lexeur, parseur...) seront plus simples à réaliser. 
+Pour les modules ayant trait à la compilation et à la manipulation des langages en général, nous avons choisi OCaml, car en
+tant que langage fonctionnel, les tâches liées à la compilation (analyseur
+lexical et syntaxique...) seront plus simples à réaliser.
 
 % TODO : Parler de la "connexion" entre les différents modules (ou au moins montrer que l'on y a pensé).
 
 \subsubsection{Licence}
 
-En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, nous nous sommes orientés vers la licence 
+En ce qui concerne le choix de la licence, nous souhaitons produire un logiciel libre. Ainsi, nous nous sommes orientés vers la licence
 GPL V2. % TODO : Expliquer pourquoi.
 
 \subsection{Public visé et retombées attendues}
@@ -357,15 +358,15 @@ réalisation de leurs \oe{}uvres.
 
 Les améliorations possibles peuvent être séparées en deux catégories :
 \begin{itemize}
-   \item La portée de chaque version : si le projet avance rapidement, nous pouvons espérer apporter plus de fonctionnalités (points 
-de tricot, ...) aux versions successives. 
-   \item Des services inédits : on peut imaginer certains autres services, comme une visualisation des créations 
-en 3D (typiquement sur un mannequin), une version multilingue du logiciel\footnote{en français et en anglais notamment...}, une option 
-d'impression des instructions, un guide pour débutant (sous forme de manuel d'aide pour réaliser les points donnés dans les instructions), 
+   \item La portée de chaque version : si le projet avance rapidement, nous pouvons espérer apporter plus de fonctionnalités (points
+de tricot, ...) aux versions successives.
+   \item Des services inédits : on peut imaginer certains autres services, comme une visualisation des créations
+en 3D (typiquement sur un mannequin), une version multilingue du logiciel\footnote{en français et en anglais notamment...}, une option
+d'impression des instructions, un guide pour débutant (sous forme de manuel d'aide pour réaliser les points donnés dans les instructions),
 une application Android ou un traducteur vers une machine à tricoter.
 \end{itemize}
-Cependant, étant donné que l'objectif premier est de fournir un logiciel disposant d'un maximum de fonctionnalités de bases, il est fort 
-possible qu'une grande partie ces améliorations (celles qui nécessitent beaucoup de temps de travail) ne soient pas réalisées durant le 
+Cependant, étant donné que l'objectif premier est de fournir un logiciel disposant d'un maximum de fonctionnalités de bases, il est fort
+possible qu'une grande partie ces améliorations (celles qui nécessitent beaucoup de temps de travail) ne soient pas réalisées durant le
 temps imparti pour la réalisation du projet.
 
 
@@ -373,8 +374,8 @@ temps imparti pour la réalisation du projet.
 
 \subsection{L'équipe}
 
-L'équipe de notre projet TriComp comporte sept étudiants de M1 d'informatique de l'Ecole Normale Supérieure de Lyon ainsi qu'un coordinateur. Par ordre alphabétique : William \textsc{Aufort}, 
-Julien \textsc{Bensmail} (coordinateur), Agathe \textsc{Herrou} (chef de projet), Romain \textsc{Labolle}, Frédéric \textsc{Lang}, Maxime 
+L'équipe de notre projet TriComp comporte sept étudiants de M1 d'informatique de l'Ecole Normale Supérieure de Lyon ainsi qu'un coordinateur. Par ordre alphabétique : William \textsc{Aufort},
+Julien \textsc{Bensmail} (coordinateur), Agathe \textsc{Herrou} (chef de projet), Romain \textsc{Labolle}, Frédéric \textsc{Lang}, Maxime
 \textsc{Lesourd}, Laureline \textsc{Pinault} et Léo \textsc{Stéfanesco}. \newline
 
 Les tâches ont été réparties entre les différents membres de l'équipe (voir sections \ref{workpackages} et \ref{calendrier} pour plus de détails), qui peuvent travailler de manière (relativement) indépendante grâce à un dépot git (\url{https://github.com/TriComp}). Des réunions sont prévues tous les mardis matin afin de faire le point sur les avancées de chacun et de discuter de la direction générale du projet.
@@ -384,7 +385,7 @@ Par ailleurs, l'équipe dispose d'une liste de diffusion (tricomp@listes.ens-lyo
 
 \subsection{Les différentes phases}
 
-Nous avons prévu de développer trois versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles 
+Nous avons prévu de développer trois versions de notre logiciel. Chaque version sera basée sur la précédente et incluera de nouvelles
 fonctionnalités notamment au niveau de la variété et de la difficulté des points (de tricot) que notre logiciel prendra en compte. \newline
 
 Après une première phase de mise en route, les phases du projet correspondront aux différentes versions que nous avons prévu de réaliser :
@@ -393,39 +394,39 @@ La deuxième phase concerne la mise en place des briques de base de notre projet
     \begin{itemize}
      \item Création d'une interface utilisateur (vide).
      \item Création et lancement du site web.
-     \item Définition des langages. Le langage descriptif sera par la suite étendu, mais cette première phase permettra de définir la 
+     \item Définition des langages. Le langage descriptif sera par la suite étendu, mais cette première phase permettra de définir la
 structure et les premières commandes de ce langage.
     \end{itemize}
 
-Une fois cette phase réalisée, les phases suivantes seront similaires et consisteront à fournir une version améliorée des 
-différentes fonctionnalités. Pour chaque nouvelle version, différents groupes de travail (concernant respectivement le langage, le 
-compilateur, le module de vérification ou l'interface graphique) seront développés en parallèle. Chacune de ces phases sera conclue 
-par une intégration des nouveautés mises en place dans chacun des groupes de travail, ainsi que d'une série de tests afin de vérifier que 
+Une fois cette phase réalisée, les phases suivantes seront similaires et consisteront à fournir une version améliorée des
+différentes fonctionnalités. Pour chaque nouvelle version, différents groupes de travail (concernant respectivement le langage, le
+compilateur, le module de vérification ou l'interface graphique) seront développés en parallèle. Chacune de ces phases sera conclue
+par une intégration des nouveautés mises en place dans chacun des groupes de travail, ainsi que d'une série de tests afin de vérifier que
 l'intégration est réussie et que le logiciel répond aux attentes que nous nous sommes fixées (par exemple, nous pourrions le soumettre
 à des tricoteurs, et pas seulement vérifier que toutes les fonctionnalités sont opérationelles).
 
 
 \subsection{Les différentes versions}
 
-La première version du langage de description décrirait une forme très simplifiée du tricot, ne faisant appel qu'aux points à l'endroit 
+La première version du langage de description décrirait une forme très simplifiée du tricot, ne faisant appel qu'aux points à l'endroit
 et à l'envers, c'est à dire à la base du tricot. Cette version ne devrait donc pas donner lieu à des motifs impossibles.
 
-La deuxième version introduirait des points un peu plus difficile à manipuler ; nous prévoyons donc qu'elle puisse manier des duplications et 
+La deuxième version introduirait des points un peu plus difficile à manipuler ; nous prévoyons donc qu'elle puisse manier des duplications et
 fusions de mailles (qui sont notamment utilisées pour créer des trous dans un ouvrage).
 
-Enfin, la troisième version s'attaquerait à l'opération la plus complexe que nous avons prévu de manipuler : les tresses, où plusieurs portions 
+Enfin, la troisième version s'attaquerait à l'opération la plus complexe que nous avons prévu de manipuler : les tresses, où plusieurs portions
 de l'ouvrage peuvent se croiser, introduisant de la sorte des difficultés supplémentaires dans le suivi du parcours du fil.
 % TODO : Contenu (approximatif) des différentes versions (Agathe ?).
 
 \subsection{Groupes de travail et tâches\label{workpackages}}
 
-Nous avons divisé le travail à effectuer en six différents groupes de travail, correspondant globalement aux différents composants du 
+Nous avons divisé le travail à effectuer en six différents groupes de travail, correspondant globalement aux différents composants du
 logiciel. Ces groupes de travail sont eux-même subdivisés en tâches.
 
 Ci-dessous le détail et la répartition humaine des tâches (la personne en gras est responsable du bon déroulement de la tâche) : \newline
 
 \begin{itemize}
-\item[\textbf{1.}] \textbf{Langage bas niveau.} Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne 
+\item[\textbf{1.}] \textbf{Langage bas niveau.} Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne
 autour. Les tâches de ce groupe de travail sont les suivantes :
 
     \begin{itemize}
@@ -435,7 +436,7 @@ autour. Les tâches de ce groupe de travail sont les suivantes :
 
       \textbf{Laureline}
 
-    \item \underline{Module de traduction :} Consiste à implémenter un traducteur qui traduira les instructions du langage bas niveau en des 
+    \item \underline{Module de traduction :} Consiste à implémenter un traducteur qui traduira les instructions du langage bas niveau en des
 instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
 
       \textit{Production : Un module traduisant le langage bas niveau en instructions de tricot compréhensibles pour l'utilisateur.}
@@ -445,21 +446,21 @@ instructions en langage naturel, type manuel de tricot, compréhensible pour l'u
 
 \medskip
 
-\item[\textbf{2.}] \textbf{Vérification.} A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de 
-points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces 
-conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce groupe de travail sont 
+\item[\textbf{2.}] \textbf{Vérification.} A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de
+points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces
+conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce groupe de travail sont
 les suivantes :
 
     \begin{itemize}
     \item \underline{Définition des contraintes :} Consiste à définir les conflits qui peuvent apparaître.
-      
+
       \textit{Production : Une liste de contraintes décrivant les conflits possibles.}
 
       \textbf{Laureline}, Fred, Agathe
 
-    \item \underline{Implémentation des contraintes :} Consiste à implémenter un module de vérification qui se lancera avec la compilation pour 
+    \item \underline{Implémentation des contraintes :} Consiste à implémenter un module de vérification qui se lancera avec la compilation pour
 rattraper les erreurs survenant lors de la compilation.
-      
+
       \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
 
       \textbf{Laureline}
@@ -468,19 +469,19 @@ rattraper les erreurs survenant lors de la compilation.
 
 \medskip
 
-\item[\textbf{3.}] \textbf{Compilateur.} C'est le coeur du projet : le module qui va traduire le langage décrivant le tricot en instructions 
-bas niveau, permettant de réaliser le tricot maille par maille. Ce groupe de travail est subdivisé en trois tâches semblables, une pour 
+\item[\textbf{3.}] \textbf{Compilateur.} C'est le coeur du projet : le module qui va traduire le langage décrivant le tricot en instructions
+bas niveau, permettant de réaliser le tricot maille par maille. Ce groupe de travail est subdivisé en trois tâches semblables, une pour
 chaque version :
 
     \begin{itemize}
     \item \underline{Définition de la représentation intermédiaire :} Consiste à définir la représentation intermédiaire avec laquelle va travailler le compilateur.
-    
+
       \textit{Production : Une description de la représentation et une implémentation de celle-ci.}
-      
+
       \textbf{Agathe}, Laureline
-    
-    \item \underline{Compilation (ième version)} A chaque version, le langage descriptif sera étendu, d'où la nécessité de mettre à jour le 
-compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant 
+
+    \item \underline{Compilation (ième version)} A chaque version, le langage descriptif sera étendu, d'où la nécessité de mettre à jour le
+compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant
 la ième version du langage descriptif en instructions bas niveau.
 
       \textit{Production : Un module compilant le langage descriptif ième version vers des instructions bas niveau.}
@@ -490,9 +491,9 @@ la ième version du langage descriptif en instructions bas niveau.
 
 \medskip
 
-\item[\textbf{4.}] \textbf{Interface graphique.} L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à 
-l'utilisateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce 
-qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce groupe de travail sont les 
+\item[\textbf{4.}] \textbf{Interface graphique.} L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à
+l'utilisateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce
+qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce groupe de travail sont les
 suivantes :
 
   \begin{itemize}
@@ -501,28 +502,28 @@ suivantes :
     \textit{Production : Une interface graphique, pas encore reliée au logiciel}
 
     \textbf{William}, Romain
-	
-    \item \underline{Visualisation (ième version) :} Implémenter un module permettant, à partir d'une description en langage descriptif (ième version), 
+
+    \item \underline{Visualisation (ième version) :} Implémenter un module permettant, à partir d'une description en langage descriptif (ième version),
 visualiser l'objet décrit. % TODO : Description en langage descriptif... Reformuler ca...
 
     \textit{Production : Un module de visualisation pour la ième version du langage descriptif}
 
     \textbf{William}, Léo, Romain, Fred %respo et équipe à définir selon i ?
-    
-    \item \underline{Traduction des spécifications :} Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses 
+
+    \item \underline{Traduction des spécifications :} Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses
 spécifications, lesquelles seront traduites en langage descriptif (ième version).
 
-    \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la version i du langage descriptif, 
+    \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la version i du langage descriptif,
 permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
 
     \textbf{Fred}, Agathe
-    
+
     \item \underline{Affichage des instructions :} Afficher les instructions utilisateur sous forme de tutoriel dans l'interface graphique.
-    
+
     \textit{Production : Intégrer l'afficahge des instructions dans l'interface graphique.}
-    
+
     \textbf{Laureline}, William
-    
+
   \end{itemize}
 
 \medskip
@@ -532,19 +533,19 @@ permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il
 
 
   \begin{itemize}
-    \item \underline{Définition de la version i du langage :} Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la 
+    \item \underline{Définition de la version i du langage :} Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la
 variation de points disponibles définis dans les spécifications de la ième version.
 
     \textit{Production : Un langage descriptif, étendu à chaque version.}
 
     \textbf{Maxime}, Léo, Agathe
-    
+
   \end{itemize}
-  
+
 \medskip
 
-\item[\textbf{6.}] \textbf{Communication.} Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau 
-large public (site web), au niveau utilisateur (readme et manuel) ou au niveau de l'équipe (compte-rendus de projet (proposition, rapport 
+\item[\textbf{6.}] \textbf{Communication.} Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau
+large public (site web), au niveau utilisateur (readme et manuel) ou au niveau de l'équipe (compte-rendus de projet (proposition, rapport
 d'activité mi-parcours et rapport final), initiation au tricot, mise au point chaque semaine).
 
 
@@ -555,7 +556,7 @@ d'activité mi-parcours et rapport final), initiation au tricot, mise au point c
 
     \textbf{Laureline}, William
 
-    \item \underline{Rapport d'activité mi-parcours :} Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, 
+    \item \underline{Rapport d'activité mi-parcours :} Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là,
 et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici là.
 
     \textit{Production : Rapport d'activité mi-parcours}
@@ -574,7 +575,7 @@ et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici
 
     \textbf{Romain}, Fred
 
-    \item \underline{Readme, Manuel et Site web (ième version) :} Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la 
+    \item \underline{Readme, Manuel et Site web (ième version) :} Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la
 version en cours du logiciel.
 
     \textit{Production : Readme, manuel et site web}
