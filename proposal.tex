@@ -386,7 +386,8 @@ fusions de mailles (qui sont notamment utilisées pour créer des trous dans un 
 
 Enfin, la troisième version s'attaquerait à l'opération la plus complexe que nous avons prévu de manipuler : les tresses, où plusieurs portions
 de l'ouvrage peuvent se croiser, introduisant ainsi des difficultés supplémentaires dans le suivi du parcours du fil.
-% TODO : Contenu (approximatif) des différentes versions (Agathe ?).
+
+Au niveau des fonctionnalités, la visuualisation des instructions sous forme de tutoriel ne sera intégrée au logiciel qu'à partir de la version 2.
 
 \subsection{Groupes de travail et tâches\label{workpackages}}
 
@@ -561,12 +562,20 @@ version en cours du logiciel.
 
 \end{itemize}
 
+\subsection{Dépendances des tâches}
+
+Au niveau des tâches tournant autour du langage bas niveau, la tâche de transformation des instructions utilisateur en tutoriel affiché dans l'interface graphique doit se faire après la tâche de traduction du langage bas niveau en instructions utilisateur, qui elle-même doit se faire après la tâche de définition du langage bas niveau.
+
+Au niveau des tâche de compilation, pour chaque version, les tâches de compilation, de visualisation, de traduction des spécification et de vérification (quand elle est nécessaire) peuvent se faire en parallèle, mais seulement après la définition du langage descriptif.
+
+Enfin, les version se font successivement dans le temps, car elles servent de base les une aux autres.
+
 
 \subsection{\label{calendrier}Calendrier prévisionnel}
 
-Globalement, nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longue à mettre en route).
+Globalement, nous comptons un délai de trois semaines pour chaque version (sauf la première qui sera plus longue à mettre en route). L'agencement précis des tâches dans le temps a été fait en prenant en compte les dépendances de chacune des tâches.
 
-Nous décrivons dans cette section la répartition temporelle des tâches précédentes avec un planning (voir ci-dessous).
+Nous décrivons dans cette section la répartition temporelle des tâches précédentes avec un planning (voir ci-dessous). Il s'agit d'un planning sur un document collaboratif, qui sera mis à jour au cours du projet.
 
 Pour la plupart des tâches, deux semaines sont prévues. Le principe est que si une tâche prend plus de temps que prévu, retardant de la même toutes les autres dépendant d'elle, nous essayerons d'effectuer celles-ci en une semaine. De plus la dernière semaine étant uniquement consacrée à des tâches de rédaction, elle pourrait servir à rattraper d'éventuels retards.
 
