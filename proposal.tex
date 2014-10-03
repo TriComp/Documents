@@ -91,7 +91,7 @@
 
 \newpage
 
-\section{Introduction et objectifs}
+\section{Introduction et objectifs} %Ca serait bien de décrire ce que c'est qu'un tricot (des points, des mailles,... ) -> dans l'introduction ?
 
 Le tricot est une technique utilisée pour créer une étoffe à partir de fils. Ses origines remontent au $X^{eme}$ siècle.
 Redevenu à la mode dans toutes les tranches d'âge, il a aussi connu un développement au travers de l'informatique. Il existe en effet
@@ -297,7 +297,7 @@ La figure \ref{interface} représente la disposition de ces différentes zones d
       \node[state]     (machine)[dashed] [below of=BN] {\textit{Machine}};
 
 
-      \path (user)   edge[<->,very thick]               node {Spécifications} (gui)
+      \path (user)   edge[<->,very thick]               node {Interactions} (gui)
 		     edge [bend left=15]node{}		(HN.west)
         (gui)        edge [bend left]   node {}               (HN.west)
         (HN.south)   edge               node {Visualisation}  (gui)
@@ -409,164 +409,174 @@ Enfin, la troisième version s'attaquerait à l'opération la plus complexe que 
 de l'ouvrage peuvent se croiser, introduisant de la sorte des difficultés supplémentaires dans le suivi du parcours du fil.
 % TODO : Contenu (approximatif) des différentes versions (Agathe ?).
 
-\subsection{Groupes de travail\label{workpackages}}
+\subsection{Groupes de travail et tâches\label{workpackages}}
 
-Nous avons divisé le travail à effectuer en différents groupes de travail, correspondant globalement aux différents composants du 
+Nous avons divisé le travail à effectuer en six différents groupes de travail, correspondant globalement aux différents composants du 
 logiciel. Ces groupes de travail sont eux-même subdivisés en tâches.
 
-Ci-dessous le détail et la répartition humaine des tâches (la personne en gras est responsable du bon déroulement de la tâche) :
+Ci-dessous le détail et la répartition humaine des tâches (la personne en gras est responsable du bon déroulement de la tâche) : \newline
 
-\begin{description}
-\item[WP 1 : Langage bas niveau] Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne 
+\begin{itemize}
+\item[\textbf{1.}] \textbf{Langage bas niveau.} Ce groupe de travail est destiné à concevoir les instructions du langage bas niveau et ce qui tourne 
 autour. Les tâches de ce groupe de travail sont les suivantes :
 
-    \begin{description}
-    \item[Définition du langage] Consiste à définir les instructions du langage.
+    \begin{itemize}
+    \item \underline{Définition du langage :} Consiste à définir les instructions du langage.
 
       \textit{Production : Une liste d'instructions décrivant le langage bas niveau.}
 
       \textbf{Laureline}
 
-    \item[Module de traduction] Consiste à implémenter un traducteur qui traduira les instructions du langage bas niveau en des 
+    \item \underline{Module de traduction :} Consiste à implémenter un traducteur qui traduira les instructions du langage bas niveau en des 
 instructions en langage naturel, type manuel de tricot, compréhensible pour l'utilisateur.
 
       \textit{Production : Un module traduisant le langage bas niveau en instructions de tricot compréhensibles pour l'utilisateur.}
 
       \textbf{Laureline}
-    \end{description}
+    \end{itemize}
 
 \medskip
 
-\item[WP 2 : Vérification] A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de 
+\item[\textbf{2.}] \textbf{Vérification.} A partir de la version 3, le logiciel permettra à l'utilisateur de définir des motifs par combinaisons de 
 points. Or si ces motifs sont définis sans faire attention, il peut y avoir des conflits. Le module de vérification sert à repérer ces 
 conflits lors de la compilation ainsi qu'à indiquer à l'utilisateur où et pourquoi ils ont lieu. Les tâches de ce groupe de travail sont 
 les suivantes :
 
-    \begin{description}
-    \item[Définition des contraintes] Consiste à définir les conflits qui peuvent apparaître.
+    \begin{itemize}
+    \item \underline{Définition des contraintes :} Consiste à définir les conflits qui peuvent apparaître.
       
       \textit{Production : Une liste de contraintes décrivant les conflits possibles.}
 
-      \textbf{?}, Léo, Laureline
+      \textbf{Laureline}, Fred, Agathe
 
-    \item[Implémentation des contraintes] Consiste à implémenter un module de vérification qui se lancera avec la compilation pour 
+    \item \underline{Implémentation des contraintes :} Consiste à implémenter un module de vérification qui se lancera avec la compilation pour 
 rattraper les erreurs survenant lors de la compilation.
       
       \textit{Production : Un module rattrapant les erreurs liées aux conflits lors de la compilation.}
 
-      \textbf{?}, Léo, Laureline
+      \textbf{Laureline}
 
-    \end{description}
+    \end{itemize}
 
 \medskip
 
-\item[WP 3 : Compilateur] C'est le coeur du projet : le module qui va traduire le langage décrivant le tricot en instructions 
+\item[\textbf{3.}] \textbf{Compilateur.} C'est le coeur du projet : le module qui va traduire le langage décrivant le tricot en instructions 
 bas niveau, permettant de réaliser le tricot maille par maille. Ce groupe de travail est subdivisé en trois tâches semblables, une pour 
 chaque version :
 
-    \begin{description}
-    \item[Compilation (ième version)] A chaque version, le langage descriptif sera étendu, d'où la nécessité de mettre à jour le 
+    \begin{itemize}
+    \item \underline{Définition de la représentation intermédiaire :} Consiste à définir la représentation intermédiaire avec laquelle va travailler le compilateur.
+    
+      \textit{Production : Une description de la représentation et une implémentation de celle-ci.}
+      
+      \textbf{Agathe}, Laureline
+    
+    \item \underline{Compilation (ième version)} A chaque version, le langage descriptif sera étendu, d'où la nécessité de mettre à jour le 
 compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant 
 la ième version du langage descriptif en instructions bas niveau.
 
       \textit{Production : Un module compilant le langage descriptif ième version vers des instructions bas niveau.}
 
-      \textbf{?}, Léo, Laureline %respo et équipe à définir selon i ? %% On ne peut pas juste enlever les occurences de ``i'', la description colle à toutes les versions, non?
-    \end{description}
+      \textbf{Léo}, Laureline, Maxime %respo et équipe à définir selon i ? %% On ne peut pas juste enlever les occurences de ``i'', la description colle à toutes les versions, non?
+    \end{itemize}
 
 \medskip
 
-\item[WP 4 : Interface graphique] L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à 
+\item[\textbf{4.}] \textbf{Interface graphique.} L'interface graphique sera le lien entre l'utilisateur et le logiciel. Elle doit permettre à 
 l'utilisateur un accès ergonomique à toutes les fonctionnalités du logiciel. Elle va également permettre à l'utilisateur de visualiser ce 
 qu'il spécifie et va lui servir d'assistant pour tricoter à partir des instructions fournies. Les tâches de ce groupe de travail sont les 
 suivantes :
 
-  \begin{description}
-  \item[Mise en place de l'interface] Créer l'interface vide, la coquille. Commencer à travailler sur la visualisation.
+  \begin{itemize}
+    \item \underline{Mise en place de l'interface :} Créer l'interface vide, la coquille. Commencer à travailler sur la visualisation.
 
     \textit{Production : Une interface graphique, pas encore reliée au logiciel}
 
-    \textbf{William}
+    \textbf{William}, Romain
 	
-  \item[Visualisation (ième version)] Implémenter un module permettant, à partir d'une description en langage descriptif (ième version), 
+    \item \underline{Visualisation (ième version) :} Implémenter un module permettant, à partir d'une description en langage descriptif (ième version), 
 visualiser l'objet décrit. % TODO : Description en langage descriptif... Reformuler ca...
 
     \textit{Production : Un module de visualisation pour la ième version du langage descriptif}
 
-    \textbf{William}, Léo %respo et équipe à définir selon i ?
-
-  \item[Traduction des spécifications] Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses 
+    \textbf{William}, Léo, Romain, Fred %respo et équipe à définir selon i ?
+    
+    \item \underline{Traduction des spécifications :} Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses 
 spécifications, lesquelles seront traduites en langage descriptif (ième version).
 
     \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la version i du langage descriptif, 
 permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
 
-    \textbf{?}
-  \end{description}
+    \textbf{Fred}, Agathe
+    
+    \item \underline{Affichage des instructions :} Afficher les instructions utilisateur sous forme de tutoriel dans l'interface graphique.
+    
+    \textit{Production : Intégrer l'afficahge des instructions dans l'interface graphique.}
+    
+    \textbf{Laureline}, William
+    
+  \end{itemize}
 
 \medskip
 
 
-\item[WP 5 : Langage haut niveau] Ce groupe de travail est destiné à définir le langage haut niveau permettant de décrire les objets à tricoter et à modéliser les différents points.
+\item[\textbf{5.}] \textbf{Langage Descriptif.} Ce groupe de travail est destiné à définir le langage haut niveau permettant de décrire les objets à tricoter et à modéliser les différents points.
 
 
-  \begin{description}
-  \item[Définition de la version i du langage] Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la 
+  \begin{itemize}
+    \item \underline{Définition de la version i du langage :} Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la 
 variation de points disponibles définis dans les spécifications de la ième version.
 
     \textit{Production : Un langage descriptif, étendu à chaque version.}
 
-    \textbf{?}
-\item[Modelisation des points] Modéliser les différents points et mailles énumérés dans le langage 
-
-    \textit{Production : du texte correspondant aux differents types de points}
-
-    \textbf{?}
-  \end{description}
+    \textbf{Maxime}, Léo, Agathe
+    
+  \end{itemize}
+  
 \medskip
 
-\item[WP 6 : Communication] Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau 
+\item[\textbf{6.}] \textbf{Communication.} Ce groupe de travail inclut tout ce qui concerne la communication autour du projet, que ce soit au niveau 
 large public (site web), au niveau utilisateur (readme et manuel) ou au niveau de l'équipe (compte-rendus de projet (proposition, rapport 
 d'activité mi-parcours et rapport final), initiation au tricot, mise au point chaque semaine).
 
 
-  \begin{description}
-  \item[Proposition de projet] Rédiger la proposition.
+  \begin{itemize}
+    \item \underline{Proposition de projet :} Rédiger la proposition.
 
     \textit{Production : Proposition}
 
-    \textbf{Laureline}, William, Léo
+    \textbf{Laureline}, William
 
-  \item[Rapport d'activité mi-parcours] Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, 
+    \item \underline{Rapport d'activité mi-parcours :} Rédiger le rapport d'activité mi-parcours. Celui-ci contiendra tout le travail réalisé jusque là, 
 et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici là.
 
     \textit{Production : Rapport d'activité mi-parcours}
 
-    \textbf{William}, Laureline, Léo
+    \textbf{William}, tout le reste de l'équipe
 
-  \item[Rapport final et présentation] Rédiger le rapport de fin de projet et préparer la présentation du projet.
+    \item \underline{Rapport final et présentation :} Rédiger le rapport de fin de projet et préparer la présentation du projet.
 
     \textit{Production : Rapport final et slides de la présentation.}
 
-    \textbf{?}, William, Léo, Laureline, Romain, Maxime, Agathe, Frédéric
+    \textbf{Agathe}, tout le reste de l'équipe
 
-  \item[Site web] Créer un site web pour le projet. %décrire un peu plus
+    \item \underline{Site web :} Créer un site web pour le projet. %décrire un peu plus
 
     \textit{Production : Site web}
 
-    \textbf{Laureline}
+    \textbf{Romain}, Fred
 
-  \item[Readme, Manuel et Site web (ième version)] Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la 
+    \item \underline{Readme, Manuel et Site web (ième version) :} Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la 
 version en cours du logiciel.
 
     \textit{Production : Readme, manuel et site web}
 
-    \textbf{?}, Laureline
-  \end{description}
+    \textbf{Romain}, Fred
+  \end{itemize}
 
 \medskip
 
-\end{description}
+\end{itemize}
 
 
 \subsection{\label{calendrier}Calendrier prévisionnel}
@@ -586,7 +596,7 @@ Globalement, nous comptons un délai de trois semaines pour chaque version (sauf
 %\end{figure}
 
 \newpage
-\includepdf{calendrier-previsionnel.pdf} % si on pouvait mettre la page en format paysage ce serait cool
+\includepdf[landscape]{calendrier-previsionnel-l.pdf} % si on pouvait mettre la page en format paysage ce serait cool
                                          % Concaténer deux PDF ? -> pas vraiment : il faudrait que dans le pdf de sortie (proposal.pdf), la dernière page se voie en format paysage
 
 % TODO : Calendrier à remplir
