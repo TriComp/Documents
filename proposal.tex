@@ -99,7 +99,7 @@ quelques logiciels relatifs au tricot, mais ceux-ci visent un public plutôt exp
 décrire un tricot à l'ordinateur ?).
 
 % je sais pas si c'est pertinent de le mettre là... ?
-Le principe du tricot est de former des boucles de fil (appelées \emph{mailles}), et de créer, à l'aide d'aiguilles, de nouvelles boucles
+Le principe du tricot est de former des boucles de fil (appelées \emph{mailles}), et de, à l'aide d'aiguilles, créer de nouvelles boucles
 imbriquées dans les précédentes, formant ainsi un nouveau \emph{rang}. Chaque maille est reliées aux mailles qui lui sont adjacentes,
 permettant ainsi de créer une étoffe consistante. La combinaison des différentes manières de former les mailles et de les relier entre elles
 permet de définir une grande variété de \emph{points}, et leur combinaison permet de créer une grande diversité de pièces.
@@ -408,11 +408,11 @@ l'intégration est réussie et que le logiciel répond aux attentes que nous nou
 La première version du langage de description décrirait une forme très simplifiée du tricot, ne faisant appel qu'aux points à l'endroit
 et à l'envers, c'est à dire à la base du tricot. Cette version ne devrait donc pas donner lieu à des motifs impossibles.
 
-La deuxième version introduirait des points un peu plus difficiles à manipuler ; nous prévoyons donc qu'elle puisse manier des duplications et
+La deuxième version introduirait des points un peu plus difficile à manipuler ; nous prévoyons donc qu'elle puisse manier des duplications et
 fusions de mailles (qui sont notamment utilisées pour créer des trous dans un ouvrage).
 
 Enfin, la troisième version s'attaquerait à l'opération la plus complexe que nous avons prévu de manipuler : les tresses, où plusieurs portions
-de l'ouvrage peuvent se croiser, introduisant ainsi des difficultés supplémentaires dans le suivi du parcours du fil.
+de l'ouvrage peuvent se croiser, introduisant de la sorte des difficultés supplémentaires dans le suivi du parcours du fil.
 % TODO : Contenu (approximatif) des différentes versions (Agathe ?).
 
 \subsection{Groupes de travail et tâches\label{workpackages}}
@@ -481,9 +481,12 @@ chaque version :
 compilateur pour qu'il prenne en compte les nouveaux éléments du langage. Cette tâche consiste à implémenter un compilateur transformant
 la ième version du langage descriptif en instructions bas niveau.
 
-      \textit{Production : Un module compilant le langage descriptif ième version vers des instructions bas niveau.}
+      \textit{Production : Un module compilant le langage descriptif vers des instructions bas niveau.}
 
-      \textbf{Léo}, Laureline, Maxime %respo et équipe à définir selon i ? %% On ne peut pas juste enlever les occurences de ``i'', la description colle à toutes les versions, non?
+      \textbf{Léo}, Laureline, Maxime %respo et équipe à définir selon i ? %%
+                                %On ne peut pas juste enlever les occurences de
+                                %``i'', la description colle à toutes les
+                                %versions, non? OOOUUUIIIII!!!!!!!
     \end{itemize}
 
 \medskip
@@ -500,17 +503,18 @@ suivantes :
 
     \textbf{William}, Romain
 
-    \item \underline{Visualisation (ième version) :} Implémenter un module permettant, à partir d'une description en langage descriptif (ième version),
+    \item \underline{Visualisation :} Implémenter un module permettant, à partir d'une description en langage descriptif,
 visualiser l'objet décrit. % TODO : Description en langage descriptif... Reformuler ca...
 
-    \textit{Production : Un module de visualisation pour la ième version du langage descriptif}
+    \textit{Production : Un module de visualisation pour le langage descriptif}
 
     \textbf{William}, Léo, Romain, Fred %respo et équipe à définir selon i ?
 
     \item \underline{Traduction des spécifications :} Développer dans l'interface un moyen ergonomique permettant à l'utilisateur d'entrer ses
-spécifications, lesquelles seront traduites en langage descriptif (ième version).
+spécifications, lesquelles seront traduites en langage descriptif.
 
-    \textit{Production : Une interface graphique prenant en compte les nouveautés apparues dans la version i du langage descriptif,
+    \textit{Production : Une interface graphique prenant en compte les
+      nouveautés apparues dans la nouvelle version du langage descriptif,
 permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il veut tricoter.}
 
     \textbf{Fred}, Agathe
@@ -530,8 +534,8 @@ permettant à l'utilisateur de décrire de manière simple et intuitive ce qu'il
 
 
   \begin{itemize}
-    \item \underline{Définition de la version i du langage :} Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la
-variation de points disponibles définis dans les spécifications de la ième version.
+    \item \underline{Définition du langage :} Définir un langage permettant de décrire le tricot, avec les fonctionnalités et la
+variation de points disponibles définis dans les spécifications de la version courante.
 
     \textit{Production : Un langage descriptif, étendu à chaque version.}
 
@@ -572,7 +576,7 @@ et notamment le descriptif de la version 1 qui devrait être fonctionnelle d'ici
 
     \textbf{Romain}, Fred
 
-    \item \underline{Readme, Manuel et Site web (ième version) :} Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la
+    \item \underline{Readme, Manuel et Site web :} Mettre à jour le readme, le manuel et le site web pour qu'ils soient cohérents avec la
 version en cours du logiciel.
 
     \textit{Production : Readme, manuel et site web}
@@ -591,7 +595,7 @@ Globalement, nous comptons un délai de trois semaines pour chaque version (sauf
 
 Nous décrivons dans cette section la répartition temporelle des tâches précédentes avec un planning (voir ci-dessous).
 
-Pour la plupart des tâches, deux semaines sont prévues. Le principe est que si une tâche prend plus de temps que prévu, retardant de la même toutes les autres dépendant d'elle, nous essayerons d'effectuer celles-ci en une semaine. De plus la dernière semaine étant uniquement consacrée à des tâches de rédaction, elle pourrait servir à rattraper d'éventuels retards.
+Pour la plupart des tâches, deux semaines sont prévues. Le principe est que si une tâche prend plus de temps que prévu, retardant de la même toutes les autres dépendant d'elle, nous essayerons d'effectuer celles-ci en une semaine. De plus la dernière semaine étant uniquement consacrées à des tâches de rédaction, elle servira à éponger le retard global pris durant le projet.
 
 \newpage
 \includepdf[landscape]{calendrier-previsionnel-l.pdf}
