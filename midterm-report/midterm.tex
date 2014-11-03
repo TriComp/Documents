@@ -13,6 +13,9 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,shapes,arrows,automata}
 \tikzset{>=stealth'}
+\usepackage{amsthm}
+
+\newtheorem{ex}{Exemple}
 
 \title{Rapport d'activité mi-parcours : TriComp}
 
@@ -79,6 +82,19 @@ suffisants pour expliquer comment tricoter un modèle simple, dans notre cas rec
 
 Concrètement, une description bas-niveau d'un tricot, quasiment identique aux instructions utilisateurs, mais en langage machine, existe : le tricot
 est ici vu comme un type OCaml. Depuis cette description, un traducteur permet de transformer cela en instructions en français pour réaliser le tricot.
+
+\begin{ex}
+  Suivez les instructions suivantes pour obtenir votre tricot : 
+  
+  \begin{itemize}
+  \item Rang 1 : Tricotez un point vide, et répétez 12 fois ce motif. 
+  \item Rang 2 : Tricotez un point endroit puis un point envers, et répétez 12 fois ce motif. 
+  \item Rang 3 : Tricotez un point envers puis un point endroit puis un point envers, et répétez 8 fois ce motif. 
+  \item Rang 4 : Tricotez un point envers puis un point endroit, et répétez 2 fois ce motif. 
+  \item Tricotez un point endroit puis un point envers, et répétez 2 fois ce motif. 
+  \item Tricotez au total 10 fois ces 4 rangs.
+  \end{itemize}
+\end{ex}
 
 \subsubsection{Langage descriptif}
 
