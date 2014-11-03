@@ -200,23 +200,25 @@ ponctuelle et non systématique.
 
 \subsection{Calendrier}
 
-\paragraph{Interface graphique}
+\subsubsection{Interface graphique}
 
 Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
 Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, l'intégration du compilateur (lecture de fichiers 
 \texttt{.tricot} (haut niveau) et transformation en instructions utilisateur (bas niveau).
 La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et devient notre priorité.
 
-\paragraph{Versions supérieures du langage}
+\subsubsection{Versions supérieures du langage}
 
 La définition des versions 2 et 3 du langage n'a pas été faite formellement, mais les différences avec la version 1 se réduisant à l'ajout de 
 nouvelles opérations au langage (respectivement diminutions/augmentations et croisements d'éléments de tricot), une telle définition n'était pas 
 forcément nécessaire en dehors de l'implémentation. 
 Cependant, les problèmes que pourraient introduire ses versions ont été étudiés, notamment la question de la répartition des diminutions sur un 
-trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses.
+trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses. C'est également dans cet objectif que nous avons décidé d'utiliser une structure de trapèzes, car l'introduction de tresses (ou plus généralement de points quelconques) peut être facilitée grâce aux mots-clés \texttt{split} et \texttt{link} introduits dans le langage.
 
 
-\subsection{Précisions diverses}
+\subsubsection{Conclusion générale}
+
+La durée nécessaire à la mise en place d'une version entièrement fonctionelle du logiciel a été sous-estimée. Néanmoins, la durée nécessaire pour les nouvelles versions peut être revue à la baisse, car nos réflexions sur les différents aspects du projet ont permis d'avoir assez tôt une idée des difficultés qui nous attendent par la suite.
 
 \section*{Conclusion}
 
