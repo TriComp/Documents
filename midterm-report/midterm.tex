@@ -79,10 +79,12 @@ L'étape cruciale de définition des langages a été effectuée. Nous exposons 
 \subsubsection{Instructions utilisateurs}
 
 Une première version du langage des instructions utilisateurs a été établie, avec des tests sur des exemples. Nous avons maintenant des outils
-suffisants pour expliquer comment tricoter un modèle simple, dans notre cas rectangulaire avec un motif régulier (comme par exemple une écharpe).
+suffisants pour expliquer comment tricoter un modèle simple, comme par exemple un tricot rectangulaire avec un motif régulier (c'est le cas pour une écharpe).
 
-Concrètement, une description bas-niveau d'un tricot, quasiment identique aux instructions utilisateurs, mais en langage machine, existe : le tricot
-est ici vu comme un type OCaml. Depuis cette description, un traducteur permet de transformer cela en instructions en français pour réaliser le tricot.
+Concrètement, une description bas-niveau d'un tricot, quasiment identique aux instructions utilisateurs, mais en langage machine, a été mise en place : le tricot
+est ici vu comme un type OCaml. Depuis cette description, on peut obtenir les instructions en français pour réaliser le tricot via un traducteur que nous avons implémenté.
+
+L'exemple suivant donne une liste d'instructions que l'on peut obtenir avec le traducteur.
 
 \begin{ex}
   Suivez les instructions suivantes pour obtenir votre tricot : 
@@ -99,12 +101,10 @@ est ici vu comme un type OCaml. Depuis cette description, un traducteur permet d
 
 \subsubsection{Langage descriptif}
 
-Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces trapèzes sont tricotés selon divers motifs, pour le moment en point endroit ou envers.
-
-% Si quelqu'un est capable de faire une figure avec le poncho qui avait été dessiné au tableau on peut mettre un exemple de fichier .tricot?
+Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces trapèzes sont tricotés selon divers motifs, pour le moment en point endroit ou envers. Plus précisement, le langage décrit les relations entre les trapèzes se touchant via leurs bases. Outre le cas ou deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
 
 \begin{ex}
-  Un code du type de celui-ci décrit un poncho, illustré par la figure \ref{poncho}.
+   Un code du type de celui-ci décrit un poncho, illustré par la figure \ref{poncho}.
 \end{ex}
 
 \begin{lstlisting}
@@ -128,7 +128,8 @@ piece next := start size
   \label{poncho}
 \end{figure}
 
-Une syntaxe a été définie et le parser utilisé par le traducteur a été implémenté.
+La syntaxe a été définie et le parser utilisé par le traducteur a été implémenté.
+Conserver les trapèzes est selon nous intéressant lorsque l'utilisateur éditera son tricot. Chaque modification correspondra à une séparation des trapèzes, chose qui est déjà géré par notre langage. 
 
 
 \subsection{Interface graphique}
@@ -150,12 +151,16 @@ associé au langage descriptif. Ce type de fichier portera l'extension \texttt{.
 \end{itemize}
 La figure \ref{fenetre} présente l'interface utilisateur du logiciel. Celle-ci se décompose en trois parties : 
 \begin{enumerate}
-   \item un panneau contenant l 
+   \item un panneau qui contiendra les différents outils de tricot mis à la disposition de l'utilisateur. Ces outils seront sous le forme de boutons ;
+   \item une fenêtre d'affichage du tricot ;
+   \item une fenêtre qui contiendra la liste des instructions générées par l'utilisateur.
+\end{enumerate}
+
 \begin{figure}[!h]
   \begin{center}
     \includegraphics[scale=0.3]{fenetre.png}
   \end{center}
-  \caption{L'aspect général de la fenêtre principale}
+  \caption{L'aspect général de la fenêtre principale, avec les trois parties principales mises en évidence}
   \label{fenetre}
 \end{figure}
 
@@ -165,6 +170,8 @@ L'affichage des tricots en lui-même est en cours d'implémentation. Il est pré
 la possibilité d'afficher la progression d'un tricot en cours de réalisation.
 Nous travaillons avec des classes de Qt qui permettent la gestion et l'affichage d'objets 2D (\texttt{QtGraphicsScene} et \texttt
 {QtGraphicsItem} par exemple).
+
+Nous avons également besoin d'un parser pour permettre l'utilisation du fichier \texttt{.tricot} par l'interface graphique. Celui-ci est sensiblement identique à celui implémenté en Ocaml et est en cours de finition (notamment pour l'incorporation dans le projet Qt).
 
 \subsection{Site Web}
 
@@ -198,6 +205,7 @@ ponctuelle et non systématique.
 Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
 Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, l'intégration du compilateur (lecture de fichiers 
 \texttt{.tricot} (haut niveau) et transformation en instructions utilisateur (bas niveau).
+La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et devient notre priorité.
 
 \paragraph{Versions supérieures du langage}
 
