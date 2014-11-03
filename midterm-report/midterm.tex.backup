@@ -92,7 +92,7 @@ type piece 	   = parallelogram list
 
 Une maille (stitch) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (row) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un rectangle tricoté (parallelogram) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (piece) est décrite par une liste de rectactangles tricotés. \\
 
-Depuis cette description, on peut obtenir les instructions utilisateurs en français pour réaliser le tricot. Pour cela on utilise un traducteur que nous avons implémenté.
+Depuis cette description, on peut obtenir les instructions utilisateurs en français pour réaliser le tricot. Pour cela on utilise traducteur que nous avons implémenté.
 
 L'exemple suivant donne une liste d'instructions que l'on peut obtenir avec le traducteur :
 
@@ -100,58 +100,16 @@ L'exemple suivant donne une liste d'instructions que l'on peut obtenir avec le t
   Suivez les instructions suivantes pour obtenir votre tricot : 
   
   \begin{itemize}
-  \item Rang 0 : Tricotez un point vide, et répétez 12 fois ce motif. 
-  \item Rang 1 : Tricotez un point endroit puis un point envers, et répétez 12 fois ce motif. 
-  \item Rang 2 : Tricotez un point envers puis un point endroit puis un point envers, et répétez 8 fois ce motif. 
-  \item Rang 3 : Tricotez un point envers puis un point endroit, et répétez 12 fois ce motif. 
-  \item Rang 4 : Tricotez un point endroit puis un point envers, puis un point envers et répétez 8 fois ce motif. 
+  \item Rang 1 : Tricotez un point vide, et répétez 12 fois ce motif. 
+  \item Rang 2 : Tricotez un point endroit puis un point envers, et répétez 12 fois ce motif. 
+  \item Rang 3 : Tricotez un point envers puis un point endroit puis un point envers, et répétez 8 fois ce motif. 
+  \item Rang 4 : Tricotez un point envers puis un point endroit, et répétez 12 fois ce motif. 
+  \item Rang 5 : Tricotez un point endroit puis un point envers, puis un point envers et répétez 8 fois ce motif. 
   \item Tricotez au total 10 fois ces 4 derniers rangs. \\
   \end{itemize}
 \end{ex}
 
-% A partir d'ici : à reformuler / retravailler, mais j'ai pas trop d'idées comme ça
-Par ailleurs nous avons réfléchi à la forme que nous souhaitons donner aux instructions utilisateurs pour des tricots plus complexes, des tricots nécessitant la couture de plusiuers pièces tricotées indépendemment par exemple. Le format de sortie souhaité ressemblerait à ça : %le ça est pas terrible, je sais
-
-\textbf{Titre du tricot}
-
-\textit{On présente d'abord potentiellement quelques informations préliminaires : matériel requis, 
-auteur du modèle...}
-
-\textbf{Présentation du patron du tricot}
-
-\textit{Liste des différentes parties à tricoter, dans l'ordre où elles doivent être tricotées.}
-
-\textbf{Ieme pièce à tricoter}
-
-\textit{Instructions pour tricoter la Ieme pièce}
-
-Un exemple : 
-
-- aiguilles et laine à utiliser 
-
-- lancer le tricot avec 21 boucles sur une première aiguille (ligne 0)
-
-- instructions :
-
-	* 1ere ligne : un point endroit, un point envers, un point endroit, puis répéter ce motif 6 fois (jusqu'au bout de la ligne)
-
-	* 2e ligne : un point envers, un point envers, un point endroit, puis répéter ce motif 6 fois (jusqu'au bout de la ligne)
-
-	* Répéter ces 2 lignes 10 fois pour obtenir 22 lignes
-
-	* 23e ligne : un point envers, un point endroit, puis répéter ce motif 4 fois. Ensuite faire une diminution, et encore répéter le motif 5 fois.
-
-\textbf{Keme méta-instruction}
-
-\textit{Instructions d'assemblages}
-
-Un exemple :
-
-- Prendre la partie I.
-
-- Coudre son bord gauche avec son bord droit.
-
-% Dire ici que l'on ne l'a pas encore implémenté (ni dans la description BN ni pour le traducteur) mais que facile ?
+Par ailleurs nous avons réfléchi à la forme que nous souhaitons donner aux instructions utilisateurs pour des tricots plus complexes, des tricots nécessitant la couture de plusiuers pièces tricotées indépendemment par exemple.
 
 
 \subsubsection{Langage descriptif}
@@ -258,25 +216,23 @@ ponctuelle et non systématique.
 
 \subsection{Calendrier}
 
-\subsubsection{Interface graphique}
+\paragraph{Interface graphique}
 
 Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
 Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, l'intégration du compilateur (lecture de fichiers 
 \texttt{.tricot} (haut niveau) et transformation en instructions utilisateur (bas niveau).
 La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et devient notre priorité.
 
-\subsubsection{Versions supérieures du langage}
+\paragraph{Versions supérieures du langage}
 
 La définition des versions 2 et 3 du langage n'a pas été faite formellement, mais les différences avec la version 1 se réduisant à l'ajout de 
 nouvelles opérations au langage (respectivement diminutions/augmentations et croisements d'éléments de tricot), une telle définition n'était pas 
 forcément nécessaire en dehors de l'implémentation. 
 Cependant, les problèmes que pourraient introduire ses versions ont été étudiés, notamment la question de la répartition des diminutions sur un 
-trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses. C'est également dans cet objectif que nous avons décidé d'utiliser une structure de trapèzes, car l'introduction de tresses (ou plus généralement de points quelconques) peut être facilitée grâce aux mots-clés \texttt{split} et \texttt{link} introduits dans le langage.
+trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses.
 
 
-\subsubsection{Conclusion générale}
-
-La durée nécessaire à la mise en place d'une version entièrement fonctionelle du logiciel a été sous-estimée. Néanmoins, la durée nécessaire pour les nouvelles versions peut être revue à la baisse, car nos réflexions sur les différents aspects du projet ont permis d'avoir assez tôt une idée des difficultés qui nous attendent par la suite.
+\subsection{Précisions diverses}
 
 \section*{Conclusion}
 
