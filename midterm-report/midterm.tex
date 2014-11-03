@@ -93,41 +93,56 @@ général de l'interface ainsi que les différents outils que nous souhaitions m
 boutons ou d'options encore inactives pour la plupart. On distingue notamment :
 \begin{itemize}
   \item Les options relatives au logiciel TriComp (choisir un point, faire une tresse...) Ceux-ci peuvent être selectionnés grâce à des 
-boutons dont l'aspect n'est pas encore fixé. % TODO : expliquer pourquoi (attente avancement de la partie affichage)
+boutons dont l'aspect n'est pas encore fixé, car leur implémentation se fera au fur et à mesure et en fonction de l'avancement global du 
+projet.
   \item Les options que l'on trouve dans tout logiciel (ouvrir, sauvegarder, quitter, ...). Ces options sont fonctionnelles (ou bientôt 
-fonctionnelles) car les formats de données pour la sauvegarde ont été définis.
+fonctionnelles) car les formats de données pour la sauvegarde ont été définis. Nous travaillons directement sur le format de fichier 
+associé au langage descriptif. Ce type de fichier portera l'extension \texttt{.tricot}.
 \end{itemize}
+Ceci-dessous on peut observer l'aspect général de la fenêtre principale du logiciel.
+% TODO Capture d'ecran pour la fenetre du logiciel. Decommenter la suite.
+% \begin{figure}[!h]
+%   \begin{center}
+%     \includegraphics[scale=1]{fenetre.png}
+%   \end{center}
+% \end{figure}
 
-\subsection{Affichage des tricots}
+\subsubsection{Affichage des tricots}
 
-L'affichage des tricots en lui-même n'a pas encore été implémenté, mais il est prévu de les afficher sous forme de patron, avec éventuellement la 
-possibilité d'afficher la progression d'un tricot en cours de réalisation. 
+L'affichage des tricots en lui-même est en cours d'implémentation. Il est prévu de les afficher sous forme de patron, avec éventuellement 
+la possibilité d'afficher la progression d'un tricot en cours de réalisation. 
+Nous travaillons avec des classes de Qt qui permettent la gestion et l'affichage d'objets 2D (\texttt{QtGraphicsScene} et \texttt
+{QtGraphicsItem} par exemple).
 
 \subsection{Site Web}
 
-Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé sur Github (utlisé comme serveur git du projet). Le site est basé sur Jekyll, un CMS en ruby spécialisé dans les blogs et qui a la particularité de ne pas utiliser de base de données, avec l'avantage que Github gère Jekyll automatiquement. Le site est notament une vitrine pour le projet : il en contient une présentation rapide, avec des liens vers le code source sur Github. A terme, le site sera aussi un support pour télécharger et installer le logiciel TriComp.
+Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé sur Github (utilisé comme serveur git du projet). Le 
+site est basé sur Jekyll, un CMS en Ruby spécialisé dans les blogs et qui a la particularité de ne pas utiliser de base de données, avec 
+l'avantage que Github gère Jekyll automatiquement. Le site est notament une vitrine pour le projet : il en contient une présentation 
+rapide, avec des liens vers le code source sur Github. A terme, le site sera aussi un support pour télécharger et installer le logiciel 
+TriComp.
 
-De plus, le site contient pour l'instant un article sur ce qui existe déjà sur le Internet autour du tricot. D'autres articles devrait s'y rajouter, ainsi qu'une page pour aiguiller rapidement l'internaute anglophone.
+De plus, le site contient pour l'instant un article sur ce qui existe déjà sur Internet autour du tricot (notamment certains projets 
+proches de TriComp qui ont été détaillés dans la proposition). D'autres articles devrait s'y rajouter, ainsi qu'une page pour aiguiller 
+rapidement l'internaute anglophone.
 
 \section{Changement par rapport à la proposition}
 
-\subsection{Calendrier}
+\subsection{Objectifs}
 
 \subsubsection{Représentation intermédiaire}
 
-Il avait initialement été prévu de développer une représentation intermédiaire, où le tissu serait représenté sous la forme d'un graphe (les sommets 
-correspondant aux mailles et les arêtes à la manière dont ils interagissaient), qui avait pour but primaire d'aider à la détection de configurations 
-impossibles. Cependant, après avoir approfondi les langages de bas et haut niveau, nous nous sommes rendus compte que ce formalisme n'était pas 
-intrinsèquement nécessaire, nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne se concentrer que sur l'étude de motifs 
-impossible ponctuelle et non systématique.
+Il avait initialement été prévu de développer une représentation intermédiaire, où le tissu serait représenté sous la forme d'un graphe, 
+dans lequel les sommets correspondraient aux mailles et les arêtes à la manière dont les mailles interagissent. Cette représentation avait 
+pour but primaire d'aider à la détection de configurations impossibles. Cependant, après avoir approfondi les langages de bas et haut 
+niveaux, nous nous sommes rendus compte que ce formalisme n'était pas intrinsèquement nécessaire. % Plus d'explications ?
+Nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne se concentrer que sur l'étude de motifs impossibles 
+ponctuelle et non systématique.
 
-\subsubsection{Affichage}
-
-
+\subsection{Calendrier}
 
 \subsection{Précisions diverses}
 
 \section*{Conclusion}
-
 
 \end{document}
