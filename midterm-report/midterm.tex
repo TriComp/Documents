@@ -99,6 +99,7 @@ L'exemple suivant donne une liste d'instructions que l'on peut obtenir avec le t
   \end{itemize}
 \end{ex}
 
+
 \subsubsection{Langage descriptif}
 
 Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces trapèzes sont tricotés selon divers motifs, pour le moment en point endroit ou envers. Plus précisement, le langage décrit les relations entre les trapèzes se touchant via leurs bases. Outre le cas ou deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
@@ -109,7 +110,7 @@ Le langage descriptif permet d'interfacer le traducteur et l'interface graphique
 
 \begin{lstlisting}
 piece my_piece := start size
-                 || trapezoid (paramètres) 
+                 || trapezoid (parametres) 
                  || split { trapezoid (...)
                          || link left next
                          }{ trapezoid (...)
@@ -171,7 +172,8 @@ la possibilité d'afficher la progression d'un tricot en cours de réalisation.
 Nous travaillons avec des classes de Qt qui permettent la gestion et l'affichage d'objets 2D (\texttt{QtGraphicsScene} et \texttt
 {QtGraphicsItem} par exemple).
 
-Nous avons également besoin d'un parser pour permettre l'utilisation du fichier \texttt{.tricot} par l'interface graphique. Celui-ci est sensiblement identique à celui implémenté en Ocaml et est en cours de finition (notamment pour l'incorporation dans le projet Qt).
+Nous avons également besoin d'un parser pour permettre l'utilisation du fichier \texttt{.tricot} par l'interface graphique. Celui-ci est 
+sensiblement identique à celui implémenté en Ocaml et est en cours de finition (notamment pour l'incorporation dans le projet Qt).
 
 \subsection{Site Web}
 
