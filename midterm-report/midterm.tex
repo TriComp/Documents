@@ -14,6 +14,7 @@
 \usetikzlibrary{positioning,shapes,arrows,automata}
 \tikzset{>=stealth'}
 \usepackage{amsthm}
+\usepackage{listings}
 
 \newtheorem{ex}{Exemple}
 
@@ -106,6 +107,19 @@ Le langage descriptif permet d'interfacer le traducteur et l'interface graphique
   Un code du type de celui-ci décrit un poncho, illustré par la figure \ref{poncho}.
 \end{ex}
 
+\begin{lstlisting}
+piece my_piece := start size
+                 || trapezoid (paramètres) 
+                 || split { trapezoid (...)
+                         || link left next
+                         }{ trapezoid (...)
+                         || link right next
+                         }
+
+piece next := start size
+             || trapezoid (...)
+             || stop
+\end{lstlisting}
 
 \begin{figure}[!h]
   \centering
@@ -178,6 +192,12 @@ Nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne
 ponctuelle et non systématique.
 
 \subsection{Calendrier}
+
+\paragraph{Interface graphique}
+
+Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
+Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, l'intégration du compilateur (lecture de fichiers 
+\texttt{.tricot} (haut niveau) et transformation en instructions utilisateur (bas niveau).
 
 \subsection{Précisions diverses}
 
