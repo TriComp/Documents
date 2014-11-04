@@ -76,7 +76,7 @@ Il avait initialement été prévu de développer une représentation intermédi
 dans lequel les sommets correspondraient aux mailles et les arêtes à la manière dont les mailles interagissent. Cette représentation avait
 pour but primaire d'aider à la détection de configurations impossibles. Cependant, après avoir approfondi les langages de bas et haut
 niveaux, nous nous sommes rendus compte que ce formalisme n'était pas intrinsèquement nécessaire. % Plus d'explications ?
-Nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne se concentrer que sur l'étude de motifs impossibles
+Nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne se concentrer que sur une étude de motifs impossibles
 ponctuelle et non systématique.
 
 \subsection{Calendrier}
@@ -88,14 +88,14 @@ Nous détaillons ici les changements qui ont été effectués par rapport au cal
 Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
 Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, notamment concernant l'affichage des tricots et l'intégration du compilateur et du traducteur en instructions utilisateur.
 
-La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et devient notre priorité.
+La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et cela devient notre priorité.
 
 \subsubsection{Versions supérieures du langage}
 
 La définition des versions 2 et 3 du langage n'a pas été faite formellement, mais les différences avec la version 1 se réduisant à l'ajout de 
 nouvelles opérations au langage (respectivement diminutions/augmentations et croisements d'éléments de tricot), une telle définition n'était pas 
 forcément nécessaire en dehors de l'implémentation. 
-Cependant, les problèmes que pourraient introduire ses versions ont été étudiés, notamment la question de la répartition des diminutions sur un 
+Cependant, les problèmes que pourraient introduire ces versions ont été étudiés, notamment la question de la répartition des diminutions sur un 
 trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses. 
 
 \newpage
@@ -201,7 +201,7 @@ Le langage descriptif permet d'interfacer le traducteur et l'interface graphique
 
 Nous avons décidé d'utiliser les trapèzes comme forme de base pour plusieurs raisons. Tout d'abord, le tricot s'effectue par rangs (lignes) successives et parallèles (car tricotées les unes sur les autres). De plus, même si l'on veut faire des bords non droits, comme le tricot est discret, on peut se ramener par approximation à une suite de trapèzes. Des macros seront implémentées par la suite afin de permettre dans le langage de définir la courbe que l'on veut sans avoir à écrire toute la suite de trapèze.
 
-Les trapèzes sont tricotés selon divers motifs (points si on suit le vocabulaire du tricoteur). Pour le moment ces motifs sont fixés (jersey endroit, jersey envers, mousse), mais par la suite le langage intégrera la possibilité de définir des points à base de mailles endroits et envers. Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage.
+Les trapèzes sont tricotés selon divers motifs (points si on suit le vocabulaire du tricoteur). Pour le moment ces motifs sont fixés (jersey endroit, jersey envers, mousse), mais par la suite le langage intégrera la possibilité de définir des points à base de mailles endroit et envers. Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage.
 
 Plus précisément, le langage décrit les relations entre les trapèzes qui se touchent via leurs bases. Outre le cas où deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieurs trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
 
@@ -248,7 +248,7 @@ En outre la réflexion sur la manière d'intégrer les tresses (version 3) à ce
 
 \subsection{Compilateur}
 
-Contrairement à nos prévisions le compilateur n'est pas encore fonctionnel. Ceci est dû au fait d'avoir abandonné la représentation intermédiaire sur laquelle nous avions travaillé au début.
+Contrairement à nos prévisions le compilateur n'est pas encore fonctionnel. Ceci est dû à l'abandon de la représentation intermédiaire sur laquelle nous avions travaillé au début.
 
 Pour l'instant seul le parser du langage descriptif a été implémenté. Cependant l'algorithme pour transformer les tricots possibles avec la version 1 de notre logiciel (des rectangles) est défini et il ne reste plus qu'à l'implémenter. Le travail avec des trapèzes est à l'étude, nous nous penchons actuellement sur deux algorithmes afin de distinguer les avantages et inconvénients de chacun par rapport à notre objectif. % Ici : détails
 De plus, le travail de réflexion sur la compilation lorsqu'il y aura des tresses a déjà commencé.
@@ -260,9 +260,9 @@ Bien qu'il ait été prévu à l'origine de s'intéresser à ces questions que t
 Ce module de vérification devait réaliser deux fonctions distinctes :
 
 \begin{enumerate}
- \item Sa première fonction à l'origine était de pouvoir détecter des impossibilités s'il y avait superposition de tresses avec des points incompatibles (par exemple des augmentations ou des diminutions). Il a été décidé de ne pas laisser le choix à l'utilisateur de où placer ses augmentations et ses diminutions mais de les placer dans une lisière (procédé courrament utilisé par les tricoteurs). Ainsi il n'y aura pas de problèmes de ce côté. De plus les tresses seront une décoration décrite ``au-dessus`` des points, au niveau du langage descriptif, elle remplacera donc les motif décrits ''en dessous`` par l'utilisateur.
+ \item Sa première fonction à l'origine était de pouvoir détecter des impossibilités s'il y avait superposition de tresses avec des points incompatibles (par exemple des augmentations ou des diminutions). Il a été décidé de ne pas laisser le choix à l'utilisateur de où placer ses augmentations et ses diminutions mais de les placer dans une lisière (procédé couramment utilisé par les tricoteurs). Ainsi il n'y aura pas de problèmes de ce côté. De plus les tresses seront une décoration décrite ``au-dessus`` des points, au niveau du langage descriptif, elle remplacera donc les motif décrits ''en dessous`` par l'utilisateur.
 
- \item Une deuxième fonction a été ajoutée : vérifier que le nombre de mailles tricotées à la ligne $i+1$ est le même que le nombre de mailles que l'on obtient après avoir tricoter la ligne $i$. Cette vérification, pas difficile à implémenter, va permettre par exemple de vérifier que les points qu'aura défini l'utilisateur seront cohérents.
+ \item Une deuxième fonction a été ajoutée : vérifier que le nombre de mailles tricotées à la ligne $i+1$ est le même que le nombre de mailles que l'on obtient après avoir tricoté la ligne $i$. Cette vérification, simple à implémenter, va permettre par exemple de vérifier que les points qu'aura défini l'utilisateur sont cohérents.
 \end{enumerate}
 
 
@@ -313,7 +313,7 @@ sensiblement identique à celui implémenté en Ocaml. Il est en cours de finiti
 Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé sur Github (utilisé comme serveur Git du projet). Le
 site est basé sur Jekyll, un CMS en Ruby spécialisé dans les blogs et qui a la particularité de ne pas utiliser de base de données, avec
 l'avantage que Github gère Jekyll automatiquement. Le site est notamment une vitrine pour le projet : il en contient une présentation
-rapide, avec des liens vers le code source sur Github. A terme, le site sera aussi un support pour télécharger et installer le logiciel
+rapide, avec des liens vers le code source sur Github. À terme, le site sera aussi un support pour télécharger et installer le logiciel
 TriComp.
 
 De plus, le site contient pour l'instant un article sur ce qui existe déjà sur Internet autour du tricot (notamment certains projets
