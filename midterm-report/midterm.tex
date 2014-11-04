@@ -118,11 +118,11 @@ Le tricot est ici vu comme un type OCaml :
 \begin{lstlisting}
 type stitch 	   = Endroit | Envers | Torse | Vide
 type row 	   = stitch list * int
-type parallelogram = row list * int
+type trapezoid = row list * int
 type piece 	   = parallelogram list
 \end{lstlisting}
 
-Une maille (\texttt{stitch}) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (\texttt{row}) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un rectangle tricoté (\texttt{parallelogram}) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (\texttt{piece}) est décrite par une liste de rectangles tricotés. \\
+Une maille (\texttt{stitch}) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (\texttt{row}) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un trapèze tricoté (\texttt{trapezoid}) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (\texttt{piece}) est décrite par une liste de trapèzes tricotés. \\
 
 Depuis cette description, on peut obtenir les instructions utilisateur en français pour réaliser le tricot. Pour cela on utilise un traducteur que nous avons implémenté.
 
@@ -250,7 +250,7 @@ En outre la réflexion sur la manière d'intégrer les tresses (version 3) à ce
 
 Contrairement à nos prévisions le compilateur n'est pas encore fonctionnel. Ceci est dû au fait d'avoir abandonné la représentation intermédiaire sur laquelle nous avions travaillé au début.
 
-Pour l'instant seul le parser du langage descriptif a été implémenté. Cependant l'algorithme pour transformer les tricots possibles avec la version 1 de notre logiciel (des rectangles) est défini et il ne reste plus qu'à l'implémenter. Le travail avec des trapèzes est à l'étude, nous nous penchons actuellement sur deux algorithmes afin de distinguer les avantages et inconvénients de chacun par rapport à notre objectif. % Ici : détails
+Pour l'instant seul le parser du langage descriptif a été implémenté. Cependant l'algorithme pour transformer les tricots possibles avec la version 1 de notre logiciel (des trapèzes) est défini et il ne reste plus qu'à l'implémenter. Le travail avec des trapèzes est à l'étude, nous nous penchons actuellement sur deux algorithmes afin de distinguer les avantages et inconvénients de chacun par rapport à notre objectif. % Ici : détails
 De plus, le travail de réflexion sur la compilation lorsqu'il y aura des tresses a déjà commencé.
 
 \subsection{Module de vérification}
