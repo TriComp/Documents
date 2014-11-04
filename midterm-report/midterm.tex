@@ -10,9 +10,6 @@
 \usepackage{pdfpages}
 \usepackage{graphicx}
 \usepackage{caption}
-\usepackage{tikz}
-\usetikzlibrary{positioning,shapes,arrows,automata}
-\tikzset{>=stealth'}
 \usepackage{amsthm}
 \usepackage{listings}
 
@@ -114,7 +111,7 @@ L'étape cruciale de définition des langages a été effectuée. Nous exposons 
 \subsubsection{Instructions utilisateurs}
 
 Une première version du langage des instructions utilisateurs a été établie, avec des tests sur des exemples. Nous avons maintenant des outils
-suffisants pour expliquer comment tricoter un modèle simple, comme par exemple un tricot rectangulaire avec un motif régulier (c'est le cas pour une écharpe). \\
+suffisants pour expliquer comment tricoter un modèle simple, comme par exemple un tricot rectangulaire avec un motif régulier (c'est le cas pour une écharpe). 
 
 Concrètement, une description bas-niveau d'un tricot, quasiment identique aux instructions utilisateurs, mais en langage machine, a été mise en place.
 Le tricot est ici vu comme un type OCaml :
@@ -140,7 +137,7 @@ L'exemple suivant donne une liste d'instructions que l'on peut obtenir avec le t
   \item Rang 2 : Tricotez un point envers puis un point endroit puis un point envers, et répétez 8 fois ce motif. 
   \item Rang 3 : Tricotez un point envers puis un point endroit, et répétez 12 fois ce motif. 
   \item Rang 4 : Tricotez un point endroit puis un point envers, puis un point envers et répétez 8 fois ce motif. 
-  \item Tricotez au total 10 fois ces 4 derniers rangs. \\
+  \item Tricotez au total 10 fois ces 4 derniers rangs.
   \end{itemize}
 \end{ex}
 
@@ -212,14 +209,23 @@ piece next := start size
              || stop
 \end{lstlisting}
 
-Dans cet exemple, les points de suspension contiennent les paramètres des trapèzes (taille des bases, décalage, type de point sur ce trapèze).
-
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \centering
   \includegraphics[scale=0.4]{../img/poncho.png}
   \caption{Le poncho généré par le code précédent}
   \label{poncho}
 \end{figure}
+
+Dans cet exemple, les points de suspension contiennent les paramètres des trapèzes (taille des bases, hauteur, décalages et type de point). Le schéma \ref{trapeze} illustre ces information sur un trapèze.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.5]{../img/trapeze.jpg}
+  \caption{Les paramètres d'un trapèze que l'on utilise dans la description}
+  \label{trapeze}
+\end{figure}
+
+
 
 La syntaxe a été définie et le parser utilisé par le traducteur a été implémenté.
 Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage (via \texttt{split} et \texttt{link}). 
@@ -249,7 +255,7 @@ La figure \ref{fenetre} présente l'interface utilisateur du logiciel. Celle-ci 
    \item une fenêtre qui contiendra la liste des instructions générées par l'utilisateur.
 \end{enumerate}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \begin{center}
     \includegraphics[scale=0.3]{fenetre.png}
   \end{center}
