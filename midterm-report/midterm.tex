@@ -248,12 +248,22 @@ En outre la réflexion sur la manière d'intégrer les tresses (version 3) à ce
 
 \subsection{Compilateur}
 
-%Pas super bien formulée cette partie
-
 Contrairement à nos prévisions le compilateur n'est pas encore fonctionnel. Ceci est dû au fait d'avoir abandonné la représentation intermédiaire sur laquelle nous avions travaillé au début.
 
 Pour l'instant seul le parser du langage descriptif a été implémenté. Cependant l'algorithme pour transformer les tricots possibles avec la version 1 de notre logiciels (des rectangles) est défini et il ne reste plus qu'à l'implémenter. Le travail avec des trapèzes est à l'étude, nous nous penchons actuellement sur deux algorithmes afin de distinguer les avantages et inconvénients de chacun par rapport à notre objectif. % Ici : détails
 De plus, le travail de réflexion sur la compilation lorsqu'il y aura des tresses a déjà commencé.
+
+\subsection{Module de vérification}
+
+Bien qu'il ait été prévu à l'origine de s'intéresser à ces questions que tard dans le projet, la question de l'abandon de la représentation intermédiaire nous a contraints à nous pencher dès maintenant sur ce module.
+
+Ce module de vérification devait réaliser deux fonctions distinctes :
+
+\begin{enumerate}
+ \item Sa première fonction à l'origine était de pouvoir détecter des impossibilités s'il y avait superposition de tresses avec des points incompatibles (par exemple des augmentations ou des diminutions). Il a été décidé de ne pas laisser le choix à l'utilisateur de où placer ses augmentations et ses diminutions mais de les placer dans une lisière (procédé courrament utilisé par les tricoteurs). Ainsi il n'y aura pas de problèmes de ce côté. De plus les tresses seront une décoration décrite ``au-dessus`` des points, au niveau du langage descriptif, elle remplacera donc les motif décrits ''en dessous`` par l'utilisateur.
+
+ \item Une deuxième fonction a été ajoutée : vérifier que le nombre de mailles tricotées à la ligne $i+1$ est le même que le nombre de mailles que l'on obtient après avoir tricoter la ligne $i$. Cette vérification, pas difficile à implémenter, va permettre par exemple de vérifier que les points qu'aura défini l'utilisateur seront cohérents.
+\end{enumerate}
 
 
 \subsection{Interface graphique}
