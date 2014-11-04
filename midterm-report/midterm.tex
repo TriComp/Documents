@@ -122,7 +122,7 @@ type parallelogram = row list * int
 type piece 	   = parallelogram list
 \end{lstlisting}
 
-Une maille (\texttt{stitch}) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (\texttt{row}) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un rectangle tricoté (\texttt{parallelogram}) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (\texttt{piece}) est décrite par une liste de rectactangles tricotés. \\
+Une maille (\texttt{stitch}) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (\texttt{row}) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un rectangle tricoté (\texttt{parallelogram}) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (\texttt{piece}) est décrite par une liste de rectangles tricotés. \\
 
 Depuis cette description, on peut obtenir les instructions utilisateurs en français pour réaliser le tricot. Pour cela on utilise un traducteur que nous avons implémenté.
 
@@ -197,13 +197,13 @@ auteur du modèle...}
 
 \subsubsection{Langage descriptif}
 
-Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces éléments sont appelés \emph{pièces} dans notre langage. Afin de former le tricot final, certaine pièces tricotées l'une à la suite de l'autre sans rupture apparente pour l'utilisateur (le lien se fait par un connecteur inclut dans la description de la première pièce à tricoter dans l'ordre), tandis que d'autres pièces seront assemblés par couture, ces instructions étant transmises quasimment sans modification à l'utilisateur (elles ne sont donc pas traitées lors de la compilation).
+Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces éléments sont appelés \emph{pièces} dans notre langage. Afin de former le tricot final, certaine pièces tricotées l'une à la suite de l'autre sans rupture apparente pour l'utilisateur (le lien se fait par un connecteur inclut dans la description de la première pièce à tricoter dans l'ordre), tandis que d'autres pièces seront assemblés par couture, ces instructions étant transmises quasiment sans modification à l'utilisateur (elles ne sont donc pas traitées lors de la compilation).
 
 Nous avons décidé d'utiliser les trapèzes comme forme de base car c'est particulièrement bien adapté. En effet, le tricot s'effectue par rangs (lignes) successives et parallèles (car tricotées les unes sur les autres). De plus, même si l'on veut faire des bords non droits, comme le tricot est discret, on peut se ramener par approximation à une suite de trapèzes. Des macros seront implémentées par la suite afin de permettre dans le langage de définir la courbe que l'on veut sans avoir à écrire toute la suite de trapèze.
 
 Les trapèzes sont tricotés selon divers motifs (points si on suit le vocabulaire du tricoteur). Pour le moment ces motifs sont fixés (jersey endroit, jersey envers, mousse), mais par la suite le langage intégrera la possibilité de définir des points à base de mailles endroits et envers. Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage.
 
-Plus précisement, le langage décrit les relations entre les trapèzes qui se touchent via leurs bases. Outre le cas où deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
+Plus précisément, le langage décrit les relations entre les trapèzes qui se touchent via leurs bases. Outre le cas où deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieurs trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
 
 \begin{ex}
    Un code du type de celui-ci décrit un poncho, illustré par la figure \ref{poncho}.
@@ -243,14 +243,14 @@ Dans cet exemple, les points de suspension contiennent les paramètres des trap�
 
 Cette syntaxe, qui permet déjà de travailler avec les augmentations et diminutions (ce qui n'était prévu que pour la version 2), a été définie et le parser utilisé par le compilateur a été implémenté.
 
-En outre la réflexion sur la manière d'intégrer les tresses (version 3) à ce langage a été entammée. %Ici : détails
+En outre la réflexion sur la manière d'intégrer les tresses (version 3) à ce langage a été entamée. %Ici : détails
 
 
 \subsection{Compilateur}
 
 %Pas super bien formulée cette partie
 
-Contrairement à nos prévisons le compilateur n'est pas encore fonctionnel. Ceci est dû au fait d'avoir abandonné la représentation intermédiaire surlaquelle nous avions travaillé au début.
+Contrairement à nos prévisions le compilateur n'est pas encore fonctionnel. Ceci est dû au fait d'avoir abandonné la représentation intermédiaire sur laquelle nous avions travaillé au début.
 
 Pour l'instant seul le parser du langage descriptif a été implémenté. Cependant l'algorithme pour transformer les tricots possibles avec la version 1 de notre logiciels (des rectangles) est défini et il ne reste plus qu'à l'implémenter. Le travail avec des trapèzes est à l'étude, nous nous penchons actuellement sur deux algorithmes afin de distinguer les avantages et inconvénients de chacun par rapport à notre objectif. % Ici : détails
 De plus, le travail de réflexion sur la compilation lorsqu'il y aura des tresses a déjà commencé.
@@ -262,11 +262,11 @@ Nous détaillons dans cette section les fonctionnalités implémentées jusqu'à
 
 \subsubsection{Squelette de l'interface / Aspect}
 
-La première étape du développement de l'interface a été la mise en place de son squelette. Plus précisement, nous avons défini l'aspect
+La première étape du développement de l'interface a été la mise en place de son squelette. Plus précisément, nous avons défini l'aspect
 général de l'interface ainsi que les différents outils que nous souhaitons mettre à disposition. Ces outils sont représentés à l'aide de
 boutons ou d'options encore inactives pour la plupart. On distingue notamment :
 \begin{itemize}
-  \item Les options relatives au logiciel TriComp (choisir un point, faire une tresse...) Ceux-ci peuvent être selectionnés grâce à des
+  \item Les options relatives au logiciel TriComp (choisir un point, faire une tresse...) Ceux-ci peuvent être sélectionnés grâce à des
 boutons dont l'aspect n'est pas encore fixé, car leur implémentation se fera au fur et à mesure et en fonction de l'avancement global du
 projet.
   \item Les options que l'on trouve dans tout logiciel (ouvrir, sauvegarder, quitter, ...). Ces options sont fonctionnelles (ou bientôt
@@ -302,7 +302,7 @@ sensiblement identique à celui implémenté en Ocaml et est en cours de finitio
 
 Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé sur Github (utilisé comme serveur Git du projet). Le
 site est basé sur Jekyll, un CMS en Ruby spécialisé dans les blogs et qui a la particularité de ne pas utiliser de base de données, avec
-l'avantage que Github gère Jekyll automatiquement. Le site est notament une vitrine pour le projet : il en contient une présentation
+l'avantage que Github gère Jekyll automatiquement. Le site est notamment une vitrine pour le projet : il en contient une présentation
 rapide, avec des liens vers le code source sur Github. A terme, le site sera aussi un support pour télécharger et installer le logiciel
 TriComp.
 
@@ -312,7 +312,7 @@ rapidement l'internaute anglophone.
 
 \section{Conclusion}
 
-Malgré le travail fourni jusqu'à présent par toute l'équipe, tant du point de vue de la refléxion autour des différents langages que du code, la durée nécessaire à la mise en place d'une version entièrement fonctionelle du logiciel a été sous-estimée. Néanmoins, la durée nécessaire pour les nouvelles versions peut être revue à la baisse, car nos réflexions sur les différents aspects du projet ont permis d'avoir assez tôt une idée des difficultés qui nous attendent par la suite. 
+Malgré le travail fourni jusqu'à présent par toute l'équipe, tant du point de vue de la réflexion autour des différents langages que du code, la durée nécessaire à la mise en place d'une version entièrement fonctionnelle du logiciel a été sous-estimée. Néanmoins, la durée nécessaire pour les nouvelles versions peut être revue à la baisse, car nos réflexions sur les différents aspects du projet ont permis d'avoir assez tôt une idée des difficultés qui nous attendent par la suite.
 
 
 \end{document}
