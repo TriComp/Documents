@@ -59,14 +59,47 @@ dans les différents groupes de travail ainsi que les diverses modifications qui
 
 \newpage
 
-% Plan (proposition) : --> J'échangerai l'ordre des deux sections + ajouterai une conclusion (et une introduction)
-%  I] Travail fourni
+% Plan : ( + une introduction ?)
+%  I] Changements par rapport à la proposition
+%     Notamment calendrier
+%  II] Travail fourni
 %     a) Définition des différents langages
-%     b) Interface graphique et site web
-%     c) Divers(organisation,...)
-%  II] Changements par rapport à la proposition
-%     a) Calendrier
-%     b) Précisions diverses
+%     b) Interface graphique
+%     c) Site web
+
+\section{Changement par rapport à la proposition}
+
+\subsection{Niveau de difficulté des tricots}
+
+Durant les premières semaines nous avons effectué une distinction entre le tricot plat et le tricot cylindrique (celui-ci nécessite plus d'aiguilles) qui permettait de créer des objets "cylindriques" (manches, chaussettes...) sans utiliser de coutures. Pour raison de simplicité, nous avons préféré nous concentrer sur le tricot plat, et donc sur l'assemblage de pièces par coutures.
+
+\subsection{Représentation intermédiaire} 
+
+Il avait initialement été prévu de développer une représentation intermédiaire, où le tissu serait représenté sous la forme d'un graphe,
+dans lequel les sommets correspondraient aux mailles et les arêtes à la manière dont les mailles interagissent. Cette représentation avait
+pour but primaire d'aider à la détection de configurations impossibles. Cependant, après avoir approfondi les langages de bas et haut
+niveaux, nous nous sommes rendus compte que ce formalisme n'était pas intrinsèquement nécessaire. % Plus d'explications ?
+Nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne se concentrer que sur l'étude de motifs impossibles
+ponctuelle et non systématique.
+
+\subsection{Calendrier}
+
+Nous détaillons ici les changements qui ont été effectués par rapport au calendrier fourni dans la proposition de projet.
+
+\subsubsection{Interface graphique}
+
+Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
+Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, notamment concernant l'affichage des tricots et l'intégration du compilateur et du traducteur et (instructions utilisateurs).
+
+La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et devient notre priorité.
+
+\subsubsection{Versions supérieures du langage}
+
+La définition des versions 2 et 3 du langage n'a pas été faite formellement, mais les différences avec la version 1 se réduisant à l'ajout de 
+nouvelles opérations au langage (respectivement diminutions/augmentations et croisements d'éléments de tricot), une telle définition n'était pas 
+forcément nécessaire en dehors de l'implémentation. 
+Cependant, les problèmes que pourraient introduire ses versions ont été étudiés, notamment la question de la répartition des diminutions sur un 
+trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses. C'est également dans cet objectif que nous avons décidé d'utiliser une structure de trapèzes, car l'introduction de tresses (ou plus généralement de points quelconques) peut être facilitée grâce aux mots-clés \texttt{split} et \texttt{link} introduits dans le langage.
 
 \section{Travail fourni}
 
@@ -81,8 +114,8 @@ L'étape cruciale de définition des langages a été effectuée. Nous exposons 
 Une première version du langage des instructions utilisateurs a été établie, avec des tests sur des exemples. Nous avons maintenant des outils
 suffisants pour expliquer comment tricoter un modèle simple, comme par exemple un tricot rectangulaire avec un motif régulier (c'est le cas pour une écharpe). \\
 
-Concrètement, une description bas-niveau d'un tricot, quasiment identique aux instructions utilisateurs, mais en langage machine, a été mise en place, le tricot
-est ici vu comme un type OCaml :
+Concrètement, une description bas-niveau d'un tricot, quasiment identique aux instructions utilisateurs, mais en langage machine, a été mise en place.
+Le tricot est ici vu comme un type OCaml :
 \begin{lstlisting}
 type stitch 	   = Endroit | Envers | Torse | Vide
 type row 	   = stitch list * int
@@ -90,7 +123,7 @@ type parallelogram = row list * int
 type piece 	   = parallelogram list
 \end{lstlisting}
 
-Une maille (stitch) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (row) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un rectangle tricoté (parallelogram) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (piece) est décrite par une liste de rectactangles tricotés. \\
+Une maille (\texttt{stitch}) est décrite par son type : endroit, envers ou torse. Le type Vide est utilisé pour décrire les premières mailles montées (et sera également utilisé par la suite pour décrire des augmentations). Une ligne (\texttt{row}) est décrite par le motif minimal qui la décrit (sous forme d'une liste de mailles) et par un entier indiquant le nombre de fois que ce motif doit être répété. De la même manière un rectangle tricoté (\texttt{parallelogram}) est décrit par le motif minimal qui la décrit (sous forme d'une liste de lignes) et par un entier indiquant le nombre de fois que ce motif doit être répété. Enfin une pièce de tricot (\texttt{piece}) est décrite par une liste de rectactangles tricotés. \\
 
 Depuis cette description, on peut obtenir les instructions utilisateurs en français pour réaliser le tricot. Pour cela on utilise un traducteur que nous avons implémenté.
 
@@ -109,23 +142,24 @@ L'exemple suivant donne une liste d'instructions que l'on peut obtenir avec le t
   \end{itemize}
 \end{ex}
 
-% A partir d'ici : à reformuler / retravailler, mais j'ai pas trop d'idées comme ça
-Par ailleurs nous avons réfléchi à la forme que nous souhaitons donner aux instructions utilisateurs pour des tricots plus complexes, des tricots nécessitant la couture de plusiuers pièces tricotées indépendemment par exemple. Le format de sortie souhaité ressemblerait à ça : %le ça est pas terrible, je sais
+Par ailleurs nous avons réfléchi à la forme que nous souhaiterions donner aux instructions utilisateurs pour des tricots plus complexes, comme par exemple des tricots nécessitant plusieurs pièces tricotées indépendamment reliées par des coutures. Le format de sortie souhaité est détaillé ci-dessous :
 
-\textbf{Titre du tricot}
+\begin{enumerate}
+  \item \textbf{Titre du tricot}
 
-\textit{On présente d'abord potentiellement quelques informations préliminaires : matériel requis, 
+\textit{On présente d'abord quelques informations préliminaires : matériel requis (aiguilles, laine...), 
 auteur du modèle...}
 
-\textbf{Présentation du patron du tricot}
+  \item \textbf{Présentation du patron du tricot}
 
 \textit{Liste des différentes parties à tricoter, dans l'ordre où elles doivent être tricotées.}
 
-\textbf{Ieme pièce à tricoter}
+  \item \textbf{n-ième pièce à tricoter}
 
-\textit{Instructions pour tricoter la Ieme pièce}
+\textit{Instructions pour tricoter la n-ième pièce}
 
-Un exemple : 
+\end{enumerate}
+\underline{Un exemple :} 
 
 - aiguilles et laine à utiliser 
 
@@ -141,11 +175,11 @@ Un exemple :
 
 	* 23e ligne : un point envers, un point endroit, puis répéter ce motif 4 fois. Ensuite faire une diminution, et encore répéter le motif 5 fois.
 
-\textbf{Keme méta-instruction}
+4. \textbf{Keme méta-instruction}
 
 \textit{Instructions d'assemblages}
 
-Un exemple :
+\underline{Un exemple :}
 
 - Prendre la partie I.
 
@@ -156,7 +190,7 @@ Un exemple :
 
 \subsubsection{Langage descriptif}
 
-Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces trapèzes sont tricotés selon divers motifs, pour le moment en point endroit ou envers. Plus précisement, le langage décrit les relations entre les trapèzes se touchant via leurs bases. Outre le cas ou deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
+Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces trapèzes sont tricotés selon divers motifs, pour le moment en point endroit ou envers. Plus précisement, le langage décrit les relations entre les trapèzes qui se touchent via leurs bases. Outre le cas où deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
 
 \begin{ex}
    Un code du type de celui-ci décrit un poncho, illustré par la figure \ref{poncho}.
@@ -176,6 +210,8 @@ piece next := start size
              || stop
 \end{lstlisting}
 
+Dans cet exemple, les points de suspension contiennent les paramètres des trapèzes (taille des bases, décalage, type de point sur ce trapèze).
+
 \begin{figure}[!h]
   \centering
   \includegraphics[scale=0.4]{../img/poncho.png}
@@ -184,7 +220,7 @@ piece next := start size
 \end{figure}
 
 La syntaxe a été définie et le parser utilisé par le traducteur a été implémenté.
-Conserver les trapèzes est selon nous intéressant lorsque l'utilisateur éditera son tricot. Chaque modification correspondra à une séparation des trapèzes, chose qui est déjà géré par notre langage. 
+Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage (via \texttt{split} et \texttt{link}). 
 
 
 \subsection{Interface graphique}
@@ -227,11 +263,11 @@ Nous travaillons avec des classes de Qt qui permettent la gestion et l'affichage
 {QtGraphicsItem} par exemple).
 
 Nous avons également besoin d'un parser pour permettre l'utilisation du fichier \texttt{.tricot} par l'interface graphique. Celui-ci est 
-sensiblement identique à celui implémenté en Ocaml et est en cours de finition (notamment pour l'incorporation dans le projet Qt).
+sensiblement identique à celui implémenté en Ocaml et est en cours de finition (notamment son incorporation dans le projet Qt).
 
 \subsection{Site Web}
 
-Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé sur Github (utilisé comme serveur git du projet). Le
+Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé sur Github (utilisé comme serveur Git du projet). Le
 site est basé sur Jekyll, un CMS en Ruby spécialisé dans les blogs et qui a la particularité de ne pas utiliser de base de données, avec
 l'avantage que Github gère Jekyll automatiquement. Le site est notament une vitrine pour le projet : il en contient une présentation
 rapide, avec des liens vers le code source sur Github. A terme, le site sera aussi un support pour télécharger et installer le logiciel
@@ -241,43 +277,10 @@ De plus, le site contient pour l'instant un article sur ce qui existe déjà sur
 proches de TriComp qui ont été détaillés dans la proposition). D'autres articles devrait s'y rajouter, ainsi qu'une page pour aiguiller
 rapidement l'internaute anglophone.
 
-\section{Changement par rapport à la proposition}
+\section{Conclusion}
 
-\subsection{Objectifs}
-
-% Ici : on a abandonné le tricot cylindrique et on se concentre plutot sur du tricot plat, avec assemblage de pièces par coutures.
-
-\subsubsection{Représentation intermédiaire} % Pas vraiment dans objectifs, plutot dans outils / précisions diverses
-
-Il avait initialement été prévu de développer une représentation intermédiaire, où le tissu serait représenté sous la forme d'un graphe,
-dans lequel les sommets correspondraient aux mailles et les arêtes à la manière dont les mailles interagissent. Cette représentation avait
-pour but primaire d'aider à la détection de configurations impossibles. Cependant, après avoir approfondi les langages de bas et haut
-niveaux, nous nous sommes rendus compte que ce formalisme n'était pas intrinsèquement nécessaire. % Plus d'explications ?
-Nous avons donc abandonné l'utilisation globale de cette formalisation, pour ne se concentrer que sur l'étude de motifs impossibles
-ponctuelle et non systématique.
-
-\subsection{Calendrier}
-
-\subsubsection{Interface graphique}
-
-Nous avions prévu d'avoir une interface graphique fonctionnelle dès lors que la première version du langage aurait été définie et compilable.  
-Cependant, elle s'est révélée plus difficile à mettre en place que ce que nous avions imaginé, l'intégration du compilateur (lecture de fichiers 
-\texttt{.tricot} (haut niveau) et transformation en instructions utilisateur (bas niveau).
-La deadline que nous nous étions fixée pour la version 1 du langage sera donc repoussée, et devient notre priorité.
-
-\subsubsection{Versions supérieures du langage}
-
-La définition des versions 2 et 3 du langage n'a pas été faite formellement, mais les différences avec la version 1 se réduisant à l'ajout de 
-nouvelles opérations au langage (respectivement diminutions/augmentations et croisements d'éléments de tricot), une telle définition n'était pas 
-forcément nécessaire en dehors de l'implémentation. 
-Cependant, les problèmes que pourraient introduire ses versions ont été étudiés, notamment la question de la répartition des diminutions sur un 
-trapèze afin que sa pente soit régulière, ou les incompatibilités que pourraient poser l'introduction des tresses. C'est également dans cet objectif que nous avons décidé d'utiliser une structure de trapèzes, car l'introduction de tresses (ou plus généralement de points quelconques) peut être facilitée grâce aux mots-clés \texttt{split} et \texttt{link} introduits dans le langage.
+Malgré le travail fourni jusqu'à présent par toute l'équipe, la durée nécessaire à la mise en place d'une version entièrement fonctionelle du logiciel a été sous-estimée. Néanmoins, la durée nécessaire pour les nouvelles versions peut être revue à la baisse, car nos réflexions sur les différents aspects du projet ont permis d'avoir assez tôt une idée des difficultés qui nous attendent par la suite.
 
 
-\subsubsection{Conclusion générale}
-
-La durée nécessaire à la mise en place d'une version entièrement fonctionelle du logiciel a été sous-estimée. Néanmoins, la durée nécessaire pour les nouvelles versions peut être revue à la baisse, car nos réflexions sur les différents aspects du projet ont permis d'avoir assez tôt une idée des difficultés qui nous attendent par la suite.
-
-\section*{Conclusion}
 
 \end{document}
