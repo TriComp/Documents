@@ -197,7 +197,13 @@ auteur du modèle...}
 
 \subsubsection{Langage descriptif}
 
-Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces trapèzes sont tricotés selon divers motifs, pour le moment en point endroit ou envers. Plus précisement, le langage décrit les relations entre les trapèzes qui se touchent via leurs bases. Outre le cas où deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
+Le langage descriptif permet d'interfacer le traducteur et l'interface graphique. Les contraintes étaient d'avoir un format de description facilement manipulable à travers l'interface graphique tout en gardant la structure d'un tricot. La solution adoptée est de voir un tricot comme un assemblage d'éléments qui sont des structures arborescentes de trapèzes tricotés. Ces éléments sont appelés \emph{pièces} dans notre langage. Afin de former le tricot final, certaine pièces tricotées l'une à la suite de l'autre sans rupture apparente pour l'utilisateur (le lien se fait par un connecteur inclut dans la description de la première pièce à tricoter dans l'ordre), tandis que d'autres pièces seront assemblés par couture, ces instructions étant transmises quasimment sans modification à l'utilisateur (elles ne sont donc pas traitées lors de la compilation).
+
+Nous avons décidé d'utiliser les trapèzes comme forme de base car c'est particulièrement bien adapté. En effet, le tricot s'effectue par rangs (lignes) successives et parallèles (car tricotées les unes sur les autres). De plus, même si l'on veut faire des bords non droits, comme le tricot est discret, on peut se ramener par approximation à une suite de trapèzes. Des macros seront implémentées par la suite afin de permettre dans le langage de définir la courbe que l'on veut sans avoir à écrire toute la suite de trapèze.
+
+Les trapèzes sont tricotés selon divers motifs (points si on suit le vocabulaire du tricoteur). Pour le moment ces motifs sont fixés (jersey endroit, jersey envers, mousse), mais par la suite le langage intégrera la possibilité de définir des points à base de mailles endroits et envers. Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage.
+
+Plus précisement, le langage décrit les relations entre les trapèzes qui se touchent via leurs bases. Outre le cas où deux trapèzes partagent la même base, la base d'un trapèze peut être adjacente à plusieus trapèzes : on décrit alors leur séparation via "\texttt{split}" et la réunion de deux trapèzes via "\texttt{link}". Les bases correspondant au début et à la fin du tricot sont indiqués par les mots clés "\texttt{start}" et "\texttt{stop}".
 
 \begin{ex}
    Un code du type de celui-ci décrit un poncho, illustré par la figure \ref{poncho}.
@@ -224,6 +230,7 @@ piece next := start size
   \label{poncho}
 \end{figure}
 
+
 Dans cet exemple, les points de suspension contiennent les paramètres des trapèzes (taille des bases, hauteur, décalages et type de point). Le schéma \ref{trapeze} illustre ces information sur un trapèze.
 
 \begin{figure}[!ht]
@@ -234,9 +241,19 @@ Dans cet exemple, les points de suspension contiennent les paramètres des trap�
 \end{figure}
 
 
+Cette syntaxe, qui permet déjà de travailler avec les augmentations et diminutions (ce qui n'était prévu que pour la version 2), a été définie et le parser utilisé par le compilateur a été implémenté.
 
-La syntaxe a été définie et le parser utilisé par le traducteur a été implémenté.
-Utiliser des trapèzes est selon nous intéressant, même lors de l'édition du tricot par l'utilisateur. En effet, chaque modification (ajout de points) correspondra à des séparations de trapèzes, ce qui est déjà géré par notre langage (via \texttt{split} et \texttt{link}). 
+En outre la réflexion sur la manière d'intégrer les tresses (version 3) à ce langage a été entammée. %Ici : détails
+
+
+\subsection{Compilateur}
+
+%Pas super bien formulée cette partie
+
+Contrairement à nos prévisons le compilateur n'est pas encore fonctionnel. Ceci est dû au fait d'avoir abandonné la représentation intermédiaire surlaquelle nous avions travaillé au début.
+
+Pour l'instant seul le parser du langage descriptif a été implémenté. Cependant l'algorithme pour transformer les tricots possibles avec la version 1 de notre logiciels (des rectangles) est défini et il ne reste plus qu'à l'implémenter. Le travail avec des trapèzes est à l'étude, nous nous penchons actuellement sur deux algorithmes afin de distinguer les avantages et inconvénients de chacun par rapport à notre objectif. % Ici : détails
+De plus, le travail de réflexion sur la compilation lorsqu'il y aura des tresses a déjà commencé.
 
 
 \subsection{Interface graphique}
