@@ -1,15 +1,26 @@
 \documentclass[a4paper,10pt]{article}
+\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+\usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper,colorlinks,linkcolor=darkgray,citecolor=red,urlcolor=blue]{hyperref}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{listings}
 
 
 %% Trucs à marquer :
 % extension des fichiers : .tricot
-%
+% contraintes à respecter (spilts, links, nbr maille multiple du nbr maille du motif), pour le nb de maille : conseil et le compil renvoie warning qd c'est pas le cas (et ne garantit pas de faire un truc cool) ?
 %
 
 %opening
 \title{Documentation de TriLang}
-\author{Projet TriComp}
+\author{Équipe TriComp}
 
 \begin{document}
 
@@ -18,6 +29,13 @@
 \begin{abstract}
 
 \end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
 
 \section{Introduction}
 
@@ -28,17 +46,95 @@
 \section{Syntaxe}
 
   \subsection{Décrire vos points}
+
+%% TO DO  
+% Ici : où on décrit les points, et comment.
+% Où : dans le fichier .tricot ? Ce serait le mieux mais est-ce que c'est possible facilement ?
+% Comment : à décrire (type pattern = (int*((int* Maille of maille) list)) list où type maille = Endroit | Envers with sexp, compare)  
   
   \subsection{Commencer votre tricot}
+  
+Tout tricot commence par son son nom et sa description. 
   
   \subsection{Décrire votre tricot}
 
 
-%% Annnexes
+
+  
+%%%%% %%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%
 
 \appendix
 
 \section{Exemples}
 
+Dans cette section, nous donnons des exemples complets de quelques modèles écrits grace à TriLang, allant du plus basique (écharpe) à des modèles plus compliqués (poncho et salopette). Un patron de ces modèles est également présenté, afin de rendre plus visuel ce que donne ces descriptions. Ces patrons ont été créés par l'interface graphique du logiciel TriComp.
+% + exemples de définitions de points ?
+
+\subsection{Écharpe}
+
+\begin{lstlisting}
+Name : scarf_test
+Description : "The easiest knit you can make"
+
+piece my_piece := start 25
+		|| trapezoid ( height : 150, shift : 0, upper_width : 25, pattern : jersey )
+		|| stop
+\end{lstlisting}
+
+
+\subsection{Poncho}
+
+\begin{lstlisting}
+Name : poncho_test
+Description : "The poncho given in the midterm"
+
+
+piece my_piece := start 60
+      	       || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : garter )
+	       || split 0 30 { trapezoid ( height : 30, shift : 0, upper_width : 15, pattern : envers )
+			    || trapezoid ( height : 30, shift : 0, upper_width : 30, pattern : envers )
+                            || link next 0
+			    }
+			30 30 { trapezoid ( height : 30, shift : 15, upper_width : 15, pattern : envers )
+			 || trapezoid ( height : 30, shift : -15, upper_width : 30, pattern : envers )
+                         || link next 30
+			 }
+
+
+piece next := start 60
+           || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : envers )
+           || stop
+\end{lstlisting}
+
+\subsection{Salopette}
+
+\begin{lstlisting}
+Name : salopette_test
+Description : "Essai de description de la salopette décrite en réunion : version avec splits et links n-aires"
+
+piece my_piece := start 50
+		|| trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+		|| link devant 0
+
+piece jambe_2 := start 50
+		|| trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+		|| link devant 50
+
+piece devant := start 100
+		|| trapezoid ( height : 100, shift : 0, upper_width : 100, pattern : envers )
+		|| split
+			15 10 { trapezoid ( height : 30, shift : 0, upper_width : 10, pattern : envers )
+				|| link derriere 15 }
+			75 10 { trapezoid ( height : 30, shift : 0, upper_width : 10, lower_width : 10, pattern : envers )
+				|| link derriere 75 }
+
+piece derriere := start 10
+		|| trapezoid ( height : 100, shift : 0, upper_width : 100, lower_width : 100, pattern : envers )
+		|| split
+			0  50 { trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+				|| stop }
+			50 50 { trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+				|| stop }
+\end{lstlisting}
 
 \end{document}
