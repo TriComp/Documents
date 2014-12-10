@@ -54,12 +54,16 @@ compilation de tricot était susceptible de mener à des problèmes théoriques 
 Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés, voici donc quelques définitions :
 
 \begin{itemize}
+% + rang
 \item une \emph{maille} est l'unité de base d'un tricot. Il s'agit de la boucle qui constitue l'étoffe en étant reliée à ses voisines, horizontalement car 
   partageant la même portion de fil, verticalement car ces boucles sont imbriquées les unes dans les autres. Elle peut être à l'endroit ou à l'envers, selon la 
   manière dont la boucle est réalisée.
 \item un \emph{point} est une manière de combiner les différentes opérations réalisables sur les mailles (les tricoter à l'endroit, à l'envers, en tricoter 
   plusieurs ensemble, croiser plusieurs mailles \dots)
 \item l'\emph{ouvrage} désigne la pièce de tricot tout entière, par exemple l'écharpe ou le pull.
+\item une \emph{diminution} est une opération consistant à faire diminuer d'un le nombre de mailles du rang ; une technique courante consiste à tricoter ensemble 
+  deux mailles. Symétriquement, une \emph{augmentation} est une opération à la suite de laquelle le nombre de mailles du rang a augmenté d'un ; une technique 
+  courante consiste à enrouler le fil sur l'aiguille pour former une nouvelle maille (on parle alors de \emph{jeté}).
 \end{itemize}
 
 Le tricot est réalisé à l'aide d'aiguilles, qui servent d'une part à maintenir les boucles libres (pour éviter qu'elles ne se défassent et libèrent les boucles du 
@@ -70,9 +74,14 @@ rang précédent qu'elles retiennent), d'autre part à former de nouvelles boucl
 \section{Travail réalisé}
 
 Le travail que nous prévoyions de réaliser impliquait d'une part de définir différents langages de ``programmation'' du tricot (un langage de haut niveau pour 
-décrire de manière rigoureuse les ouvrages, et un langage de bas niveau correspondant aux mailles à tricoter), d'écrire un compilateur
+décrire de manière rigoureuse les ouvrages, et un langage de bas niveau correspondant aux mailles à tricoter), d'autre part d'écrire un compilateur réalisant la 
+traduction d'un langage vers l'autre, et enfin de réaliser une interface graphique permettant de les manipuler intuitivement et de visualiser les pièces en cours de 
+définition.
 
 \subsection{Définition des langages}
+
+Nous avons été amenés au cours de ce projet à définir deux langages, l'un purement statique, puisque servant à décrire les ouvrages de tricot, l'autre dyamique, car 
+décrivant le processus de réalisation du tricot.
 
 \subsubsection{Langage descriptif}
 % donner un pointeur sur la documentation ici
@@ -100,8 +109,12 @@ décrire de manière rigoureuse les ouvrages, et un langage de bas niveau corres
 \section{Améliorations possibles}
 
 % ici, on parlera des autres versions du langage, des améliorations qu'on aurait pu apporter à l'interface graphique...
+Le manque de temps et de moyens humains nous a empêché de mettre en place la totalité des fonctionnalités que nous avions prévues, notamment en ce qui concerne les 
+types de points gérés par le langage (la version actuelle ne gère que les points à base de mailles à l'endroit et à l'envers).
 
 \subsection{Langage de description}
+% à réécrire pour le rendre sexy et vendeur
+En ayant plus de temps à notre disposition, nous pourrions intégrer au langage d'une part les diminutions et augmentations
 
 \subsection{Interface graphique}
 
