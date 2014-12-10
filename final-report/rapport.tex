@@ -37,28 +37,47 @@
 Le tricot est un art qu'on imagine souvent réservé aux personnes âgées
 
 Les magazines de tricot présententent souvent des modèles à réaliser soi-même, combinant différents points. Il est cependant vite fastidieux d'écrire la suite des 
-instructions à suivre pour réaliser une pièce.
+instructions à suivre pour réaliser une pièce. Notre but ici était donc de réaliser un logiciel permettant d'une part de décrire des pièces de tricot de manière \emph{user-friendly}, et, à partir de cette description, de générer une suite d'instructions à destination du tricoteur permettant de réaliser la pièce en question. 
+
+Cette opération de traduction d'un langage de ``haut niveau'' vers un langage de ``bas niveau'' rappelait fortement le principe d'un compilateur, c'est pourquoi 
+nous avons d'abord considéré notre projet comme un ``compilateur de tricot''. À l'instar de la compilation d'un langage de programmation informatique, cette 
+compilation de tricot était susceptible de mener à des problèmes théoriques intéressants, à mesure que l'on enrichirait le langage.
 % ici, on explique nos motivations, la genèse du projet
 % motivations : le tricot c'est bien, mais vite fastidieux de construire des modèles à la main
 % Magazines de tricot : proposent souvent des modèles combinant de nombreux points différents, mais fastidieux de construire le modèle et de calculer où il faut faire quelle opération (tricoter une maille à l'endroit ou à l'envers, croiser des mailles, en ajouter, en enlever...)
 % autre motivation : intérêt théorique, potentiels problèmes mathématiques intéressants peuvent surgir (en pratique on n'est pas allés assez loin pour les rencontrer)
 
-\subsection*{Lexique du tricot}
+\subsection*{Lexique du tricot} % ou : Quelques mots sur le tricot
 
 % définition d'un certain nombre de mots : maille, point, ouvrage ; et description rudimentaire des techniques
 
+Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés, voici donc quelques définitions :
+
+\begin{itemize}
+\item une \emph{maille} est l'unité de base d'un tricot. Il s'agit de la boucle qui constitue l'étoffe en étant reliée à ses voisines, horizontalement car 
+  partageant la même portion de fil, verticalement car ces boucles sont imbriquées les unes dans les autres. Elle peut être à l'endroit ou à l'envers, selon la 
+  manière dont la boucle est réalisée.
+\item un \emph{point} est une manière de combiner les différentes opérations réalisables sur les mailles (les tricoter à l'endroit, à l'envers, en tricoter 
+  plusieurs ensemble, croiser plusieurs mailles \dots)
+\item l'\emph{ouvrage} désigne la pièce de tricot tout entière, par exemple l'écharpe ou le pull.
+\end{itemize}
+
+Le tricot est réalisé à l'aide d'aiguilles, qui servent d'une part à maintenir les boucles libres (pour éviter qu'elles ne se défassent et libèrent les boucles du 
+rang précédent qu'elles retiennent), d'autre part à former de nouvelles boucles.
+
+\newpage
+
 \section{Travail réalisé}
+
+Le travail que nous prévoyions de réaliser impliquait d'une part de définir différents langages de ``programmation'' du tricot (un langage de haut niveau pour 
+décrire de manière rigoureuse les ouvrages, et un langage de bas niveau correspondant aux mailles à tricoter), d'écrire un compilateur
 
 \subsection{Définition des langages}
 
 \subsubsection{Langage descriptif}
-
 % donner un pointeur sur la documentation ici
 
 \subsubsection{Langage de bas niveau}
-
-
-
 
 \subsection{Compilateur}
 
