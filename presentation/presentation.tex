@@ -6,6 +6,7 @@
 \usepackage[T1]{fontenc} %pour la césure des mots.
 \usepackage{amssymb} %pour les symboles mathématiques et lettres grecques
 \usepackage{amsmath} %pour les formules mathématiques avancées
+\usepackage{listings} %lstlisting
 
 \beamertemplatenavigationsymbolsempty % Flag nazi pour supprimer la ligne d'option dans les slides
 
@@ -29,6 +30,14 @@
 		\tableofcontents
 }
 
+% Proposition de plan :
+% Introduction : présentation de l'équipe, 
+% TriComp : Origine de l'idée, Compilateur ? Tricot ?
+% Travail en amont : Problèmes à résoudre (allocation aiguilles, qqchose de général) -> "langage haut niveau"
+% Coté logiciel : interface
+% Difficultés rencontrées
+% Améliorations possibles (complexifier fonctionnalites, reprendre les objectifs non traités du midterm)
+
 \section{Introduction}
 
 \subsection{L'équipe}
@@ -49,39 +58,53 @@
 
 \subsection{Présentation générale}
 
-\frame{
-	\frametitle{Présentation générale}
 		% TriComp = Tricot + Compilateur
 		% Tricot -> logiciel pour tricoteur
 		% Compilateur -> réalisation du tricot
 		% ==> Un logiciel d'édition de tricot, mais surtout de génération d'instructions 
+
+\frame{
+	\frametitle{TriComp ?}
+		\begin{center}
+			\begin{tabular}{ccc}
+		        \onslide<2-> \includegraphics[height=0.35\textheight]{../img/tricot.png} &
+				\onslide<3-> \includegraphics[height=0.35\textheight]{../img/plus.jpg} &
+				\includegraphics[height=0.35\textheight]{../img/gcc.png}
+			\end{tabular}
+		\end{center}
 }
+
+\frame{
+	\frametitle{Présentation générale}
+		\begin{itemize}
+			\onslide<1->\item Un compilateur pour tricot
+			\onslide<2-> \item D'un patron de tricot ... \onslide<3-> vers une liste d'instructions
+			\onslide<3-> \item Le tout utilisable via une interface graphique
+		\end{itemize}
+}
+
+\frame{
+	\frametitle{Quelques notions de tricot...}
+}			
 
 \subsection{Motivations}
 
 \frame{
 	\frametitle{Motivations}
-		% Logiciels de tricot actuels : beaucoup d'édition, mais 
-		% Livre de tricot : difficiles à suivre ? Pas spécifique à une pièce en particulier.
-		% Originalité.		
-		% Autres ...
+		\begin{itemize}
+			\item Le tricot n'est pas très présent dans le milieu informatique...
+			\item Les logiciels de tricot actuels ne proposent souvent que de l'édition
+			\item De plus, ces logiciels utilisent une représentation très locale des points de tricot.
+			% TODO : image 
+			%\item Manuels de tricot pas faciles à suivre, ... 
+			\item Un projet original !
+			% TODO : autres ?
+		\end{itemize}
 }
-
-\frame{
-	\frametitle{Quelques notions de tricot...}
-}
-
-% Proposition de plan :
-% Introduction : présentation de l'équipe, 
-% TriComp : Origine de l'idée, Compilateur ? Tricot ?
-% Travail en amont : Problèmes à résoudre (allocation aiguilles, qqchose de général) -> "langage haut niveau"
-% Coté logiciel : interface
-% Difficultés rencontrées
-% Améliorations possibles (complexifier fonctionnalites, reprendre les objectifs non traités du midterm)
 
 \section{Notre travail}
 
-\subsection{Conception d'un langage descriptif}
+\subsection{Conception d'un langage descriptif}	
 
 \frame{
 	\frametitle{En amont... description d'un tricot}
@@ -101,12 +124,18 @@
 \frame{
 	\frametitle{Le langage}
 		\begin{itemize}
-			\item La composante essentielle : le trapèze
-			\item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
-			\item Un exemple
-			% TODO : Exemple
+			\onslide<1-> \item La composante essentielle : le trapèze \\
+			\onslide<2-> \begin{center}
+				\includegraphics[height=0.4\textheight]{../img/trapeze.jpg}
+			\end{center}
+			\onslide<3-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\onslide<4-> \item Un exemple
 		\end{itemize}
-}	
+}
+
+\frame{
+	 \frametitle{Un exemple}
+}
 
 \subsection{Conception d'un compilateur}
 
@@ -116,7 +145,7 @@
 			\item Pouvoir passer d'un tricot à la liste des instructions pour le réaliser
 			\item Mais aussi des étapes intermédiaires :
 			\begin{itemize}
-				\item Vérifications 
+				\item Vérifications
 			    \item Allocation d'aiguilles ? % TODO est ce que ca sera fait ?
 			\end{itemize}
 		\end{itemize}
@@ -138,6 +167,8 @@
 		\Huge{Démo !}
 	\end{center}
 }
+
+\section{Difficultées rencontrées}
 
 \end{document}
 
