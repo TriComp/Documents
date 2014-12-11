@@ -17,14 +17,37 @@
 
 \title{Rapport final : TriComp}
 
-\author{Équipe TriComp}
+\author{}
 
-\date{}
-
+\date{Vendredi 19 Décembre 2014}
 
 \begin{document}
 
-\maketitle
+\makeatletter % Pour utiliser le "at" comme une commande interne.
+  \begin{titlepage}
+    \begin{center}
+       {\LARGE \@title} \\
+       \vspace{2cm}
+       {\large \@date}
+       \vspace{3cm}
+    \end{center}
+       {\large
+       {William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\}
+    \vspace{1cm}
+       {\hfill coordinateur \\}
+       {Agathe \textsc{Herrou}  \hfill Romain \textsc{Labolle} \\}
+       \vspace{1cm}
+       {chef de projet \\}
+       \vspace{1.5cm}
+       {Frédéric \textsc{Lang} \hfill Maxime \textsc{Lesourd} \\}
+       {Laureline \textsc{Pinault} \hfill Léo \textsc{Stéfanesco} \\}}
+       \vspace{2.5cm}
+    \begin{abstract}
+	Ce document présente le rapport final de notre projet TriComp. 
+	% TODO : résumer le contenu du document
+    \end{abstract}
+  \end{titlepage}
+\makeatother
 
 \newpage
 
@@ -34,12 +57,12 @@
 
 \section*{Introduction}
 
-Le tricot est un art qu'on imagine souvent réservé aux personnes âgées
+Le tricot est un art que l'on imagine souvent réservé aux personnes âgées.
 
 Les magazines de tricot présententent souvent des modèles à réaliser soi-même, combinant différents points. Il est cependant vite fastidieux d'écrire la suite des 
 instructions à suivre pour réaliser une pièce. Notre but ici était donc de réaliser un logiciel permettant d'une part de décrire des pièces de tricot de manière \emph{user-friendly}, et, à partir de cette description, de générer une suite d'instructions à destination du tricoteur permettant de réaliser la pièce en question. 
 
-Cette opération de traduction d'un langage de ``haut niveau'' vers un langage de ``bas niveau'' rappelait fortement le principe d'un compilateur, c'est pourquoi 
+Cette opération de traduction d'un langage de ``haut niveau'' (l'ensemble des pièces du tricot) vers un langage de ``bas niveau'' (les instructions) rappelait fortement le principe d'un compilateur, c'est pourquoi 
 nous avons d'abord considéré notre projet comme un ``compilateur de tricot''. À l'instar de la compilation d'un langage de programmation informatique, cette 
 compilation de tricot était susceptible de mener à des problèmes théoriques intéressants, à mesure que l'on enrichirait le langage.
 % ici, on explique nos motivations, la genèse du projet
