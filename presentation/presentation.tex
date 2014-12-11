@@ -25,6 +25,15 @@
 }
 
 \frame{
+	\frametitle{Plan} 
+		\tableofcontents
+}
+
+\section{Introduction}
+
+\subsection{L'équipe}
+
+\frame{
 	\frametitle{L'équipe TriComp}
 		\begin{center}
 			{\large
@@ -37,13 +46,6 @@
 			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
 		\end{center}
 }
-
-\frame{
-	\frametitle{Plan} 
-		\tableofcontents
-}
-
-\section{Introduction}
 
 \subsection{Présentation générale}
 
@@ -76,6 +78,66 @@
 % Coté logiciel : interface
 % Difficultés rencontrées
 % Améliorations possibles (complexifier fonctionnalites, reprendre les objectifs non traités du midterm)
+
+\section{Notre travail}
+
+\subsection{Conception d'un langage descriptif}
+
+\frame{
+	\frametitle{En amont... description d'un tricot}
+		\begin{itemize}
+			\item Un schéma de description de nimporte quel tricot
+			\item Plusieurs critères :
+			\begin{itemize}
+				\item facilité pour générer les instructions
+				\item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
+										  % à ce qui se fait d'habitude dans les logiciels de tricots (points sur une grille)
+				\item facile de compréhension et d'utilisation (notamment dans le code...)
+			\end{itemize}
+			\item Nous avons donc conçu le langage TriLang % TODO : meilleur nom ?
+		\end{itemize}
+}
+
+\frame{
+	\frametitle{Le langage}
+		\begin{itemize}
+			\item La composante essentielle : le trapèze
+			\item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\item Un exemple
+			% TODO : Exemple
+		\end{itemize}
+}	
+
+\subsection{Conception d'un compilateur}
+
+\frame{
+	\frametitle{Le compilateur}
+		\begin{itemize}
+			\item Pouvoir passer d'un tricot à la liste des instructions pour le réaliser
+			\item Mais aussi des étapes intermédiaires :
+			\begin{itemize}
+				\item Vérifications 
+			    \item Allocation d'aiguilles ? % TODO est ce que ca sera fait ?
+			\end{itemize}
+		\end{itemize}
+}
+
+\subsection{Elaboration d'une interface}
+
+\frame{
+	\frametitle{L'interface graphique}
+		\begin{itemize}
+			\item Simple d'utilisation
+			\item Outils d'éditions
+			\item Appel au compilateur
+		\end{itemize}
+}
+
+\frame{
+	\begin{center}
+		\Huge{Démo !}
+	\end{center}
+}
 
 \end{document}
 
