@@ -72,13 +72,15 @@ Dans cette section, nous donnons des exemples complets de quelques modèles écr
 
 \subsection{Écharpe}
 
+
+
 \begin{lstlisting}
 Name : scarf_test
 Description : "The easiest knit you can make"
 
 piece my_piece := start 25
-		|| trapezoid ( height : 150, shift : 0, upper_width : 25, pattern : jersey )
-		|| stop
+   || trapezoid ( height : 150, shift : 0, upper_width : 25, pattern : jersey )
+   || stop
 \end{lstlisting}
 
 
@@ -90,51 +92,59 @@ Description : "The poncho given in the midterm"
 
 
 piece my_piece := start 60
-      	       || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : garter )
-	       || split 0 30 { trapezoid ( height : 30, shift : 0, upper_width : 15, pattern : envers )
-			    || trapezoid ( height : 30, shift : 0, upper_width : 30, pattern : envers )
-                            || link next 0
-			    }
-			30 30 { trapezoid ( height : 30, shift : 15, upper_width : 15, pattern : envers )
-			 || trapezoid ( height : 30, shift : -15, upper_width : 30, pattern : envers )
-                         || link next 30
-			 }
+   || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : garter )
+   || split 0 30 { 
+     trapezoid ( height : 30, shift : 0, upper_width : 15, pattern : envers )
+     || trapezoid ( height : 30, shift : 0, upper_width : 30, pattern : envers )
+     || link next 0
+   }
+   30 30 { 
+     trapezoid ( height : 30, shift : 15, upper_width : 15, pattern : envers )
+     || trapezoid ( height : 30, shift : -15, upper_width : 30, pattern : envers )
+     || link next 30
+   }
 
 
 piece next := start 60
-           || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : envers )
-           || stop
+   || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : envers )
+   || stop
 \end{lstlisting}
 
 \subsection{Salopette}
 
+%\lstinputlisting{salopette.tricot}
+
 \begin{lstlisting}
 Name : salopette_test
-Description : "Essai de description de la salopette décrite en réunion : version avec splits et links n-aires"
+Description : "Essai de description de la salopette decrite en reunion : 
+version avec splits et links n-aires"
 
 piece my_piece := start 50
-		|| trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
-		|| link devant 0
+   || trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+   || link devant 0
 
 piece jambe_2 := start 50
-		|| trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
-		|| link devant 50
+   || trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+   || link devant 50
 
 piece devant := start 100
-		|| trapezoid ( height : 100, shift : 0, upper_width : 100, pattern : envers )
-		|| split
-			15 10 { trapezoid ( height : 30, shift : 0, upper_width : 10, pattern : envers )
-				|| link derriere 15 }
-			75 10 { trapezoid ( height : 30, shift : 0, upper_width : 10, lower_width : 10, pattern : envers )
-				|| link derriere 75 }
+   || trapezoid ( height : 100, shift : 0, upper_width : 100, pattern : envers )
+   || split
+   15 10 { trapezoid ( height : 30, shift : 0, upper_width : 10, pattern : envers )
+     || link derriere 15 }
+   75 10 { 
+     trapezoid ( height : 30, shift : 0, upper_width : 10, lower_width : 10, 
+       pattern : envers )
+     || link derriere 75 }
 
 piece derriere := start 10
-		|| trapezoid ( height : 100, shift : 0, upper_width : 100, lower_width : 100, pattern : envers )
-		|| split
-			0  50 { trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
-				|| stop }
-			50 50 { trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
-				|| stop }
+   || trapezoid ( height : 100, shift : 0, upper_width : 100, lower_width : 100, 
+     pattern : envers )
+   || split
+   0  50 { trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+     || stop }
+   50 50 { trapezoid ( height : 200, shift : 0, upper_width : 50, pattern : envers )
+     || stop }
 \end{lstlisting}
 
 \end{document}
