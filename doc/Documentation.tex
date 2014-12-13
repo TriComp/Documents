@@ -41,6 +41,11 @@
 
 \section{Description}
 
+La description des ouvrages de tricot est basé sur le découpage en trapèzes : en effet, toute pièce tricotable est décomposable en un agencement de trapèzes
+de dimensions variable.
+
+En pratique, on décrit les pièces en donnant leurs dimensions (longueur des bases, hauteur) et le motif avec lequel elles seront remplies (jersey, point mousse,
+côtes...).
 % Ici : 
 
 \section{Syntaxe}
@@ -51,15 +56,48 @@
 % Ici : où on décrit les points, et comment.
 % Où : dans le fichier .tricot ? Ce serait le mieux mais est-ce que c'est possible facilement ?
 % Comment : à décrire (type pattern = (int*((int* Maille of maille) list)) list où type maille = Endroit | Envers with sexp, compare)  
+
+Il n'est pour l'instant pas possible de définir des points personnalisés, les points apparaissant dans les tricots doivent être choisis parmis les points suivants :
+\begin{itemize}
+\item jersey
+\item point mousse
+\item côtes 1/1
+\item point de riz
+\item côtes 2/2
+\item fausses côtes anglaises
+\item jersey rayé
+\item côtes plates
+\item côtes piquées
+\item losanges
+\item côtes point de riz
+\item damier $3\times 3$
+\end{itemize}
   
   \subsection{Commencer votre tricot}
   
-Tout tricot commence par son son nom et sa description. 
+Tout tricot commence par son son nom et sa description, donnés avec la syntaxe suivante :
+
+%\begin{lstlisting}
+\noindent \texttt{Name : [inserer ici le nom de votre ouvrage] \\
+  Description : [inserer ici une description de votre ouvrage]}
+%\end{lstlisting}
   
   \subsection{Décrire votre tricot}
 
+\subsubsection{Un trapèze}
 
+  La description d'un trapèze du tricot se fait avec la syntaxe suivante : \\
+\texttt{trapezoid (height : h, shift : s, upper\_width : w, pattern : motif} où 
+\begin{itemize}
+\item \texttt{s} est la hauteur en rangs du trapèze
+\item \texttt{s} est la différence (en mailles) entre la largeur du trapèze en haut et en bas
+\item \texttt{w} est la largeur du trapèze en haut (la largeur en bas étant normalement inférable avec le reste du code
+\item \texttt{motif} est simplement le point utilisé sur ce trapèze, à choisir parmi ceux listés plus haut
+\end{itemize}
 
+\subsubsection{Un tricot}
+
+La syntaxe globale de description d'un tricot se fait selon le modèle suivant :\\
   
 %%%%% %%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%
 
