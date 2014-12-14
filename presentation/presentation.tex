@@ -41,7 +41,7 @@
 
 \section{Introduction}
 
-\subsection{L'équipe}
+\subsection{Présentation générale}
 
 \frame{
 	\frametitle{L'équipe TriComp}
@@ -56,13 +56,6 @@
 			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
 		\end{center}
 }
-
-\subsection{Présentation générale}
-
-		% TriComp = Tricot + Compilateur
-		% Tricot -> logiciel pour tricoteur
-		% Compilateur -> réalisation du tricot
-		% ==> Un logiciel d'édition de tricot, mais surtout de génération d'instructions 
 
 \frame{
 	\frametitle{TriComp ?}
@@ -84,12 +77,14 @@
 		\end{itemize}
 }
 
+\subsection{Quelques notions de tricot}
+
 \frame{
 	\frametitle{Quelques notions de tricot...}
         \begin{columns}   
           \column{0.6\textwidth}
           \includegraphics[scale=0.3]{Knit-schematic.png}
-          \column{0.4\textwidth}
+          \column{0.3\textwidth}
           \begin{itemize}
             \pause %à savoir : plus simple d'utilisation que \onslide
           \item[] \textcolor{green}{maille}
@@ -97,7 +92,25 @@
           \item[] \textcolor{red}{rang}
           \end{itemize}
         \end{columns}
-}			
+}
+
+% TODO : Maille à l'endroit, à l'envers ---> Un panel de ce qu'on peut faire avec ? 
+
+\frame{
+	\frametitle{Les instructions de tricot}
+		\begin{itemize}
+			\onslide<2-> \item Les instructions à suivre par le tricoteur comportent des informations sur :
+			\begin{itemize}
+				\onslide<3-> \item le type de point à tricoter
+				\onslide<4-> \item le nombre de points identiques
+				\onslide<5-> \item le nombre de rangs à reproduire
+			\end{itemize}
+			% TODO : une image avec des instructions ? 
+			% Deux raisons d'automatiser le calcul des instructions			
+			\onslide<6-> \item Des instructions longues et compliquées à établir
+			\onslide<7-> \item Dans les manuels de tricots, instructions pour un motif donné, sans tenir compte de la forme du tricot.
+		\end{itemize}
+}
 
 \subsection{Motivations}
 
@@ -145,8 +158,9 @@
 			\onslide<2-> \begin{center}
 				\includegraphics[height=0.4\textheight]{../img/trapeze.jpg}
 			\end{center}
-			\onslide<3-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
-			\onslide<4-> \item Un exemple
+			\onslide<3-> \item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
+			\onslide<4-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\onslide<5-> \item Un exemple
 		\end{itemize}
 }
 
@@ -195,7 +209,7 @@
 
 \section{Difficultés rencontrées \& améliorations possibles}
 
-\subsection{Difficultés rencontrées}
+\subsection{Difficultés}
 
 \frame{
 	\frametitle{Difficultés rencontrées}
@@ -214,19 +228,27 @@
 		\end{itemize}
 }
 
+\subsection{Améliorations}
+
 \frame{
 	\frametitle{Améliorations en perspective...}
 	% i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
 		\begin{itemize}
-			\onslide<2-> \item Côté édition, plus de liberté dans la personalisation :
+			\onslide<2-> \item Côté édition, plus de liberté dans la personnalisation :
 			\begin{itemize}
 				\onslide<3-> \item Des points définis par l'utilisateur
-				\onslide<4-> \item Ajouts de tresses $\longleftarrow$ séparations de trapèzes ?
+				\onslide<4-> \item Pouvoir ajouter des tresses $\longrightarrow$ séparations de trapèzes ?
 				\onslide<5-> \item Changer la taille des pièces, ...
 			\end{itemize}
 			%\onslide<6-> \item TODO autres
 		\end{itemize}
 }
+
+\frame{
+	\begin{center}
+		\Huge{Des questions ?}
+	\end{center}
+}	
 
 \end{document}
 
