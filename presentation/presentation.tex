@@ -7,6 +7,7 @@
 \usepackage{amssymb} %pour les symboles mathématiques et lettres grecques
 \usepackage{amsmath} %pour les formules mathématiques avancées
 \usepackage{listings} %lstlisting
+\usepackage{xcolor} % pour mettre du texte en couleur
 
 \beamertemplatenavigationsymbolsempty % Flag nazi pour supprimer la ligne d'option dans les slides
 
@@ -85,6 +86,17 @@
 
 \frame{
 	\frametitle{Quelques notions de tricot...}
+        \begin{columns}   
+          \column{0.6\textwidth}
+          \includegraphics[scale=0.3]{Knit-schematic.png}
+          \column{0.4\textwidth}
+          \begin{itemize}
+            \pause %à savoir : plus simple d'utilisation que \onslide
+          \item[] \textcolor{green}{maille}
+            \pause
+          \item[] \textcolor{red}{rang}
+          \end{itemize}
+        \end{columns}
 }			
 
 \subsection{Motivations}
