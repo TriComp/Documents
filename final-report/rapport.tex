@@ -100,6 +100,7 @@ Le travail que nous prévoyions de réaliser impliquait d'une part de définir d
 décrire de manière rigoureuse les ouvrages, et un langage de bas niveau correspondant aux mailles à tricoter), d'autre part d'écrire un compilateur réalisant la 
 traduction d'un langage vers l'autre, et enfin de réaliser une interface graphique permettant de les manipuler intuitivement et de visualiser les pièces en cours de 
 définition.
+Nous détaillons dans cette partie le travail qui a été réalisé dans chacun de ces objectifs. Nous rappelons que tout le travail (logiciel, documents et site web) sont disponibles et consultables sur le dépôt Git du projet TriComp. (\url{https://github.com/TriComp/}).
 
 \subsection{Définition des langages}
 
@@ -107,7 +108,20 @@ Nous avons été amenés au cours de ce projet à définir deux langages, l'un p
 décrivant le processus de réalisation du tricot.
 
 \subsubsection{Langage descriptif}
-% donner un pointeur sur la documentation ici
+
+Une première version du langage descriptif avait été détaillée dans le rapport mi-parcours. Quelques modifications ont été effectuées depuis. Nous exposerons donc ici le langage final, les modifications effectuées ainsi que leur intêret, le tout illustré par un exemple. \\
+
+L'idée générale est de concevoir une langage capable décrire un tricot de la façon la plus globale possible. Dans les (rares) logiciels de tricot qui existent, le tricot est décomposé en sa plus petite entité : la maille (cf figure \ref{logiciel}). L'avantage de cette décomposition atomique est que l'on peut réaliser des choix de points avec une très bonne précision. Notre démarche, quand à elle, propose une vision du tricot plus globale, et donc beaucoup plus simple.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.3]{../img/grid.jpg}
+  \caption{Le logiciel Stitch Designer propose une vue très précise du tricot, mais celui-ci a donc une taille beaucoup trop importante (comme en témoignent les barres de défilement à droite et en bas de la fenêtre}
+  \label{logiciel}
+\end{figure}
+
+
+
 
 \subsubsection{Langage de bas niveau}
 
