@@ -41,7 +41,7 @@
 
 \section{Introduction}
 
-\subsection{L'équipe}
+\subsection{Présentation générale}
 
 \frame{
 	\frametitle{L'équipe TriComp}
@@ -56,13 +56,6 @@
 			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
 		\end{center}
 }
-
-\subsection{Présentation générale}
-
-		% TriComp = Tricot + Compilateur
-		% Tricot -> logiciel pour tricoteur
-		% Compilateur -> réalisation du tricot
-		% ==> Un logiciel d'édition de tricot, mais surtout de génération d'instructions 
 
 \frame{
 	\frametitle{TriComp ?}
@@ -84,20 +77,37 @@
 		\end{itemize}
 }
 
+\subsection{Quelques notions de tricot}
+
 \frame{
 	\frametitle{Quelques notions de tricot...}
         \begin{columns}   
           \column{0.6\textwidth}
           \includegraphics[scale=0.3]{Knit-schematic.png}
-          \column{0.4\textwidth}
+          \column{0.3\textwidth}
           \begin{itemize}
-            \pause %à savoir : plus simple d'utilisation que \onslide
+            \pause % à savoir : plus simple d'utilisation que \onslide
           \item[] \textcolor{green}{maille}
             \pause
           \item[] \textcolor{red}{rang}
           \end{itemize}
         \end{columns}
-}			
+}
+
+% TODO : Maille à l'endroit, à l'envers ---> Un panel de ce qu'on peut faire avec ? 
+
+\frame{
+	\frametitle{Les instructions de tricot}
+		\begin{itemize}
+			\onslide<2-> \item Les instructions à suivre par le tricoteur comportent des informations sur :
+			\begin{itemize}
+				\onslide<3-> \item le type de point à tricoter
+				\onslide<4-> \item le nombre de points identiques
+				\onslide<5-> \item le nombre de rangs à reproduire
+			\end{itemize}
+			% TODO : une image avec des instructions ? 
+		\end{itemize}
+}
 
 \frame{
 	\frametitle{Quelques notions de tricot...}
@@ -133,8 +143,9 @@
 			\onslide<3-> \item Les logiciels de tricot actuels ne proposent souvent que de l'édition
 			\onslide<4-> \item De plus, ces logiciels utilisent une représentation très locale des points de tricot.
 			% TODO : image 
-			%\item Manuels de tricot pas faciles à suivre, ... 
-			\onslide<5-> \item Un projet original !
+						% Deux raisons d'automatiser le calcul des instructions			
+			\onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
+			\onslide<6-> \item Un projet original !
 			% TODO : autres ?
 		\end{itemize}
 }
@@ -154,12 +165,13 @@
 			\onslide<2-> \item Un schéma de description de nimporte quel tricot
 			\onslide<3-> \item Plusieurs critères :
 			\begin{itemize}
-				\onslide<4-> \item facilité pour générer les instructions
-				\onslide<5-> \item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
+				\onslide<4-> \item gérer le plus de tricots possibles
+				\onslide<5-> \item facilité pour générer les instructions
+				\onslide<6-> \item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
 										  % à ce qui se fait d'habitude dans les logiciels de tricots (points sur une grille)
-				\onslide<6-> \item facile de compréhension et d'utilisation (notamment dans le code...)
+				\onslide<7-> \item facile de compréhension et d'utilisation (notamment dans le code...)
 			\end{itemize}
-			\onslide<7-> \item Nous avons donc conçu le langage TriLang % TODO : meilleur nom ?
+			\onslide<8-> \item Nous avons donc conçu le langage TriLang % TODO : meilleur nom ?
 		\end{itemize}
 }
 
@@ -170,8 +182,9 @@
 			\onslide<2-> \begin{center}
 				\includegraphics[height=0.4\textheight]{../img/trapeze.jpg}
 			\end{center}
-			\onslide<3-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
-			\onslide<4-> \item Un exemple
+			\onslide<3-> \item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
+			\onslide<4-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\onslide<5-> \item Un exemple
 		\end{itemize}
 }
 
@@ -220,7 +233,7 @@
 
 \section{Difficultés rencontrées \& améliorations possibles}
 
-\subsection{Difficultés rencontrées}
+\subsection{Difficultés}
 
 \frame{
 	\frametitle{Difficultés rencontrées}
@@ -239,19 +252,30 @@
 		\end{itemize}
 }
 
+\subsection{Améliorations}
+
 \frame{
 	\frametitle{Améliorations en perspective...}
 	% i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
 		\begin{itemize}
-			\onslide<2-> \item Côté édition, plus de liberté dans la personalisation :
+			\onslide<2-> \item Côté édition, plus de liberté dans la personnalisation :
 			\begin{itemize}
 				\onslide<3-> \item Des points définis par l'utilisateur
-				\onslide<4-> \item Ajouts de tresses $\longleftarrow$ séparations de trapèzes ?
+				\onslide<4-> \item Pouvoir ajouter des tresses $\longrightarrow$ séparations de trapèzes ?
 				\onslide<5-> \item Changer la taille des pièces, ...
 			\end{itemize}
-			%\onslide<6-> \item TODO autres
+			\onslide<6-> \item Côté compilateur :
+			\begin{itemize}
+				\onslide<7-> \item gérer les coutures (à effectuer après le tricot)
+			\end{itemize}
 		\end{itemize}
 }
+
+\frame{
+	\begin{center}
+		\Huge{Des questions ?}
+	\end{center}
+}	
 
 \end{document}
 
