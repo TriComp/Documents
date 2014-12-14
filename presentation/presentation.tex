@@ -86,7 +86,7 @@
           \includegraphics[scale=0.3]{Knit-schematic.png}
           \column{0.3\textwidth}
           \begin{itemize}
-            \pause %à savoir : plus simple d'utilisation que \onslide
+            \pause % à savoir : plus simple d'utilisation que \onslide
           \item[] \textcolor{green}{maille}
             \pause
           \item[] \textcolor{red}{rang}
@@ -106,9 +106,6 @@
 				\onslide<5-> \item le nombre de rangs à reproduire
 			\end{itemize}
 			% TODO : une image avec des instructions ? 
-			% Deux raisons d'automatiser le calcul des instructions			
-			\onslide<6-> \item Des instructions longues et compliquées à établir
-			\onslide<7-> \item Dans les manuels de tricots, instructions pour un motif donné, sans tenir compte de la forme du tricot.
 		\end{itemize}
 }
 
@@ -121,8 +118,9 @@
 			\onslide<3-> \item Les logiciels de tricot actuels ne proposent souvent que de l'édition
 			\onslide<4-> \item De plus, ces logiciels utilisent une représentation très locale des points de tricot.
 			% TODO : image 
-			%\item Manuels de tricot pas faciles à suivre, ... 
-			\onslide<5-> \item Un projet original !
+						% Deux raisons d'automatiser le calcul des instructions			
+			\onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
+			\onslide<6-> \item Un projet original !
 			% TODO : autres ?
 		\end{itemize}
 }
@@ -142,12 +140,13 @@
 			\onslide<2-> \item Un schéma de description de nimporte quel tricot
 			\onslide<3-> \item Plusieurs critères :
 			\begin{itemize}
-				\onslide<4-> \item facilité pour générer les instructions
-				\onslide<5-> \item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
+				\onslide<4-> \item gérer le plus de tricots possibles
+				\onslide<5-> \item facilité pour générer les instructions
+				\onslide<6-> \item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
 										  % à ce qui se fait d'habitude dans les logiciels de tricots (points sur une grille)
-				\onslide<6-> \item facile de compréhension et d'utilisation (notamment dans le code...)
+				\onslide<7-> \item facile de compréhension et d'utilisation (notamment dans le code...)
 			\end{itemize}
-			\onslide<7-> \item Nous avons donc conçu le langage TriLang % TODO : meilleur nom ?
+			\onslide<8-> \item Nous avons donc conçu le langage TriLang % TODO : meilleur nom ?
 		\end{itemize}
 }
 
@@ -240,7 +239,10 @@
 				\onslide<4-> \item Pouvoir ajouter des tresses $\longrightarrow$ séparations de trapèzes ?
 				\onslide<5-> \item Changer la taille des pièces, ...
 			\end{itemize}
-			%\onslide<6-> \item TODO autres
+			\onslide<6-> \item Côté compilateur :
+			\begin{itemize}
+				\onslide<7-> \item gérer les coutures (à effectuer après le tricot)
+			\end{itemize}
 		\end{itemize}
 }
 
