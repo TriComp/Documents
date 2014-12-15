@@ -162,6 +162,7 @@ Avant toute chose, il nous fallait cibler les caractéstiques que devait avoir l
 
 L'interface est divisée en trois parties : une partie contenant les outils d'édition de tricot, une fenêtre où est affiché le tricot, et une zone où se trouve la liste des instructions générées par le compilateur.
 
+
 % TODO : inclure des images 
 
 % inclure des captures d'écran etc
@@ -169,7 +170,15 @@ L'interface est divisée en trois parties : une partie contenant les outils d'é
 % le midterm report met ici le site web, mais je ne suis pas si sûre que ça soit très pertinent
 % -> autre section ? ("Communication")
 
+\subsubsection{Détails d'implémentation}
 
+L'interface a été créée à l'aide de la bibliothèque Qt. Une grande partie du projet a été intégrée au sein de la partie Qt, pour des questions de simplificité au niveau de l'intégration. Seule la partie compilation (écrite en OCaml) est dissociée de la partie Qt, et est appelée dans l'interface via des appels systèmes. 
+
+\subsection{Communication}
+
+\subsection{Site Web}
+
+\subsection{Communication au sein du projet}
 
 \section{Améliorations possibles}
 
@@ -177,15 +186,13 @@ L'interface est divisée en trois parties : une partie contenant les outils d'é
 Le manque de temps et de moyens humains nous a empêché de mettre en place la totalité des fonctionnalités que nous avions prévues, notamment en ce qui concerne les 
 types de points gérés par le langage (la version actuelle ne gère que les points à base de mailles à l'endroit et à l'envers).
 
-\subsection{Langage de description}
+\subsection{Langage descriptif}
 % à réécrire pour le rendre sexy et vendeur
-En ayant plus de temps à notre disposition, nous pourrions intégrer au langage d'une part les diminutions et augmentations, d'autre part les tresses. Ces 
-différentes 
+En ayant plus de temps à notre disposition, nous pourrions intégrer au langage d'une part les diminutions et augmentations, d'autre part les tresses. De même, une fois le tricot terminé, il faut en général le finaliser en cousant certaines parties. Cette dernière étape de couture avait été évoquée, mais n'a pas été traitée. Toutefois, la difficulté de cette étape (en matière de tricot) n'est pas très importante pour un tricoteur.
 
 \subsection{Interface graphique}
 
-
-
+Du côté de l'interface, une grande partie du travail que nous n'avons pas eu le temps d'aborder portait sur l'édition des trictos. Nous avions pensé notamment à la définition de points par l'utilisateur, à pouvoir changer la taille des pièces, ou encore améliorer le rendu des points. L'insertion de points particuliers sur des zones (par exemple, des tresses) aurait pu être un outil intéressant à implémenter.
 
 \section{Résultats théoriques}
 
@@ -193,8 +200,6 @@ différentes
 
 \subsection{Allocation d'aiguilles}
 
-
-
-
+\section*{Conclusion}
 
 \end{document}
