@@ -8,6 +8,7 @@
 \usepackage{amsmath} %pour les formules mathématiques avancées
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
+\usepackage{tikz}
 
 \beamertemplatenavigationsymbolsempty % Flag nazi pour supprimer la ligne d'option dans les slides
 
@@ -191,7 +192,35 @@
 }
 
 \frame{
-	 \frametitle{Un exemple}
+	\frametitle{Un exemple}
+	\begin{center}
+	\begin{tikzpicture}[scale = 0.05]
+		\tikzstyle{fleche}=[->,>=latex,line width=1mm]
+		\fill[color=gray!20] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+		\fill[color=white] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
+		\draw[thick] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+		\draw[thick] (0,30) -- (60,30) ;
+		\draw[thick] (0,90) -- (60,90) ;
+		\draw[thick] (0,60) -- (15,60) ;
+		\draw[thick] (45,60) -- (60,60) ;
+		\draw[thick] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
+
+		\onslide<2-> 
+		\draw[fleche, color=red] (30,20) -- (15,40);
+		\draw[fleche, color=red] (30,20) -- (45,40);
+		\draw[color=red] (30,15) node{split};
+		\draw[fleche, color=blue] (8,50) -- (8,70);
+		\draw[fleche, color=blue] (52,50) -- (52,70);
+		\draw[color=blue] (30,60) node{next};
+		\draw[fleche,color=green] (15,80) -- (30,100);
+		\draw[fleche,color=green] (45,80) -- (30,100);
+		\draw[color=green] (30,105) node {link};		
+		\draw (30,-10) node{start};
+		\draw[fleche] (30,-5) -- (30,10);
+		\draw (30,130) node{stop};
+		\draw[fleche] (30,110) -- (30,125);
+	\end{tikzpicture}
+	\end{center}
 }
 
 \subsection{Conception d'un compilateur}
