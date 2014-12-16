@@ -1,0 +1,334 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel} %pour la typographie française.
+\usepackage[T1]{fontenc} %pour la césure des mots.
+\usepackage{amssymb} %pour les symboles mathématiques et lettres grecques
+\usepackage{amsmath} %pour les formules mathématiques avancées
+\usepackage{listings} %lstlisting
+\usepackage{xcolor} % pour mettre du texte en couleur
+\usepackage{tikz}
+  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing}
+
+\definecolor{vert}{RGB}{0,153,0}
+
+\beamertemplatenavigationsymbolsempty % Flag nazi pour supprimer la ligne d'option dans les slides
+
+\title{Projet TriComp : Présentation}
+\author{Equipe TriComp}
+\date{Jeudi 18 Décembre 2014}
+
+\begin{document}
+
+\frame{
+   \begin{center}
+        \includegraphics[height=0.2\textheight]{../img/ball_of_wool.png}
+        \hspace*{4cm}
+        \includegraphics[height=0.2\textheight]{../img/logo_ens.jpg}
+   \end{center}
+   \titlepage
+}
+
+\frame{
+	\frametitle{Plan} 
+		\tableofcontents
+}
+
+% Proposition de plan :
+% Introduction : présentation de l'équipe, 
+% TriComp : Origine de l'idée, Compilateur ? Tricot ?
+% Travail en amont : Problèmes à résoudre (allocation aiguilles, qqchose de général) -> "langage haut niveau"
+% Coté logiciel : interface
+% Difficultés rencontrées
+% Améliorations possibles (complexifier fonctionnalites, reprendre les objectifs non traités du midterm)
+
+\section{Introduction}
+
+\subsection{Présentation générale}
+
+\frame{
+	\frametitle{L'équipe TriComp}
+		\begin{center}
+			{\large
+			{William \textsc{Aufort} \hspace{4cm} Julien \textsc{Bensmail} \\}
+			\vspace{1cm}
+			{Agathe \textsc{Herrou}  \hspace{4cm} Romain \textsc{Labolle} \\}
+			\vspace{1cm}
+			{Frédéric \textsc{Lang} \hspace{4cm} Maxime \textsc{Lesourd} \\}
+			\vspace{1cm}       
+			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
+		\end{center}
+}
+
+\frame{
+	\frametitle{TriComp ?}
+		\begin{center}
+			\begin{tabular}{ccc}
+		        \onslide<2-> \includegraphics[height=0.35\textheight]{../img/tricot.png} &
+				\onslide<3-> \includegraphics[height=0.35\textheight]{../img/plus.jpg} &
+				\includegraphics[height=0.35\textheight]{../img/gcc.png}
+			\end{tabular}
+		\end{center}
+}
+
+\frame{
+	\frametitle{Un compilateur pur tricot}
+
+	\begin{figure}[!h]
+	\centering
+
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+                    semithick]
+	 \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+	 
+	    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
+	    
+	    \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
+	    
+	    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};	    
+	 
+	    \node[state] (patron) [draw=none] 	[above of=patron-d] 	{Patron du tricot};
+	    
+	    \node[state] (instructions) [draw=none] 	[above of=instructions-d]	{Instructions};
+	    
+	    
+	\end{tikzpicture}
+
+	\caption{D'un paron de tricot vers une liste d'instructions}
+	\label{diag-composants}
+	\end{figure}
+			
+	Le tout utilisable via une interface graphique
+
+}
+
+\subsection{Quelques notions de tricot}
+
+\frame{
+	\frametitle{Quelques notions de tricot...}
+        \begin{columns}   
+          \column{0.6\textwidth}
+          \includegraphics[scale=0.3]{Knit-schematic.png}
+          \column{0.4\textwidth}
+          \begin{itemize}
+            \pause % à savoir : plus simple d'utilisation que \onslide
+          \item[] \textcolor{green}{maille}
+            \pause
+          \item[] \textcolor{red}{rang}
+          \end{itemize}
+        \end{columns}
+}
+
+% TODO : Maille à l'endroit, à l'envers ---> Un panel de ce qu'on peut faire avec ? 
+
+
+\frame{
+	\frametitle{Quelques notions de tricot...}
+        \begin{columns}   
+          \column{0.6\textwidth}
+          \includegraphics[scale=0.3]{Knit-schematic.png}
+          \column{0.4\textwidth}
+          \begin{itemize}
+          \item[] \textcolor{green}{maille à l'endroit}
+          \item[]
+          \end{itemize}
+        \end{columns}
+}			
+\frame{
+	\frametitle{Quelques notions de tricot...}
+        \begin{columns}   
+          \column{0.6\textwidth}
+          \includegraphics[scale=0.3]{Knit-schematic2.png}
+          \column{0.4\textwidth}
+          \begin{itemize}
+          \item[] \textcolor{green}{maille à l'endroit}
+          \item[] \textcolor{blue}{maille à l'envers}
+          \end{itemize}
+        \end{columns}
+}			
+
+\frame{
+	\frametitle{Les instructions de tricot}
+		\begin{itemize}
+			\onslide<2-> \item Les instructions à suivre par le tricoteur comportent des informations sur :
+			\begin{itemize}
+				\onslide<3-> \item le type de point à tricoter
+				\onslide<4-> \item le nombre de points identiques
+				\onslide<5-> \item le nombre de rangs à reproduire
+			\end{itemize}
+			% TODO : une image avec des instructions ? 
+		\end{itemize}
+}
+
+
+\subsection{Motivations}
+
+\frame{
+	\frametitle{Motivations}
+		\begin{itemize}
+			\onslide<2-> \item Le tricot n'est pas très présent dans le milieu informatique...
+			\onslide<3-> \item Les logiciels de tricot actuels ne proposent souvent que de l'édition
+			\onslide<4-> \item De plus, ces logiciels utilisent une représentation très locale des points de tricot.
+			% TODO : image 
+						% Deux raisons d'automatiser le calcul des instructions			
+			\onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
+			\onslide<6-> \item Un projet original !
+			% TODO : autres ?
+		\end{itemize}
+}
+
+\frame{
+	\frametitle{Plan} 
+		\tableofcontents
+}
+
+\section{Notre travail}
+
+\subsection{Conception d'un langage descriptif}	
+
+\frame{
+	\frametitle{En amont... description d'un tricot}
+		\begin{itemize}
+			\onslide<2-> \item Un schéma de description de nimporte quel tricot
+			\onslide<3-> \item Plusieurs critères :
+			\begin{itemize}
+				\onslide<4-> \item gérer le plus de tricots possibles
+				\onslide<5-> \item facilité pour générer les instructions
+				\onslide<6-> \item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
+										  % à ce qui se fait d'habitude dans les logiciels de tricots (points sur une grille)
+				\onslide<7-> \item facile de compréhension et d'utilisation (notamment dans le code...)
+			\end{itemize}
+			\onslide<8-> \item Nous avons donc conçu le langage TriLang % TODO : meilleur nom ?
+		\end{itemize}
+}
+
+\frame{
+	\frametitle{Le langage}
+		\begin{itemize}
+			\onslide<1-> \item La composante essentielle : le trapèze \\
+			\onslide<2-> \begin{center}
+				\includegraphics[height=0.4\textheight]{../img/trapeze.jpg}
+			\end{center}
+			\onslide<3-> \item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
+			\onslide<4-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\onslide<5-> \item Un exemple
+		\end{itemize}
+}
+
+\frame{
+	\frametitle{Un exemple}
+	\begin{center}
+	\begin{tikzpicture}[scale = 0.05]
+		\tikzstyle{fleche}=[->,>=latex,line width=1mm]
+		\fill[color=gray!20] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+		\fill[color=white] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
+		\draw[thick] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+		\draw[thick] (0,30) -- (60,30) ;
+		\draw[thick] (0,90) -- (60,90) ;
+		\draw[thick] (0,60) -- (15,60) ;
+		\draw[thick] (45,60) -- (60,60) ;
+		\draw[thick] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
+
+		\onslide<2-> 
+		\draw[fleche, color=red] (30,20) -- (15,40);
+		\draw[fleche, color=red] (30,20) -- (45,40);
+		\draw[color=red] (30,15) node{split};
+		\draw[fleche, color=blue] (8,50) -- (8,70);
+		\draw[fleche, color=blue] (52,50) -- (52,70);
+		\draw[color=blue] (30,60) node{next};
+		\draw[fleche,color=green] (15,80) -- (30,100);
+		\draw[fleche,color=green] (45,80) -- (30,100);
+		\draw[color=green] (30,105) node {link};		
+		\draw (30,-10) node{start};
+		\draw[fleche] (30,-5) -- (30,10);
+		\draw (30,130) node{stop};
+		\draw[fleche] (30,110) -- (30,125);
+	\end{tikzpicture}
+	\end{center}
+}
+
+\subsection{Conception d'un compilateur}
+
+\frame{
+	\frametitle{Le compilateur}
+		\begin{itemize}
+			\onslide<2-> \item Pouvoir passer d'un tricot à la liste des instructions pour le réaliser
+			\onslide<3-> \item Mais aussi d'autres problématiques :
+			\begin{itemize}
+				\onslide<4-> \item Vérifications
+			    \onslide<5-> \item Nombre d'aiguilles nécessaires % TODO est ce que ca sera fait ?
+			\end{itemize}
+		\end{itemize}
+}
+
+% TODO : Mettre des résultats théoriques ici !
+
+\subsection{Elaboration d'une interface}
+
+\frame{
+	\frametitle{L'interface graphique}
+		\onslide<2-> 3 objectifs :
+		\begin{itemize}
+			\onslide<3-> \item Simple d'utilisation
+			\onslide<4-> \item Outils d'éditions
+			\onslide<5-> \item Appel au compilateur
+		\end{itemize}
+}
+
+\frame{
+	\begin{center}
+		\Huge{Démo !}
+	\end{center}
+}
+
+
+\frame{
+	\frametitle{Plan} 
+		\tableofcontents
+}
+
+\section{Difficultés rencontrées \& améliorations possibles}
+
+\subsection{Difficultés}
+
+\frame{
+	\frametitle{Difficultés rencontrées}
+		\begin{itemize}
+			  	\onslide<2-> \item \textcolor{red}{Première étape de conception du langage sous-estimée...} \\
+				\onslide<3-> \textcolor{vert}{$\longrightarrow$ mais un lanage plus complet dès le début}
+				\onslide<4-> \item \textcolor{red}{Mais également la conception de l'interface (surtout le temps nécessaire)}
+				\onslide<5-> \item \textcolor{red}{Mise en route difficile...} \\
+				\onslide<6-> \textcolor{vert}{$\longrightarrow$ mais l'intégration des différents modules a été plus simple que prévue}
+				% TODO : Je vois pas trop comment on peut tourner cela.
+    	\end{itemize}
+}
+
+
+\subsection{Améliorations}
+
+\frame{
+	\frametitle{Améliorations en perspective...}
+	% i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
+		\begin{itemize}
+			\onslide<2-> \item Côté édition, plus de liberté dans la personnalisation :
+			\begin{itemize}
+				\onslide<3-> \item Des points définis par l'utilisateur
+							 \item Pouvoir ajouter des tresses $\longrightarrow$ séparations de trapèzes ?
+							 \item Changer la taille des pièces, ...
+			\end{itemize}
+			\onslide<4-> \item Côté compilateur :
+			\begin{itemize}
+				\onslide<5-> \item gérer les coutures (à effectuer après le tricot)
+			\end{itemize}
+		\end{itemize}
+}
+
+\frame{
+	\begin{center}
+		\Huge{Des questions ?}
+	\end{center}
+}	
+
+\end{document}
+
