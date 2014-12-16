@@ -87,6 +87,41 @@
 
 
 
+\frame{
+  \frametitle{Un compilateur pour tricot}
+  \begin{figure}[!h]
+    \centering
+    
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+      semithick]
+      \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+      
+      \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
+      % \node[state] (compilateur) [shape=arrow] 	{Compilateur};
+      
+      \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]
+      {\textit{Liste des pièces}\\\textit{Forme}\\\textit{Motif}\\\textit{Taille}};
+      % \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
+      
+      \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]{\noindent \texttt{1 maille endroit} \\
+        \texttt{3 mailles envers} \\ \texttt{...}};
+      % \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};	    
+      
+      \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] 	{Patron du tricot};
+      
+      \node[state] (instructions) [draw=none] 	[above of=instructions-d,  yshift=-2cm]	{Instructions};
+      
+      
+    \end{tikzpicture}
+  \end{figure}
+  
+  \hspace{3cm}
+  
+  \pause	
+  
+  \begin{center}Le tout utilisable via une interface graphique \end{center}
+}
+
 
 \subsection{Quelques notions de tricot}
 
@@ -164,6 +199,23 @@
 \subsection{Présentation générale}
 
 
+
+\frame{
+	\frametitle{L'équipe TriComp}
+		\begin{center}
+			{\large
+			{William \textsc{Aufort} \hspace{4cm} Julien \textsc{Bensmail} \\}
+			\vspace{1cm}
+			{Agathe \textsc{Herrou}  \hspace{4cm} Romain \textsc{Labolle} \\}
+			\vspace{1cm}
+			{Frédéric \textsc{Lang} \hspace{4cm} Maxime \textsc{Lesourd} \\}
+			\vspace{1cm}       
+			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
+		\end{center}
+}
+
+
+
 \frame{
 	\frametitle{Un compilateur pour tricot}
 	\begin{figure}[!h]
@@ -194,6 +246,7 @@
 	\hspace{3cm}
 	
 \pause	\begin{center}Le tout utilisable via une interface graphique \end{center}
+
 }
 
 
@@ -211,7 +264,7 @@
 			\begin{itemize}
 				\item gérer le plus de tricots possibles
 				\item facilité pour générer les instructions
-				\item assez "haut niveau" % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
+				\item assez « haut niveau » % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
 										  % à ce qui se fait d'habitude dans les logiciels de tricots (points sur une grille)
 				\item facile de compréhension et d'utilisation (notamment dans le code...)
 			\end{itemize}
@@ -319,20 +372,23 @@
 \subsection{Améliorations}
 
 \frame{
-	\frametitle{Améliorations en perspective...}
-	% i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
-		\begin{itemize}
-			\onslide<2-> \item Côté édition, plus de liberté dans la personnalisation :
-			\begin{itemize}
-				\onslide<3-> \item Des points définis par l'utilisateur
-							 \item Pouvoir ajouter des tresses $\longrightarrow$ séparations de trapèzes ?
-							 \item Changer la taille des pièces, ...
-			\end{itemize}
-			\onslide<4-> \item Côté compilateur :
-			\begin{itemize}
-				\onslide<5-> \item gérer les coutures (à effectuer après le tricot)
-			\end{itemize}
-		\end{itemize}
+  \frametitle{Améliorations en perspective...}
+  % i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
+  \begin{itemize}
+    \onslide<2-> \item Édition : plus de liberté dans la personnalisation 
+    \begin{itemize}
+      \onslide<3-> \item Des points définis par l'utilisateur
+    \item Pouvoir ajouter des tresses 
+      \begin{itemize}
+      \item Définition de zones sur les trapèzes ?
+      \end{itemize}
+    \item Changer la taille des pièces, ...
+    \end{itemize}
+    \onslide<4-> \item Côté compilateur :
+    \begin{itemize}
+      \onslide<5-> \item gérer les coutures (à effectuer après le tricot)
+    \end{itemize}
+  \end{itemize}
 }
 
 \frame{
