@@ -63,35 +63,38 @@
 
 
 \frame{
-	\frametitle{Un compilateur pour tricot}
-	\begin{figure}[!h]
-	\centering
-
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
-                    semithick]
-	 \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
-
-	    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
-%	    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
-
-	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]{\textit{Liste des pièces}\\\textit{Forme}\\\textit{Motif}\\\textit{Taille}};
-%	    \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
-
-	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]{\noindent \texttt{1 maille endroit} \\
-  \texttt{3 mailles envers} \\ \texttt{...}};
-%	    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};	    
-	 
-	    \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] 	{Patron du tricot};
-	    
-	    \node[state] (instructions) [draw=none] 	[above of=instructions-d,  yshift=-2cm]	{Instructions};
-	    
-	    
-	\end{tikzpicture}
-	\end{figure}
-	
-	\hspace{3cm}
-	
-\pause	\begin{center}Le tout utilisable via une interface graphique \end{center}
+  \frametitle{Un compilateur pour tricot}
+  \begin{figure}[!h]
+    \centering
+    
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+      semithick]
+      \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+      
+      \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
+      % \node[state] (compilateur) [shape=arrow] 	{Compilateur};
+      
+      \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]
+      {\textit{Liste des pièces}\\\textit{Forme}\\\textit{Motif}\\\textit{Taille}};
+      % \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
+      
+      \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]{\noindent \texttt{1 maille endroit} \\
+        \texttt{3 mailles envers} \\ \texttt{...}};
+      % \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};	    
+      
+      \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] 	{Patron du tricot};
+      
+      \node[state] (instructions) [draw=none] 	[above of=instructions-d,  yshift=-2cm]	{Instructions};
+      
+      
+    \end{tikzpicture}
+  \end{figure}
+  
+  \hspace{3cm}
+  
+  \pause	
+  
+  \begin{center}Le tout utilisable via une interface graphique \end{center}
 }
 
 \subsection{Quelques notions de tricot}
@@ -171,22 +174,22 @@
 \subsection{Motivations}
 
 \frame{
-	\frametitle{Motivations}
-		\begin{itemize}
-			\onslide<2-> \item Le tricot n'est pas très présent dans le milieu informatique...
-			\onslide<3-> \item Les logiciels de tricot actuels ne proposent souvent que de l'édition
-			\onslide<4-> \item De plus, ces logiciels utilisent une représentation très locale des points de tricot.
-			% TODO : image 
-						% Deux raisons d'automatiser le calcul des instructions			
-			\onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
-			\onslide<6-> \item Un projet original !
-			% TODO : autres ?
-		\end{itemize}
+  \frametitle{Motivations}
+  \begin{itemize}
+    \onslide<2-> \item Tricot peu présent dans le milieu informatique
+    \onslide<3-> \item Logiciels de tricot incomplets : pas d'instructions
+    \onslide<4-> \item Représentation inefficace des tricots (matrices de points)
+    % TODO : image 
+    % Deux raisons d'automatiser le calcul des instructions			
+    \onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
+    \onslide<6-> \item Un projet original !
+    % TODO : autres ?
+  \end{itemize}
 }
-
+                    
 \frame{
-	\frametitle{Plan} 
-		\tableofcontents
+  \frametitle{Plan} 
+  \tableofcontents
 }
 
 \section{Notre travail}
@@ -301,7 +304,7 @@
 	\frametitle{Difficultés rencontrées}
 		\begin{itemize}
 			  	\onslide<2-> \item \textcolor{red}{Première étape de conception du langage sous-estimée...} \\
-				\onslide<3-> \textcolor{vert}{$\longrightarrow$ mais un lanage plus complet dès le début}
+				\onslide<3-> \textcolor{vert}{$\longrightarrow$ mais un langage plus complet dès le début}
 				\onslide<4-> \item \textcolor{red}{Mais également la conception de l'interface (surtout le temps nécessaire)}
 				\onslide<5-> \item \textcolor{red}{Mise en route difficile...} \\
 				\onslide<6-> \textcolor{vert}{$\longrightarrow$ mais l'intégration des différents modules a été plus simple que prévue}
@@ -313,20 +316,23 @@
 \subsection{Améliorations}
 
 \frame{
-	\frametitle{Améliorations en perspective...}
-	% i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
-		\begin{itemize}
-			\onslide<2-> \item Côté édition, plus de liberté dans la personnalisation :
-			\begin{itemize}
-				\onslide<3-> \item Des points définis par l'utilisateur
-							 \item Pouvoir ajouter des tresses $\longrightarrow$ séparations de trapèzes ?
-							 \item Changer la taille des pièces, ...
-			\end{itemize}
-			\onslide<4-> \item Côté compilateur :
-			\begin{itemize}
-				\onslide<5-> \item gérer les coutures (à effectuer après le tricot)
-			\end{itemize}
-		\end{itemize}
+  \frametitle{Améliorations en perspective...}
+  % i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
+  \begin{itemize}
+    \onslide<2-> \item Édition : plus de liberté dans la personnalisation 
+    \begin{itemize}
+      \onslide<3-> \item Des points définis par l'utilisateur
+    \item Pouvoir ajouter des tresses 
+      \begin{itemize}
+      \item Définition de zones sur les trapèzes ?
+      \end{itemize}
+    \item Changer la taille des pièces, ...
+    \end{itemize}
+    \onslide<4-> \item Côté compilateur :
+    \begin{itemize}
+      \onslide<5-> \item gérer les coutures (à effectuer après le tricot)
+    \end{itemize}
+  \end{itemize}
 }
 
 \frame{
