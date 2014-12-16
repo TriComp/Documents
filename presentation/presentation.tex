@@ -9,8 +9,7 @@
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
 \usepackage{tikz}
-  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
-
+\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
 \definecolor{vert}{RGB}{0,153,0}
 
 \beamertemplatenavigationsymbolsempty % Option pour supprimer la barre de navigation dans les slides
@@ -45,14 +44,6 @@
 		\tableofcontents
 }
 
-% Proposition de plan :
-% Introduction : présentation de l'équipe, 
-% TriComp : Origine de l'idée, Compilateur ? Tricot ?
-% Travail en amont : Problèmes à résoudre (allocation aiguilles, qqchose de général) -> "langage haut niveau"
-% Coté logiciel : interface
-% Difficultés rencontrées
-% Améliorations possibles (complexifier fonctionnalites, reprendre les objectifs non traités du midterm)
-
 \section{Introduction}
 
 \frame{
@@ -78,14 +69,11 @@
     \onslide<2-> \item Tricot peu présent dans le milieu informatique
     \onslide<3-> \item Logiciels de tricot incomplets : pas d'instructions
     \onslide<4-> \item Représentation inefficace des tricots (matrices de points)
-    % TODO : image 
     % Deux raisons d'automatiser le calcul des instructions			
     \onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
     \onslide<6-> \item Un projet original !
-    % TODO : autres ?
   \end{itemize}
 }
-
 
 \subsection{Quelques notions de tricot}
 
@@ -96,16 +84,13 @@
           \includegraphics[scale=0.3]{Knit-schematic.png}
           \column{0.4\textwidth}
           \begin{itemize}
-            \pause % à savoir : plus simple d'utilisation que \onslide
+            \pause
           \item[] \textcolor{green}{maille}
             \pause
           \item[] \textcolor{red}{rang}
           \end{itemize}
         \end{columns}
 }
-
-% TODO : Maille à l'endroit, à l'envers ---> Un panel de ce qu'on peut faire avec ? 
-
 
 \frame{
 	\frametitle{Quelques notions de tricot...}
@@ -132,7 +117,6 @@
         \end{columns}
 }			
 
-% ici on montre ce que ça donne visuellement
 \frame{
   \frametitle{Rendu}
   \begin{center}
@@ -147,7 +131,6 @@
   \end{center}
 }
 
-
 \frame{
 	\frametitle{Les instructions de tricot}
 			Les instructions à suivre par le tricoteur comportent des informations sur :
@@ -157,57 +140,36 @@
 				\item le nombre de rangs à reproduire
 			\end{itemize}
                         $\Rightarrow$ Description d'un motif minimal à répéter
-			% TODO : une image avec des instructions ? plutôt exemple d'instructions de tricot
+			% TODO : Un exemple d'instructions de tricot
 }
 
 \subsection{Présentation générale}
 
-% \frame{
-% 	\frametitle{L'équipe TriComp}
-% 		\begin{center}
-% 			{\large
-% 			{William \textsc{Aufort} \hspace{4cm} Julien \textsc{Bensmail} \\}
-% 			\vspace{1cm}
-% 			{Agathe \textsc{Herrou}  \hspace{4cm} Romain \textsc{Labolle} \\}
-% 			\vspace{1cm}
-% 			{Frédéric \textsc{Lang} \hspace{4cm} Maxime \textsc{Lesourd} \\}
-% 			\vspace{1cm}       
-% 			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
-% 		\end{center}
-% }
-
-
-
 \frame{
-	\frametitle{Un compilateur pour tricot}
+	\frametitle{TriComp : un compilateur pour tricot}
 	\begin{figure}[!h]
-	\centering
-
-	\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance = 3.5cm, semithick]
-		\tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
-	    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
-%	    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
-	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]
-			{\textit{Liste des pièces}\\ \textit{Forme} \\ \textit{Motif} \\ \textit{Taille}};
-%	    \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
-	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]
-			{\noindent \texttt{1 maille endroit} \\ \texttt{3 mailles envers} \\ \texttt{...}};
-%	    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};
-	    \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] {Patron du tricot};
-	    \node[state] (instructions) [draw=none] [above of=instructions-d,  yshift=-2cm]	{Instructions};
-	    
-	    
-	\end{tikzpicture}
+		\centering
+		\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance = 3.5cm, semithick]
+			\tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+		    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]
+				{Compilateur};	 
+%		    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
+		    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]
+				{\textit{Liste des pièces}\\ \textit{Forme} \\ \textit{Motif} \\ \textit{Taille}};
+%		    \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
+		    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]
+				{\noindent \texttt{1 maille endroit} \\ \texttt{3 mailles envers} \\ \texttt{...}};
+%		    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};
+		    \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] {Patron du tricot};
+		    \node[state] (instructions) [draw=none] [above of=instructions-d,  yshift=-2cm]	{Instructions};	    
+		\end{tikzpicture}
 	\end{figure}
-	
 	\hspace{3cm}
-	
-\pause	\begin{center}Le tout utilisable via une interface graphique \end{center}
-
+	\pause
+	\begin{center}
+		Le tout utilisable via une interface graphique
+	\end{center}
 }
-
-
-
 
 \section{Notre travail}
 
@@ -221,8 +183,9 @@
 			\begin{itemize}
 				\item gérer le plus de tricots possibles
 				\item facilité pour générer les instructions
-				\item assez « haut niveau » % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global, contrairement
-										  % à ce qui se fait d'habitude dans les logiciels de tricots (points sur une grille)
+				\item assez « haut niveau » % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global,
+										    % contrairement à ce qui se fait d'habitude dans les logiciels de tricots
+											% (points sur une grille)
 				\item facile de compréhension et d'utilisation (notamment dans le code...)
 			\end{itemize}
 			\onslide<4-> \item Nous avons donc conçu le langage \textsc{TriLang} % TODO : meilleur nom ?
@@ -307,8 +270,6 @@
 	\end{center}
 }
 
-
-
 \section{Difficultés rencontrées \& améliorations possibles}
 
 \subsection{Difficultés}
@@ -321,16 +282,13 @@
 				\onslide<4-> \item \textcolor{red}{Mais également la conception de l'interface (surtout le temps nécessaire)}
 				\onslide<5-> \item \textcolor{red}{Mise en route difficile...} \\
 				\onslide<6-> \textcolor{vert}{$\longrightarrow$ mais l'intégration des différents modules a été plus simple que prévue}
-				% TODO : Je vois pas trop comment on peut tourner cela.
     	\end{itemize}
 }
-
 
 \subsection{Améliorations}
 
 \frame{
   \frametitle{Améliorations en perspective...}
-  % i.e les idées intéressantes que nous n'avons pas eu le temps de traiter.
   \begin{itemize}
     \onslide<2-> \item Édition : plus de liberté dans la personnalisation 
     \begin{itemize}
@@ -355,4 +313,3 @@
 }	
 
 \end{document}
-
