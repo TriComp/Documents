@@ -9,11 +9,11 @@
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
 \usepackage{tikz}
-  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing}
+  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
 
 \definecolor{vert}{RGB}{0,153,0}
 
-\beamertemplatenavigationsymbolsempty % Flag nazi pour supprimer la ligne d'option dans les slides
+\beamertemplatenavigationsymbolsempty % Option pour supprimer la barre de navigation dans les slides
 
 \title{Projet TriComp : Présentation}
 \author{Equipe TriComp}
@@ -67,8 +67,7 @@
 	\begin{figure}[!h]
 	\centering
 
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
-                    semithick]
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm, semithick]
 	 \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
 
 	    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
@@ -91,7 +90,10 @@
 	
 	\hspace{3cm}
 	
-\pause	\begin{center}Le tout utilisable via une interface graphique \end{center}
+\pause
+\begin{center}
+    Le tout utilisable via une interface graphique 
+\end{center}
 }
 
 \subsection{Quelques notions de tricot}
@@ -301,7 +303,7 @@
 	\frametitle{Difficultés rencontrées}
 		\begin{itemize}
 			  	\onslide<2-> \item \textcolor{red}{Première étape de conception du langage sous-estimée...} \\
-				\onslide<3-> \textcolor{vert}{$\longrightarrow$ mais un lanage plus complet dès le début}
+				\onslide<3-> \textcolor{vert}{$\longrightarrow$ mais un langage plus complet dès le début}
 				\onslide<4-> \item \textcolor{red}{Mais également la conception de l'interface (surtout le temps nécessaire)}
 				\onslide<5-> \item \textcolor{red}{Mise en route difficile...} \\
 				\onslide<6-> \textcolor{vert}{$\longrightarrow$ mais l'intégration des différents modules a été plus simple que prévue}
