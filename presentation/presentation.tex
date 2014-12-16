@@ -9,15 +9,25 @@
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
 \usepackage{tikz}
-  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing}
+  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
 
 \definecolor{vert}{RGB}{0,153,0}
 
-\beamertemplatenavigationsymbolsempty % Flag nazi pour supprimer la ligne d'option dans les slides
+\beamertemplatenavigationsymbolsempty % Option pour supprimer la barre de navigation dans les slides
 
 \title{Projet TriComp : Présentation}
 \author{Equipe TriComp}
 \date{Jeudi 18 Décembre 2014}
+
+% Faire apparaître un sommaire avant chaque section
+\AtBeginSection[]{
+   \begin{frame}{Outline}
+%   \begin{center}{\Large Plan }\end{center}
+   %%% affiche en début de chaque section, les noms de sections et
+   %%% noms de sous-sections de la section en cours.
+   \tableofcontents[currentsection]
+   \end{frame} 
+}
 
 \begin{document}
 
@@ -45,21 +55,22 @@
 
 \section{Introduction}
 
-\subsection{Présentation générale}
+\subsection{Motivations}
 
 \frame{
-	\frametitle{L'équipe TriComp}
-		\begin{center}
-			{\large
-			{William \textsc{Aufort} \hspace{4cm} Julien \textsc{Bensmail} \\}
-			\vspace{1cm}
-			{Agathe \textsc{Herrou}  \hspace{4cm} Romain \textsc{Labolle} \\}
-			\vspace{1cm}
-			{Frédéric \textsc{Lang} \hspace{4cm} Maxime \textsc{Lesourd} \\}
-			\vspace{1cm}       
-			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
-		\end{center}
+	\frametitle{Motivations}
+		\begin{itemize}
+			\onslide<2-> \item Le tricot n'est pas très présent dans le milieu informatique...
+			\onslide<3-> \item Les logiciels de tricot actuels ne proposent souvent que de l'édition
+			\onslide<4-> \item De plus, ces logiciels utilisent une représentation très locale des points de tricot.
+			% TODO : image 
+						% Deux raisons d'automatiser le calcul des instructions			
+			\onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
+			\onslide<6-> \item Un projet original !
+			% TODO : autres ?
+		\end{itemize}
 }
+
 
 
 \frame{
@@ -96,6 +107,7 @@
   
   \begin{center}Le tout utilisable via une interface graphique \end{center}
 }
+
 
 \subsection{Quelques notions de tricot}
 
@@ -170,10 +182,10 @@
 			% TODO : une image avec des instructions ? plutôt exemple d'instructions de tricot
 }
 
-
-\subsection{Motivations}
+\subsection{Présentation générale}
 
 \frame{
+<<<<<<< HEAD
   \frametitle{Motivations}
   \begin{itemize}
     \onslide<2-> \item Tricot peu présent dans le milieu informatique
@@ -190,7 +202,56 @@
 \frame{
   \frametitle{Plan} 
   \tableofcontents
+=======
+	\frametitle{L'équipe TriComp}
+		\begin{center}
+			{\large
+			{William \textsc{Aufort} \hspace{4cm} Julien \textsc{Bensmail} \\}
+			\vspace{1cm}
+			{Agathe \textsc{Herrou}  \hspace{4cm} Romain \textsc{Labolle} \\}
+			\vspace{1cm}
+			{Frédéric \textsc{Lang} \hspace{4cm} Maxime \textsc{Lesourd} \\}
+			\vspace{1cm}       
+			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
+		\end{center}
 }
+
+
+\frame{
+	\frametitle{Un compilateur pour tricot}
+	\begin{figure}[!h]
+	\centering
+
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+                    semithick]
+	 \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+
+	    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
+%	    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
+
+	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]{\textit{Liste des pièces}\\\textit{Forme}\\\textit{Motif}\\\textit{Taille}};
+%	    \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
+
+	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]{\noindent \texttt{1 maille endroit} \\
+  \texttt{3 mailles envers} \\ \texttt{...}};
+%	    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};	    
+	 
+	    \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] 	{Patron du tricot};
+	    
+	    \node[state] (instructions) [draw=none] 	[above of=instructions-d,  yshift=-2cm]	{Instructions};
+	    
+	    
+	\end{tikzpicture}
+	\end{figure}
+	
+	\hspace{3cm}
+	
+\pause	\begin{center}Le tout utilisable via une interface graphique \end{center}
+>>>>>>> 65f962210870d2e7bda4add79b6e2d1d131a0f4e
+}
+
+
+
 
 \section{Notre travail}
 
@@ -291,10 +352,6 @@
 }
 
 
-\frame{
-	\frametitle{Plan} 
-		\tableofcontents
-}
 
 \section{Difficultés rencontrées \& améliorations possibles}
 
