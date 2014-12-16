@@ -242,10 +242,8 @@
 	\frametitle{Le compilateur}
 		\begin{itemize}
 			\onslide<2-> \item Pouvoir passer d'un tricot à la liste des instructions pour le réaliser
-			\onslide<3-> \item Mais aussi d'autres problématiques :
-			\begin{itemize}
-				\item Vérifications
-			\end{itemize}
+			\onslide<3-> \item Mais aussi la détection d'erreurs, par exemple la présence d'un cycle dans la description du tricot.
+			\onslide<4-> \item Pour ce faire, le compilateur construit un graphe de dépendances, qui indique pour chaque pièce, les pièces qu'il faut tricoter au préalable.
 		\end{itemize}
 }
 
