@@ -10,6 +10,7 @@
 
 # Temporary files
 *~
+*.backup
 
 ## Intermediate documents:
 *.dvi
