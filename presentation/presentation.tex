@@ -9,6 +9,7 @@
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
 \usepackage{tikz}
+  \usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing}
 
 \definecolor{vert}{RGB}{0,153,0}
 
@@ -60,24 +61,37 @@
 		\end{center}
 }
 
-\frame{
-	\frametitle{TriComp ?}
-		\begin{center}
-			\begin{tabular}{ccc}
-		        \onslide<2-> \includegraphics[height=0.35\textheight]{../img/tricot.png} &
-				\onslide<3-> \includegraphics[height=0.35\textheight]{../img/plus.jpg} &
-				\includegraphics[height=0.35\textheight]{../img/gcc.png}
-			\end{tabular}
-		\end{center}
-}
 
 \frame{
 	\frametitle{Un compilateur pour tricot}
-		\begin{itemize}
-			\item D'un patron de tricot vers une liste d'instructions
-			% TODO : Ajouter un schéma 
-			\item Le tout utilisable via une interface graphique
-		\end{itemize}
+	\begin{figure}[!h]
+	\centering
+
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+                    semithick]
+	 \tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
+
+	    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]{Compilateur};	 
+%	    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
+
+	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]{\textit{Liste des pièces}\\\textit{Forme}\\\textit{Motif}\\\textit{Taille}};
+%	    \node[state] (patron-d) [] [left of=compilateur] {\textit{Liste des pièces}};
+
+	    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](instructions-d)[right of=compilateur]{\noindent \texttt{1 maille endroit} \\
+  \texttt{3 mailles envers} \\ \texttt{...}};
+%	    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};	    
+	 
+	    \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] 	{Patron du tricot};
+	    
+	    \node[state] (instructions) [draw=none] 	[above of=instructions-d,  yshift=-2cm]	{Instructions};
+	    
+	    
+	\end{tikzpicture}
+	\end{figure}
+	
+	\hspace{3cm}
+	
+\pause	\begin{center}Le tout utilisable via une interface graphique \end{center}
 }
 
 \subsection{Quelques notions de tricot}
