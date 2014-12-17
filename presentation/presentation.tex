@@ -130,8 +130,6 @@
         \end{columns}
 }
 
-
-
 \frame{
 	\frametitle{Zoomons}
         \begin{columns}   
@@ -260,9 +258,9 @@
 		\draw[fleche, color=blue] (8,50) -- (8,70);
 		\draw[fleche, color=blue] (52,50) -- (52,70);
 		\draw[color=blue] (30,60) node{next};
-		\draw[fleche,color=vert] (15,80) -- (30,100);
-		\draw[fleche,color=vert] (45,80) -- (30,100);
-		\draw[color=vert] (30,105) node {link};
+		\draw[fleche,color=green] (15,80) -- (30,100);
+		\draw[fleche,color=green] (45,80) -- (30,100);
+		\draw[color=green] (30,105) node {link};
 		\draw (30,-10) node{start};
 		\draw[fleche] (30,-5) -- (30,10);
 		\draw (30,130) node{stop};
@@ -276,24 +274,26 @@
 \subsection{Conception d'un compilateur}
 
 \frame{
-  \frametitle{Le compilateur}
-  \begin{itemize}
-    \onslide<1-> \item Pouvoir passer d'un tricot à une liste d'instructions pour le réaliser.
-    \onslide<2-> \item Détection d'erreurs
-    \begin{itemize}
-    \item présence d'un cycle dans la description du tricot.
-    \end{itemize}
-    \onslide<3-> \item Construction d'un graphe de dépendances
-    \begin{itemize}
-    \item Pour chaque pièce, pièces à tricoter au préalable.
-    \end{itemize}
-    \onslide<4-> \item Sections à tricoter de manière séquentielle : 
-    \begin{itemize}
-    \item représentation en blocs de base
-    \item similaire aux compilateurs
-    \item simplifier l'analyse et la traduction du code
-    \end{itemize}
-  \end{itemize}
+	\frametitle{Le compilateur}
+		\begin{itemize}
+			\onslide<1-> \item Génère la liste d'instructions.
+			\onslide<2-> \item Détection d'erreurs (cycles, configurations impossibles).
+			\onslide<3-> \item Principale difficulté : Certaines pièces dépendent d'autres.
+			\onslide<4-> \item Parcours selon un ordre topologique.
+		\end{itemize}
+}
+
+
+\frame{
+  \frametitle{Implémentation actuelle}
+        \begin{itemize}
+          \onslide<1-> \item Compilation et vérification.
+          \onslide<2-> \item Limité à des rectangles.
+          \onslide<3-> \item \textcolor{green}{Algorithmes pour les réductions/augmentations de motifs.}
+          \onslide<4-> \item Motifs prédéfinis.
+          \onslide<5-> \item \textcolor{green}{Format extensible.}
+          \onslide<6-> \item Utilisable en ligne de commande ou à travers l'interface.
+        \end{itemize}
 }
 
 \subsection{Elaboration d'une interface}
