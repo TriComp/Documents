@@ -194,6 +194,8 @@ Nous exposons dans cette partie le travail qui a été fourni concernant l'élab
 
 Avant toute chose, il nous fallait cibler les caractéstiques que devait avoir l'interface. Destinée à être utilisée par des tricoteurs, celle-ci devait être facile d'utilisation. L'utilisateur dispose des outils indispensables à toute interface (ouverture, sauvegarde de fichiers, zoom...) mais également d'outils propres au tricot et aux objectifs de TriComp : un bouton pour générer les instructions, ainsi que quelques outils d'édition de tricot (choix des points sur les trapèzes).
 
+Le choix du motif à mettre sur chaque trapèze peut être fait parmi une dizaine de points disponibles via des boutons. Une suggestion future pourrait être de faire définir à l'utilisateur ses propres points.
+
 L'interface est divisée en trois parties : une partie contenant les outils d'édition de tricot, une fenêtre où est affiché le tricot, et une zone où se trouve la liste des instructions générées par le compilateur.
 
 
@@ -206,9 +208,13 @@ L'interface est divisée en trois parties : une partie contenant les outils d'é
 
 \subsubsection{Détails d'implémentation}
 
-L'interface a été créée à l'aide de la bibliothèque Qt. Une grande partie du projet a été intégrée au sein de la partie Qt, pour des questions de simplificité au niveau de l'intégration. Seule la partie compilation (écrite en OCaml) est dissociée de la partie Qt, et est appelée dans l'interface via des appels systèmes. 
+L'interface a été créée à l'aide de la bibliothèque Qt. Une grande partie du projet a été intégrée au sein de la partie Qt, pour des questions de simplificité au niveau de l'intégration. Seule la partie compilation (écrite en OCaml) est dissociée de la partie Qt, et est appelée dans l'interface via des appels systèmes.
+
+Détailler l'ensemble des structures offertes par Qt dand le projet serait ici long et inutile, le lecteur pourra se référer au code disponible sur la page Github\footnote{Rappel : \url{https://github.com/TriComp/}}. On mentionnera juste pour l'affichage, on ne travaille pas directement sur le tricot en temps qu'objet, mais sur une représentation du tricot formée d'\texttt{items} (qui forme, en quelque sorte, une couche supérieure). Même si les deux représentations sont isomorphes (grossièrement un \texttt{item} pour un trapèze du tricot), cela permet d'éditer autant qu'on le veut sans modifier l'objet de base (sauf lors d'une sauvegarde).
 
 \subsection{Communication}
+
+Nous détaillons dans cette partie la partie communication du projet, qui englobe la communication interne et externe (via le site web).
 
 \subsection{Site Web}
 
