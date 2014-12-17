@@ -12,6 +12,9 @@
 \usepackage{caption}
 \usepackage{amsthm}
 \usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
+\definecolor{vert}{RGB}{0,153,0}
 
 \newtheorem{ex}{Exemple}
 
@@ -142,7 +145,38 @@ Comme nous le disions précédemment, quelques modifications ont été apportée
 	\item Les \texttt{split} peuvent générer plus de deux pièces différentes. Par conséquent, les \texttt{links} ont également été modifiés : ils se lient avec leur sucesseur via le nom du sucesseur, suivi de la position sur ce sucesseur (alors qu'avant, un simple  positionnement gauche/droite suffisait). Nous avons effectué cette modification car certains tricots (par exemple la salopette) ne pouvait être écrit de façon "simple" avec le précédent langage. Ceci est du au fait que précédemment, le positionnement des pièces après un split était déterministe (une pièce à gauche, une pièce à droite) et donc restrictif. Cette partie a apporté beaucoup plus de modifications dans le code que la modification précédente.
 \end{itemize}
 
-% TODO : reprendre un exemple + une figure (de préférence fléchée avec les split/link/next) pour illustrer
+La figure \ref{langage} illustre et résume les possibilités du langage.
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}[scale = 0.05]
+		\tikzstyle{fleche}=[->,>=latex,line width=1mm]
+		\fill[color=gray!20] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+		\fill[color=white] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
+		\draw[thick] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+		\draw[thick] (0,30) -- (60,30) ;
+		\draw[thick] (0,90) -- (60,90) ;
+		\draw[thick] (0,60) -- (15,60) ;
+		\draw[thick] (45,60) -- (60,60) ;
+		\draw[thick] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
+		\draw[fleche, color=red] (30,20) -- (15,40);
+		\draw[fleche, color=red] (30,20) -- (45,40);
+		\draw[color=red] (30,15) node{split};
+		\draw[fleche, color=blue] (8,50) -- (8,70);
+		\draw[fleche, color=blue] (52,50) -- (52,70);
+		\draw[color=blue] (30,60) node{next};
+		\draw[fleche,color=vert] (15,80) -- (30,100);
+		\draw[fleche,color=vert] (45,80) -- (30,100);
+		\draw[color=vert] (30,105) node {link};
+		\draw (30,-10) node{start};
+		\draw[fleche] (30,-5) -- (30,10);
+		\draw (30,130) node{stop};
+		\draw[fleche] (30,110) -- (30,125);
+		\draw[-*,ultra thick] (75,30) -- (45,15);
+		\draw (90,35) node{\texttt{trapeze(...)}};
+	\end{tikzpicture}
+	\label{langage}
+	\caption{Les possibilités du langage illustré sur un tricot (en l'occurence un poncho). Une attention toute particulière est portée aux jonctions entre les différents trapèzes.}
+\end{figure}
 
 \subsubsection{Langage de bas niveau}
 
