@@ -1,5 +1,5 @@
 \documentclass{beamer}
-\usetheme{Boadilla}
+%\usetheme{Boadilla}
 
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel} %pour la typographie française.
@@ -25,7 +25,7 @@
    %%% affiche en début de chaque section, les noms de sections et
    %%% noms de sous-sections de la section en cours.
    \tableofcontents[currentsection]
-   \end{frame} 
+   \end{frame}
 }
 
 \begin{document}
@@ -40,7 +40,7 @@
 }
 
 \frame{
-	\frametitle{Plan} 
+	\frametitle{Plan}
 		\tableofcontents
 }
 
@@ -55,7 +55,7 @@
 			{Agathe \textsc{Herrou}  \hspace{4cm} Romain \textsc{Labolle} \\}
 			\vspace{1cm}
 			{Frédéric \textsc{Lang} \hspace{4cm} Maxime \textsc{Lesourd} \\}
-			\vspace{1cm}       
+			\vspace{1cm}
 			{Laureline \textsc{Pinault} \hspace{3.7cm} Léo \textsc{Stéfanesco} \\}}
 		\end{center}
 }
@@ -69,7 +69,7 @@
     \onslide<2-> \item Tricot peu présent dans le milieu informatique
     \onslide<3-> \item Logiciels de tricot incomplets : pas d'instructions
     \onslide<4-> \item Représentation inefficace des tricots (matrices de points)
-    % Deux raisons d'automatiser le calcul des instructions			
+    % Deux raisons d'automatiser le calcul des instructions
     \onslide<5-> \item Des instructions longues, compliquées à établir, et qui ne tiennent pas compte de la forme du tricot dans les ouvrages.
     \onslide<6-> \item Un projet original !
   \end{itemize}
@@ -79,7 +79,7 @@
 
 \frame{
 	\frametitle{Quelques notions de tricot...}
-        \begin{columns}   
+        \begin{columns}
           \column{0.6\textwidth}
           \includegraphics[scale=0.3]{Knit-schematic.png}
           \column{0.4\textwidth}
@@ -94,7 +94,7 @@
 
 \frame{
 	\frametitle{Quelques notions de tricot...}
-        \begin{columns}   
+        \begin{columns}
           \column{0.6\textwidth}
           \includegraphics[scale=0.3]{Knit-schematic.png}
           \column{0.4\textwidth}
@@ -103,10 +103,10 @@
           \item[]
           \end{itemize}
         \end{columns}
-}			
+}
 \frame{
 	\frametitle{Quelques notions de tricot...}
-        \begin{columns}   
+        \begin{columns}
           \column{0.6\textwidth}
           \includegraphics[scale=0.3]{Knit-schematic2.png}
           \column{0.4\textwidth}
@@ -115,7 +115,7 @@
           \item[] \textcolor{blue}{maille à l'envers}
           \end{itemize}
         \end{columns}
-}			
+}
 
 \frame{
   \frametitle{Rendu}
@@ -152,7 +152,7 @@
 		\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance = 3.5cm, semithick]
 			\tikzstyle{every state}=[draw=black,text=black,shape=rectangle]
 		    \node[single arrow, draw, align=center, xshift=0cm, yshift=5cm, rotate=0, minimum height=4em](compilateur)[xshift=-1cm]
-				{Compilateur};	 
+				{Compilateur};
 %		    \node[state] (compilateur) [shape=arrow] 	{Compilateur};
 		    \node[rectangle, draw, minimum height=10em, minimum width=7em, align=center](patron-d)[left of=compilateur,xshift=0.5cm]
 				{\textit{Liste des pièces}\\ \textit{Forme} \\ \textit{Motif} \\ \textit{Taille}};
@@ -161,7 +161,7 @@
 				{\noindent \texttt{1 maille endroit} \\ \texttt{3 mailles envers} \\ \texttt{...}};
 %		    \node[state] (instructions-d) [] [right of=compilateur] {\textit{Liste des instructions}};
 		    \node[state] (patron) [draw=none] 	[above of=patron-d, yshift=-2cm] {Patron du tricot};
-		    \node[state] (instructions) [draw=none] [above of=instructions-d,  yshift=-2cm]	{Instructions};	    
+		    \node[state] (instructions) [draw=none] [above of=instructions-d,  yshift=-2cm]	{Instructions};
 		\end{tikzpicture}
 	\end{figure}
 	\hspace{3cm}
@@ -173,7 +173,7 @@
 
 \section{Notre travail}
 
-\subsection{Conception d'un langage descriptif}	
+\subsection{Conception d'un langage descriptif}
 
 \frame{
 	\frametitle{En amont... description d'un tricot}
@@ -218,7 +218,7 @@
 		\draw[thick] (45,60) -- (60,60) ;
 		\draw[thick] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
 
-		\onslide<2-> 
+		\onslide<2->
 		\draw[fleche, color=red] (30,20) -- (15,40);
 		\draw[fleche, color=red] (30,20) -- (45,40);
 		\draw[color=red] (30,15) node{split};
@@ -227,7 +227,7 @@
 		\draw[color=blue] (30,60) node{next};
 		\draw[fleche,color=green] (15,80) -- (30,100);
 		\draw[fleche,color=green] (45,80) -- (30,100);
-		\draw[color=green] (30,105) node {link};		
+		\draw[color=green] (30,105) node {link};
 		\draw (30,-10) node{start};
 		\draw[fleche] (30,-5) -- (30,10);
 		\draw (30,130) node{stop};
@@ -241,10 +241,10 @@
 \frame{
 	\frametitle{Le compilateur}
 		\begin{itemize}
-			\onslide<2-> \item Pouvoir passer d'un tricot à la liste des instructions pour le réaliser
-			\onslide<3-> \item Mais aussi la détection d'erreurs, par exemple la présence d'un cycle dans la description du tricot.
-			\onslide<4-> \item Pour ce faire, le compilateur construit un graphe de dépendances, qui indique pour chaque pièce, les pièces qu'il faut tricoter au préalable.
-			\item Pour mettre en évidence les sections qui se tricotent d'une traite, ce graphe utilise une représentation en bloc de base, de manière similaire aux compilateurs, afin de simplifier l'analyse du code.
+			\onslide<1-> \item Pouvoir passer d'un tricot à une liste d'instructions pour le réaliser.
+			\onslide<2-> \item Mais aussi la détection d'erreurs, par exemple la présence d'un cycle dans la description du tricot.
+			\onslide<3-> \item Pour ce faire, le compilateur construit un graphe de dépendances, qui indique pour chaque pièce, les pièces qu'il faut tricoter au préalable.
+			\onslide<4-> \item Pour mettre en évidence les sections qui se tricotent de manière séquentielle, ce graphe utilise une représentation en blocs de base, de manière similaire aux compilateurs, afin de simplifier l'analyse et la traduction du code.
 		\end{itemize}
 }
 
@@ -286,10 +286,10 @@
 \frame{
   \frametitle{Améliorations en perspective...}
   \begin{itemize}
-    \onslide<2-> \item Édition : plus de liberté dans la personnalisation 
+    \onslide<2-> \item Édition : plus de liberté dans la personnalisation
     \begin{itemize}
       \onslide<3-> \item Des points définis par l'utilisateur
-    \item Pouvoir ajouter des tresses 
+    \item Pouvoir ajouter des tresses
       \begin{itemize}
       \item Définition de zones sur les trapèzes ?
       \end{itemize}
@@ -307,6 +307,6 @@
 	\begin{center}
 		\Huge{Des questions ?}
 	\end{center}
-}	
+}
 
 \end{document}
