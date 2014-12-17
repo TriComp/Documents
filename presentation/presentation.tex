@@ -9,7 +9,7 @@
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
 \usepackage{tikz}
-\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
+\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata, decorations.markings}
 \definecolor{vert}{RGB}{0,153,0}
 
 \beamertemplatenavigationsymbolsempty % Option pour supprimer la barre de navigation dans les slides
@@ -29,6 +29,13 @@
 }
 
 \setbeamertemplate{footline}[frame number]
+
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
 
 \begin{document}
 
@@ -201,9 +208,56 @@
 
 \frame{
     \frametitle{Organisation du logiciel}
-    
-    %% TODO : SHEMA
+        \begin{figure}[!h]
+    \centering
+\begin{tikzpicture}[thick,node distance= 2.5cm]
+  \node[draw=none] (u) {Utilisateur};
+  \node[draw,rectangle, below of=u] (a) {Description du tricot};
+  \node[inner sep=0,minimum size=0,right of=a] (k) {}; % invisible node
+  \node[draw,rectangle,right of=k] (b) {Rendu visuel du patron};
+  \node[draw,rectangle,below of=a] (c) {Instructions pour tricoter};
+  \node [draw=none, below right of=k, node distance=1.75cm] {Compilateur};
 
+  % 1st pass: draw arrows
+  \draw[vecArrow] (u) -- node [right] {TriLang} ++ (a) ;
+  \draw[vecArrow] (a) -- node [above] {GUI} ++ (b) ;
+  \draw[vecArrow] (k) |-  (c) ;
+
+  % 2nd pass: copy all from 1st pass, and replace vecArrow with innerWhite
+  \draw[innerWhite] (a) to (b);
+  \draw[innerWhite] (k) |- (c);
+
+  % Note: If you have no branches, the 2nd pass is not needed
+\end{tikzpicture}
+    \end{figure}    
+    }
+
+\frame{
+    \frametitle{Organisation du logiciel}
+    
+    %% TODO : SCHEMA
+
+    \begin{figure}[!h]
+    \centering
+
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
+                    semithick]
+      \tikzstyle{every state}=[draw=black,text=black]
+
+      \node[state]     (user)      [draw=none]                                      	   {Utilisateur};
+      \node[state]     (descr)     [shape=rectangle] 		  [below of=user]    	   {Description du tricot};      
+      \node[state]     (visuel)    [shape=rectangle]              [below left of=descr]    {Rendu visuel du patron};
+      \node[state]     (instr)     [shape=rectangle]              [below right of=descr]   {Instructions};
+
+
+      \path 
+	  (user)   edge[single arrow]  node{TriLang} (descr)
+	  (descr)  edge[double]  node{GUI}     (visuel)
+		   edge[double]  node{Compilateur} (instr)
+        ;
+    \end{tikzpicture}
+    \end{figure}    
+    
 }
 
 \section{Notre travail}
