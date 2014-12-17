@@ -276,13 +276,24 @@
 \subsection{Conception d'un compilateur}
 
 \frame{
-	\frametitle{Le compilateur}
-		\begin{itemize}
-			\onslide<1-> \item Pouvoir passer d'un tricot à une liste d'instructions pour le réaliser.
-			\onslide<2-> \item Mais aussi la détection d'erreurs, par exemple la présence d'un cycle dans la description du tricot.
-			\onslide<3-> \item Pour ce faire, le compilateur construit un graphe de dépendances, qui indique pour chaque pièce, les pièces qu'il faut tricoter au préalable.
-			\onslide<4-> \item Pour mettre en évidence les sections qui se tricotent de manière séquentielle, ce graphe utilise une représentation en blocs de base, de manière similaire aux compilateurs, afin de simplifier l'analyse et la traduction du code.
-		\end{itemize}
+  \frametitle{Le compilateur}
+  \begin{itemize}
+    \onslide<1-> \item Pouvoir passer d'un tricot à une liste d'instructions pour le réaliser.
+    \onslide<2-> \item Détection d'erreurs
+    \begin{itemize}
+    \item présence d'un cycle dans la description du tricot.
+    \end{itemize}
+    \onslide<3-> \item Construction d'un graphe de dépendances
+    \begin{itemize}
+    \item Pour chaque pièce, pièces à tricoter au préalable.
+    \end{itemize}
+    \onslide<4-> \item Sections à tricoter de manière séquentielle : 
+    \begin{itemize}
+    \item représentation en blocs de base
+    \item similaire aux compilateurs
+    \item simplifier l'analyse et la traduction du code
+    \end{itemize}
+  \end{itemize}
 }
 
 \subsection{Elaboration d'une interface}
@@ -312,7 +323,7 @@
 		\begin{itemize}
 			  	\onslide<2-> \item \textcolor{red}{Première étape de conception du langage sous-estimée...} \\
 				\onslide<3-> \textcolor{vert}{$\longrightarrow$ mais un langage plus complet dès le début}
-				\onslide<4-> \item \textcolor{red}{Mais également la conception de l'interface (surtout le temps nécessaire)}
+				\onslide<4-> \item \textcolor{red}{Conception de l'interface $\rightarrow$ temps nécessaire}
 				\onslide<5-> \item \textcolor{red}{Mise en route difficile...} \\
 				\onslide<6-> \textcolor{vert}{$\longrightarrow$ mais beaucoup de simplifications effectuées depuis la proposition}
     	\end{itemize}
