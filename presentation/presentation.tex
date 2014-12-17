@@ -230,33 +230,6 @@
     \end{figure}    
     }
 
-\frame{
-    \frametitle{Organisation du logiciel}
-    
-    %% TODO : SCHEMA
-
-    \begin{figure}[!h]
-    \centering
-
-    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance= 3.5cm,
-                    semithick]
-      \tikzstyle{every state}=[draw=black,text=black]
-
-      \node[state]     (user)      [draw=none]                                      	   {Utilisateur};
-      \node[state]     (descr)     [shape=rectangle] 		  [below of=user]    	   {Description du tricot};      
-      \node[state]     (visuel)    [shape=rectangle]              [below left of=descr]    {Rendu visuel du patron};
-      \node[state]     (instr)     [shape=rectangle]              [below right of=descr]   {Instructions};
-
-
-      \path 
-	  (user)   edge[single arrow]  node{TriLang} (descr)
-	  (descr)  edge[double]  node{GUI}     (visuel)
-		   edge[double]  node{Compilateur} (instr)
-        ;
-    \end{tikzpicture}
-    \end{figure}    
-    
-}
 
 \section{Notre travail}
 
