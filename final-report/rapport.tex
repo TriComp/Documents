@@ -56,8 +56,8 @@
          \textsc{Stéfanesco} \\}}
        \vspace{2.5cm}
     \begin{abstract}
-	Ce document présente le rapport final de notre projet TriComp.
-        % TODO : résumer le contenu du document
+Ce document présente le rapport final de notre projet TriComp. Nous y détaillons tout le travail 
+que nous avons effectué ainsi que les améliorations auxquelles nous avons pensé.
     \end{abstract}
   \end{titlepage}
 \makeatother
@@ -158,7 +158,7 @@ TriComp. (\url{https://github.com/TriComp/}).
 Nous avons été amenés au cours de ce projet à définir deux langages,
 l'un purement statique, puisque servant à décrire les ouvrages de
 tricot, l'autre dyamique, car décrivant le processus de réalisation du
-tricot.
+tricot. Nous les détaillons maintenant.
 
 \subsubsection{Langage descriptif}
 
@@ -175,7 +175,7 @@ décomposition atomique est que l'on peut réaliser des choix de points
 avec une très bonne précision.
  Son gros inconvégniant est qu'il est souvent
 pénible de travailler avec cette représentation trop précise, car les tricots 
-sont souvent d'assez grande taille. %TODO Une idée de la taille d'un tricot "classique"?
+sont souvent d'assez grande taille. % TODO Une idée de la taille d'un tricot "classique"?
 Notre démarche, quand à elle, propose une vision du tricot plus globale, 
 et donc beaucoup plus simple.
 
@@ -214,8 +214,6 @@ Notre format de fichier nous autorise à définir différentes pièces
 avec différents noms. Ces pièces permettent de décomposer une pièce,
 notamment en cas de présence de \texttt{link}, qui prennent en entrée
 le nom de la pièce suivante.
-
-% TODO : Pour démarrer le tricot, comment fait-on ? Il avait été question à un moment de tri topologique. Ajouter une pièce fantôme (un split n-aire de départ) fonctionne si les différentes pièces de départ sont à la même hauteur
 
 La figure \ref{langage} illustre et résume les possibilités du
 langage, via une description d'un poncho.
@@ -273,6 +271,11 @@ mi-parcours. Deux choses importantes ont été modifiées :
           restrictif. Cette partie a apporté beaucoup plus de
           modifications dans le code que la modification précédente.
 \end{itemize}
+
+Au final nous obtenons un langage permettant de représenter une quantité importante 
+de tricots d'un point de vue assez original par rapport à ce qui est fait dans les 
+autres logiciels de tricot. Les tricots qui suivent notre langage portent l'extension 
+\texttt{.tricot}.
 
 \subsubsection{Langage de bas niveau}
 
@@ -400,10 +403,7 @@ outils d'édition de tricot, une fenêtre où est affiché le tricot, et
 une zone où se trouve la liste des instructions générées par le
 compilateur.
 
-
 % TODO : inclure des images 
-
-% inclure des captures d'écran etc
 
 \subsubsection{Détails d'implémentation}
 
@@ -413,10 +413,10 @@ questions de simplificité au niveau de l'intégration. Seule la partie
 compilation (écrite en OCaml) est dissociée de la partie Qt, et est
 appelée dans l'interface via des appels systèmes.
 
-Détailler l'ensemble des structures offertes par Qt dand le projet
+Détailler l'ensemble des structures offertes par Qt utilisées dans le projet
 serait ici long et inutile, le lecteur pourra se référer au code
 disponible sur la page Github\footnote{Rappel :
-  \url{https://github.com/TriComp/}}. On mentionnera juste pour
+  \url{https://github.com/TriComp/}}. On mentionnera juste que pour
 l'affichage, on ne travaille pas directement sur le tricot en temps
 qu'objet, mais sur une représentation du tricot formée
 d'\texttt{items} (qui forme, en quelque sorte, une couche
