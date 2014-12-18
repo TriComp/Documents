@@ -266,15 +266,15 @@ langage, via une description d'un poncho.
 
 \subsection{Compilateur}
 
-Le parcourt du tricot utilise l'algorithme 1, qui est un algorithme de
-dataflow à work list, très courrant en compilation. Ici le workset est
+Le parcours du tricot utilise l'algorithme 1, qui est un algorithme de
+dataflow à work list, très courant en compilation. Ici le workset est
 implémenté à l'aide d'une pile, ce qui nous permet de parcourir
 completement une branche de tricot avant de s'occuper d'une
-autre. Ainsi on ne demande pas au tricoteur de faire un va-et-viens
-entre plusieurs aiguilles si ce n'est pas necessaire.
+autre. Ainsi on ne demande pas au tricoteur de faire un va-et-vient
+entre plusieurs aiguilles si ce n'est pas nécessaire.
 
 \begin{algorithm}\label{algo}
-\caption{\textsc{Algorithme de de parcourt du tricot}}
+\caption{\textsc{Algorithme de parcours du tricot}}
 \begin{algorithmic}[1]
 \State WorkSet $\leftarrow$ racines du graphe.
 \State Done $\leftarrow$ ($\lambda n \to \varnothing$) // Un dictionnaire
@@ -283,7 +283,7 @@ entre plusieurs aiguilles si ce n'est pas necessaire.
   \State Imprimer les instructions pour x
   \For{y $\in$ Successors(x)}
     \State Done(y) $\leftarrow$ Done(y) $\cup$ \{ x \}
-    \If{Done(y) $=$ Predecessors(y)} // On a parcourru toutes les dépendances de x
+    \If{Done(y) $=$ Predecessors(y)} // On a parcouru toutes les dépendances de x
       \State WorkSet $\leftarrow$ WorkSet $\cup$ \{ y \}
     \EndIf
   \EndFor
@@ -339,9 +339,6 @@ compilateur.
 % TODO : inclure des images 
 
 % inclure des captures d'écran etc
-
-% le midterm report met ici le site web, mais je ne suis pas si sûre que ça soit très pertinent
-% -> autre section ? ("Communication")
 
 \subsubsection{Détails d'implémentation}
 
