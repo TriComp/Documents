@@ -34,6 +34,11 @@
 
 \begin{document}
 
+\lstset{
+     literate=%
+         {é}{{\'e}}1
+}
+
 \makeatletter % Pour utiliser le "at" comme une commande interne.
   \begin{titlepage}
     \begin{center}
@@ -212,30 +217,6 @@ le nom de la pièce suivante.
 
 % TODO : Pour démarrer le tricot, comment fait-on ? Il avait été question à un moment de tri topologique. Ajouter une pièce fantôme (un split n-aire de départ) fonctionne si les différentes pièces de départ sont à la même hauteur
 
-Comme nous le disions précédemment, quelques modifications ont été
-apportées au niveau de ce langage depuis le rapport de
-mi-parcours. Deux choses importantes ont été modifiées :
-\begin{itemize}
-	\item La largeur inférieure des trapèzes est cette fois-ci
-          déduite de la largeur de la pièce précédente, et ne figure
-          donc plus dans les paramètres du trapèze. Cette modification
-          permet d'éviter des redondances sans se compliquer la tâche,
-          notamment dans la partie de l'interface graphique.
-	\item Les \texttt{split} peuvent générer plus de deux pièces
-          différentes. Par conséquent, les \texttt{links} ont
-          également été modifiés : ils se lient avec leur sucesseur
-          via le nom du sucesseur, suivi de la position sur ce
-          sucesseur (alors qu'avant, un simple positionnement
-          gauche/droite suffisait). Nous avons effectué cette
-          modification car certains tricots (par exemple la salopette)
-          ne pouvait être écrit de façon "simple" avec le précédent
-          langage. Ceci est du au fait que précédemment, le
-          positionnement des pièces après un split était déterministe
-          (une pièce à gauche, une pièce à droite) et donc
-          restrictif. Cette partie a apporté beaucoup plus de
-          modifications dans le code que la modification précédente.
-\end{itemize}
-
 La figure \ref{langage} illustre et résume les possibilités du
 langage, via une description d'un poncho.
 \begin{figure}[!ht]
@@ -269,7 +250,67 @@ langage, via une description d'un poncho.
 	\label{langage}
 \end{figure}
 
+Comme nous le disions précédemment, quelques modifications ont été
+apportées au niveau de ce langage depuis le rapport de
+mi-parcours. Deux choses importantes ont été modifiées :
+\begin{itemize}
+	\item La largeur inférieure des trapèzes est cette fois-ci
+          déduite de la largeur de la pièce précédente, et ne figure
+          donc plus dans les paramètres du trapèze. Cette modification
+          permet d'éviter des redondances sans se compliquer la tâche,
+          notamment dans la partie de l'interface graphique.
+	\item Les \texttt{split} peuvent générer plus de deux pièces
+          différentes. Par conséquent, les \texttt{links} ont
+          également été modifiés : ils se lient avec leur sucesseur
+          via le nom du sucesseur, suivi de la position sur ce
+          sucesseur (alors qu'avant, un simple positionnement
+          gauche/droite suffisait). Nous avons effectué cette
+          modification car certains tricots (par exemple la salopette)
+          ne pouvait être écrit de façon "simple" avec le précédent
+          langage. Ceci est du au fait que précédemment, le
+          positionnement des pièces après un split était déterministe
+          (une pièce à gauche, une pièce à droite) et donc
+          restrictif. Cette partie a apporté beaucoup plus de
+          modifications dans le code que la modification précédente.
+\end{itemize}
+
 \subsubsection{Langage de bas niveau}
+
+Le "langage de bas niveau" correspond aux instructions que doit suivre l'utilisateur 
+pour pouvoir réaliser son tricot. Ces instructions sont produites par le compilateur, 
+dont on détaillera le fonctionnement dans la prochaine partie. Ici nous présentons le 
+format (ou langage) utilisé pour présenter ces instructions.
+
+Ce langage doit reflèter exactement les mêmes informations que celles que l'on pourrait 
+trouver dans un manuel de tricot : les points à tricoter. Dans les manuels, la périodicité 
+des motifs est exploitée afin de ne pas créer une instructions pour chaque maille. Cette 
+périodicité se traduit à la fois sur un rang (hoirzontalement, voir la figure \ref{instruction1}) 
+et sur un ensemble de rangs (verticalement, voir la figure \ref{instruction2}).  
+
+\begin{figure}[!ht]
+	\centering
+	\fbox{\begin{minipage}{0.9\textwidth}
+	\begin{lstlisting}^^J
+Ligne 1 : 140 fois 1 maille endroit, 1 maille envers^^J
+	\end{lstlisting}
+	\end{minipage}}
+	\caption{Ici, on repète une succession de points plusieurs fois sur un même rang.}
+	\label{instruction1}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\fbox{\begin{minipage}{0.9\textwidth}
+	\begin{lstlisting}^^J
+Répetez 245 fois le motif suivant :^^J
+Ligne 1 : 140 fois 1 maille endroit, 1 maille envers^^J
+Ligne 2 : 140 fois 1 maille envers, 1 maille endroit^^J
+	\end{lstlisting}
+	\end{minipage}}
+	\caption{Ici, on repète une succession de rangs plusieurs fois (verticalement).}
+	\label{instruction2}
+\end{figure}
+
 
 \subsection{Compilateur}
 
