@@ -468,6 +468,14 @@ des tresses) aurait pu être un outil intéressant à implémenter.
 
 \subsection{Allocation d'aiguilles}
 
+Lors de la génération des instructions, on souhaiterait déterminer le nombre d'aiguilles nécessaires à la réalisation du tricot, 
+et si possible le minimiser. Ce problème ressemble fort à celui de l'allocation d'aiguilles en compilation, et on peut montrer 
+qu'il lui est en fait équivalent.
+
+En effet, faisons l'analogie suivante : on fait correspondre les aiguilles supplémentaires (par rapport aux 2 aiguilles de base) 
+aux temporaire dans lesquels stocker les variables, et les variables aux zones où le tricot est séparé en deux, introduites par 
+les \texttt{split} (en gardant en tête qu'on peut évidemment effectuer un \texttt{split} sur une branche déjà issue d'un \texttt{split}).
+
 \section*{Conclusion}
 
 \end{document}
