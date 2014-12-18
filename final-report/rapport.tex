@@ -279,7 +279,8 @@ mi-parcours. Deux choses importantes ont été modifiées :
 Le "langage de bas niveau" correspond aux instructions que doit suivre l'utilisateur 
 pour pouvoir réaliser son tricot. Ces instructions sont produites par le compilateur, 
 dont on détaillera le fonctionnement dans la prochaine partie. Ici nous présentons le 
-format (ou langage) utilisé pour présenter ces instructions.
+format (ou langage) utilisé pour présenter ces instructions, en effectuant un parallèle 
+avec ce que l'on peut trouver dans un manuel de tricot.
 
 Ce langage doit reflèter exactement les mêmes informations que celles que l'on pourrait 
 trouver dans un manuel de tricot : les points à tricoter. Dans les manuels, la périodicité 
@@ -311,6 +312,22 @@ Ligne 2 : 140 fois 1 maille envers, 1 maille endroit^^J
 	\label{instruction2}
 \end{figure}
 
+Les deux figures précédentes illustrent des instructions que nous obtenons avec notre logiciel. 
+Dans un manuel de tricot, elles sont volontairement moins verbeuses, à cause du nombre important 
+de motifs différents à décrire qu'ils contiennent.
+
+Mais tout tricot ne peut être construit uniquement à partir d'instructions de ce type. En effet, nous 
+avons vu qu'avec les \texttt{split} et les \texttt{link} il est possible de devoir ajouter (ou enlever) 
+une ou plusieurs aiguilles, et cette information doit figurer parmi les instructions renvoyées.
+
+Enfin, la dernière information importante concerne le début du tricot. En effet, pour commencer un tricot, 
+le tricoteur doit \emph{monter des mailles}. Ces premières mailles sont particulières, car elles ne 
+reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au début du tricot le nombre de 
+mailles à monter. Cette étape ne figure pas dans les manuels de tricot, car ceux-ci traitent souvent de 
+motifs, et non de pièces.
+
+Ainsi, les instructions que renvoit notre logiciel sont à la fois précises comme celles d'un manuel, mais 
+également claires et facile à suivre. 
 
 \subsection{Compilateur}
 
