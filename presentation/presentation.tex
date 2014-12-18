@@ -9,7 +9,7 @@
 \usepackage{listings} %lstlisting
 \usepackage{xcolor} % pour mettre du texte en couleur
 \usepackage{tikz}
-\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
+\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata, decorations.markings}
 \definecolor{vert}{RGB}{0,153,0}
 
 \beamertemplatenavigationsymbolsempty % Option pour supprimer la barre de navigation dans les slides
@@ -29,6 +29,13 @@
 }
 
 \setbeamertemplate{footline}[frame number]
+
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
 
 \begin{document}
 
@@ -131,8 +138,6 @@
         \end{columns}
 }
 
-
-
 \frame{
 	\frametitle{Zoomons}
         \begin{columns}   
@@ -201,11 +206,31 @@
 }
 
 \frame{
-    \frametitle{Organisation du logiciel}
-    
-    %% TODO : SHEMA
+    \frametitle{Fonctionnement du logiciel}
+        \begin{figure}[!h]
+    \centering
+\begin{tikzpicture}[thick,node distance= 2.5cm]
+  \node[draw=none] (u) {Utilisateur};
+  \node[draw,rectangle, below of=u] (a) {Description du tricot};
+  \node[inner sep=0,minimum size=0,right of=a] (k) {}; % invisible node
+  \node[draw,rectangle,right of=k] (b) {Rendu visuel du patron};
+  \node[draw,rectangle,below of=a] (c) {Instructions pour tricoter};
+  \node [draw=none, below right of=k, node distance=1.75cm] {Compilateur};
 
-}
+  % 1st pass: draw arrows
+  \draw[vecArrow] (u) -- node [right] {TriLang} ++ (a) ;
+  \draw[vecArrow] (a) -- node [above] {GUI} ++ (b) ;
+  \draw[vecArrow] (k) |-  (c) ;
+
+  % 2nd pass: copy all from 1st pass, and replace vecArrow with innerWhite
+  \draw[innerWhite] (a) to (b);
+  \draw[innerWhite] (k) |- (c);
+
+  % Note: If you have no branches, the 2nd pass is not needed
+\end{tikzpicture}
+    \end{figure}    
+    }
+
 
 \section{Notre travail}
 
@@ -213,30 +238,28 @@
 
 \frame{
 	\frametitle{En amont... description d'un tricot}
+	
+		Objectifs :
 		\begin{itemize}
-			\onslide<2-> \item Un schéma de description de n'importe quel tricot
-			\onslide<3-> \item Plusieurs critères :
-			\begin{itemize}
-				\item gérer le plus de tricots possibles
-				\item facilité pour générer les instructions
-				\item assez « haut niveau » % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global,
-										    % contrairement à ce qui se fait d'habitude dans les logiciels de tricots
-											% (points sur une grille)
-				\item facile de compréhension et d'utilisation (notamment dans le code...)
-			\end{itemize}
-			\onslide<4-> \item Nous avons donc conçu le langage \textsc{TriLang} % TODO : meilleur nom ?
+			\item Pouvoir décrire n'importe quel tricot
+			\item Description globale	    % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global,
+							    % contrairement à ce qui se fait d'habitude dans les logiciels de tricots
+			        			    % (points sur une grille)
+			\item Facilité pour générer les instructions
+			\item Facilité de prise en main
 		\end{itemize}
+%			Nous avons donc conçu le langage \textsc{TriLang} % TODO : meilleur nom ?
 }
 
 \frame{
 	\frametitle{Le langage}
 		\begin{itemize}
-			\onslide<1-> \item La composante essentielle : le trapèze \\
-			\onslide<2-> \begin{center}
+			\item La composante essentielle : le trapèze \\
+			\begin{center}
 				\includegraphics[height=0.4\textheight]{../img/trapeze.jpg}
 			\end{center}
-			\onslide<3-> \item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
-			\onslide<4-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
+			\item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
 		\end{itemize}
 }
 
@@ -261,9 +284,9 @@
 		\draw[fleche, color=blue] (8,50) -- (8,70);
 		\draw[fleche, color=blue] (52,50) -- (52,70);
 		\draw[color=blue] (30,60) node{next};
-		\draw[fleche,color=vert] (15,80) -- (30,100);
-		\draw[fleche,color=vert] (45,80) -- (30,100);
-		\draw[color=vert] (30,105) node {link};
+		\draw[fleche,color=green] (15,80) -- (30,100);
+		\draw[fleche,color=green] (45,80) -- (30,100);
+		\draw[color=green] (30,105) node {link};
 		\draw (30,-10) node{start};
 		\draw[fleche] (30,-5) -- (30,10);
 		\draw (30,130) node{stop};
@@ -277,24 +300,27 @@
 \subsection{Conception d'un compilateur}
 
 \frame{
-  \frametitle{Le compilateur}
-  \begin{itemize}
-    \onslide<1-> \item Pouvoir passer d'un tricot à la liste d'instructions pour le réaliser.
-    \onslide<2-> \item Détection d'erreurs
-    \begin{itemize}
-    \item présence d'un cycle dans la description du tricot.
-    \end{itemize}
-    \onslide<3-> \item Construction d'un graphe de dépendances
-    \begin{itemize}
-    \item Pour chaque pièce, pièces à tricoter au préalable.
-    \end{itemize}
-    \onslide<4-> \item Sections à tricoter de manière séquentielle : 
-    \begin{itemize}
-    \item représentation en blocs de base
-    \item similaire aux compilateurs
-    \item simplifier l'analyse et la traduction du code
-    \end{itemize}
-  \end{itemize}
+	\frametitle{Le compilateur}
+		\begin{itemize}
+			\onslide<1-> \item Génère la liste d'instructions.
+			\onslide<2-> \item Détection d'erreurs (cycles, configurations impossibles).
+			\onslide<3-> \item Principale difficulté : Certaines pièces dépendent d'autres.
+			\onslide<4-> \item Parcours selon un ordre topologique.
+		\end{itemize}
+}
+
+
+\frame{
+  \frametitle{Implémentation actuelle}
+        \begin{itemize}
+          \onslide<1-> \item Compilation et vérification.
+          \onslide<2-> \item Limité à des rectangles.
+          \onslide<3-> \item \textcolor{vert}{Algorithmes pour les réductions/augmentations de motifs.}
+          \onslide<4-> \item Motifs prédéfinis.
+          \onslide<5-> \item \textcolor{vert}{Format extensible.}
+          \onslide<6-> \item Utilisable en ligne de commande ou à travers l'interface.
+        \end{itemize}
+
 }
 
 \subsection{Elaboration d'une interface}
@@ -340,13 +366,18 @@
       \item Des points définis par l'utilisateur
       \item Pouvoir ajouter des tresses \\
 		$\longrightarrow$ Définition de zones sur les trapèzes ?
-      \item Changer la taille des pièces, ...
+	\item Gérer les coutures (à effectuer après le tricot)
     \end{itemize}
-    \onslide<3-> \item Côté compilateur :
+    \onslide<3-> \item Compilateur :
     \begin{itemize}
-      \item gérer les coutures (à effectuer après le tricot)
+      \item Implémenter la répartition des augmentations et des diminutions
     \end{itemize}
-  \onslide<4-> \item Amélioration de l'interface graphique
+  \onslide<4-> \item Interface graphique : 
+    \begin{itemize}
+     \item Plus de modifications du tricot possibles (changer la taille des pièces,...)
+     \item Pouvoir créer son tricot dans l'interface
+    \end{itemize}
+
   \end{itemize}
 }
 
