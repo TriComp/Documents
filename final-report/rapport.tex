@@ -2,19 +2,15 @@
 
 \usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
 
-\usepackage[french]{babel}
-\usepackage[utf8]{inputenc}
+\usepackage[french]{babel} \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
 \usepackage[a4paper,colorlinks,linkcolor=darkgray,citecolor=red,urlcolor=blue]{hyperref}
-\usepackage{pdfpages}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{amsthm}
-\usepackage{listings}
-\usepackage{tikz}
-\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing, automata}
-\definecolor{vert}{RGB}{0,153,0}
+\usepackage{pdfpages} \usepackage{graphicx} \usepackage{caption}
+\usepackage{amsthm} \usepackage{listings} \usepackage{tikz}
+\usetikzlibrary{calc, trees, positioning, arrows, shapes,
+  shapes.multipart, shadows, matrix, decorations.pathreplacing,
+  decorations.pathmorphing, automata} \definecolor{vert}{RGB}{0,153,0}
 
 \newtheorem{ex}{Exemple}
 
@@ -30,24 +26,21 @@
   \begin{titlepage}
     \begin{center}
        {\LARGE \@title} \\
-       \vspace{2cm}
-       {\large \@date}
+       \vspace{2cm} {\large \@date}
        \vspace{3cm}
     \end{center}
-       {\large
-       {William \textsc{Aufort} \hfill Julien \textsc{Bensmail} \\}
-    \vspace{1cm}
-       {\hfill coordinateur \\}
-       {Agathe \textsc{Herrou}  \hfill Romain \textsc{Labolle} \\}
-       \vspace{1cm}
-       {chef de projet \\}
-       \vspace{1.5cm}
-       {Frédéric \textsc{Lang} \hfill Maxime \textsc{Lesourd} \\}
-       {Laureline \textsc{Pinault} \hfill Léo \textsc{Stéfanesco} \\}}
+       {\large {William \textsc{Aufort} \hfill Julien
+           \textsc{Bensmail} \\}
+    \vspace{1cm} {\hfill coordinateur \\} {Agathe \textsc{Herrou}
+      \hfill Romain \textsc{Labolle} \\}
+       \vspace{1cm} {chef de projet \\}
+       \vspace{1.5cm} {Frédéric \textsc{Lang} \hfill Maxime
+         \textsc{Lesourd} \\} {Laureline \textsc{Pinault} \hfill Léo
+         \textsc{Stéfanesco} \\}}
        \vspace{2.5cm}
     \begin{abstract}
-	Ce document présente le rapport final de notre projet TriComp. 
-	% TODO : résumer le contenu du document
+	Ce document présente le rapport final de notre projet TriComp.
+        % TODO : résumer le contenu du document
     \end{abstract}
   \end{titlepage}
 \makeatother
@@ -60,14 +53,26 @@
 
 \section*{Introduction}
 
-Le tricot est un art que l'on imagine souvent réservé aux personnes âgées.
+Le tricot est un art que l'on imagine souvent réservé aux personnes
+âgées.
 
-Les magazines de tricot présententent souvent des modèles à réaliser soi-même, combinant différents points. Il est cependant vite fastidieux d'écrire la suite des 
-instructions à suivre pour réaliser une pièce. Notre but ici était donc de réaliser un logiciel permettant d'une part de décrire des pièces de tricot de manière \emph{user-friendly}, et, à partir de cette description, de générer une suite d'instructions à destination du tricoteur permettant de réaliser la pièce en question. 
+Les magazines de tricot présententent souvent des modèles à réaliser
+soi-même, combinant différents points. Il est cependant vite
+fastidieux d'écrire la suite des instructions à suivre pour réaliser
+une pièce. Notre but ici était donc de réaliser un logiciel permettant
+d'une part de décrire des pièces de tricot de manière
+\emph{user-friendly}, et, à partir de cette description, de générer
+une suite d'instructions à destination du tricoteur permettant de
+réaliser la pièce en question.
 
-Cette opération de traduction d'un langage de ``haut niveau'' (l'ensemble des pièces du tricot) vers un langage de ``bas niveau'' (les instructions) rappelait fortement le principe d'un compilateur, c'est pourquoi 
-nous avons d'abord considéré notre projet comme un ``compilateur de tricot''. À l'instar de la compilation d'un langage de programmation informatique, cette 
-compilation de tricot était susceptible de mener à des problèmes théoriques intéressants, à mesure que l'on enrichirait le langage.
+Cette opération de traduction d'un langage de ``haut niveau''
+(l'ensemble des pièces du tricot) vers un langage de ``bas niveau''
+(les instructions) rappelait fortement le principe d'un compilateur,
+c'est pourquoi nous avons d'abord considéré notre projet comme un
+``compilateur de tricot''. À l'instar de la compilation d'un langage
+de programmation informatique, cette compilation de tricot était
+susceptible de mener à des problèmes théoriques intéressants, à mesure
+que l'on enrichirait le langage.
 % ici, on explique nos motivations, la genèse du projet
 % motivations : le tricot c'est bien, mais vite fastidieux de construire des modèles à la main
 % Magazines de tricot : proposent souvent des modèles combinant de nombreux points différents, mais fastidieux de construire le modèle et de calculer où il faut faire quelle opération (tricoter une maille à l'endroit ou à l'envers, croiser des mailles, en ajouter, en enlever...)
@@ -77,105 +82,168 @@ compilation de tricot était susceptible de mener à des problèmes théoriques 
 
 % définition d'un certain nombre de mots : maille, point, ouvrage ; et description rudimentaire des techniques
 
-Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés, voici donc quelques définitions :
+Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés,
+voici donc quelques définitions :
 
 \begin{itemize}
 % + rang
-\item une \emph{maille} est l'unité de base d'un tricot. Il s'agit de la boucle qui constitue l'étoffe en étant reliée à ses voisines, horizontalement car 
-  partageant la même portion de fil, verticalement car ces boucles sont imbriquées les unes dans les autres. Elle peut être à l'endroit ou à l'envers, selon la 
-  manière dont la boucle est réalisée.
-\item un \emph{point} est une manière de combiner les différentes opérations réalisables sur les mailles (les tricoter à l'endroit, à l'envers, en tricoter 
-  plusieurs ensemble, croiser plusieurs mailles \dots)
-\item l'\emph{ouvrage} désigne la pièce de tricot tout entière, par exemple l'écharpe ou le pull.
-\item une \emph{diminution} est la suppression d'une maille dans le cours de l'ouvrage ; une technique courante consiste à tricoter ensemble 
-  deux mailles. Symétriquement, une \emph{augmentation} est une maille ajoutée dans le cours de l'ouvrage ; une technique 
-  courante consiste à enrouler le fil sur l'aiguille pour former une nouvelle maille (on parle alors de \emph{jeté}).
+\item une \emph{maille} est l'unité de base d'un tricot. Il s'agit de
+  la boucle qui constitue l'étoffe en étant reliée à ses voisines,
+  horizontalement car partageant la même portion de fil, verticalement
+  car ces boucles sont imbriquées les unes dans les autres. Elle peut
+  être à l'endroit ou à l'envers, selon la manière dont la boucle est
+  réalisée.
+\item un \emph{point} est une manière de combiner les différentes
+  opérations réalisables sur les mailles (les tricoter à l'endroit, à
+  l'envers, en tricoter plusieurs ensemble, croiser plusieurs mailles
+  \dots)
+\item l'\emph{ouvrage} désigne la pièce de tricot tout entière, par
+  exemple l'écharpe ou le pull.
+\item une \emph{diminution} est la suppression d'une maille dans le
+  cours de l'ouvrage ; une technique courante consiste à tricoter
+  ensemble deux mailles. Symétriquement, une \emph{augmentation} est
+  une maille ajoutée dans le cours de l'ouvrage ; une technique
+  courante consiste à enrouler le fil sur l'aiguille pour former une
+  nouvelle maille (on parle alors de \emph{jeté}).
 \end{itemize}
 
-Le tricot est réalisé à l'aide d'aiguilles, qui servent d'une part à maintenir les boucles libres (pour éviter qu'elles ne se défassent et libèrent les boucles du 
-rang précédent qu'elles retiennent), d'autre part à former de nouvelles boucles.
+Le tricot est réalisé à l'aide d'aiguilles, qui servent d'une part à
+maintenir les boucles libres (pour éviter qu'elles ne se défassent et
+libèrent les boucles du rang précédent qu'elles retiennent), d'autre
+part à former de nouvelles boucles.
 
 \newpage
 
 \section{Travail réalisé}
 
-Le travail que nous prévoyions de réaliser impliquait d'une part de définir différents langages de ``programmation'' du tricot (un langage de haut niveau pour 
-décrire de manière rigoureuse les ouvrages, et un langage de bas niveau correspondant aux mailles à tricoter), d'autre part d'écrire un compilateur réalisant la 
-traduction d'un langage vers l'autre, et enfin de réaliser une interface graphique permettant de les manipuler intuitivement et de visualiser les pièces en cours de 
-définition.
-Nous détaillons dans cette partie le travail qui a été réalisé dans chacun de ces objectifs. Nous rappelons que tout le travail (logiciel, documents et site web) sont disponibles et consultables sur le dépôt Git du projet TriComp. (\url{https://github.com/TriComp/}).
+Le travail que nous prévoyions de réaliser impliquait d'une part de
+définir différents langages de ``programmation'' du tricot (un langage
+de haut niveau pour décrire de manière rigoureuse les ouvrages, et un
+langage de bas niveau correspondant aux mailles à tricoter), d'autre
+part d'écrire un compilateur réalisant la traduction d'un langage vers
+l'autre, et enfin de réaliser une interface graphique permettant de
+les manipuler intuitivement et de visualiser les pièces en cours de
+définition.  Nous détaillons dans cette partie le travail qui a été
+réalisé dans chacun de ces objectifs. Nous rappelons que tout le
+travail (logiciel, documents et site web) sont disponibles et
+consultables sur le dépôt Git du projet
+TriComp. (\url{https://github.com/TriComp/}).
 
 \subsection{Définition des langages}
 
-Nous avons été amenés au cours de ce projet à définir deux langages, l'un purement statique, puisque servant à décrire les ouvrages de tricot, l'autre dyamique, car 
-décrivant le processus de réalisation du tricot.
+Nous avons été amenés au cours de ce projet à définir deux langages,
+l'un purement statique, puisque servant à décrire les ouvrages de
+tricot, l'autre dyamique, car décrivant le processus de réalisation du
+tricot.
 
 \subsubsection{Langage descriptif}
 
-Une première version du langage descriptif avait été détaillée dans le rapport mi-parcours. Quelques modifications ont été effectuées depuis. Nous exposerons donc ici le langage final, les modifications effectuées ainsi que leur intêret, le tout illustré par un exemple. \\
+Une première version du langage descriptif avait été détaillée dans le
+rapport mi-parcours. Quelques modifications ont été effectuées
+depuis. Nous exposerons donc ici le langage final, les modifications
+effectuées ainsi que leur intêret, le tout illustré par un exemple. \\
 
-L'idée générale est de concevoir une langage capable décrire un tricot de la façon la plus globale possible. Dans les (rares) logiciels de tricot qui existent, le tricot est décomposé en sa plus petite entité : la maille (cf figure \ref{logiciel}). L'avantage de cette décomposition atomique est que l'on peut réaliser des choix de points avec une très bonne précision. Notre démarche, quand à elle, propose une vision du tricot plus globale, et donc beaucoup plus simple.
+L'idée générale est de concevoir une langage capable décrire un tricot
+de la façon la plus globale possible. Dans les (rares) logiciels de
+tricot qui existent, le tricot est décomposé en sa plus petite entité
+: la maille (cf figure \ref{logiciel}). L'avantage de cette
+décomposition atomique est que l'on peut réaliser des choix de points
+avec une très bonne précision. Notre démarche, quand à elle, propose
+une vision du tricot plus globale, et donc beaucoup plus simple.
 
 \begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.3]{../img/grid.jpg}
-  \caption{Le logiciel Stitch Designer propose une vue très précise du tricot, mais celui-ci a donc une taille beaucoup trop importante (comme en témoignent les barres de défilement à droite et en bas de la fenêtre)}
+  \centering \includegraphics[scale=0.3]{../img/grid.jpg}
+  \caption{Le logiciel Stitch Designer propose une vue très précise du
+    tricot, mais celui-ci a donc une taille beaucoup trop importante
+    (comme en témoignent les barres de défilement à droite et en bas
+    de la fenêtre)}
   \label{logiciel}
 \end{figure}
 
-L'élément de base dans ce langage est le trapèze. Un trapèze définit une zone où l'on trouve un même motif. Un trapèze est défini par sa hauteur, le décalage de sa base supérieure, et la longueur de ses bases (voir figure \ref{trapeze}).
+L'élément de base dans ce langage est le trapèze. Un trapèze définit
+une zone où l'on trouve un même motif. Un trapèze est défini par sa
+hauteur, le décalage de sa base supérieure, et la longueur de ses
+bases (voir figure \ref{trapeze}).
 
 \begin{figure}[!ht]
-  \centering
-  \includegraphics[scale=0.5]{../img/trapeze.jpg}
-  \caption{Les paramètres d'un trapèze que l'on utilise dans la description}
+  \centering \includegraphics[scale=0.5]{../img/trapeze.jpg}
+  \caption{Les paramètres d'un trapèze que l'on utilise dans la
+    description}
   \label{trapeze}
 \end{figure}
 
-Un tricot est subdivisé en trapèzes qui sont reliés les uns les autres d'une certaine manière : un trapèze connaît l'entité qui le suit directement (dans le parcours du tricot) via un pointeur. Il se peut que plusieurs trapèzes suivent un même trapèze : c'est dans cette situation que l'on ajoute des aiguilles. Cette situation se modélise dans le langage via le mot-clé "\texttt{split}".
-Inversement, il se peut que plusieurs trapèzes aient le même successeur, c'est à ce moment là que plusieurs "morceaux" peuvent être réunis afin de libérer une ou plusieurs aiguilles : c'est un "\texttt{link}".
+Un tricot est subdivisé en trapèzes qui sont reliés les uns les autres
+d'une certaine manière : un trapèze connaît l'entité qui le suit
+directement (dans le parcours du tricot) via un pointeur. Il se peut
+que plusieurs trapèzes suivent un même trapèze : c'est dans cette
+situation que l'on ajoute des aiguilles. Cette situation se modélise
+dans le langage via le mot-clé "\texttt{split}".  Inversement, il se
+peut que plusieurs trapèzes aient le même successeur, c'est à ce
+moment là que plusieurs "morceaux" peuvent être réunis afin de libérer
+une ou plusieurs aiguilles : c'est un "\texttt{link}".
 
-Notre format de fichier nous autorise à définir différentes pièces avec différents noms. Ces pièces permettent de décomposer une pièce, notamment en cas de présence de \texttt{link}, qui prennent en entrée le nom de la pièce suivante. 
+Notre format de fichier nous autorise à définir différentes pièces
+avec différents noms. Ces pièces permettent de décomposer une pièce,
+notamment en cas de présence de \texttt{link}, qui prennent en entrée
+le nom de la pièce suivante.
 
 % TODO : Pour démarrer le tricot, comment fait-on ? Il avait été question à un moment de tri topologique. Ajouter une pièce fantôme (un split n-aire de départ) fonctionne si les différentes pièces de départ sont à la même hauteur
 
-Comme nous le disions précédemment, quelques modifications ont été apportées au niveau de ce langage depuis le rapport de mi-parcours. Deux choses importantes ont été modifiées :
+Comme nous le disions précédemment, quelques modifications ont été
+apportées au niveau de ce langage depuis le rapport de
+mi-parcours. Deux choses importantes ont été modifiées :
 \begin{itemize}
-	\item La largeur inférieure des trapèzes est cette fois-ci déduite de la largeur de la pièce précédente, et ne figure donc plus dans les paramètres du trapèze. Cette modification permet d'éviter des redondances sans se compliquer la tâche, notamment dans la partie de l'interface graphique.
-	\item Les \texttt{split} peuvent générer plus de deux pièces différentes. Par conséquent, les \texttt{links} ont également été modifiés : ils se lient avec leur sucesseur via le nom du sucesseur, suivi de la position sur ce sucesseur (alors qu'avant, un simple  positionnement gauche/droite suffisait). Nous avons effectué cette modification car certains tricots (par exemple la salopette) ne pouvait être écrit de façon "simple" avec le précédent langage. Ceci est du au fait que précédemment, le positionnement des pièces après un split était déterministe (une pièce à gauche, une pièce à droite) et donc restrictif. Cette partie a apporté beaucoup plus de modifications dans le code que la modification précédente.
+	\item La largeur inférieure des trapèzes est cette fois-ci
+          déduite de la largeur de la pièce précédente, et ne figure
+          donc plus dans les paramètres du trapèze. Cette modification
+          permet d'éviter des redondances sans se compliquer la tâche,
+          notamment dans la partie de l'interface graphique.
+	\item Les \texttt{split} peuvent générer plus de deux pièces
+          différentes. Par conséquent, les \texttt{links} ont
+          également été modifiés : ils se lient avec leur sucesseur
+          via le nom du sucesseur, suivi de la position sur ce
+          sucesseur (alors qu'avant, un simple positionnement
+          gauche/droite suffisait). Nous avons effectué cette
+          modification car certains tricots (par exemple la salopette)
+          ne pouvait être écrit de façon "simple" avec le précédent
+          langage. Ceci est du au fait que précédemment, le
+          positionnement des pièces après un split était déterministe
+          (une pièce à gauche, une pièce à droite) et donc
+          restrictif. Cette partie a apporté beaucoup plus de
+          modifications dans le code que la modification précédente.
 \end{itemize}
 
-La figure \ref{langage} illustre et résume les possibilités du langage.
+La figure \ref{langage} illustre et résume les possibilités du
+langage.
 \begin{figure}[!ht]
 	\centering
 	\begin{tikzpicture}[scale = 0.05]
 		\tikzstyle{fleche}=[->,>=latex,line width=1mm]
-		\fill[color=gray!20] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
-		\fill[color=white] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
-		\draw[thick] (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
-		\draw[thick] (0,30) -- (60,30) ;
-		\draw[thick] (0,90) -- (60,90) ;
-		\draw[thick] (0,60) -- (15,60) ;
-		\draw[thick] (45,60) -- (60,60) ;
-		\draw[thick] (30,30) -- (45,60) -- (30,90) -- (15,60) -- cycle;
-		\draw[fleche, color=red] (30,20) -- (15,40);
-		\draw[fleche, color=red] (30,20) -- (45,40);
-		\draw[color=red] (30,15) node{split};
-		\draw[fleche, color=blue] (8,50) -- (8,70);
-		\draw[fleche, color=blue] (52,50) -- (52,70);
-		\draw[color=blue] (30,60) node{next};
-		\draw[fleche,color=vert] (15,80) -- (30,100);
-		\draw[fleche,color=vert] (45,80) -- (30,100);
-		\draw[color=vert] (30,105) node {link};
-		\draw (30,-10) node{start};
-		\draw[fleche] (30,-5) -- (30,10);
-		\draw (30,130) node{stop};
-		\draw[fleche] (30,110) -- (30,125);
-		\draw[-*,ultra thick] (75,30) -- (45,15);
-		\draw (90,35) node{\texttt{trapeze(...)}};
+                \fill[color=gray!20] (0,0) -- (60,0) -- (60,120) --
+                (0,120) -- cycle; \fill[color=white] (30,30) --
+                (45,60) -- (30,90) -- (15,60) -- cycle; \draw[thick]
+                (0,0) -- (60,0) -- (60,120) -- (0,120) -- cycle;
+                \draw[thick] (0,30) -- (60,30) ; \draw[thick] (0,90)
+                -- (60,90) ; \draw[thick] (0,60) -- (15,60) ;
+                \draw[thick] (45,60) -- (60,60) ; \draw[thick] (30,30)
+                -- (45,60) -- (30,90) -- (15,60) -- cycle;
+                \draw[fleche, color=red] (30,20) -- (15,40);
+                \draw[fleche, color=red] (30,20) -- (45,40);
+                \draw[color=red] (30,15) node{split}; \draw[fleche,
+                  color=blue] (8,50) -- (8,70); \draw[fleche,
+                  color=blue] (52,50) -- (52,70); \draw[color=blue]
+                (30,60) node{next}; \draw[fleche,color=vert] (15,80)
+                -- (30,100); \draw[fleche,color=vert] (45,80) --
+                (30,100); \draw[color=vert] (30,105) node {link};
+                \draw (30,-10) node{start}; \draw[fleche] (30,-5) --
+                (30,10); \draw (30,130) node{stop}; \draw[fleche]
+                (30,110) -- (30,125); \draw[-*,ultra thick] (75,30) --
+                (45,15); \draw (90,35) node{\texttt{trapeze(...)}};
 	\end{tikzpicture}
 	\label{langage}
-	\caption{Les possibilités du langage illustré sur un tricot (en l'occurence un poncho). Une attention toute particulière est portée aux jonctions entre les différents trapèzes.}
+	\caption{Les possibilités du langage illustré sur un tricot
+          (en l'occurence un poncho). Une attention toute particulière
+          est portée aux jonctions entre les différents trapèzes.}
 \end{figure}
 
 \subsubsection{Langage de bas niveau}
@@ -188,15 +256,30 @@ La figure \ref{langage} illustre et résume les possibilités du langage.
 
 \subsection{Interface graphique}
 
-Nous exposons dans cette partie le travail qui a été fourni concernant l'élaboration de l'interface graphique, notamment les caractéristiques de l'interface, les fonctionnalités ainsi que des détails d'implémentation.
+Nous exposons dans cette partie le travail qui a été fourni concernant
+l'élaboration de l'interface graphique, notamment les caractéristiques
+de l'interface, les fonctionnalités ainsi que des détails
+d'implémentation.
 
 \subsubsection{Caractéristiques et fonctionnalités}
 
-Avant toute chose, il nous fallait cibler les caractéstiques que devait avoir l'interface. Destinée à être utilisée par des tricoteurs, celle-ci devait être facile d'utilisation. L'utilisateur dispose des outils indispensables à toute interface (ouverture, sauvegarde de fichiers, zoom...) mais également d'outils propres au tricot et aux objectifs de TriComp : un bouton pour générer les instructions, ainsi que quelques outils d'édition de tricot (choix des points sur les trapèzes).
+Avant toute chose, il nous fallait cibler les caractéstiques que
+devait avoir l'interface. Destinée à être utilisée par des tricoteurs,
+celle-ci devait être facile d'utilisation. L'utilisateur dispose des
+outils indispensables à toute interface (ouverture, sauvegarde de
+fichiers, zoom...) mais également d'outils propres au tricot et aux
+objectifs de TriComp : un bouton pour générer les instructions, ainsi
+que quelques outils d'édition de tricot (choix des points sur les
+trapèzes).
 
-Le choix du motif à mettre sur chaque trapèze peut être fait parmi une dizaine de points disponibles via des boutons. Une suggestion future pourrait être de faire définir à l'utilisateur ses propres points.
+Le choix du motif à mettre sur chaque trapèze peut être fait parmi une
+dizaine de points disponibles via des boutons. Une suggestion future
+pourrait être de faire définir à l'utilisateur ses propres points.
 
-L'interface est divisée en trois parties : une partie contenant les outils d'édition de tricot, une fenêtre où est affiché le tricot, et une zone où se trouve la liste des instructions générées par le compilateur.
+L'interface est divisée en trois parties : une partie contenant les
+outils d'édition de tricot, une fenêtre où est affiché le tricot, et
+une zone où se trouve la liste des instructions générées par le
+compilateur.
 
 
 % TODO : inclure des images 
@@ -208,13 +291,28 @@ L'interface est divisée en trois parties : une partie contenant les outils d'é
 
 \subsubsection{Détails d'implémentation}
 
-L'interface a été créée à l'aide de la bibliothèque Qt. Une grande partie du projet a été intégrée au sein de la partie Qt, pour des questions de simplificité au niveau de l'intégration. Seule la partie compilation (écrite en OCaml) est dissociée de la partie Qt, et est appelée dans l'interface via des appels systèmes.
+L'interface a été créée à l'aide de la bibliothèque Qt. Une grande
+partie du projet a été intégrée au sein de la partie Qt, pour des
+questions de simplificité au niveau de l'intégration. Seule la partie
+compilation (écrite en OCaml) est dissociée de la partie Qt, et est
+appelée dans l'interface via des appels systèmes.
 
-Détailler l'ensemble des structures offertes par Qt dand le projet serait ici long et inutile, le lecteur pourra se référer au code disponible sur la page Github\footnote{Rappel : \url{https://github.com/TriComp/}}. On mentionnera juste pour l'affichage, on ne travaille pas directement sur le tricot en temps qu'objet, mais sur une représentation du tricot formée d'\texttt{items} (qui forme, en quelque sorte, une couche supérieure). Même si les deux représentations sont isomorphes (grossièrement un \texttt{item} pour un trapèze du tricot), cela permet d'éditer autant qu'on le veut sans modifier l'objet de base (sauf lors d'une sauvegarde).
+Détailler l'ensemble des structures offertes par Qt dand le projet
+serait ici long et inutile, le lecteur pourra se référer au code
+disponible sur la page Github\footnote{Rappel :
+  \url{https://github.com/TriComp/}}. On mentionnera juste pour
+l'affichage, on ne travaille pas directement sur le tricot en temps
+qu'objet, mais sur une représentation du tricot formée
+d'\texttt{items} (qui forme, en quelque sorte, une couche
+supérieure). Même si les deux représentations sont isomorphes
+(grossièrement un \texttt{item} pour un trapèze du tricot), cela
+permet d'éditer autant qu'on le veut sans modifier l'objet de base
+(sauf lors d'une sauvegarde).
 
 \subsection{Communication}
 
-Nous détaillons dans cette partie la partie communication du projet, qui englobe la communication interne et externe (via le site web).
+Nous détaillons dans cette partie la partie communication du projet,
+qui englobe la communication interne et externe (via le site web).
 
 \subsection{Site Web}
 
@@ -223,16 +321,30 @@ Nous détaillons dans cette partie la partie communication du projet, qui englob
 \section{Améliorations possibles}
 
 % ici, on parlera des autres versions du langage, des améliorations qu'on aurait pu apporter à l'interface graphique...
-Le manque de temps et de moyens humains nous a empêché de mettre en place la totalité des fonctionnalités que nous avions prévues, notamment en ce qui concerne les 
-types de points gérés par le langage (la version actuelle ne gère que les points à base de mailles à l'endroit et à l'envers).
+Le manque de temps et de moyens humains nous a empêché de mettre en
+place la totalité des fonctionnalités que nous avions prévues,
+notamment en ce qui concerne les types de points gérés par le langage
+(la version actuelle ne gère que les points à base de mailles à
+l'endroit et à l'envers).
 
 \subsection{Langage descriptif}
 % à réécrire pour le rendre sexy et vendeur
-En ayant plus de temps à notre disposition, nous pourrions intégrer au langage d'une part les diminutions et augmentations, d'autre part les tresses. De même, une fois le tricot terminé, il faut en général le finaliser en cousant certaines parties. Cette dernière étape de couture avait été évoquée, mais n'a pas été traitée. Toutefois, la difficulté de cette étape (en matière de tricot) n'est pas très importante pour un tricoteur.
+En ayant plus de temps à notre disposition, nous pourrions intégrer au
+langage d'une part les diminutions et augmentations, d'autre part les
+tresses. De même, une fois le tricot terminé, il faut en général le
+finaliser en cousant certaines parties. Cette dernière étape de
+couture avait été évoquée, mais n'a pas été traitée. Toutefois, la
+difficulté de cette étape (en matière de tricot) n'est pas très
+importante pour un tricoteur.
 
 \subsection{Interface graphique}
 
-Du côté de l'interface, une grande partie du travail que nous n'avons pas eu le temps d'aborder portait sur l'édition des trictos. Nous avions pensé notamment à la définition de points par l'utilisateur, à pouvoir changer la taille des pièces, ou encore améliorer le rendu des points. L'insertion de points particuliers sur des zones (par exemple, des tresses) aurait pu être un outil intéressant à implémenter.
+Du côté de l'interface, une grande partie du travail que nous n'avons
+pas eu le temps d'aborder portait sur l'édition des trictos. Nous
+avions pensé notamment à la définition de points par l'utilisateur, à
+pouvoir changer la taille des pièces, ou encore améliorer le rendu des
+points. L'insertion de points particuliers sur des zones (par exemple,
+des tresses) aurait pu être un outil intéressant à implémenter.
 
 \section{Résultats théoriques}
 
