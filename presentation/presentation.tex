@@ -237,30 +237,28 @@
 
 \frame{
 	\frametitle{En amont... description d'un tricot}
+	
+		Objectifs :
 		\begin{itemize}
-			\onslide<2-> \item Un schéma de description de n'importe quel tricot
-			\onslide<3-> \item Plusieurs critères :
-			\begin{itemize}
-				\item gérer le plus de tricots possibles
-				\item facilité pour générer les instructions
-				\item assez « haut niveau » % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global,
-										    % contrairement à ce qui se fait d'habitude dans les logiciels de tricots
-											% (points sur une grille)
-				\item facile de compréhension et d'utilisation (notamment dans le code...)
-			\end{itemize}
-			\onslide<4-> \item Nous avons donc conçu le langage \textsc{TriLang} % TODO : meilleur nom ?
+			\item Pouvoir décrire n'importe quel tricot
+			\item Description globale	    % i.e : suffisamment précis pour avoir du détail, mais conserver un aspect global,
+							    % contrairement à ce qui se fait d'habitude dans les logiciels de tricots
+			        			    % (points sur une grille)
+			\item Facilité pour générer les instructions
+			\item Facilité de prise en main
 		\end{itemize}
+%			Nous avons donc conçu le langage \textsc{TriLang} % TODO : meilleur nom ?
 }
 
 \frame{
 	\frametitle{Le langage}
 		\begin{itemize}
-			\onslide<1-> \item La composante essentielle : le trapèze \\
-			\onslide<2-> \begin{center}
+			\item La composante essentielle : le trapèze \\
+			\begin{center}
 				\includegraphics[height=0.4\textheight]{../img/trapeze.jpg}
 			\end{center}
-			\onslide<3-> \item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
-			\onslide<4-> \item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
+			\item Chaque trapèze pointe vers l'entité suivante $\rightarrow$ parcours facile du tricot
+			\item Pour relier/séparer des pièces : \texttt{link} et \texttt{split}
 		\end{itemize}
 }
 
@@ -316,9 +314,9 @@
         \begin{itemize}
           \onslide<1-> \item Compilation et vérification.
           \onslide<2-> \item Limité à des rectangles.
-          \onslide<3-> \item \textcolor{green}{Algorithmes pour les réductions/augmentations de motifs.}
+          \onslide<3-> \item \textcolor{vert}{Algorithmes pour les réductions/augmentations de motifs.}
           \onslide<4-> \item Motifs prédéfinis.
-          \onslide<5-> \item \textcolor{green}{Format extensible.}
+          \onslide<5-> \item \textcolor{vert}{Format extensible.}
           \onslide<6-> \item Utilisable en ligne de commande ou à travers l'interface.
         \end{itemize}
 }
