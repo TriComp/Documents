@@ -2,15 +2,27 @@
 
 \usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
 
-\usepackage[french]{babel} \usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
 \usepackage[a4paper,colorlinks,linkcolor=darkgray,citecolor=red,urlcolor=blue]{hyperref}
-\usepackage{pdfpages} \usepackage{graphicx} \usepackage{caption}
-\usepackage{amsthm} \usepackage{listings} \usepackage{tikz}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{amsmath}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
 \usetikzlibrary{calc, trees, positioning, arrows, shapes,
   shapes.multipart, shadows, matrix, decorations.pathreplacing,
-  decorations.pathmorphing, automata} \definecolor{vert}{RGB}{0,153,0}
+  decorations.pathmorphing, automata}
+\definecolor{vert}{RGB}{0,153,0}
 
 \newtheorem{ex}{Exemple}
 
@@ -253,6 +265,44 @@ langage, via une description d'un poncho.
 \subsubsection{Langage de bas niveau}
 
 \subsection{Compilateur}
+
+Le parcourt du tricot utilise l'algorithme 1, qui est un algorithme de
+dataflow à work list, très courrant en compilation. Ici le workset est
+implémenté à l'aide d'une pile, ce qui nous permet de parcourir
+completement une branche de tricot avant de s'occuper d'une
+autre. Ainsi on ne demande pas au tricoteur de faire un va-et-viens
+entre plusieurs aiguilles si ce n'est pas necessaire.
+
+\begin{algorithm}\label{algo}
+\caption{\textsc{Algorithme de de parcourt du tricot}}
+\begin{algorithmic}[1]
+\State WorkSet $\leftarrow$ racines du graphe.
+\State Done $\leftarrow$ ($\lambda n \to \varnothing$) // Un dictionnaire
+\While{$WorkList \neq \varnothing$}
+  \State x $\leftarrow$ Pop\,(WorkList)
+  \State Imprimer les instructions pour x
+  \For{y $\in$ Successors(x)}
+    \State Done(y) $\leftarrow$ Done(y) $\cup$ \{ x \}
+    \If{Done(y) $=$ Predecessors(y)} // On a parcourru toutes les dépendances de x
+      \State WorkSet $\leftarrow$ WorkSet $\cup$ \{ y \}
+    \EndIf
+  \EndFor
+
+
+%  \If{$i = \{r \leftarrow \phi (x_1, \dots, x_k)\}$}
+%    \State newval $\leftarrow \SBabrs{x_1}{lv} \sqcup \cdots \sqcup \SBabrs{x_k}{lv}$
+%  \ElsIf {$i = \{r \leftarrow x ~ op ~ y\}$}
+%    \State newval $\leftarrow \SBabrs{x ~ op ~ y}{lv}$
+%  \EndIf
+%  \If{$($newval $\sqcup$ $\SBabrs{r}{lv}) \neq \SBabrs{r}{lv}$}
+%    \State lv\,[$r$] $\leftarrow$ newval $\sqcup$ $\SBabrs{r}{lv}$
+%    \State WorkList $\leftarrow$ WorkList $\cup$ DefUse($r$)
+%  \EndIf
+\EndWhile
+
+%\State $WorkList \leftarrow map ~(\lambda (v : L) \to (v = \bot) ? \, \top : v) ~ WorkList$
+\end{algorithmic}
+\end{algorithm}
 
 \subsubsection{Langage descriptif vers langage bas niveau}
 
