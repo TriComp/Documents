@@ -148,8 +148,12 @@ de la façon la plus globale possible. Dans les (rares) logiciels de
 tricot qui existent, le tricot est décomposé en sa plus petite entité
 : la maille (cf figure \ref{logiciel}). L'avantage de cette
 décomposition atomique est que l'on peut réaliser des choix de points
-avec une très bonne précision. Notre démarche, quand à elle, propose
-une vision du tricot plus globale, et donc beaucoup plus simple.
+avec une très bonne précision.
+ Son gros inconvégniant est qu'il est souvent
+pénible de travailler avec cette représentation trop précise, car les tricots 
+sont souvent d'assez grande taille. %TODO Une idée de la taille d'un tricot "classique"?
+Notre démarche, quand à elle, propose une vision du tricot plus globale, 
+et donc beaucoup plus simple.
 
 \begin{figure}[!ht]
   \centering \includegraphics[scale=0.3]{../img/grid.jpg}
@@ -214,7 +218,7 @@ mi-parcours. Deux choses importantes ont été modifiées :
 \end{itemize}
 
 La figure \ref{langage} illustre et résume les possibilités du
-langage.
+langage, via une description d'un poncho.
 \begin{figure}[!ht]
 	\centering
 	\begin{tikzpicture}[scale = 0.05]
@@ -240,10 +244,10 @@ langage.
                 (30,110) -- (30,125); \draw[-*,ultra thick] (75,30) --
                 (45,15); \draw (90,35) node{\texttt{trapeze(...)}};
 	\end{tikzpicture}
-	\label{langage}
 	\caption{Les possibilités du langage illustré sur un tricot
           (en l'occurence un poncho). Une attention toute particulière
           est portée aux jonctions entre les différents trapèzes.}
+	\label{langage}
 \end{figure}
 
 \subsubsection{Langage de bas niveau}
@@ -316,19 +320,28 @@ qui englobe la communication interne et externe (via le site web).
 
 \subsection{Site Web}
 
+Un site web a été déployé à l'adresse \url{http://tricomp.github.io}, il est hébergé
+sur Github (utilisé comme serveur Git du projet). Le site est basé sur Jekyll, un 
+CMS en Ruby spécialisé dans les blogs et qui a la particularité de ne pas utiliser 
+de base de données, avec l'avantage que Github gère Jekyll automatiquement. Le site 
+est notamment une vitrine pour le projet : il en contient une présentation rapide, 
+avec des liens vers le code source sur Github, ainsi que différents articles autour du projet.
+La page dispose également d'une page pour aiguiller rapidement l'internaute anglophone
+
+% TODO un onglet téléchargement ?
+
 \subsection{Communication au sein du projet}
 
 \section{Améliorations possibles}
 
-% ici, on parlera des autres versions du langage, des améliorations qu'on aurait pu apporter à l'interface graphique...
 Le manque de temps et de moyens humains nous a empêché de mettre en
-place la totalité des fonctionnalités que nous avions prévues,
-notamment en ce qui concerne les types de points gérés par le langage
-(la version actuelle ne gère que les points à base de mailles à
-l'endroit et à l'envers).
+place la totalité des fonctionnalités que nous avions prévues. Nous détaillons
+ici quelques améliorations auxquelles nous avons songées, sachant qu'elles veront
+peut-être le jour (certaines personnes de l'équipe étant intéressées par la 
+poursuite du projet).
 
 \subsection{Langage descriptif}
-% à réécrire pour le rendre sexy et vendeur
+
 En ayant plus de temps à notre disposition, nous pourrions intégrer au
 langage d'une part les diminutions et augmentations, d'autre part les
 tresses. De même, une fois le tricot terminé, il faut en général le
@@ -337,10 +350,18 @@ couture avait été évoquée, mais n'a pas été traitée. Toutefois, la
 difficulté de cette étape (en matière de tricot) n'est pas très
 importante pour un tricoteur.
 
-\subsection{Interface graphique}
+\subsection{Compilateur}
+
+Le compilateur actuel ne gère que les rectangles. La gestion des trapèzes 
+(l'idée centrale du langage) serait un des premiers points sur lequel nous
+pourrions nous pencher de nouveau. A travers cette qestion se pose notamment
+les problèmes dela gestion des augmentations et des diminutions, notamment pour
+des motifs complexes.
+
+\subsection{Interface graphique et édition}
 
 Du côté de l'interface, une grande partie du travail que nous n'avons
-pas eu le temps d'aborder portait sur l'édition des trictos. Nous
+pas eu le temps d'aborder portait sur l'édition des tricots. Nous
 avions pensé notamment à la définition de points par l'utilisateur, à
 pouvoir changer la taille des pièces, ou encore améliorer le rendu des
 points. L'insertion de points particuliers sur des zones (par exemple,
