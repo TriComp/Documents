@@ -68,7 +68,7 @@
 Le tricot est un art que l'on imagine souvent réservé aux personnes
 âgées.
 
-Les magazines de tricot présententent souvent des modèles à réaliser
+Les magazines de tricot présentent souvent des modèles à réaliser
 soi-même, combinant différents points. Il est cependant vite
 fastidieux d'écrire la suite des instructions à suivre pour réaliser
 une pièce. Notre but ici était donc de réaliser un logiciel permettant
@@ -85,17 +85,14 @@ c'est pourquoi nous avons d'abord considéré notre projet comme un
 de programmation informatique, cette compilation de tricot était
 susceptible de mener à des problèmes théoriques intéressants, à mesure
 que l'on enrichirait le langage.
-% ici, on explique nos motivations, la genèse du projet
-% motivations : le tricot c'est bien, mais vite fastidieux de construire des modèles à la main
-% Magazines de tricot : proposent souvent des modèles combinant de nombreux points différents, mais fastidieux de construire le modèle et de calculer où il faut faire quelle opération (tricoter une maille à l'endroit ou à l'envers, croiser des mailles, en ajouter, en enlever...)
-% autre motivation : intérêt théorique, potentiels problèmes mathématiques intéressants peuvent surgir (en pratique on n'est pas allés assez loin pour les rencontrer)
 
-\subsection*{Lexique du tricot} % ou : Quelques mots sur le tricot
+\subsection*{Notions du tricot} % ou : Quelques mots sur le tricot
 
 % définition d'un certain nombre de mots : maille, point, ouvrage ; et description rudimentaire des techniques
 
-Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés,
-voici donc quelques définitions :
+Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés.
+Voici donc quelques définitions qui seront utiles pour la compréhension
+de la suite du rapport :
 
 \begin{itemize}
 % + rang
@@ -104,11 +101,21 @@ voici donc quelques définitions :
   horizontalement car partageant la même portion de fil, verticalement
   car ces boucles sont imbriquées les unes dans les autres. Elle peut
   être à l'endroit ou à l'envers, selon la manière dont la boucle est
-  réalisée.
+  réalisée. La figure \ref{maille} montre comment sont composées des mailles
+  et les rangs.
+
+\begin{figure}[!ht]
+  \centering \includegraphics[scale=0.25]{../presentation/Knit-schematic2.png}
+  \caption{Un schéma sur une partie de tricot, où l'on peut observer des rangs 
+  (en rouge), ainsi que des mailles endroit (en vert) et envers (en bleu)}
+  \label{maille}
+\end{figure}
+
 \item un \emph{point} est une manière de combiner les différentes
   opérations réalisables sur les mailles (les tricoter à l'endroit, à
   l'envers, en tricoter plusieurs ensemble, croiser plusieurs mailles
-  \dots)
+  \dots) Ceci montre que l'on peut obtenir un nombre de motifs possibles 
+  extrèmement important.
 \item l'\emph{ouvrage} désigne la pièce de tricot tout entière, par
   exemple l'écharpe ou le pull.
 \item une \emph{diminution} est la suppression d'une maille dans le
@@ -266,6 +273,8 @@ langage, via une description d'un poncho.
 
 \subsection{Compilateur}
 
+\subsubsection{Parcours du tricot}
+
 Le parcours du tricot utilise l'algorithme 1, qui est un algorithme de
 dataflow à work list, très courant en compilation. Ici le workset est
 implémenté à l'aide d'une pile, ce qui nous permet de parcourir
@@ -304,9 +313,7 @@ entre plusieurs aiguilles si ce n'est pas nécessaire.
 \end{algorithmic}
 \end{algorithm}
 
-\subsubsection{Langage descriptif vers langage bas niveau}
-
-\subsubsection{Langage bas niveau vers langage naturel}
+\subsubsection{Etapes de vérifications}
 
 \subsection{Interface graphique}
 
