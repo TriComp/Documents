@@ -252,7 +252,7 @@ ouvrage. En effet, comme le tricot est réalisé rang après rang, la pièce
 tricotée d'un tenant a deux côté parallèles. En revanche, grâce aux 
 augmentations et aux diminutions les deux autres cotés ne sont pas 
 forcément parallèles. Par l'assemblage de trapèzes, nous arrivons
-à obtenir n'importe quelle pièce tricottable.
+à obtenir n'importe quelle pièce tricotable.
 
 \begin{figure}[!ht]
   \centering \includegraphics[scale=0.5]{../img/trapeze.jpg}
@@ -399,7 +399,7 @@ Mais tout tricot ne peut être construit uniquement à partir d'instructions de 
 avons vu qu'avec les \texttt{split} et les \texttt{link} on peut avoir à ajouter (ou enlever) 
 une ou plusieurs aiguilles, et cette information doit figurer parmi les instructions renvoyées.
 
-Lors d'un \texttt{split}, le tricotteur laisse de côté une partie de son ouvrage sur une aiguille et prend une autre aiguille afin de tricotter une des branches du split. Les intructions alors données à l'utilsateur sont les suivantes :
+Lors d'un \texttt{split}, le tricoteur laisse de côté une partie de son ouvrage sur une aiguille et prend une autre aiguille afin de tricoter une des branches du split. Les intructions alors données à l'utilsateur sont les suivantes :
 \begin{itemize}
  \item On donne à l'utilisateur les instructions pour tricoter la premières branche après le split.
  \item Une fois cette branche terminée on demande à l'utilsateur, selon les cas, de fermer les mailles correspondant à cette branche ou de laisser son ouvrage sur l'aiguille.
@@ -407,13 +407,13 @@ Lors d'un \texttt{split}, le tricotteur laisse de côté une partie de son ouvra
  \item Et ainsi de suite.
 \end{itemize}
 
-Lors d'un \texttt{link}, le tricotteur doit assembler, c'est à dire tricotter à la suite avec le même fil, des partie d'ouvrages ayant précédemment été laissée de côté sur des aiguilles. L'instruction correspondante correspond tout simplement à dire à l'utilsateur d'``assembler les dépendances''. En effet, l'utilisateur ayant sous les yeux le patron du tricot qu'il réalise, il ne peut y avoir d'ambiguïté. \\
+Lors d'un \texttt{link}, le tricoteur doit assembler, c'est à dire tricoter à la suite avec le même fil, des partie d'ouvrages ayant précédemment été laissée de côté sur des aiguilles. L'instruction correspondante correspond tout simplement à dire à l'utilsateur d'``assembler les dépendances''. En effet, l'utilisateur ayant sous les yeux le patron du tricot qu'il réalise, il ne peut y avoir d'ambiguïté. \\
 
 % TODO : Donnner exemple de code généré quand split et link ?
 
 Enfin, la dernière information importante concerne le début et la fin du tricot. En effet, pour commencer un tricot, 
 le tricoteur doit \emph{monter des mailles} (c'est-à-dire créer une première rangée de mailles sur son 
-aiguille) tandis qu'à la fin il doit les fermer 
+aiguille) tandis qu'à la fin il doit les fermer. 
 
 Les premières mailles sont particulières, car elles ne 
 reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au début du tricot le nombre de 
@@ -425,13 +425,29 @@ motifs, et non de pièces. \\
 % + Fermer les mailles (d'ailleurs on ferme bien les mailles lors d'un split avec trou, mais on ne les ferme pas à la fin !!)
 
 Ainsi, les instructions que renvoie notre logiciel sont à la fois précises comme celles d'un manuel, mais 
-également claires et faciles à suivre pour un humain ayant des connaissances basiques en tricot 
+également claires et faciles à suivre pour un être humain ayant des connaissances basiques en tricot. 
 
 \subsection{Compilateur} % TODO : à détailler
 
-% TODO : Intro
+Le rôle du compilateur est, à partir du fichier \texttt{.tricot}, d'une part de 
+s'assurer qu'il décrit un tricot possible (par exemple qu'il ne contient
+pas de cycle, que tous les \texttt{link} ont un sens, etc \dots), et 
+d'autre part de générer des instructions  dans le langage de bas niveau.
+
+Il est implémenté en OCaml, et il utilise la bibliothèque standard alternative
+Core. L'analyse syntaxique utilise le générateur d'analyseur syntaxique Menhir,
+et est robuste: il émet des messages d'erreurs précis lorsque le fichier d'entrée 
+n'est pas valide.
+
+Pour ce faire, il créé un graphe de dépendance entre les différentes pièces
+du tricot: un arc dénote qu'il faut tricoter une pièce avant l'autre. On peut
+alors utiliser des algorithmes de graphes de la littératures, par exemple pour 
+la détection de cycle.
 
 \subsubsection{Parcours du tricot}
+
+Pour la génération des instructions bas niveau, on parcourt le graphe 
+dans un ordre topologique qui est en plus adapté au tricot.
 
 Le parcours du tricot utilise l'algorithme 1, qui est un algorithme de
 dataflow à work list, très courant en compilation. Ici le workset est
@@ -454,30 +470,12 @@ entre plusieurs aiguilles si ce n'est pas nécessaire.
       \State WorkSet $\leftarrow$ WorkSet $\cup$ \{ y \}
     \EndIf
   \EndFor
-
-
-%  \If{$i = \{r \leftarrow \phi (x_1, \dots, x_k)\}$}
-%    \State newval $\leftarrow \SBabrs{x_1}{lv} \sqcup \cdots \sqcup \SBabrs{x_k}{lv}$
-%  \ElsIf {$i = \{r \leftarrow x ~ op ~ y\}$}
-%    \State newval $\leftarrow \SBabrs{x ~ op ~ y}{lv}$
-%  \EndIf
-%  \If{$($newval $\sqcup$ $\SBabrs{r}{lv}) \neq \SBabrs{r}{lv}$}
-%    \State lv\,[$r$] $\leftarrow$ newval $\sqcup$ $\SBabrs{r}{lv}$
-%    \State WorkList $\leftarrow$ WorkList $\cup$ DefUse($r$)
-%  \EndIf
 \EndWhile
-
-%\State $WorkList \leftarrow map ~(\lambda (v : L) \to (v = \bot) ? \, \top : v) ~ WorkList$
 \end{algorithmic}
 \end{algorithm}
 
 \pagebreak
 
-\subsubsection{Etapes de vérifications}
-
-Le compilateur cherche dans un premier temps à détecter des configurations 
-impossibles dans le graphe du tricot : il testera si celui-ci ne comporte pas de cycles 
-(impossibles dans le cas d'un tricot matériel).
 
 \subsection{Interface graphique}
 
@@ -524,7 +522,7 @@ compilateur.
 
 L'interface a été créée à l'aide de la bibliothèque Qt. Une grande
 partie du projet a été intégrée au sein de la partie Qt, pour des
-questions de simplificité au niveau de l'intégration. Seule la partie
+questions de simplicité au niveau de l'intégration. Seule la partie
 compilation (écrite en OCaml) est dissociée de la partie Qt, et est
 appelée dans l'interface via des appels systèmes.
 
