@@ -23,6 +23,8 @@
   shapes.multipart, shadows, matrix, decorations.pathreplacing,
   decorations.pathmorphing, automata}
 \definecolor{vert}{RGB}{0,153,0}
+\definecolor{rouge}{RGB}{153,0,0}
+\definecolor{bleu}{RGB}{0,0,153}
 
 \newtheorem{ex}{Exemple}
 
@@ -385,6 +387,10 @@ entre plusieurs aiguilles si ce n'est pas nécessaire.
 
 \subsubsection{Etapes de vérifications}
 
+Le compilateur cherche dans un premier temps à détecter des configurations 
+impossibles dans le graphe du tricot : il testera si celui-ci ne comporte pas de cycles 
+(impossibles dans le cas d'un tricot matériel).
+
 \subsection{Interface graphique}
 
 Nous exposons dans cette partie le travail qui a été fourni concernant
@@ -407,10 +413,20 @@ Le choix du motif à mettre sur chaque trapèze peut être fait parmi une
 dizaine de points disponibles via des boutons. Une suggestion future
 pourrait être de faire définir à l'utilisateur ses propres points.
 
-L'interface est divisée en trois parties : une partie contenant les
+L'interface est divisée en trois parties, comme on peut le voir sur la 
+figure \ref{interface} : une partie contenant les
 outils d'édition de tricot, une fenêtre où est affiché le tricot, et
 une zone où se trouve la liste des instructions générées par le
 compilateur.
+
+\begin{figure}[!ht]
+  \centering \includegraphics[scale=0.35]{../img/interface.jpg}
+  \caption{L'interface graphique de TriComp. En \textcolor{rouge}{rouge}, 
+    la zone de choix des points, en \textcolor{vert}{vert}, la zone de 
+    visualisation du tricot en cours, en \textcolor{bleu}{bleu}, la 
+    zone où s'affichent les instructions.}
+  \label{interface}
+\end{figure}
 
 % TODO : inclure des images 
 
