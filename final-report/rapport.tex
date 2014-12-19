@@ -430,6 +430,8 @@ compilateur.
 
 % TODO : inclure des images 
 
+\pagebreak
+
 \subsubsection{Détails d'implémentation}
 
 L'interface a été créée à l'aide de la bibliothèque Qt. Une grande
@@ -513,6 +515,23 @@ avions pensé notamment à la définition de points par l'utilisateur, à
 pouvoir changer la taille des pièces, ou encore améliorer le rendu des
 points. L'insertion de points particuliers sur des zones (par exemple,
 des tresses) aurait pu être un outil intéressant à implémenter.
+
+% je mets ça là, mais je ne sais pas à quel point c'est pertinent : ne pas hésiter à 
+% en discuter sur la ML
+\subsection{Interfaçage avec des machines à tricoter}
+
+L'intégration de machines à tricoter dans notre projet avait été écartée dès le 
+début du projet, d'une part parce qu'aucun membre de l'équipe n'avait les compétences 
+en électronique requises pour un tel travail, d'autre part parce que nous savions que 
+le temps nous manquerait pour nous en occuper.
+
+Cependant, cela semble un prolongement raisonnable de notre projet, dans le sens où 
+cela pousserait l'automatisation du tricot jusque dans sa réalisation. Il nous faudrait 
+pour cela tout d'abord nous associer avec des personnes ayant de l'expérience dans le 
+domaine des machines à tricoter, puis travailler à adapter les instructions bas niveau 
+à l'utilisation par une machine à tricoter (une différence majeure entre un tricoteur 
+humain et une machine à tricoter étant que la machine à tricoter tricote toutes les 
+mailles d'un rang en parallèle, tandis que le tricoteur les tricotera de manière séquentielle).
 
 \section{Résultats théoriques}
 
