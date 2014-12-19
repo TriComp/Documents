@@ -221,7 +221,7 @@ rapport mi-parcours. Quelques modifications ont été effectuées
 depuis. Nous exposerons donc ici le langage final, les modifications
 effectuées ainsi que leur intêret, le tout illustré par un exemple. \\
 
-L'idée générale est de concevoir une langag capable décrire un tricot
+L'idée générale est de concevoir un langage capable décrire un tricot
 de la façon la plus globale possible. Dans les (rares) logiciels de
 tricot existants, le tricot est décomposé en sa plus petite entité
 : la maille (cf figure \ref{logiciel}). L'avantage de cette
@@ -245,7 +245,13 @@ et donc beaucoup plus simple à manipuler.
 L'élément de base dans ce langage est le trapèze. Un trapèze définit
 une zone où l'on trouve un même motif. Un trapèze est défini par sa
 hauteur, le décalage de sa base supérieure, et la longueur de ses
-bases (voir figure \ref{trapeze}).
+bases (voir figure \ref{trapeze}). Ce choix se justifie par le fait
+que le trapèze est l'unité atomique la plus générale possible dans un
+ouvrage. En effet, comme le tricot est réalisé rang après rang, la pièce
+tricotée d'un tenant a deux côté parallèles. En revanche, grâce aux 
+augmentations et aux diminutions les deux autres cotés ne sont pas 
+forcément parallèles. Par l'assemblage de trapèzes, nous arrivons
+à obtenir n'importe quelle pièce tricottable.
 
 \begin{figure}[!ht]
   \centering \includegraphics[scale=0.5]{../img/trapeze.jpg}
@@ -254,7 +260,7 @@ bases (voir figure \ref{trapeze}).
   \label{trapeze}
 \end{figure}
 
-Un tricot est subdivisé en trapèzes qui sont reliés les uns les autres
+Ainsi, un tricot est subdivisé en trapèzes qui sont reliés les uns les autres
 d'une certaine manière : un trapèze connaît l'entité qui le suit
 directement (dans le parcours du tricot) via un pointeur. Il se peut
 que plusieurs trapèzes suivent un même trapèze : dans ce cas, on 
@@ -308,8 +314,10 @@ apportées au niveau de ce langage depuis le rapport de
 mi-parcours. Deux choses importantes ont été modifiées :
 \begin{itemize}
 	\item La largeur inférieure des trapèzes est cette fois-ci
-          déduite de la largeur de la pièce précédente, et ne figure
-          donc plus dans les paramètres du trapèze. Cette modification
+          déduite de la largeur supérieure du trapèze précédent, et ne figure
+          donc plus dans les paramètres du trapèze. En revanche, \texttt{start}
+          et \texttt{split} prennent en argument la largeur inférieure du ou
+          des trapèze(s) qui les suivent. Cette modification
           permet d'éviter des redondances sans se compliquer la tâche.
 	\item Les \texttt{split} peuvent générer plus de deux pièces
           différentes. Par conséquent, les \texttt{link} ont
@@ -338,7 +346,10 @@ point mousse :\\
 \texttt{Description : "The easiest knit you can make"}\\
 \texttt{piece my\_piece := start 20 }\\
 \texttt{|| trapezoid (height : 60, shift : 0, upper\_width : 20, pattern : point\_mousse)}\\
-\texttt{ || stop}
+\texttt{ || stop} \\
+
+Un exemple plus complexe se trouve en annexe. De plus, la documentation complète du langage
+est disponible sur le site de TriComp (\url{http://tricomp.github.io}).
 
 
 \subsubsection{Langage de bas niveau}
@@ -387,12 +398,15 @@ Mais tout tricot ne peut être construit uniquement à partir d'instructions de 
 avons vu qu'avec les \texttt{split} et les \texttt{link} on peut avoir à ajouter (ou enlever) 
 une ou plusieurs aiguilles, et cette information doit figurer parmi les instructions renvoyées.
 
+% TODO : Détailler + donnner exemple de code généré quand split et link
+
 Enfin, la dernière information importante concerne le début du tricot. En effet, pour commencer un tricot, 
 le tricoteur doit \emph{monter des mailles} (c'est-à-dire créer une première rangée de mailles sur son 
 aiguille). Ces premières mailles sont particulières, car elles ne 
 reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au début du tricot le nombre de 
 mailles à monter. Cette étape ne figure pas dans les manuels de tricot, car ceux-ci traitent souvent de 
 motifs, et non de pièces.
+% + Fermer les mailles (d'ailleurs on ferme bien les mailles lors d'un split avec trou, mais on ne les ferme pas à la fin !!)
 
 % TODO : Donner en annexe un exemple d'instructions complètes générées par notre logiciel
 
@@ -525,7 +539,8 @@ est notamment une vitrine pour le projet : il en contient une présentation rapi
 avec des liens vers le code source sur Github, ainsi que différents articles autour du projet.
 La page dispose également d'une page pour aiguiller rapidement l'internaute anglophone.
 
-% TODO un onglet téléchargement ?
+% TODO un onglet téléchargement
+% TODO un onglet regrouppant ts les documents
 
 \subsubsection{Communication au sein du projet}
 
