@@ -21,7 +21,15 @@
 
 \usetikzlibrary{calc, trees, positioning, arrows, shapes,
   shapes.multipart, shadows, matrix, decorations.pathreplacing,
-  decorations.pathmorphing, automata}
+  decorations.pathmorphing, automata, decorations.markings}
+
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
+  
 \definecolor{vert}{RGB}{0,153,0}
 \definecolor{rouge}{RGB}{153,0,0}
 \definecolor{bleu}{RGB}{0,0,153}
@@ -58,8 +66,9 @@
          \textsc{Stéfanesco} \\}}
        \vspace{2.5cm}
     \begin{abstract}
-Ce document présente le rapport final de notre projet TriComp. Nous y détaillons tout le travail 
-que nous avons effectué ainsi que les améliorations auxquelles nous avons pensé.
+Ce document présente le rapport final de notre projet TriComp. Ce projet consiste en le développement d'un logiciel, TriComp, qui permettrait à l'utilisateur d'obtenir les instructions à effectuer pour tricotter l'ouvrage de son souhait, à partir de la description globale de celui-ci.
+
+Nous y détaillons tout le travail que nous avons effectué ainsi que les améliorations auxquelles nous avons pensé.
     \end{abstract}
   \end{titlepage}
 \makeatother
@@ -140,6 +149,42 @@ d'autre part à former de nouvelles boucles qui deviendront les mailles du rang
 suivant.
 
 \newpage
+
+\section{Présentation du logiciel}
+
+Le nom TriComp de notre logiciel vient de la contraction de ``Compilateur de tricot''. En effet, le but du logiciel est de transformer une description globale d'un tricot en instructions à effectuer par le tricotteur pour le réaliser. Ces instructions sont écrites en langage naturel. Le logiciel se compose de trois parties :
+\begin{itemize}
+ \item \textbf{Un langage}, TriLang, qui permet à l'utilisateur de décrire globalement son ouvrage (la forme, la taille, les motifs, ...).
+ \item \textbf{Un compilateur} qui effectue la transformation de la description en la liste d'instructions.
+ \item \textbf{Une interface graphique} qui permet à la fois de visualiser le tricot décrit grâce à Trilang, de faire appel au compilateur et d'afficher la suite des instructions.
+\end{itemize}
+
+La figure \ref{fct} montre shématiquement le fonctionnement du logiciel.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}[thick,node distance= 2.5cm]
+	  \node[draw=none] (u) {Utilisateur};
+	  \node[draw,rectangle, below of=u] (a) {Description du tricot};
+	  \node[inner sep=0,minimum size=0,right of=a] (k) {}; % invisible node
+	  \node[draw,rectangle,right of=k] (b) {Rendu visuel du patron};
+	  \node[draw,rectangle,below of=a] (c) {Instructions pour tricoter};
+	  \node [draw=none, below right of=k, node distance=1.75cm] {Compilateur};
+
+	  % 1st pass: draw arrows
+	  \draw[vecArrow] (u) -- node [right] {TriLang} ++ (a) ;
+	  \draw[vecArrow] (a) -- node [above] {GUI} ++ (b) ;
+	  \draw[vecArrow] (k) |-  (c) ;
+
+	  % 2nd pass: copy all from 1st pass, and replace vecArrow with innerWhite
+	  \draw[innerWhite] (a) to (b);
+	  \draw[innerWhite] (k) |- (c);
+
+	  % Note: If you have no branches, the 2nd pass is not needed
+	\end{tikzpicture}
+	\caption{Fonctionnement du logiciel}
+	\label{fct}
+\end{figure}
 
 \section{Travail réalisé}
 
