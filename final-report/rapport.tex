@@ -257,12 +257,13 @@ bases (voir figure \ref{trapeze}).
 Un tricot est subdivisé en trapèzes qui sont reliés les uns les autres
 d'une certaine manière : un trapèze connaît l'entité qui le suit
 directement (dans le parcours du tricot) via un pointeur. Il se peut
-que plusieurs trapèzes suivent un même trapèze : c'est dans cette
-situation que l'on ajoute des aiguilles. Cette situation se modélise
-dans le langage via le mot-clé "\texttt{split}".  Inversement, il se
+que plusieurs trapèzes suivent un même trapèze : dans ce cas, on 
+ajoute des aiguilles afin de pouvoir continuer à tricoter les deux branches 
+indépendamment. Cette situation se modélise
+dans le langage via le mot-clé «\,\texttt{split}\,».  Inversement, il se
 peut que plusieurs trapèzes aient le même successeur, c'est à ce
-moment là que plusieurs "morceaux" peuvent être réunis afin de libérer
-une ou plusieurs aiguilles : c'est un "\texttt{link}".
+moment là que plusieurs «\,morceaux\,» peuvent être réunis afin de libérer
+une ou plusieurs aiguilles : c'est un «\,\texttt{link}\,».
 
 Notre format de fichier nous autorise à définir différentes pièces
 avec différents noms. Ces pièces permettent de décomposer une pièce plus importante,
@@ -317,7 +318,7 @@ mi-parcours. Deux choses importantes ont été modifiées :
           successeur (alors qu'avant, un simple positionnement
           gauche/droite suffisait). Nous avons effectué cette
           modification car certains tricots (par exemple une salopette)
-          ne pouvait être écrit de façon "simple" avec le précédent
+          ne pouvait être écrit de façon «\,simple\,» avec le précédent
           langage. Ceci est du au fait que précédemment, le
           positionnement des pièces après un split était déterministe
           (une pièce à gauche, une pièce à droite) et donc
@@ -333,7 +334,7 @@ autres logiciels de tricot. Les tricots qui suivent notre langage portent l'exte
 À titre d'exemple, voici le code décrivant une petite écharpe faite uniquement avec du 
 point mousse :\\
 
-\textrm{Name : toy\_scarf}\\
+\texttt{Name : toy\_scarf}\\
 \texttt{Description : "The easiest knit you can make"}\\
 \texttt{piece my\_piece := start 20 }\\
 \texttt{|| trapezoid (height : 60, shift : 0, upper\_width : 20, pattern : point\_mousse)}\\
@@ -342,7 +343,7 @@ point mousse :\\
 
 \subsubsection{Langage de bas niveau}
 
-Le "langage de bas niveau" correspond aux instructions que doit suivre l'utilisateur 
+Le «\,langage de bas niveau\,» correspond aux instructions que doit suivre l'utilisateur 
 pour pouvoir réaliser son tricot. Ces instructions sont produites par le compilateur, 
 dont on détaillera le fonctionnement dans la prochaine partie. Ici nous présentons le 
 format (ou langage) utilisé pour présenter ces instructions, en effectuant un parallèle 
