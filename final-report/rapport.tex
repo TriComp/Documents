@@ -392,26 +392,39 @@ Ligne 2 : 140 fois 1 maille envers, 1 maille endroit^^J
 
 Les deux figures précédentes illustrent des instructions que nous pouvons obtenir avec notre logiciel. 
 Dans un manuel de tricot, elles seraient volontairement moins verbeuses, à cause du nombre important 
-de motifs différents à décrire que contiennent ces livres.
+de motifs différents à décrire que contiennent ces livres. \\
 
 Mais tout tricot ne peut être construit uniquement à partir d'instructions de ce type. En effet, nous 
 avons vu qu'avec les \texttt{split} et les \texttt{link} on peut avoir à ajouter (ou enlever) 
 une ou plusieurs aiguilles, et cette information doit figurer parmi les instructions renvoyées.
 
-% TODO : Détailler + donnner exemple de code généré quand split et link
+Lors d'un \texttt{split}, le tricotteur laisse de côté une partie de son ouvrage sur une aiguille et prend une autre aiguille afin de tricotter une des branches du split. Les intructions alors données à l'utilsateur sont les suivantes :
+\begin{itemize}
+ \item On donne à l'utilisateur les instructions pour tricoter la premières branche après le split.
+ \item Une fois cette branche terminée on demande à l'utilsateur, selon les cas, de fermer les mailles correspondant à cette branche ou de laisser son ouvrage sur l'aiguille.
+ \item On donne les instructions pour la branche suivante.
+ \item Et ainsi de suite.
+\end{itemize}
 
-Enfin, la dernière information importante concerne le début du tricot. En effet, pour commencer un tricot, 
+Lors d'un \texttt{link}, le tricotteur doit assembler, c'est à dire tricotter à la suite avec le même fil, des partie d'ouvrages ayant précédemment été laissée de côté sur des aiguilles. L'instruction correspondante correspond tout simplement à dire à l'utilsateur d'``assembler les dépendances''. En effet, l'utilisateur ayant sous les yeux le patron du tricot qu'il réalise, il ne peut y avoir d'ambiguïté. \\
+
+% TODO : Donnner exemple de code généré quand split et link ?
+
+Enfin, la dernière information importante concerne le début et la fin du tricot. En effet, pour commencer un tricot, 
 le tricoteur doit \emph{monter des mailles} (c'est-à-dire créer une première rangée de mailles sur son 
-aiguille). Ces premières mailles sont particulières, car elles ne 
+aiguille) tandis qu'à la fin il doit les fermer 
+
+Les premières mailles sont particulières, car elles ne 
 reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au début du tricot le nombre de 
-mailles à monter. Cette étape ne figure pas dans les manuels de tricot, car ceux-ci traitent souvent de 
-motifs, et non de pièces.
+mailles à monter.
+Nous indiquons également les mailles à fermer quand besoin est.
+Ces étapes ne figurent pas dans les manuels de tricot, car ceux-ci traitent souvent de 
+motifs, et non de pièces. \\
+
 % + Fermer les mailles (d'ailleurs on ferme bien les mailles lors d'un split avec trou, mais on ne les ferme pas à la fin !!)
 
-% TODO : Donner en annexe un exemple d'instructions complètes générées par notre logiciel
-
 Ainsi, les instructions que renvoie notre logiciel sont à la fois précises comme celles d'un manuel, mais 
-également claires et faciles à suivre. 
+également claires et faciles à suivre pour un humain ayant des connaissances basiques en tricot 
 
 \subsection{Compilateur} % TODO : à détailler
 
