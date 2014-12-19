@@ -643,4 +643,62 @@ objectifs que nous nous étions fixés en début de projet. La partie implément
 la définition d'un langage de description de tricots, l'édition (au moins partielle) de ces tricots et 
 la génération d'instructions associées, le tout via une interface graphique.
 
+\newpage
+
+\appendix
+
+\section{Exemples de codes sources}
+
+\subsection{Code \texttt{.tricot}}
+
+\lstinputlisting{ponzo.tricot}
+
+
+\subsection{Instructions en sortie du compilateur}
+
+\setlength{\parindent}{0cm}
+
+Instructions pour "ponzo":\\
+
+Début de la pièce "my\_piece":\\
+Montez 840 mailles.\\
+
+Répetez 100 fois le motif suivant :\\
+Ligne 1 : 105 fois 5 mailles envers, 3 mailles endroit\\
+Ligne 2 : 105 fois 3 mailles endroit, 5 mailles envers\\
+
+
+Répetez 420 fois le motif suivant :\\
+Ligne 1 : 420 fois 1 maille endroit, 1 maille envers\\
+Ligne 2 : 420 fois 1 maille endroit, 1 maille envers\\
+
+
+Répetez 245 fois le motif suivant :\\
+Ligne 1 : 35 fois 5 mailles envers, 3 mailles endroit\\
+Ligne 2 : 35 fois 3 mailles endroit, 5 mailles envers\\
+
+Laissez l'aiguille de côté pour le moment.\\
+Fermez 280 mailles\\
+
+Répetez 245 fois le motif suivant :\\
+Ligne 1 : 35 fois 5 mailles envers, 3 mailles endroit\\
+Ligne 2 : 35 fois 3 mailles endroit, 5 mailles envers\\
+
+
+Début de la pièce "top":\\
+Assemblez les dépendances.\\
+
+Répetez 420 fois le motif suivant :\\
+Ligne 1 : 420 fois 1 maille endroit, 1 maille envers\\
+Ligne 2 : 420 fois 1 maille endroit, 1 maille envers\\
+
+
+Répetez 105 fois le motif suivant :\\
+Ligne 1 : 105 fois 5 mailles envers, 3 mailles endroit\\
+Ligne 2 : 105 fois 3 mailles endroit, 5 mailles envers\\
+
+
+Félicitations, vous avez fini!
+
+
 \end{document}
