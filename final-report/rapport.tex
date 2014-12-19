@@ -581,32 +581,38 @@ poursuite du projet).
 
 \subsection{Langage descriptif}
 
-En ayant plus de temps à notre disposition, nous pourrions intégrer au
-langage d'une part les diminutions et augmentations, d'autre part les
-tresses. De même, une fois le tricot terminé, il faut en général le
-finaliser en cousant certaines parties. Cette dernière étape de
-couture avait été évoquée, mais n'a pas été traitée. Toutefois, 
-cette étape ne relève pas directement du tricot, n'est donc pas très
-importante pour le tricoteur.
+En ayant plus de temps à notre disposition, nous pourrions enrichir le langage de manière à permettre une personnalisation plus importante des motifs. 
+Ceci pourrait se faire sous deux angles différents et complémentaires :
+\begin{itemize}
+ \item Une idée intéressante serait de laisser l'utilisateur définir ses propres points, en plus de ceux que nous avons prédéfinis. En effet, les possibilités de points sont infinies, et l'utilisateur pourrait ainsi exprimer toute sa créativité.
+ \item Une autre idée serait de permettre à l'utilisateur de définir des zones dans son ouvrage où tel motif serait appliqué, au lieu de ne permettre le changement de motif que lors d'un changement de trapèze. En effet, notre langage tel quel ne permet pas par exemple de définir un pull dont la moitié gauche serait en point mousse et la moitié droite en jersey : la séparation entre les motifs se fait forcément en bandes horizontales. Bien qu'en soit pas très compliqué à mettre en oeuvre avec un repérage absolu, la définition des zones entraînerait des vérifications supplémentaires à effectuer auxquelles il faut bien penser.\\
+\end{itemize}
 
-% A changer : augmentation et diminutions déjà intégrées au langage + plusieurs motifs sur un trapèze
+De même, les tresses n'ont pas été intégrées au langage. Elles pourraient être intégrées dans un futur relativement proche en utilisant un paradigme similaire à celui utilisé pour décrire les points :
+\begin{itemize}
+ \item Il faudrait définir un format décrivant une tresse. Par exemple donner le nombre de brins de la tresse, la largeur de ces brins, et une description de la manière dont ces brins se croisent sous forme d'un motif minimal à répéter. De même que pour les points, l'idéal serait à terme que l'utilisateur puisse définir ses propres tresses.
+ \item On pourrai se servir également de la définition de zones dans le tricot afin de décrire où positionner les tresses. \\
+\end{itemize}
+
+En outre, il pourrait être intéressant d'inclure dans le langage une description des coutures à effectuer afin d'assembler le tricot à la fin. En effet, bien que cette étape ne relève pas du tricot en tant que telle (et c'est pour cette raison qu'elle n'a pas été traitée jusqu'à présent), elle permettrait à long terme l'échange de modèles de tricots sous forme de fichier \texttt{.tricot} entre les tricotteurs.
+
 
 \subsection{Compilateur}
 
 Le compilateur actuel ne gère que les rectangles. La gestion des trapèzes 
 (l'idée centrale du langage) serait un des premiers points sur lequel nous
-pourrions nous pencher de nouveau. A travers cette qestion se pose notamment
+pourrions nous pencher de nouveau. A travers cette question se pose notamment
 les problèmes dela gestion des augmentations et des diminutions, notamment pour
-des motifs complexes.
+des motifs complexes. Nous avons déjà réfléchi à un algorithme pour répartir ces 
+augmentations et diminutions. Celui-ci se trouve dans la section 4.
 
 \subsection{Interface graphique et édition}
 
 Du côté de l'interface, une grande partie du travail que nous n'avons
-pas eu le temps d'aborder portait sur l'édition des tricots. Nous
-avions pensé notamment à la définition de points par l'utilisateur, à
-pouvoir changer la taille des pièces, ou encore améliorer le rendu des
-points. L'insertion de points particuliers sur des zones (par exemple,
-des tresses) aurait pu être un outil intéressant à implémenter.
+pas eu le temps d'aborder portait sur l'édition des tricots. 
+En effet pour l'instant, le seul outil d'édition qui a été implémenté est celui qui permet de changer le motif des trapèzes. Nous voudrions étoffer ces outils d'éditions, permettant à l'utilisateur par exemple de chager la taille des pièces de son tricot. L'idée serait qu'à terme l'utilsateur puisse entièrement décrire son tricot dans l'interface graphique sans avoir à passer par le langage que nous avons défini (qui peut, bien qu'il soit facile de prise en main, rebuter certains des utilisateurs).
+
+Par ailleurs d'autres améliorations plus mineures (afficher le nom des pièces sur le patron pour faciliter la lecture des instructions par exemple) peuvent être envisagées.
 
 % je mets ça là, mais je ne sais pas à quel point c'est pertinent : ne pas hésiter à 
 % en discuter sur la ML
