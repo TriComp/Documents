@@ -195,7 +195,7 @@ Le logiciel fonctionne de la manière suivante :
  \item L'utilisateur décrit l'ouvrage qu'il veut effectuer grâce au langage descriptif. Il fait cela dans un nouveau fichier texte, auquel il donne l'extension \texttt{.tricot}, et qu'il range dans le dossier de son choix.
  \item L'utilisateur lance ensuite l'interface graphique. Une fois dans l'interface graphique il peut ouvrir son fichier \texttt{.tricot}. Il obtient une visualisation sous forme de patron de l'ouvrage qu'il a décrit précédemment.
  \item L'utilsateur peut, toujours dans l'interface graphique, utiliser quelques outils d'éditions qui ont été implémentés (modification du motif d'un ou plusieurs trapèze(s)). Il peut sauvegarder les modifications qu'il effectue.
- \item Une fois satisfait du modèle qu'il a défini, l'utilisateur peut, toujours dans l'interface graphique, faire appel au compilateur. Celui-ci va tout d'abord effectuer quelques vérifications pour s'assurer que l'ouvrage est tricottable (il va par exemple vérifier qu'il n'y a pas de cycle dans les pièces définies). Il va ensuite générer la liste des instructions à suivre afin de tricotter l'ouvrage. Ces intructions sont affichées dans l'interface graphique, et l'utisateur n'a plus qu'à les suivre pour obtenir son tricot.
+ \item Une fois satisfait du modèle qu'il a défini, l'utilisateur peut, toujours dans l'interface graphique, faire appel au compilateur. Celui-ci va tout d'abord effectuer quelques vérifications pour s'assurer que l'ouvrage est tricotable (il va par exemple vérifier qu'il n'y a pas de cycle dans les pièces définies). Il va ensuite générer la liste des instructions à suivre afin de tricoter l'ouvrage. Ces intructions sont affichées dans l'interface graphique, et l'utisateur n'a plus qu'à les suivre pour obtenir son tricot.
 \end{itemize}
 
 La figure \ref{fct} montre schématiquement le fonctionnement décrit ci-dessus. % Si quelqu'un trouve mieux que montre...
@@ -481,7 +481,7 @@ la détection de cycle.
 
 \subsubsection{Vérifications}
 
-Avant de générer les instructions, le compilateur s'assure que le tricot passé en entrée est triccottable. Il vérifie les points suivants :
+Avant de générer les instructions, le compilateur s'assure que le tricot passé en entrée est triccotable. Il vérifie les points suivants :
 \begin{itemize}
  \item Que chaque pièce est tricottable. Pour cela il vérifie qu'il n'y a pas de recouvrement lors des \texttt{splits} et des \texttt{links}. En effet, lorsqu'on effectue un \texttt{split} ou un \texttt{link}, on indique le positionnement absolu des accroches. La syntaxe du langage n'interdit donc pas, a priori, de définir deux trapèzes partant des mêmes mailles depuis le trapèze précédent (dans le cas d'un \texttt{split}) ou un trapèze s'accrochant en une maille aux mailles de deux trapèzes différents (dans le cas d'un \texttt{link}). Or ces deux cas ne sont pas possibles en réalité. Pour détecter ces configurations impossible, le compilateur calcule tout simplement les mailles auxquelles s'accrochent les trapèzes grâce aux positions et largeurs passées en paramètres, et vérifie qu'il n'y a pas de recouvrement.
  \item Qu'il n'y a pas de cycle dans les pièces à tricotter, et donc que l'ensemble de l'ouvrage est tricottable. Il s'assure ainsi que le tricot commence quelque part et finit quelque part. Pour cela il vérifie qu'il n'y a pas de cycle dans le graphe de dépendance.
@@ -744,7 +744,7 @@ la génération d'instructions associées via une interface graphique.
 
 \section*{Remerciements}
 
-Merci à Guillaume pour de nous avoir soufflé d'idée d'un compilateur de tricot, et à Oriane pour ses précieux conseils de communication !
+Merci à Guillaume de nous avoir soufflé l'idée d'un compilateur de tricot, et à Oriane pour ses précieux conseils de communication !
 
 \newpage
 
