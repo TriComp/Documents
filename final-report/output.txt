@@ -1,0 +1,41 @@
+Instructions pour "ponzo":
+
+Début de la pièce "my_piece":
+Montez 840 mailles.
+
+Répetez 100 fois le motif suivant :
+Ligne 1 : 105 fois 5 mailles envers, 3 mailles endroit
+Ligne 2 : 105 fois 3 mailles endroit, 5 mailles envers
+
+
+Répetez 420 fois le motif suivant :
+Ligne 1 : 420 fois 1 maille endroit, 1 maille envers
+Ligne 2 : 420 fois 1 maille endroit, 1 maille envers
+
+
+Répetez 245 fois le motif suivant :
+Ligne 1 : 35 fois 5 mailles envers, 3 mailles endroit
+Ligne 2 : 35 fois 3 mailles endroit, 5 mailles envers
+
+Laissez l'aiguille de côté pour le moment.
+Fermez 280 mailles
+
+Répetez 245 fois le motif suivant :
+Ligne 1 : 35 fois 5 mailles envers, 3 mailles endroit
+Ligne 2 : 35 fois 3 mailles endroit, 5 mailles envers
+
+
+Début de la pièce "top":
+Assemblez les dépendances.
+
+Répetez 420 fois le motif suivant :
+Ligne 1 : 420 fois 1 maille endroit, 1 maille envers
+Ligne 2 : 420 fois 1 maille endroit, 1 maille envers
+
+
+Répetez 105 fois le motif suivant :
+Ligne 1 : 105 fois 5 mailles envers, 3 mailles endroit
+Ligne 2 : 105 fois 3 mailles endroit, 5 mailles envers
+
+
+Félicitations, vous avez fini!
