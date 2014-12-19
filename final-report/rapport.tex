@@ -475,6 +475,8 @@ compilateur.
 
 % TODO : inclure des images 
 
+\pagebreak
+
 \subsubsection{Détails d'implémentation}
 
 L'interface a été créée à l'aide de la bibliothèque Qt. Une grande
@@ -559,14 +561,49 @@ pouvoir changer la taille des pièces, ou encore améliorer le rendu des
 points. L'insertion de points particuliers sur des zones (par exemple,
 des tresses) aurait pu être un outil intéressant à implémenter.
 
+% je mets ça là, mais je ne sais pas à quel point c'est pertinent : ne pas hésiter à 
+% en discuter sur la ML
+\subsection{Interfaçage avec des machines à tricoter}
+
+L'intégration de machines à tricoter dans notre projet avait été écartée dès le 
+début du projet, d'une part parce qu'aucun membre de l'équipe n'avait les compétences 
+en électronique requises pour un tel travail, d'autre part parce que nous savions que 
+le temps nous manquerait pour nous en occuper.
+
+Cependant, cela semble un prolongement raisonnable de notre projet, dans le sens où 
+cela pousserait l'automatisation du tricot jusque dans sa réalisation. Il nous faudrait 
+pour cela tout d'abord nous associer avec des personnes ayant de l'expérience dans le 
+domaine des machines à tricoter, puis travailler à adapter les instructions bas niveau 
+à l'utilisation par une machine à tricoter (une différence majeure entre un tricoteur 
+humain et une machine à tricoter étant que la machine à tricoter tricote toutes les 
+mailles d'un rang en parallèle, tandis que le tricoteur les tricotera de manière séquentielle).
+
 \section{Résultats théoriques}
 
 \subsection{Algorithmes de répartition des diminutions}
 
+\paragraph{Rappels}
+
+Une \emph{augmentation} est une opération consistant à ajouter une maille au rang en cours : ainsi, à la suite d'une 
+augmentation, ce rang comportera une maille de plus que le rang précédent, la largeur du tricot aura donc augmenté.
+
+Une \emph{diminution} est l'opération inverse d'une augmentation : on supprime une maille au rang en cours, et on fait 
+donc diminuer la largeur du tricot.
+
+% ici schéma d'un jeté et de deux mailles tricotées ensemble
+% -> préciser que c'est *une* manière parmis d'autres de faire des augmentations / diminutions
+
+\paragraph{Réalisation des trapèzes}
+
 Dans l'optique d'intégrer des trapèzes non rectangulaires au langage, nous nous sommes penchés sur la manière de répartir des 
-diminutions et augmentations au cours des rangs afin que les côtés apparaissent rectilignes.
+diminutions et augmentations au cours des rangs, de manière à ce que les côtés apparaissent rectilignes.
 % Peut-être plus détailler ce que sont les augmentations/diminutions (schéma ?)
-Nous nous sommes donc penchés du côté des algorithmes d'image, %...
+Nous nous sommes donc penchés du côté des algorithmes d'image, permettant de tracer une ligne apparaissant la plus droite 
+possible en utilisant des pixels discrets.
+
+Cet élément du langage n'a pas encore été implémenté ; cependant, en prévision de l'intégration des diminutions et augmentations 
+au langage, nous avons fait quelques recherches, et avons décidé d'utiliser l'algorithme de \textsc{Bresenham}
+\footnote{\url{http://fr.wikipedia.org/wiki/Algorithme_de_trac\%C3\%A9_de_segment_de_Bresenham}}.
 
 \subsection{Allocation d'aiguilles}
 
