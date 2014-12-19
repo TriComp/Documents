@@ -159,7 +159,7 @@ Le nom TriComp de notre logiciel vient de la contraction des mots «\,tricot\,»
 transformer une description globale d'un tricot en instructions à effectuer par le tricoteur 
 pour le réaliser. Ces instructions sont écrites en langage naturel. Le logiciel se compose de trois parties :
 \begin{itemize}
- \item \textbf{Un langage}, TriLang, qui permet à l'utilisateur de décrire globalement son ouvrage (la forme, la taille, les motifs, ...)
+ \item \textbf{Un langage}, TriLang, qui permet à l'utilisateur de décrire globalement son ouvrage (la forme, la taille, les motifs, \dots)
  \item \textbf{Un compilateur} qui effectue la transformation de la description en une liste d'instructions
  \item \textbf{Une interface graphique} qui permet à la fois de visualiser le tricot décrit grâce à Trilang, 
    de faire appel au compilateur, et d'afficher la suite des instructions.
@@ -295,7 +295,7 @@ langage, via une description d'un poncho.
                 \draw (30,-10) node{start}; \draw[fleche] (30,-5) --
                 (30,10); \draw (30,130) node{stop}; \draw[fleche]
                 (30,110) -- (30,125); \draw[-*,ultra thick] (75,30) --
-                (45,15); \draw (90,35) node{\texttt{trapeze(...)}};
+                (45,15); \draw (90,35) node{\texttt{trapeze(\dots)}};
 	\end{tikzpicture}
 	\caption{Les possibilités du langage illustrées sur un tricot
           (en l'occurence un poncho). Une attention toute particulière
@@ -346,13 +346,13 @@ point mousse :\\
 Le «\,langage de bas niveau\,» correspond aux instructions que doit suivre l'utilisateur 
 pour pouvoir réaliser son tricot. Ces instructions sont produites par le compilateur, 
 dont on détaillera le fonctionnement dans la prochaine partie. Ici nous présentons le 
-format (ou langage) utilisé pour présenter ces instructions, en effectuant un parallèle 
-avec ce que l'on peut trouver dans un manuel de tricot.
+format (ou langage) utilisé pour présenter ces instructions, proches de ce que l'on peut 
+trouver dans un manuel de tricot.
 
-Ce langage doit reflèter exactement les mêmes informations que celles que l'on pourrait 
+Ce langage doit refléter exactement les mêmes informations que celles que l'on pourrait 
 trouver dans un manuel de tricot : les points à tricoter. Dans les manuels, la périodicité 
-des motifs est exploitée afin de ne pas créer une instructions pour chaque maille. Cette 
-périodicité se traduit à la fois sur un rang (hoirzontalement, voir la figure \ref{instruction1}) 
+des motifs est exploitée afin de ne pas donner une instruction pour chaque maille. Cette 
+périodicité se traduit à la fois sur un rang (horizontalement, voir la figure \ref{instruction1}) 
 et sur un ensemble de rangs (verticalement, voir la figure \ref{instruction2}).  
 
 \begin{figure}[!ht]
@@ -384,18 +384,19 @@ Dans un manuel de tricot, elles seraient volontairement moins verbeuses, à caus
 de motifs différents à décrire que contiennent ces livres.
 
 Mais tout tricot ne peut être construit uniquement à partir d'instructions de ce type. En effet, nous 
-avons vu qu'avec les \texttt{split} et les \texttt{link} il est possible de devoir ajouter (ou enlever) 
+avons vu qu'avec les \texttt{split} et les \texttt{link} on peut avoir à ajouter (ou enlever) 
 une ou plusieurs aiguilles, et cette information doit figurer parmi les instructions renvoyées.
 
 Enfin, la dernière information importante concerne le début du tricot. En effet, pour commencer un tricot, 
-le tricoteur doit \emph{monter des mailles}. Ces premières mailles sont particulières, car elles ne 
+le tricoteur doit \emph{monter des mailles} (c'est-à-dire créer une première rangée de mailles sur son 
+aiguille). Ces premières mailles sont particulières, car elles ne 
 reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au début du tricot le nombre de 
 mailles à monter. Cette étape ne figure pas dans les manuels de tricot, car ceux-ci traitent souvent de 
 motifs, et non de pièces.
 
 % TODO : Donner en annexe un exemple d'instructions complètes générées par notre logiciel
 
-Ainsi, les instructions que renvoit notre logiciel sont à la fois précises comme celles d'un manuel, mais 
+Ainsi, les instructions que renvoie notre logiciel sont à la fois précises comme celles d'un manuel, mais 
 également claires et faciles à suivre. 
 
 \subsection{Compilateur}
@@ -440,6 +441,8 @@ entre plusieurs aiguilles si ce n'est pas nécessaire.
 \end{algorithmic}
 \end{algorithm}
 
+\pagebreak
+
 \subsubsection{Etapes de vérifications}
 
 Le compilateur cherche dans un premier temps à détecter des configurations 
@@ -459,14 +462,14 @@ Avant toute chose, il nous fallait cibler les caractéstiques que
 devait avoir l'interface. Destinée à être utilisée par des tricoteurs,
 celle-ci devait être facile d'utilisation. L'utilisateur dispose des
 outils indispensables à toute interface (ouverture, sauvegarde de
-fichiers, zoom...) mais également d'outils propres au tricot et aux
+fichiers, zoom\dots) mais également d'outils propres au tricot et aux
 objectifs de TriComp : un bouton pour générer les instructions, ainsi
 que quelques outils d'édition de tricot (choix des points sur les
 trapèzes).
 
 Le choix du motif à mettre sur chaque trapèze peut être fait parmi une
-dizaine de points disponibles via des boutons. Une suggestion future
-pourrait être de faire définir à l'utilisateur ses propres points.
+dizaine de points disponibles via des boutons. Une amélioration future
+pourrait être de permettre à l'utilisateur de définir ses propres points.
 
 L'interface est divisée en trois parties, comme on peut le voir sur la 
 figure \ref{interface} : une partie contenant les
@@ -527,7 +530,7 @@ La page dispose également d'une page pour aiguiller rapidement l'internaute ang
 \subsubsection{Communication au sein du projet}
 
 La communication au sein du projet s'est principalement effectuée par le biais de notre liste
-de diffusion (tricomp [at] listes.ens-lyon.fr). L'échange des idées au début du projet s'est 
+de diffusion (tricomp [at] ens-lyon.fr). L'échange des idées au début du projet s'est 
 fait par l'intermédiaire d'un pad hébergé par l'association AliENS (\url{http://pad.aliens-lyon.fr/p/tricomp}). 
 Nous nous réunissions également toutes les semaines avec notre encadrant afin de faire le point 
 sur l'avancement du projet, de discuter de choix (tels que la syntaxe du langage descriptif, 
@@ -539,9 +542,10 @@ au compilateur ou à la gestion de l'éditeur de l'interface).
 \section{Améliorations possibles}
 
 Le manque de temps et de moyens humains nous a empêché de mettre en
-place la totalité des fonctionnalités que nous avions prévues. Nous détaillons
-ici quelques améliorations auxquelles nous avons songées, sachant qu'elles veront
-peut-être le jour (certaines personnes de l'équipe étant intéressées par la 
+place la totalité des fonctionnalités que nous avions prévues. Cependant, 
+ce projet porte en lui un potentiel certain ; nous détaillons
+ici quelques améliorations auxquelles nous avons songées, sachant qu'elles verront
+peut-être le jour (certains membres de l'équipe étant intéressés par la 
 poursuite du projet).
 
 \subsection{Langage descriptif}
@@ -550,9 +554,9 @@ En ayant plus de temps à notre disposition, nous pourrions intégrer au
 langage d'une part les diminutions et augmentations, d'autre part les
 tresses. De même, une fois le tricot terminé, il faut en général le
 finaliser en cousant certaines parties. Cette dernière étape de
-couture avait été évoquée, mais n'a pas été traitée. Toutefois, la
-difficulté de cette étape (en matière de tricot) n'est pas très
-importante pour un tricoteur.
+couture avait été évoquée, mais n'a pas été traitée. Toutefois, 
+cette étape ne relève pas directement du tricot, n'est donc pas très
+importante pour le tricoteur.
 
 \subsection{Compilateur}
 
@@ -627,11 +631,16 @@ les \texttt{split} (en gardant en tête qu'on peut évidemment effectuer un \tex
 \texttt{split}). Ainsi, on peut réaliser la même réduction de ce problème depuis la coloration de graphe qu'à celui de l'allocation 
 de temporaires.
 
+Cela nous permet de montrer que le problème de l'allocation d'aiguilles est \textsc{NP}-complet ; il est donc fort probable 
+que nous devions utiliser des heuristiques pour déterminer le nombre d'aiguilles à prévoir pour réaliser un tricot. En pratique,
+ce nombre est rarement significativement élevé, il est donc probable que ces heuristiques soient suffisants.
+
 \section*{Conclusion}
 
-Au terme des quatre mois qui nous étaient donnés pour mettre en place le logiciel, nous avons créé un langage robuste ainsi un 
-logiciel fonctionnel sur les différentes parties (compilateur, interface), ce dernier étant cependant incomplet par rapport aux 
+Au terme des quatre mois qui nous étaient donnés pour mettre en place le logiciel, nous avons créé un langage robuste, ainsi qu'un 
+logiciel fonctionnel sur ses différentes parties (compilateur, interface), ce dernier étant cependant incomplet par rapport aux 
 objectifs que nous nous étions fixés en début de projet. La partie implémentée répond au besoin primaire que nous avions ciblé : 
-la génération d'instructions relatives à un tricot via une interface graphique.
+la définition d'un langage de description de tricots, l'édition (au moins partielle) de ces tricots et 
+la génération d'instructions associées, le tout via une interface graphique.
 
 \end{document}
