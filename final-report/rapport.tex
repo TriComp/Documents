@@ -225,6 +225,8 @@ La figure \ref{fct} montre schématiquement le fonctionnement décrit ci-dessus.
 	\label{fct}
 \end{figure}
 
+\pagebreak
+
 \section{Travail réalisé}
 
 Le travail que nous prévoyions de réaliser impliquait d'une part de
@@ -481,9 +483,26 @@ la détection de cycle.
 
 Avant de générer les instructions, le compilateur s'assure que le tricot passé en entrée est triccottable. Il vérifie les points suivants :
 \begin{itemize}
- \item Qu'il n'y a pas de cycle dans les pièces à tricotter. Il s'assure ainsi que le tricot commence quelque part et finit quelque part. Pour cela il vérifie qu'il n'y a pas de cycle dans le graphe de dépendance.
- \item Qu'il n'y a pas de recouvrement lors des \texttt{splits} et des \texttt{links}. En effet, lorsqu'on effectue un \texttt{split} ou un \texttt{link}, on indique le positionnement absolu des accroches. La syntaxe du langage n'interdit donc pas, a priori, de définir deux trapèzes partant des mêmes mailles depuis le trapèze précédent (dans le cas d'un \texttt{split}) ou un trapèze s'accrochant en une maille aux mailles de deux trapèzes différents (dans le cas d'un \texttt{link}). Or ces deux cas ne sont pas possibles en réalité. Pour détecter ces configurations impossible, le compilateur calcule tout simplement les mailles auxquelles s'accrochent les trapèzes grâce aux positions et largeurs passées en paramètres, et vérifie qu'il n'y a pas de recouvrement.
+ \item Que chaque pièce est tricottable. Pour cela il vérifie qu'il n'y a pas de recouvrement lors des \texttt{splits} et des \texttt{links}. En effet, lorsqu'on effectue un \texttt{split} ou un \texttt{link}, on indique le positionnement absolu des accroches. La syntaxe du langage n'interdit donc pas, a priori, de définir deux trapèzes partant des mêmes mailles depuis le trapèze précédent (dans le cas d'un \texttt{split}) ou un trapèze s'accrochant en une maille aux mailles de deux trapèzes différents (dans le cas d'un \texttt{link}). Or ces deux cas ne sont pas possibles en réalité. Pour détecter ces configurations impossible, le compilateur calcule tout simplement les mailles auxquelles s'accrochent les trapèzes grâce aux positions et largeurs passées en paramètres, et vérifie qu'il n'y a pas de recouvrement.
+ \item Qu'il n'y a pas de cycle dans les pièces à tricotter, et donc que l'ensemble de l'ouvrage est tricottable. Il s'assure ainsi que le tricot commence quelque part et finit quelque part. Pour cela il vérifie qu'il n'y a pas de cycle dans le graphe de dépendance.
 \end{itemize}
+
+\paragraph{Exemple d'instruction rendant une pièce non tricottable\\} 
+
+ Supposons que l'instruction suivante se trouve dans la description d'un pièce :
+ 
+%	\fbox{\begin{minipage}{0.9\textwidth}
+	\begin{lstlisting}
+|| split
+  10 20 { trapezoid ( height : 50, shift : 0, upper_width : 20, pattern : jersey ) }
+  20 30 { trapezoid ( height : 50, shift : 0, upper_width : 30, pattern : jersey ) }
+	\end{lstlisting}
+%	\end{minipage}}
+
+ Cette intruction signifie que le trapèze courant pointe vers un trapèze qui s'accroche à la maille 10 sur une largeur de 20 mailles et vers un trapèze qui s'accroche à la maille 20 sur une largeur de 30 mailles. Ceci n'est pas réalisable en tricot, car sur les mailles 30 à 40 il faudrait pouvoir tricoter à la fois le premier et le deuxième trapèze.
+ 
+ Le compilateur va détecter ce recouvrement par le calcul et renvoyer une erreur.
+
 
 
 \subsubsection{Parcours du tricot}
@@ -558,7 +577,6 @@ compilateur.
 
 % TODO : inclure des images 
 
-\pagebreak
 
 \subsubsection{Détails d'implémentation}
 
