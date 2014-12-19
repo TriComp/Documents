@@ -260,10 +260,10 @@ directement (dans le parcours du tricot) via un pointeur. Il se peut
 que plusieurs trapèzes suivent un même trapèze : dans ce cas, on 
 ajoute des aiguilles afin de pouvoir continuer à tricoter les deux branches 
 indépendamment. Cette situation se modélise
-dans le langage via le mot-clé «\,\texttt{split}\,».  Inversement, il se
+dans le langage via le mot-clé \texttt{split}.  Inversement, il se
 peut que plusieurs trapèzes aient le même successeur, c'est à ce
-moment là que plusieurs «\,morceaux\,» peuvent être réunis afin de libérer
-une ou plusieurs aiguilles : c'est un «\,\texttt{link}\,».
+moment là que plusieurs morceaux peuvent être réunis afin de libérer
+une ou plusieurs aiguilles : c'est un \texttt{link}.
 
 Notre format de fichier nous autorise à définir différentes pièces
 avec différents noms. Ces pièces permettent de décomposer une pièce plus importante,
@@ -312,15 +312,15 @@ mi-parcours. Deux choses importantes ont été modifiées :
           donc plus dans les paramètres du trapèze. Cette modification
           permet d'éviter des redondances sans se compliquer la tâche.
 	\item Les \texttt{split} peuvent générer plus de deux pièces
-          différentes. Par conséquent, les \texttt{links} ont
+          différentes. Par conséquent, les \texttt{link} ont
           également été modifiés : ils se lient avec leur successeur
           via le nom du successeur, suivi de la position sur ce
           successeur (alors qu'avant, un simple positionnement
           gauche/droite suffisait). Nous avons effectué cette
           modification car certains tricots (par exemple une salopette)
-          ne pouvait être écrit de façon «\,simple\,» avec le précédent
+          ne pouvait être écrit de façon simple avec le précédent
           langage. Ceci est du au fait que précédemment, le
-          positionnement des pièces après un split était déterministe
+          positionnement des pièces après un \texttt{split} était déterministe
           (une pièce à gauche, une pièce à droite) et donc
           restrictif. Cette partie a apporté beaucoup plus de
           modifications dans le code que la modification précédente.
@@ -343,7 +343,7 @@ point mousse :\\
 
 \subsubsection{Langage de bas niveau}
 
-Le «\,langage de bas niveau\,» correspond aux instructions que doit suivre l'utilisateur 
+Le \emph{langage de bas niveau} correspond aux instructions que doit suivre l'utilisateur 
 pour pouvoir réaliser son tricot. Ces instructions sont produites par le compilateur, 
 dont on détaillera le fonctionnement dans la prochaine partie. Ici nous présentons le 
 format (ou langage) utilisé pour présenter ces instructions, proches de ce que l'on peut 
