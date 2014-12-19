@@ -429,9 +429,22 @@ Ainsi, les instructions que renvoie notre logiciel sont à la fois précises com
 
 \subsection{Compilateur} % TODO : à détailler
 
-% TODO : Intro
+Le rôle du compilateur est, à partir du fichier .tricot, d'une part de 
+s'assurer qu'il décrit un tricot possible (par exemple qu'il ne contient
+pas de cycle, que tous les \texttt{link} ont un sens, etc \dots), et 
+d'autre part de générer des instructions  dans le langage de bas niveau.
+Il est implémenté en OCaml, et il utilise la bibliothèque standard alternative
+Core. 
+
+Pour ce faire, il créé un graphe de dépendance entre les différentes pièces
+du tricot: un arc dénote qu'il faut tricoter une pièce avant l'autre. On peut
+alors utiliser des algorithmes de graphes de la littératures, par exemple pour 
+la détection de cycle.
 
 \subsubsection{Parcours du tricot}
+
+Pour la génération des instructions bas niveau, on parcourt le graphe 
+dans un ordre topologique qui est en plus adapté au tricot.
 
 Le parcours du tricot utilise l'algorithme 1, qui est un algorithme de
 dataflow à work list, très courant en compilation. Ici le workset est
@@ -454,30 +467,12 @@ entre plusieurs aiguilles si ce n'est pas nécessaire.
       \State WorkSet $\leftarrow$ WorkSet $\cup$ \{ y \}
     \EndIf
   \EndFor
-
-
-%  \If{$i = \{r \leftarrow \phi (x_1, \dots, x_k)\}$}
-%    \State newval $\leftarrow \SBabrs{x_1}{lv} \sqcup \cdots \sqcup \SBabrs{x_k}{lv}$
-%  \ElsIf {$i = \{r \leftarrow x ~ op ~ y\}$}
-%    \State newval $\leftarrow \SBabrs{x ~ op ~ y}{lv}$
-%  \EndIf
-%  \If{$($newval $\sqcup$ $\SBabrs{r}{lv}) \neq \SBabrs{r}{lv}$}
-%    \State lv\,[$r$] $\leftarrow$ newval $\sqcup$ $\SBabrs{r}{lv}$
-%    \State WorkList $\leftarrow$ WorkList $\cup$ DefUse($r$)
-%  \EndIf
 \EndWhile
-
-%\State $WorkList \leftarrow map ~(\lambda (v : L) \to (v = \bot) ? \, \top : v) ~ WorkList$
 \end{algorithmic}
 \end{algorithm}
 
 \pagebreak
 
-\subsubsection{Etapes de vérifications}
-
-Le compilateur cherche dans un premier temps à détecter des configurations 
-impossibles dans le graphe du tricot : il testera si celui-ci ne comporte pas de cycles 
-(impossibles dans le cas d'un tricot matériel).
 
 \subsection{Interface graphique}
 
@@ -524,7 +519,7 @@ compilateur.
 
 L'interface a été créée à l'aide de la bibliothèque Qt. Une grande
 partie du projet a été intégrée au sein de la partie Qt, pour des
-questions de simplificité au niveau de l'intégration. Seule la partie
+questions de simplicité au niveau de l'intégration. Seule la partie
 compilation (écrite en OCaml) est dissociée de la partie Qt, et est
 appelée dans l'interface via des appels systèmes.
 
