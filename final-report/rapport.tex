@@ -159,13 +159,21 @@ Le nom TriComp de notre logiciel vient de la contraction des mots «\,tricot\,»
 transformer une description globale d'un tricot en instructions à effectuer par le tricoteur 
 pour le réaliser. Ces instructions sont écrites en langage naturel. Le logiciel se compose de trois parties :
 \begin{itemize}
- \item \textbf{Un langage}, TriLang, qui permet à l'utilisateur de décrire globalement son ouvrage (la forme, la taille, les motifs, \dots)
+ \item \textbf{Un langage descriptif}, TriLang, qui permet à l'utilisateur de décrire globalement son ouvrage (la forme, la taille, les motifs, \dots)
  \item \textbf{Un compilateur} qui effectue la transformation de la description en une liste d'instructions
  \item \textbf{Une interface graphique} qui permet à la fois de visualiser le tricot décrit grâce à Trilang, 
-   de faire appel au compilateur, et d'afficher la suite des instructions.
+   de faire appel au compilateur, et d'afficher la suite des instructions. \\
 \end{itemize}
 
-La figure \ref{fct} montre schématiquement le fonctionnement du logiciel.
+Le logiciel fonctionne de la manière suivante :
+\begin{itemize}
+ \item L'utilisateur décrit l'ouvrage qu'il veut effectuer grâce au langage descriptif. Il fait cela dans un nouveau fichier texte, auquel il donne l'extension \texttt{.tricot}, et qu'il range dans le dossier de son choix.
+ \item L'utilisateur lance ensuite l'interface graphique. Une fois dans l'interface graphique il peut ouvrir son fichier \texttt{.tricot}. Il obtient une visualisation sous forme de patron de l'ouvrage qu'il a décrit précédemment.
+ \item L'utilsateur peut, toujours dans l'interface graphique, utiliser quelques outils d'éditions qui ont été implémentés (modification du motif d'un ou plusieurs trapèze(s)). Il peut sauvegarder les modifications qu'il effectue.
+ \item Une fois satisfait du modèle qu'il a défini, l'utilisateur peut, toujours dans l'interface graphique, faire appel au compilateur. Celui-ci va tout d'abord effectuer quelques vérifications pour s'assurer que l'ouvrage est tricottable (il va par exemple vérifier qu'il n'y a pas de cycle dans les pièces définies). Il va ensuite générer la liste des instructions à suivre afin de tricotter l'ouvrage. Ces intructions sont affichées dans l'interface graphique, et l'utisateur n'a plus qu'à les suivre pour obtenir son tricot.
+\end{itemize}
+
+La figure \ref{fct} montre schématiquement le fonctionnement décrit ci-dessus. % Si quelqu'un trouve mieux que montre...
 
 \begin{figure}[!ht]
 	\centering
