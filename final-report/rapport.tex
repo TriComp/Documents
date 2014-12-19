@@ -252,7 +252,7 @@ ouvrage. En effet, comme le tricot est réalisé rang après rang, la pièce
 tricotée d'un tenant a deux côté parallèles. En revanche, grâce aux 
 augmentations et aux diminutions les deux autres cotés ne sont pas 
 forcément parallèles. Par l'assemblage de trapèzes, nous arrivons
-à obtenir n'importe quelle pièce tricottable.
+à obtenir n'importe quelle pièce tricotable.
 
 \begin{figure}[!ht]
   \centering \includegraphics[scale=0.5]{../img/trapeze.jpg}
@@ -399,7 +399,7 @@ Mais tout tricot ne peut être construit uniquement à partir d'instructions de 
 avons vu qu'avec les \texttt{split} et les \texttt{link} on peut avoir à ajouter (ou enlever) 
 une ou plusieurs aiguilles, et cette information doit figurer parmi les instructions renvoyées.
 
-Lors d'un \texttt{split}, le tricotteur laisse de côté une partie de son ouvrage sur une aiguille et prend une autre aiguille afin de tricotter une des branches du split. Les intructions alors données à l'utilsateur sont les suivantes :
+Lors d'un \texttt{split}, le tricoteur laisse de côté une partie de son ouvrage sur une aiguille et prend une autre aiguille afin de tricoter une des branches du split. Les intructions alors données à l'utilsateur sont les suivantes :
 \begin{itemize}
  \item On donne à l'utilisateur les instructions pour tricoter la premières branche après le split.
  \item Une fois cette branche terminée on demande à l'utilsateur, selon les cas, de fermer les mailles correspondant à cette branche ou de laisser son ouvrage sur l'aiguille.
@@ -407,13 +407,13 @@ Lors d'un \texttt{split}, le tricotteur laisse de côté une partie de son ouvra
  \item Et ainsi de suite.
 \end{itemize}
 
-Lors d'un \texttt{link}, le tricotteur doit assembler, c'est à dire tricotter à la suite avec le même fil, des partie d'ouvrages ayant précédemment été laissée de côté sur des aiguilles. L'instruction correspondante correspond tout simplement à dire à l'utilsateur d'``assembler les dépendances''. En effet, l'utilisateur ayant sous les yeux le patron du tricot qu'il réalise, il ne peut y avoir d'ambiguïté. \\
+Lors d'un \texttt{link}, le tricoteur doit assembler, c'est à dire tricoter à la suite avec le même fil, des partie d'ouvrages ayant précédemment été laissée de côté sur des aiguilles. L'instruction correspondante correspond tout simplement à dire à l'utilsateur d'``assembler les dépendances''. En effet, l'utilisateur ayant sous les yeux le patron du tricot qu'il réalise, il ne peut y avoir d'ambiguïté. \\
 
 % TODO : Donnner exemple de code généré quand split et link ?
 
 Enfin, la dernière information importante concerne le début et la fin du tricot. En effet, pour commencer un tricot, 
 le tricoteur doit \emph{monter des mailles} (c'est-à-dire créer une première rangée de mailles sur son 
-aiguille) tandis qu'à la fin il doit les fermer 
+aiguille) tandis qu'à la fin il doit les fermer. 
 
 Les premières mailles sont particulières, car elles ne 
 reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au début du tricot le nombre de 
@@ -425,7 +425,7 @@ motifs, et non de pièces. \\
 % + Fermer les mailles (d'ailleurs on ferme bien les mailles lors d'un split avec trou, mais on ne les ferme pas à la fin !!)
 
 Ainsi, les instructions que renvoie notre logiciel sont à la fois précises comme celles d'un manuel, mais 
-également claires et faciles à suivre pour un humain ayant des connaissances basiques en tricot 
+également claires et faciles à suivre pour un être humain ayant des connaissances basiques en tricot. 
 
 \subsection{Compilateur} % TODO : à détailler
 
