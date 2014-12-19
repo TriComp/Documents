@@ -433,8 +433,11 @@ Le rôle du compilateur est, à partir du fichier .tricot, d'une part de
 s'assurer qu'il décrit un tricot possible (par exemple qu'il ne contient
 pas de cycle, que tous les \texttt{link} ont un sens, etc \dots), et 
 d'autre part de générer des instructions  dans le langage de bas niveau.
+
 Il est implémenté en OCaml, et il utilise la bibliothèque standard alternative
-Core. 
+Core. L'analyse syntaxique utilise le générateur d'analyseur syntaxique Menhir,
+et est robuste: il émet des messages d'erreurs précis lorsque le fichier d'entrée 
+n'est pas valide.
 
 Pour ce faire, il créé un graphe de dépendance entre les différentes pièces
 du tricot: un arc dénote qu'il faut tricoter une pièce avant l'autre. On peut
