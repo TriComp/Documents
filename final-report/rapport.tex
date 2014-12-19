@@ -479,7 +479,7 @@ la détection de cycle.
 
 \subsubsection{Vérifications}
 
-Avant de générer les instructions, le compilateur s'assure que le tricot passé en entrée est triccotable. Il vérifie les points suivants :
+Avant de générer les instructions, le compilateur s'assure que le tricot passé en entrée est tricotable. Il vérifie les points suivants :
 \begin{itemize}
  \item Qu'il n'y a pas de cycle dans les pièces à tricoter. Il s'assure ainsi que le tricot commence quelque part et finit quelque part. Pour cela il vérifie qu'il n'y a pas de cycle dans le graphe de dépendance.
  \item Qu'il n'y a pas de recouvrement lors des \texttt{splits} et des \texttt{links}. En effet, lorsqu'on effectue un \texttt{split} ou un \texttt{link}, on indique le positionnement absolu des accroches. La syntaxe du langage n'interdit donc pas, a priori, de définir deux trapèzes partant des mêmes mailles depuis le trapèze précédent (dans le cas d'un \texttt{split}) ou un trapèze s'accrochant en une maille aux mailles de deux trapèzes différents (dans le cas d'un \texttt{link}). Or ces deux cas ne sont pas possibles en réalité. Pour détecter ces configurations impossible, le compilateur calcule tout simplement les mailles auxquelles s'accrochent les trapèzes grâce aux positions et largeurs passées en paramètres, et vérifie qu'il n'y a pas de recouvrement.
