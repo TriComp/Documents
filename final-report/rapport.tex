@@ -106,8 +106,8 @@ de la suite du rapport :
   horizontalement car partageant la même portion de fil, verticalement
   car ces boucles sont imbriquées les unes dans les autres. Elle peut
   être à l'endroit ou à l'envers, selon la manière dont la boucle est
-  réalisée. La figure \ref{maille} montre comment sont composées des mailles
-  et les rangs.
+  réalisée et imbriquée dans la boucle précédente. La figure \ref{maille} 
+  montre comment sont composées des mailles et les rangs.
 
 \begin{figure}[!ht]
   \centering \includegraphics[scale=0.25]{../presentation/Knit-schematic2.png}
@@ -131,17 +131,18 @@ de la suite du rapport :
   nouvelle maille (on parle alors de \emph{jeté}).
 \end{itemize}
 
-Le tricot est réalisé à l'aide d'aiguilles, qui servent d'une part à
-maintenir les boucles libres (pour éviter qu'elles ne se défassent et
-libèrent les boucles du rang précédent qu'elles retiennent), d'autre
-part à former de nouvelles boucles.
+Le tricot est réalisé rang par rang, à l'aide d'aiguilles, qui servent 
+d'une part à maintenir les boucles libres (pour éviter qu'elles ne se 
+défassent et ne libèrent les boucles du rang précédent qu'elles retiennent), 
+d'autre part à former de nouvelles boucles qui deviendront les mailles du rang 
+suivant.
 
 \newpage
 
 \section{Travail réalisé}
 
 Le travail que nous prévoyions de réaliser impliquait d'une part de
-définir différents langages de ``programmation'' du tricot (un langage
+définir différents langages de « programmation » du tricot (un langage
 de haut niveau pour décrire de manière rigoureuse les ouvrages, et un
 langage de bas niveau correspondant aux mailles à tricoter), d'autre
 part d'écrire un compilateur réalisant la traduction d'un langage vers
@@ -151,7 +152,7 @@ définition.  Nous détaillons dans cette partie le travail qui a été
 réalisé dans chacun de ces objectifs. Nous rappelons que tout le
 travail (logiciel, documents et site web) sont disponibles et
 consultables sur le dépôt Git du projet
-TriComp. (\url{https://github.com/TriComp/}).
+TriComp (\url{https://github.com/TriComp/}).
 
 \subsection{Définition des langages}
 
