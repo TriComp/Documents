@@ -101,7 +101,7 @@ de la suite du rapport :
 
 \begin{itemize}
 % + rang
-\item une \emph{maille} est l'unité de base d'un tricot. Il s'agit de
+\item[$\bullet$] une \emph{maille} est l'unité de base d'un tricot. Il s'agit de
   la boucle qui constitue l'étoffe en étant reliée à ses voisines,
   horizontalement car partageant la même portion de fil, verticalement
   car ces boucles sont imbriquées les unes dans les autres. Elle peut
@@ -116,14 +116,14 @@ de la suite du rapport :
   \label{maille}
 \end{figure}
 
-\item un \emph{point} est une manière de combiner les différentes
+\item[$\bullet$] un \emph{point} est une manière de combiner les différentes
   opérations réalisables sur les mailles (les tricoter à l'endroit, à
   l'envers, en tricoter plusieurs ensemble, croiser plusieurs mailles
   \dots) Ceci montre que l'on peut obtenir un nombre de motifs possibles 
   extrèmement important.
-\item l'\emph{ouvrage} désigne la pièce de tricot tout entière, par
+\item[$\bullet$] l'\emph{ouvrage} désigne la pièce de tricot tout entière, par
   exemple l'écharpe ou le pull.
-\item une \emph{diminution} est la suppression d'une maille dans le
+\item[$\bullet$] une \emph{diminution} est la suppression d'une maille dans le
   cours de l'ouvrage ; une technique courante consiste à tricoter
   ensemble deux mailles. Symétriquement, une \emph{augmentation} est
   une maille ajoutée dans le cours de l'ouvrage ; une technique
@@ -339,7 +339,7 @@ Ainsi, les instructions que renvoit notre logiciel sont à la fois précises com
 Le parcours du tricot utilise l'algorithme 1, qui est un algorithme de
 dataflow à work list, très courant en compilation. Ici le workset est
 implémenté à l'aide d'une pile, ce qui nous permet de parcourir
-completement une branche de tricot avant de s'occuper d'une
+complètement une branche de tricot avant de s'occuper d'une
 autre. Ainsi on ne demande pas au tricoteur de faire un va-et-vient
 entre plusieurs aiguilles si ce n'est pas nécessaire.
 
@@ -506,5 +506,10 @@ aux temporaires dans lesquels stocker les variables, et les variables aux zones 
 les \texttt{split} (en gardant en tête qu'on peut évidemment effectuer un \texttt{split} sur une branche déjà issue d'un \texttt{split}).
 
 \section*{Conclusion}
+
+Au terme des quatre mois qui nous étaient donnés pour mettre en place le logiciel, nous avons créé un langage robuste ainsi un 
+logiciel fonctionnel sur les différentes parties (compilateur, interface), ce dernier étant cependant incomplet par rapport aux 
+objectifs que nous nous étions fixés en début de projet. La partie implémentée répond au besoin primaire que nous avions ciblé : 
+la génération d'instructions relatives à un tricot via une interface graphique.
 
 \end{document}
