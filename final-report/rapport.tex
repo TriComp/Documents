@@ -93,9 +93,7 @@ de programmation informatique, cette compilation de tricot était
 susceptible de mener à des problèmes théoriques intéressants, à mesure
 que l'on enrichirait le langage.
 
-\subsection*{Notions du tricot} % ou : Quelques mots sur le tricot
-
-% définition d'un certain nombre de mots : maille, point, ouvrage ; et description rudimentaire des techniques
+\subsection*{Notions du tricot} 
 
 Le vocabulaire du tricot peut sembler un peu obscur aux non-initiés.
 Voici donc quelques définitions qui seront utiles pour la compréhension
@@ -120,8 +118,8 @@ de la suite du rapport :
 
 \item[$\bullet$] un \emph{point} est une manière de combiner les différentes
   opérations réalisables sur les mailles (les tricoter à l'endroit, à
-  l'envers, en tricoter plusieurs ensemble, croiser plusieurs mailles
-  \dots) Ceci montre que l'on peut obtenir un nombre de motifs possibles 
+  l'envers, en tricoter plusieurs ensemble, croiser plusieurs mailles\dots).
+  Ceci montre que l'on peut obtenir un nombre de motifs possibles 
   extrèmement important.
 \item[$\bullet$] l'\emph{ouvrage} désigne la pièce de tricot tout entière, par
   exemple l'écharpe ou le pull.
@@ -150,7 +148,7 @@ langage de bas niveau correspondant aux mailles à tricoter), d'autre
 part d'écrire un compilateur réalisant la traduction d'un langage vers
 l'autre, et enfin de réaliser une interface graphique permettant de
 les manipuler intuitivement et de visualiser les pièces en cours de
-définition.  Nous détaillons dans cette partie le travail qui a été
+définition. Nous détaillons dans cette partie le travail qui a été
 réalisé dans chacun de ces objectifs. Nous rappelons que tout le
 travail (logiciel, documents et site web) sont disponibles et
 consultables sur le dépôt Git du projet
@@ -172,14 +170,14 @@ effectuées ainsi que leur intêret, le tout illustré par un exemple. \\
 
 L'idée générale est de concevoir une langage capable décrire un tricot
 de la façon la plus globale possible. Dans les (rares) logiciels de
-tricot qui existent, le tricot est décomposé en sa plus petite entité
+tricot existants, le tricot est décomposé en sa plus petite entité
 : la maille (cf figure \ref{logiciel}). L'avantage de cette
 décomposition atomique est que l'on peut réaliser des choix de points
-avec une très bonne précision.
- Son gros inconvégniant est qu'il est souvent
+(voire de couleurs) avec une très bonne précision. 
+Son gros inconvégniant est qu'il est souvent
 pénible de travailler avec cette représentation trop précise, car les tricots 
-sont souvent d'assez grande taille. % TODO Une idée de la taille d'un tricot "classique"?
-Notre démarche, quand à elle, propose une vision du tricot plus globale, 
+ont en général une taille assez importante. % TODO Une idée de la taille d'un tricot "classique"?
+Notre démarche, quant à elle, propose une vision du tricot plus globale, 
 et donc beaucoup plus simple.
 
 \begin{figure}[!ht]
@@ -214,7 +212,7 @@ moment là que plusieurs "morceaux" peuvent être réunis afin de libérer
 une ou plusieurs aiguilles : c'est un "\texttt{link}".
 
 Notre format de fichier nous autorise à définir différentes pièces
-avec différents noms. Ces pièces permettent de décomposer une pièce,
+avec différents noms. Ces pièces permettent de décomposer une pièce plus importante,
 notamment en cas de présence de \texttt{link}, qui prennent en entrée
 le nom de la pièce suivante.
 
@@ -245,7 +243,7 @@ langage, via une description d'un poncho.
                 (30,110) -- (30,125); \draw[-*,ultra thick] (75,30) --
                 (45,15); \draw (90,35) node{\texttt{trapeze(...)}};
 	\end{tikzpicture}
-	\caption{Les possibilités du langage illustré sur un tricot
+	\caption{Les possibilités du langage illustrées sur un tricot
           (en l'occurence un poncho). Une attention toute particulière
           est portée aux jonctions entre les différents trapèzes.}
 	\label{langage}
@@ -258,15 +256,14 @@ mi-parcours. Deux choses importantes ont été modifiées :
 	\item La largeur inférieure des trapèzes est cette fois-ci
           déduite de la largeur de la pièce précédente, et ne figure
           donc plus dans les paramètres du trapèze. Cette modification
-          permet d'éviter des redondances sans se compliquer la tâche,
-          notamment dans la partie de l'interface graphique.
+          permet d'éviter des redondances sans se compliquer la tâche.
 	\item Les \texttt{split} peuvent générer plus de deux pièces
           différentes. Par conséquent, les \texttt{links} ont
-          également été modifiés : ils se lient avec leur sucesseur
-          via le nom du sucesseur, suivi de la position sur ce
-          sucesseur (alors qu'avant, un simple positionnement
+          également été modifiés : ils se lient avec leur successeur
+          via le nom du successeur, suivi de la position sur ce
+          successeur (alors qu'avant, un simple positionnement
           gauche/droite suffisait). Nous avons effectué cette
-          modification car certains tricots (par exemple la salopette)
+          modification car certains tricots (par exemple une salopette)
           ne pouvait être écrit de façon "simple" avec le précédent
           langage. Ceci est du au fait que précédemment, le
           positionnement des pièces après un split était déterministe
@@ -280,11 +277,13 @@ de tricots d'un point de vue assez original par rapport à ce qui est fait dans 
 autres logiciels de tricot. Les tricots qui suivent notre langage portent l'extension 
 \texttt{.tricot}.
 
-À titre d'exemple, voici le code décrivant une petite écharpe :\\
+À titre d'exemple, voici le code décrivant une petite écharpe faite uniquement avec du 
+point mousse :\\
+
 \textrm{Name : toy\_scarf}\\
 \texttt{Description : "The easiest knit you can make"}\\
 \texttt{piece my\_piece := start 20 }\\
-\texttt{|| trapezoid ( height : 60, shift : 0, upper\_width : 20, pattern : point\_mousse)}\\
+\texttt{|| trapezoid (height : 60, shift : 0, upper\_width : 20, pattern : point\_mousse)}\\
 \texttt{ || stop}
 
 
@@ -326,9 +325,9 @@ Ligne 2 : 140 fois 1 maille envers, 1 maille endroit^^J
 	\label{instruction2}
 \end{figure}
 
-Les deux figures précédentes illustrent des instructions que nous obtenons avec notre logiciel. 
-Dans un manuel de tricot, elles sont volontairement moins verbeuses, à cause du nombre important 
-de motifs différents à décrire qu'ils contiennent.
+Les deux figures précédentes illustrent des instructions que nous pouvons obtenir avec notre logiciel. 
+Dans un manuel de tricot, elles seraient volontairement moins verbeuses, à cause du nombre important 
+de motifs différents à décrire que contiennent ces livres.
 
 Mais tout tricot ne peut être construit uniquement à partir d'instructions de ce type. En effet, nous 
 avons vu qu'avec les \texttt{split} et les \texttt{link} il est possible de devoir ajouter (ou enlever) 
@@ -340,8 +339,10 @@ reposent pas sur des mailles précédemment tricotées. Nous indiquons donc au d
 mailles à monter. Cette étape ne figure pas dans les manuels de tricot, car ceux-ci traitent souvent de 
 motifs, et non de pièces.
 
+% TODO : Donner en annexe un exemple d'instructions complètes générées par notre logiciel
+
 Ainsi, les instructions que renvoit notre logiciel sont à la fois précises comme celles d'un manuel, mais 
-également claires et facile à suivre. 
+également claires et faciles à suivre. 
 
 \subsection{Compilateur}
 
