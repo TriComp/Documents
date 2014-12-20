@@ -92,11 +92,16 @@ La largeur de la pièce est donnée en nombre de maille et de manière général
 
   \subsection{Décrire vos pièces}
   
-  Les pièces sont composées de trapèzes qui sont assemblés grâce à des connecteurs.
+  Les pièces sont composées de trapèzes qui sont assemblés grâce à des connecteurs (le connecteur séquentiel, le connecteur \texttt{split} et le connecteur \texttt{link}). Formellement :
+  
+\noindent \texttt{[description d'une pièce] := trapezoid(args) | \\
+  \textcolor{white}{alinea}[description d'une pièce] || [description d'une pièce] | \\
+  \textcolor{white}{alinea}split ((int*int*[description d'une pièce) list) | \\
+  \textcolor{white}{alinea}link ([nom d'une pièce*int])}
 
 \subsubsection{Un trapèze}
 
-  La description d'un trapèze, unité atomique du tricot, se fait avec la syntaxe suivante : \\
+  La description d'un trapèze, unité atomique de la pièce du tricot, se fait avec la syntaxe suivante : \\
 \texttt{trapezoid (height : k, shift : $\mathtt{d_g}$, upper\_width : m, pattern : motif} où 
 \begin{itemize}
 \item \texttt{k} est la hauteur en rangs du trapèze
@@ -114,6 +119,31 @@ La figure \ref{trapeze} montre graphiquement ces paramètres sur un dessin.
 \end{figure}
 
 \subsubsection{Les connecteurs}
+
+Pour assembler les trapèzes on peut utiliser plusieurs connecteurs.
+
+\paragraph{Connecteur séquentiel :}
+
+Le connecteur séquentiel permet d'indiquer que l'on va tricoter une partie de la pièce à la suite d'une autre partie. Dans le langage il est noté \texttt{||} de manière infixe. Plus précisemment, la syntaxe est la suivante :
+
+\texttt{[insérer ici une description à l'aide de trapèzes et de connecteurs] \\
+  \textcolor{white}{ali}|| [insérer ici une description à l'aide de trapèzes et de connecteurs]}
+  
+\paragraph{Connecteur \texttt{split} :} 
+
+Le connecteur \texttt{split} permet d'indiquer que l'on va effectuer une séparation dans la pièce : on va continuer à tricotter qu'une partie des mailles avec le trapèze suivant, tandis qu'autre chose va être fait avec les mailles restantes (les fermer ou tricoter un autre trapèze dessus). Ce constructeur permet par exemple de réaliser des gants (on a besoin de séparer les différents doigts) ou des brettelles (on ne va plus tricoter que certaines des mailles pour faire les bretelles). Dans le langage, ce constructeur est noté \texttt{split} et il prend en argument une liste des descriptions des pièces qui vont le suivre. Plus précisemment, la syntaxe est la suivante :
+
+\noindent \texttt{split \\
+  \textcolor{white}{ali}|| [insérer ici la position de départ de la prochaine pièce] [insérer ici sa largeur] [insérer ici sa description] \\
+  \textcolor{white}{ali}|| [insérer ici la position de départ de la prochaine pièce] [insérer ici sa largeur] [insérer ici sa description] \\
+  \textcolor{white}{ali}...}
+  
+\paragraph{Connecteur \texttt{link} :} 
+
+Le connecteur \texttt{link} réalise l'opération inverse du connecteur \texttt{split}. Il permet en effet de relier différentes composantes vers une seule pièce, ce qui revient à effectuer une séparation, mais pas dans le sens où l'on tricote. Cependant au lieu de prendre en argument la description d'une pièce, il prend le nom d'une pièce. En effet \texttt{link} fait pointer l'entité courante vers une pièce à part entière. Cela vient du vait que seule les pièces à part entières sont des variables que l'on peut identifier. Ainsi le connecteur \texttt{link} prend en argument le nom d'une pièce et la position de cette pièce où l'on va aller s'accrocher. Plus précisemment, la syntaxe est la suivante :
+
+\noindent \texttt{link [insérer ici le nom d'une pièce] [insérer ici la position où l'on va s'accrocher]}
+
 
   
 %%%%% %%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%
