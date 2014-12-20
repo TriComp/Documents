@@ -79,25 +79,42 @@ Tout tricot commence par son son nom et sa description, donnés avec la syntaxe 
 
 %\begin{lstlisting}
 \noindent \texttt{Name : [inserer ici le nom de votre ouvrage] \\
-  Description : [inserer ici une description de votre ouvrage]}
+  Description : [inserer ici une description de votre ouvrage]} \\
 %\end{lstlisting}
+
+La description du tricot se fait ensuite en listant les pièces qui le compose. Une pièce est décrite avec la syntaxe suivante :
+
+\noindent \texttt{piece [inserer ici le nom de votre pièce] := \\
+  \textcolor{white}{alinea}start [insérer ici la largeur de votre pièce] \\
+  \textcolor{white}{alinea}|| [insérer ici une description de votre pièce]}
   
-  \subsection{Décrire votre tricot}
+La largeur de la pièce est donnée en nombre de maille et de manière générale, tous les entiers décrivant des tailles dans le langage sont donnés en nombre de mailles ou en nombre de rangs.
+
+  \subsection{Décrire vos pièces}
+  
+  Les pièces sont composées de trapèzes qui sont assemblés grâce à des connecteurs.
 
 \subsubsection{Un trapèze}
 
-  La description d'un trapèze du tricot se fait avec la syntaxe suivante : \\
-\texttt{trapezoid (height : h, shift : s, upper\_width : w, pattern : motif} où 
+  La description d'un trapèze, unité atomique du tricot, se fait avec la syntaxe suivante : \\
+\texttt{trapezoid (height : k, shift : $\mathtt{d_g}$, upper\_width : m, pattern : motif} où 
 \begin{itemize}
-\item \texttt{s} est la hauteur en rangs du trapèze
-\item \texttt{s} est la différence (en mailles) entre la largeur du trapèze en haut et en bas
-\item \texttt{w} est la largeur du trapèze en haut (la largeur en bas étant normalement inférable avec le reste du code
+\item \texttt{k} est la hauteur en rangs du trapèze
+\item $\mathtt{d_g}$ est la différence (en mailles) entre la largeur du trapèze en haut et en bas
+\item \texttt{m} est la largeur du trapèze en haut (la largeur en bas étant normalement inférable avec le reste du code
 \item \texttt{motif} est simplement le point utilisé sur ce trapèze, à choisir parmi ceux listés plus haut
 \end{itemize}
 
-\subsubsection{Une pièce}
+La figure \ref{trapeze} montre graphiquement ces paramètres sur un dessin.
 
-La syntaxe globale de description d'une pièce de tricot se fait selon le modèle suivant :\\
+\begin{figure}[!ht]
+  \centering \includegraphics[scale=0.6]{../img/trapeze.jpg}
+  \caption{Les paramètres d'un trapèze que l'on utilise}
+  \label{trapeze}
+\end{figure}
+
+\subsubsection{Les connecteurs}
+
   
 %%%%% %%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%
 
