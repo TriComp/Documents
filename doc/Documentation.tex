@@ -18,17 +18,15 @@
 % contraintes à respecter (spilts, links, nbr maille multiple du nbr maille du motif), pour le nb de maille : conseil et le compil renvoie warning qd c'est pas le cas (et ne garantit pas de faire un truc cool) ?
 %
 
-%opening
 \title{Documentation de TriLang}
+
 \author{Équipe TriComp}
+
+\date{} 
 
 \begin{document}
 
 \maketitle
-
-\begin{abstract}
-
-\end{abstract}
 
 \newpage
 
@@ -36,28 +34,36 @@
 
 \newpage
 
-
 \section{Introduction}
+
+Ce document constitue la documentation du langage TriLang sur lequel est basé le logiciel TriComp.
+Bien que le logiciel fournisse une interface graphique pour pouvoir éditer des tricots, vous aurez peut-être 
+besoin, si le logiciel ne le permet pas encore, d'étider directement le fichier \texttt{.tricot} que vous voulez 
+réaliser. 
+
+Ce document détaille donc la syntaxe de notre langage de description de tricot.
 
 \section{Description}
 
-La description des ouvrages de tricot est basé sur le découpage en trapèzes : en effet, toute pièce tricotable est décomposable en un agencement de trapèzes
-de dimensions variable.
+La description des ouvrages de tricot est basé sur le découpage en trapèzes : en effet, toute pièce tricotable est 
+décomposable en un agencement de trapèzes de dimensions variables. C'est sur cette décomposition en trapèzes d'un tricot 
+que se base notre langage.
 
-En pratique, on décrit les pièces en donnant leurs dimensions (longueur des bases, hauteur) et le motif avec lequel elles seront remplies (jersey, point mousse,
-côtes...).
+En pratique, on décrit les pièces en donnant leurs dimensions (longueur des bases, hauteur) et le motif avec lequel elles 
+seront remplies (jersey, point mousse, côtes...).
 % Ici : 
 
 \section{Syntaxe}
 
-  \subsection{Décrire vos points}
+\subsection{Décrire vos points}
 
-%% TO DO  
+% TODO  
 % Ici : où on décrit les points, et comment.
 % Où : dans le fichier .tricot ? Ce serait le mieux mais est-ce que c'est possible facilement ?
 % Comment : à décrire (type pattern = (int*((int* Maille of maille) list)) list où type maille = Endroit | Envers with sexp, compare)  
 
-Il n'est pour l'instant pas possible de définir des points personnalisés, les points apparaissant dans les tricots doivent être choisis parmis les points suivants :
+Il n'est pour l'instant pas possible de définir des points personnalisés, les points apparaissant dans les tricots doivent 
+être choisis parmi les points suivants :
 \begin{itemize}
 \item jersey
 \item point mousse
@@ -70,10 +76,10 @@ Il n'est pour l'instant pas possible de définir des points personnalisés, les 
 \item côtes piquées
 \item losanges
 \item côtes point de riz
-\item damier $3\times 3$
+%\item damier $3\times 3$
 \end{itemize}
   
-  \subsection{Commencer votre tricot}
+\subsection{Commencer votre tricot}
   
 Tout tricot commence par son son nom et sa description, donnés avec la syntaxe suivante :
 
@@ -88,11 +94,13 @@ La description du tricot se fait ensuite en listant les pièces qui le compose. 
   \textcolor{white}{alinea}start [insérer ici la largeur de votre pièce] \\
   \textcolor{white}{alinea}|| [insérer ici une description de votre pièce]}
   
-La largeur de la pièce est donnée en nombre de maille et de manière générale, tous les entiers décrivant des tailles dans le langage sont donnés en nombre de mailles ou en nombre de rangs.
+La largeur de la pièce est donnée en nombre de maille et de manière générale, tous les entiers décrivant des tailles dans 
+le langage sont donnés en nombre de mailles ou en nombre de rangs.
 
-  \subsection{Décrire vos pièces}
+\subsection{Décrire vos pièces}
   
-  Les pièces sont composées de trapèzes qui sont assemblés grâce à des connecteurs (le connecteur séquentiel, le connecteur \texttt{split} et le connecteur \texttt{link}). Formellement :
+Les pièces sont composées de trapèzes qui sont assemblés grâce à des connecteurs (le connecteur séquentiel, le connecteur 
+\texttt{split} et le connecteur \texttt{link}). Formellement :
   
 \noindent \texttt{[description d'une pièce] := trapezoid(args) | \\
   \textcolor{white}{alinea}[description d'une pièce] || [description d'une pièce] | \\
@@ -110,7 +118,7 @@ La largeur de la pièce est donnée en nombre de maille et de manière général
 \item \texttt{motif} est simplement le point utilisé sur ce trapèze, à choisir parmi ceux listés plus haut
 \end{itemize}
 
-La figure \ref{trapeze} montre graphiquement ces paramètres sur un dessin.
+La figure \ref{trapeze} montre ces différents paramètres sur un dessin.
 
 \begin{figure}[!ht]
   \centering \includegraphics[scale=0.6]{../img/trapeze.jpg}
@@ -131,7 +139,7 @@ Le connecteur séquentiel permet d'indiquer que l'on va tricoter une partie de l
   
 \paragraph{Connecteur \texttt{split} :} 
 
-Le connecteur \texttt{split} permet d'indiquer que l'on va effectuer une séparation dans la pièce : on va continuer à tricotter qu'une partie des mailles avec le trapèze suivant, tandis qu'autre chose va être fait avec les mailles restantes (les fermer ou tricoter un autre trapèze dessus). Ce constructeur permet par exemple de réaliser des gants (on a besoin de séparer les différents doigts) ou des brettelles (on ne va plus tricoter que certaines des mailles pour faire les bretelles). Dans le langage, ce constructeur est noté \texttt{split} et il prend en argument une liste des descriptions des pièces qui vont le suivre. Plus précisemment, la syntaxe est la suivante :
+Le connecteur \texttt{split} permet d'indiquer que l'on va effectuer une séparation dans la pièce : on ne va continuer à tricoter qu'une partie des mailles avec le trapèze suivant, tandis qu'autre chose va être fait avec les mailles restantes (les fermer ou tricoter un autre trapèze dessus). Ce constructeur permet par exemple de réaliser des gants (on a besoin de séparer les différents doigts) ou des bretelles (on ne va plus tricoter que certaines des mailles pour faire les bretelles). Dans le langage, ce constructeur est noté \texttt{split} et il prend en argument une liste des descriptions des pièces qui vont le suivre. Plus précisement, la syntaxe est la suivante :
 
 \noindent \texttt{split \\
   \textcolor{white}{ali}|| [insérer ici la position de départ de la prochaine pièce] [insérer ici sa largeur] [insérer ici sa description] \\
@@ -140,24 +148,20 @@ Le connecteur \texttt{split} permet d'indiquer que l'on va effectuer une sépara
   
 \paragraph{Connecteur \texttt{link} :} 
 
-Le connecteur \texttt{link} réalise l'opération inverse du connecteur \texttt{split}. Il permet en effet de relier différentes composantes vers une seule pièce, ce qui revient à effectuer une séparation, mais pas dans le sens où l'on tricote. Cependant au lieu de prendre en argument la description d'une pièce, il prend le nom d'une pièce. En effet \texttt{link} fait pointer l'entité courante vers une pièce à part entière. Cela vient du vait que seule les pièces à part entières sont des variables que l'on peut identifier. Ainsi le connecteur \texttt{link} prend en argument le nom d'une pièce et la position de cette pièce où l'on va aller s'accrocher. Plus précisemment, la syntaxe est la suivante :
+Le connecteur \texttt{link} réalise l'opération inverse du connecteur \texttt{split}. Il permet en effet de relier différentes composantes vers une seule pièce, ce qui revient à effectuer une séparation, mais pas dans le sens où l'on tricote. Cependant, au lieu de prendre en argument la description d'une pièce, il prend le nom d'une pièce. En effet \texttt{link} fait pointer l'entité courante vers une pièce à part entière. Cela vient du fait que seules les pièces à part entières sont des variables que l'on peut identifier. Ainsi le connecteur \texttt{link} prend en argument le nom d'une pièce et la position de cette pièce où l'on va aller s'accrocher. Plus précisemment, la syntaxe est la suivante :
 
 \noindent \texttt{link [insérer ici le nom d'une pièce] [insérer ici la position où l'on va s'accrocher]}
 
-
-  
-%%%%% %%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%
 
 \appendix
 
 \section{Exemples}
 
-Dans cette section, nous donnons des exemples complets de quelques modèles écrits grace à TriLang, allant du plus basique (écharpe) à des modèles plus compliqués (poncho et salopette). Un patron de ces modèles est également présenté, afin de rendre plus visuel ce que donne ces descriptions. Ces patrons ont été créés par l'interface graphique du logiciel TriComp.
+Dans cette section, nous donnons des exemples complets de quelques modèles écrits grace au langage TriLang, allant du plus basique (écharpe) à des modèles plus compliqués (poncho et salopette). %Un patron de ces modèles est également présenté, afin de rendre plus visuel ce que donne ces descriptions. Ces patrons ont été créés par l'interface graphique du logiciel TriComp.
 % + exemples de définitions de points ?
 
 \subsection{Écharpe}
-
-
 
 \begin{lstlisting}
 Name : scarf_test
@@ -167,7 +171,6 @@ piece my_piece := start 25
    || trapezoid ( height : 150, shift : 0, upper_width : 25, pattern : jersey )
    || stop
 \end{lstlisting}
-
 
 \subsection{Poncho}
 
@@ -194,6 +197,8 @@ piece next := start 60
    || trapezoid ( height : 100, shift : 0, upper_width : 60, pattern : envers )
    || stop
 \end{lstlisting}
+
+\newpage
 
 \subsection{Salopette}
 
